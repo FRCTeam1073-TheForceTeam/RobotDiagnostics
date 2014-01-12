@@ -246,7 +246,12 @@
     <buildtargets>
         <buildtarget buildtool="Linker" name="CommandBasedRobotTemplate" passed="false" targetname="CommandBasedRobotTemplate">
             <contents>
-                <folder name="/frcteam1073-electrical.electricalcheckout" recursive="true"/>
+                <folder name="/DebugRobot14" recursive="true"/>
+            </contents>
+        </buildtarget>
+        <buildtarget buildtool="Partial Image Linker" name="CommandBassedRobotTemplate_partialImage" passed="true" targetname="CommandBassedRobotTemplate_partialImage">
+            <contents>
+                <folder name="/DebugRobot14" recursive="true"/>
             </contents>
         </buildtarget>
     </buildtargets>
