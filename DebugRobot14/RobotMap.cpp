@@ -31,7 +31,6 @@ void RobotMap::init() {
 	
 	chasistransducer = new StallableAnalogEncoder(1, 3);
 	//lw->AddSensor("Chasis", "transducer", chasistransducer);
-	//lw->AddSensor("thing","lol",chasistransducer);
 	
 	driveTrainfrontLeft = new SmartCANJaguar(2);
 	

@@ -9,5 +9,5 @@ DEL /S *.wrproject~
 DEL /S *.cproject~
 DEL /S *.project~
 DEL /S *.wrmakefile~
-DEL ~botBuilderConfiguration.yml
+DEL /S *.bat~
 ECHO Robot Builder temporary files have been deleted

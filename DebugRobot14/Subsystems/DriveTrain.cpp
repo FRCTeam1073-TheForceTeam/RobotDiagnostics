@@ -38,7 +38,6 @@ void DriveTrain::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveTrain::ArcadeDrive( Joystick *stick ) {
-	//robotDrive->
 	robotDrive->ArcadeDrive( stick );
 }
 void DriveTrain::MecanumDrive( Joystick *stick) {
