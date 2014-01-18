@@ -13,7 +13,7 @@ void compressArm::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void compressArm::Execute() {
-	
+	Robot::launcher->Compress();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool compressArm::IsFinished() {

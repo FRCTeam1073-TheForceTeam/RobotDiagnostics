@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef SWITCHTOMECANUMDRIVE_H
-#define SWITCHTOMECANUMDRIVE_H
+#ifndef SHIFTUP_H
+#define SHIFTUP_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class switchToMecanumDrive: public Command {
+class shiftUp: public Command {
 public:
-	switchToMecanumDrive();
+	shiftUp();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

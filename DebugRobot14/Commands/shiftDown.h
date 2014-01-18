@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef CLOSEVALVE2_H
-#define CLOSEVALVE2_H
+#ifndef SHIFTDOWN_H
+#define SHIFTDOWN_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class closeValve2: public Command {
+class shiftDown: public Command {
 public:
-	closeValve2();
+	shiftDown();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

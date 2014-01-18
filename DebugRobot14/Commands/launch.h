@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef CLOSEVALVE1_H
-#define CLOSEVALVE1_H
+#ifndef LAUNCH_H
+#define LAUNCH_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class closeValve1: public Command {
+class launch: public Command {
 public:
-	closeValve1();
+	launch();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

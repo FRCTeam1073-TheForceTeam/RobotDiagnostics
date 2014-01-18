@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef OPENVALVE1_H
-#define OPENVALVE1_H
+#ifndef DECOMPRESSARM_H
+#define DECOMPRESSARM_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class openValve1: public Command {
+class deCompressArm: public Command {
 public:
-	openValve1();
+	deCompressArm();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
