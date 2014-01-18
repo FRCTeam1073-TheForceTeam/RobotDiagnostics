@@ -14,11 +14,19 @@ void shiftUp::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void shiftUp::Execute() {
-	Robot::shifterSystem->ShiftDown();
+	Robot::shifterSystem->ShiftUp();
+	static int count=0;
+	printf("shifted up\n");
+	char buf[81];
+	sprintf(buf,"shifted up %d",count++);
+	DriverStationLCD *lcd = DriverStationLCD::GetInstance();
+	lcd->PrintfLine(DriverStationLCD::kUser_Line1, "%s",buf);
+	lcd->PrintfLine(DriverStationLCD::kUser_Line2, "%s","000000000000000000000000000000000");
+	lcd->UpdateLCD();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool shiftUp::IsFinished() {
-	return false;
+	return true;
 }
 // Called once after isFinished returns true
 void shiftUp::End() {

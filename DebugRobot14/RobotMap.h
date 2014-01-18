@@ -21,10 +21,6 @@ public:
 	static SmartCANJaguar* driveTrainRearRight;
 	static RobotDrive* driveTrainRobotDrive;
 	static SmartGyro* driveTrainDriveGyro;
-	static Encoder* shifterSystemQuadratureEncoder1;
-	static Encoder* shifterSystemQuadratureEncoder2;
-	static Encoder* shifterSystemQuadratureEncoder3;
-	static Encoder* shifterSystemQuadratureEncoder4;
 	static Compressor* shifterSystemShifterCompressor;
 	static DoubleSolenoid* shifterSystemDoubleSolenoid1;
 	static Compressor* launcherArmCompressor;

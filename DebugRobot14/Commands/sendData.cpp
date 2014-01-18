@@ -43,10 +43,6 @@ void sendData::Execute() {
 		float rightRearPosition=RobotMap::driveTrainRearRight->GetPosition();
 		
 		float lol=RobotMap::shifterSystemDoubleSolenoid1->Get();
-		float quadEncoder1=RobotMap::shifterSystemQuadratureEncoder1->GetDistance();
-		float quadEncoder2=RobotMap::shifterSystemQuadratureEncoder2->GetDistance();
-		float quadEncoder3=RobotMap::shifterSystemQuadratureEncoder3->GetDistance();
-		float quadEncoder4=RobotMap::shifterSystemQuadratureEncoder4->GetDistance();
 		int switchValue = RobotMap::shifterSystemShifterCompressor->GetPressureSwitchValue();
 		
 		sprintf(buffer, "%d %f ", count++, battery);

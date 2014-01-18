@@ -10,11 +10,12 @@ driveArcarde::driveArcarde() {
 }
 // Called just before this Command runs the first time
 void driveArcarde::Initialize() {
-	
+	printf("arcade drive\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void driveArcarde::Execute() {
 	Robot::driveTrain->ArcadeDrive(Robot::oi->getJoystick1());
+	
 }
 // Make this return true when this Command no longer needs to run execute()
 bool driveArcarde::IsFinished() {
