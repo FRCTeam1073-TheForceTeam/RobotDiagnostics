@@ -51,11 +51,11 @@ void DataSending::SendTheData(){
 			float shifterSolenoid=RobotMap::shifterSystemshifterSolenoid->Get();
 			int switchValue = RobotMap::shifterSystemShifterCompressor->GetPressureSwitchValue();
 			
-			sprintf(buffer, "%d %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d",
-					count++, battery, x,y,z,batteryCurrent,idk,pressureValue,gyroAngle,leftFrontVoltage,
+			sprintf(buffer, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d",
+					battery, x,y,z,batteryCurrent,idk,pressureValue,gyroAngle,leftFrontVoltage,
 					leftFrontCurrent,leftFrontPosition,rightFrontVoltage,rightFrontCurrent,rightFrontPosition,
 					leftRearVoltage,leftRearCurrent,leftRearPosition,rightRearVoltage,rightRearCurrent,
-					rightRearPosition,shifterSolenoid,switchValue);
+					rightRearPosition,shifterSolenoid,switchValue,count++);
 						
 			dash.AddString(buffer);
 			dash.Finalize();

@@ -31,8 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
-            this.label16 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.RightFrontEncoder = new System.Windows.Forms.TextBox();
             this.LeftBackEncoder = new System.Windows.Forms.TextBox();
@@ -53,6 +56,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.DisconnectionMessages = new System.Windows.Forms.RichTextBox();
+            this.General2 = new System.Windows.Forms.TabPage();
             this.ConsoleStatus = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
             this.NetConsoleDisplay = new System.Windows.Forms.RichTextBox();
@@ -78,8 +82,30 @@
             this.Stop = new System.Windows.Forms.Button();
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
+            this.label19 = new System.Windows.Forms.Label();
+            this.packetCounter = new System.Windows.Forms.TextBox();
+            this.gyroAngle = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.rightFrontVolts = new System.Windows.Forms.TextBox();
+            this.leftBackVolts = new System.Windows.Forms.TextBox();
+            this.rightBackVolts = new System.Windows.Forms.TextBox();
+            this.leftFrontVolts = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.rightFrontAmps = new System.Windows.Forms.TextBox();
+            this.leftBackAmps = new System.Windows.Forms.TextBox();
+            this.rightBackAmps = new System.Windows.Forms.TextBox();
+            this.LeftFrontAmps = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.ConsoleStatus.SuspendLayout();
@@ -91,6 +117,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.General);
+            this.tabControl1.Controls.Add(this.General2);
             this.tabControl1.Controls.Add(this.ConsoleStatus);
             this.tabControl1.Controls.Add(this.Status);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
@@ -101,7 +128,12 @@
             // 
             // General
             // 
-            this.General.Controls.Add(this.label16);
+            this.General.Controls.Add(this.label20);
+            this.General.Controls.Add(this.gyroAngle);
+            this.General.Controls.Add(this.packetCounter);
+            this.General.Controls.Add(this.label19);
+            this.General.Controls.Add(this.panel10);
+            this.General.Controls.Add(this.panel9);
             this.General.Controls.Add(this.panel7);
             this.General.Controls.Add(this.panel4);
             this.General.Controls.Add(this.panel3);
@@ -114,21 +146,62 @@
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
             // 
+            // panel10
+            // 
+            this.panel10.Location = new System.Drawing.Point(215, 112);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(200, 100);
+            this.panel10.TabIndex = 13;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.rightFrontAmps);
+            this.panel9.Controls.Add(this.leftBackAmps);
+            this.panel9.Controls.Add(this.rightBackAmps);
+            this.panel9.Controls.Add(this.LeftFrontAmps);
+            this.panel9.Controls.Add(this.label25);
+            this.panel9.Controls.Add(this.label26);
+            this.panel9.Controls.Add(this.label27);
+            this.panel9.Controls.Add(this.label28);
+            this.panel9.Controls.Add(this.label18);
+            this.panel9.Location = new System.Drawing.Point(358, 6);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(167, 100);
+            this.panel9.TabIndex = 12;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(41, 13);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Current";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.rightFrontVolts);
+            this.panel7.Controls.Add(this.leftBackVolts);
+            this.panel7.Controls.Add(this.rightBackVolts);
+            this.panel7.Controls.Add(this.leftFrontVolts);
+            this.panel7.Controls.Add(this.label21);
+            this.panel7.Controls.Add(this.label22);
+            this.panel7.Controls.Add(this.label23);
+            this.panel7.Controls.Add(this.label24);
+            this.panel7.Controls.Add(this.label16);
+            this.panel7.Location = new System.Drawing.Point(215, 6);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(137, 100);
+            this.panel7.TabIndex = 11;
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(289, 4);
+            this.label16.Location = new System.Drawing.Point(3, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(48, 13);
             this.label16.TabIndex = 12;
             this.label16.Text = "Voltages";
-            // 
-            // panel7
-            // 
-            this.panel7.Location = new System.Drawing.Point(219, 20);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(205, 210);
-            this.panel7.TabIndex = 11;
             // 
             // panel4
             // 
@@ -141,7 +214,7 @@
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label11);
             this.panel4.Controls.Add(this.label9);
-            this.panel4.Location = new System.Drawing.Point(96, 6);
+            this.panel4.Location = new System.Drawing.Point(92, 6);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(117, 100);
             this.panel4.TabIndex = 10;
@@ -229,7 +302,7 @@
             this.panel3.Controls.Add(this.BatteryVolts);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(10, 6);
+            this.panel3.Location = new System.Drawing.Point(6, 6);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(80, 92);
             this.panel3.TabIndex = 9;
@@ -307,9 +380,18 @@
             this.DisconnectionMessages.Location = new System.Drawing.Point(4, 112);
             this.DisconnectionMessages.Name = "DisconnectionMessages";
             this.DisconnectionMessages.ReadOnly = true;
-            this.DisconnectionMessages.Size = new System.Drawing.Size(209, 68);
+            this.DisconnectionMessages.Size = new System.Drawing.Size(205, 68);
             this.DisconnectionMessages.TabIndex = 8;
             this.DisconnectionMessages.Text = "look for disconnection messages here ";
+            // 
+            // General2
+            // 
+            this.General2.Location = new System.Drawing.Point(4, 22);
+            this.General2.Name = "General2";
+            this.General2.Size = new System.Drawing.Size(535, 233);
+            this.General2.TabIndex = 3;
+            this.General2.Text = "General2";
+            this.General2.UseVisualStyleBackColor = true;
             // 
             // ConsoleStatus
             // 
@@ -567,6 +649,166 @@
             this.ListenTimer.Enabled = true;
             this.ListenTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(0, 183);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(72, 13);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Packet Count";
+            // 
+            // packetCounter
+            // 
+            this.packetCounter.Location = new System.Drawing.Point(3, 199);
+            this.packetCounter.Name = "packetCounter";
+            this.packetCounter.Size = new System.Drawing.Size(69, 20);
+            this.packetCounter.TabIndex = 15;
+            // 
+            // gyroAngle
+            // 
+            this.gyroAngle.Location = new System.Drawing.Point(84, 199);
+            this.gyroAngle.Name = "gyroAngle";
+            this.gyroAngle.Size = new System.Drawing.Size(64, 20);
+            this.gyroAngle.TabIndex = 16;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(89, 183);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(59, 13);
+            this.label20.TabIndex = 17;
+            this.label20.Text = "Gyro Angle";
+            // 
+            // rightFrontVolts
+            // 
+            this.rightFrontVolts.Location = new System.Drawing.Point(65, 29);
+            this.rightFrontVolts.Name = "rightFrontVolts";
+            this.rightFrontVolts.Size = new System.Drawing.Size(56, 20);
+            this.rightFrontVolts.TabIndex = 16;
+            // 
+            // leftBackVolts
+            // 
+            this.leftBackVolts.Location = new System.Drawing.Point(6, 68);
+            this.leftBackVolts.Name = "leftBackVolts";
+            this.leftBackVolts.Size = new System.Drawing.Size(43, 20);
+            this.leftBackVolts.TabIndex = 18;
+            // 
+            // rightBackVolts
+            // 
+            this.rightBackVolts.Location = new System.Drawing.Point(65, 68);
+            this.rightBackVolts.Name = "rightBackVolts";
+            this.rightBackVolts.Size = new System.Drawing.Size(56, 20);
+            this.rightBackVolts.TabIndex = 14;
+            // 
+            // leftFrontVolts
+            // 
+            this.leftFrontVolts.Location = new System.Drawing.Point(6, 29);
+            this.leftFrontVolts.Name = "leftFrontVolts";
+            this.leftFrontVolts.Size = new System.Drawing.Size(43, 20);
+            this.leftFrontVolts.TabIndex = 20;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(64, 52);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(60, 13);
+            this.label21.TabIndex = 21;
+            this.label21.Text = "Right Back";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 13);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(52, 13);
+            this.label22.TabIndex = 17;
+            this.label22.Text = "Left Front";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(3, 52);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(53, 13);
+            this.label23.TabIndex = 19;
+            this.label23.Text = "Left Back";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(64, 13);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(59, 13);
+            this.label24.TabIndex = 15;
+            this.label24.Text = "Right Front";
+            // 
+            // rightFrontAmps
+            // 
+            this.rightFrontAmps.Location = new System.Drawing.Point(55, 29);
+            this.rightFrontAmps.Name = "rightFrontAmps";
+            this.rightFrontAmps.Size = new System.Drawing.Size(56, 20);
+            this.rightFrontAmps.TabIndex = 16;
+            // 
+            // leftBackAmps
+            // 
+            this.leftBackAmps.Location = new System.Drawing.Point(6, 68);
+            this.leftBackAmps.Name = "leftBackAmps";
+            this.leftBackAmps.Size = new System.Drawing.Size(43, 20);
+            this.leftBackAmps.TabIndex = 18;
+            // 
+            // rightBackAmps
+            // 
+            this.rightBackAmps.Location = new System.Drawing.Point(55, 68);
+            this.rightBackAmps.Name = "rightBackAmps";
+            this.rightBackAmps.Size = new System.Drawing.Size(56, 20);
+            this.rightBackAmps.TabIndex = 14;
+            // 
+            // LeftFrontAmps
+            // 
+            this.LeftFrontAmps.Location = new System.Drawing.Point(6, 29);
+            this.LeftFrontAmps.Name = "LeftFrontAmps";
+            this.LeftFrontAmps.Size = new System.Drawing.Size(43, 20);
+            this.LeftFrontAmps.TabIndex = 20;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(54, 52);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(60, 13);
+            this.label25.TabIndex = 21;
+            this.label25.Text = "Right Back";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(3, 13);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(52, 13);
+            this.label26.TabIndex = 17;
+            this.label26.Text = "Left Front";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(3, 52);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(53, 13);
+            this.label27.TabIndex = 19;
+            this.label27.Text = "Left Back";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(54, 13);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(59, 13);
+            this.label28.TabIndex = 15;
+            this.label28.Text = "Right Front";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -582,6 +824,10 @@
             this.tabControl1.ResumeLayout(false);
             this.General.ResumeLayout(false);
             this.General.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -649,6 +895,30 @@
         private System.Windows.Forms.RadioButton mediumSpeed;
         private System.Windows.Forms.RadioButton fastSpeed;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TabPage General2;
+        private System.Windows.Forms.TextBox packetCounter;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox gyroAngle;
+        private System.Windows.Forms.TextBox rightFrontAmps;
+        private System.Windows.Forms.TextBox leftBackAmps;
+        private System.Windows.Forms.TextBox rightBackAmps;
+        private System.Windows.Forms.TextBox LeftFrontAmps;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox rightFrontVolts;
+        private System.Windows.Forms.TextBox leftBackVolts;
+        private System.Windows.Forms.TextBox rightBackVolts;
+        private System.Windows.Forms.TextBox leftFrontVolts;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
     }
 }
 
