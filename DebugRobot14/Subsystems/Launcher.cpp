@@ -26,6 +26,7 @@ void Launcher::Compress() {
 }
 void Launcher::Launch(){
 	armCompressor->Stop();
+	//launcherSolenoid->Set(DoubleSolenoid::kReverse);
 	launcherSolenoid->Set(DoubleSolenoid::kForward);
 	Wait(3.0);
 	launcherSolenoid->Set(DoubleSolenoid::kOff);
@@ -34,8 +35,7 @@ void Launcher::Launch(){
 void Launcher::DeCompress(){
 	armCompressor->Stop();
 	launcherSolenoid->Set(DoubleSolenoid::kReverse);
-	Wait(3.0);
-	launcherSolenoid->Set(DoubleSolenoid::kForward);
+	//launcherSolenoid->Set(DoubleSolenoid::kForward);
 	Wait(3.0);
 	launcherSolenoid->Set(DoubleSolenoid::kOff);
 }

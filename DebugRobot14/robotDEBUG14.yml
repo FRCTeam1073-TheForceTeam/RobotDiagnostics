@@ -148,7 +148,7 @@ Children:
           name: Pressure Switch Channel (Digital)
           validators: &id010 [DigitalChannel]
           value: '2'
-    - Name: Double Solenoid 1
+    - Name: shifterSolenoid
       Base: Double Solenoid
       Children: []
       Properties:
@@ -241,6 +241,12 @@ Children:
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: compressArm}
+  - Name: DataSending
+    Base: Subsystem
+    Children: []
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: sendData}
   Properties: {}
 - Name: Operator Interface
   Base: OI
@@ -554,6 +560,14 @@ Children:
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: ShifterSystem}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+  - Name: sendDriveData
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Drive Train}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
   Properties: {}
