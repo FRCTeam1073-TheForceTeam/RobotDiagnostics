@@ -10,7 +10,7 @@ deCompressArm::deCompressArm() {
 }
 // Called just before this Command runs the first time
 void deCompressArm::Initialize() {
-	
+	printf("Decompressing the arm, abort the launch!\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void deCompressArm::Execute() {

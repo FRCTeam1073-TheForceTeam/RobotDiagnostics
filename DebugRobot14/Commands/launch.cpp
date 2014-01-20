@@ -10,7 +10,7 @@ launch::launch() {
 }
 // Called just before this Command runs the first time
 void launch::Initialize() {
-	
+	printf("Lanuching...\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void launch::Execute() {
