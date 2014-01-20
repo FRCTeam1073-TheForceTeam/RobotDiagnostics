@@ -99,29 +99,29 @@ namespace DataCollection2014
                 if (s2 != null)
                 {
                     NoConnection = false;
-                    BatteryVolts.Text = s2.Substring(35, 8);
-                    //xaxis = s2.Substring(43, 8);
-                    //yaxis = s2.Substring(51, 8);
-                    //zaxis = s2.Substring(59, 8);
-                    BatteryAmps.Text = s2.Substring(67, 8);
-                    //transducer = s2.Substring(75, 8);
-                    //pressurevalve = s2.Substring(83, 8);
-                    gyroAngle.Text = s2.Substring(91, 8);
-                    leftFrontVolts.Text = s2.Substring(99, 8);
-                    LeftFrontAmps.Text = s2.Substring(107, 8);
-                    LeftFrontEncoder.Text = s2.Substring(115, 8);
-                    rightFrontVolts.Text = s2.Substring(123, 8);
-                    rightFrontAmps.Text = s2.Substring(131, 8);
-                    RightFrontEncoder.Text = s2.Substring(139, 8);
-                    leftBackVolts.Text = s2.Substring(147, 8);
-                    leftBackAmps.Text = s2.Substring(155, 8);
-                    LeftBackEncoder.Text = s2.Substring(163, 8);
-                    rightBackVolts.Text = s2.Substring(171, 8);
-                    rightBackAmps.Text = s2.Substring(179, 8);
-                    RightBackEncoder.Text = s2.Substring(187, 8);
-                    //shifterSolenoid = s2.Substring(195, 8);
-                    //switchThingLOL = s2.Substring(200, 8);
-                    //packetCounter.Text = s2.Substring(208, 5);
+                    BatteryVolts.Text = s2.Substring(35, 9);
+                    //xaxis = s2.Substring(42, 9);
+                    //yaxis = s2.Substring(51, 9);
+                    //zaxis = s2.Substring(59, 9);
+                    BatteryAmps.Text = s2.Substring(76, 9);
+                    //transducer = s2.Substring(86, 9);
+                    //pressurevalve = s2.Substring(96, 9);
+                    gyroAngle.Text = s2.Substring(106, 9);
+                    leftFrontVolts.Text = s2.Substring(116, 9);
+                    LeftFrontAmps.Text = s2.Substring(126, 9);
+                    LeftFrontEncoder.Text = s2.Substring(136, 9);
+                    rightFrontVolts.Text = s2.Substring(146, 9);
+                    rightFrontAmps.Text = s2.Substring(156, 9);
+                    RightFrontEncoder.Text = s2.Substring(166, 9);
+                    leftBackVolts.Text = s2.Substring(176, 9);
+                    leftBackAmps.Text = s2.Substring(186, 9);
+                    LeftBackEncoder.Text = s2.Substring(196, 9);
+                    rightBackVolts.Text = s2.Substring(206, 9);
+                    rightBackAmps.Text = s2.Substring(216, 9);
+                    RightBackEncoder.Text = s2.Substring(226, 9);
+                    //shifterSolenoid = s2.Substring(236, 9);
+                    //switchThingLOL = s2.Substring(246, 9);
+                    packetCounter.Text = s2.Substring(256, 5);
                     panel1.BackColor = Color.Green;
                 }
             }
@@ -136,7 +136,7 @@ namespace DataCollection2014
                 if (s3 != null)
                 {
                     NoConnection = false;
-                    NetConsoleDisplay.AppendText(s3);
+                    if(!s3.Equals("\n"))NetConsoleDisplay.AppendText(s3);
                 }
             }
 
