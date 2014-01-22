@@ -20,13 +20,16 @@ void DataSending::InitDefaultCommand() {
 // here. Call these from Commands.
 void DataSending::SendTheData(){
 	Dashboard &dash = DriverStation::GetInstance()->GetHighPriorityDashboardPacker();
+	//Dashboard &dash2 = DriverStation::GetInstance()->GetHighPriorityDashboardPacker();
 			DriverStation *drive = DriverStation::GetInstance();
+			stickStuff=new SmartJoystick(1);
 			char buffer[1024];
+			//char buff[100];
 			static int count = 0;
 			float battery = drive->GetBatteryVoltage();
-			float x =0;//(float) drive->GetStickAxis(1,x);
-			float y =0;// (float) drive->GetStickAxis(1,y);
-			float z =0;// (float) drive->GetStickAxis(1,z);
+			float x = stickStuff->GetAxis(Joystick::kXAxis);
+			float y =stickStuff->GetAxis(Joystick::kYAxis);
+			float z =stickStuff->GetAxis(Joystick::kZAxis);
 			float batteryCurrent=RobotMap::chasisBatteryCurrent->GetVoltage();
 			float idk=RobotMap::chasisPSITransducer120->GetVoltage();
 			float pressureValue=RobotMap::launcherArmCompressor->GetPressureSwitchValue();
@@ -50,14 +53,17 @@ void DataSending::SendTheData(){
 			
 			float shifterSolenoid=RobotMap::shifterSystemshifterSolenoid->Get();
 			int switchValue = RobotMap::shifterSystemShifterCompressor->GetPressureSwitchValue();
-			
-			sprintf(buffer, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d",
-					battery, x,y,z,batteryCurrent,idk,pressureValue,gyroAngle,leftFrontVoltage,
+			//sprintf(buff, "lololol");
+			sprintf(buffer, "%f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %d  %d",
+					battery, x,y,z, batteryCurrent,idk,pressureValue,leftFrontVoltage,
 					leftFrontCurrent,leftFrontPosition,rightFrontVoltage,rightFrontCurrent,rightFrontPosition,
 					leftRearVoltage,leftRearCurrent,leftRearPosition,rightRearVoltage,rightRearCurrent,
-					rightRearPosition,shifterSolenoid,switchValue,count++);
-						
+					rightRearPosition,shifterSolenoid,gyroAngle,switchValue,count++);
+			//float test= 1.123456;
+			//float test2=9.876654;
+			//dash2.AddFloat(test);			
 			dash.AddString(buffer);
+			//dash.AddArray();
 			dash.Finalize();
 			char buf[100];
 			char buf2[100];

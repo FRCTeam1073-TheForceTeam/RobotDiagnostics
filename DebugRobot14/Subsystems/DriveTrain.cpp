@@ -3,7 +3,7 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "DriveTrain.h"
 #include "../Robotmap.h"
 #include "../Commands/drive.h"
-const float TWIST_CONSTANT = 2;
+const float TWIST_CONSTANT = 0.8f;
 static const float MECANUM_CONSTANT = 1.4142;
 int mode=0;
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
@@ -48,6 +48,9 @@ void DriveTrain::MecanumDrive(float joystickX, float joystickY, float joystickTw
         //TODO Needs adjustment to scaling and possibly other things
 	double angle = atan2(joystickX, joystickY);
 		float joystickMagnitude = sqrt((joystickX * joystickX) + (joystickY * joystickY));
+		if(joystickTwist < 0.05 && joystickTwist > -0.05){
+				joystickTwist = 0.0;
+			}
 		float ccTwist = joystickTwist * TWIST_CONSTANT;
 		float twist = -joystickTwist * TWIST_CONSTANT;
 		

@@ -100,13 +100,13 @@ namespace DataCollection2014
                 {
                     NoConnection = false;
                     BatteryVolts.Text = s2.Substring(35, 9);
-                    //xaxis = s2.Substring(42, 9);
-                    //yaxis = s2.Substring(51, 9);
-                    //zaxis = s2.Substring(59, 9);
-                    BatteryAmps.Text = s2.Substring(76, 9);
-                    //transducer = s2.Substring(86, 9);
-                    //pressurevalve = s2.Substring(96, 9);
-                    gyroAngle.Text = s2.Substring(106, 9);
+                    xAxis.Text = s2.Substring(46, 9);
+                    yAxis.Text = s2.Substring(56, 9);
+                    zAxis.Text = s2.Substring(66, 9);
+                    BatteryAmps.Text = s2.Substring(77, 9);
+                    trans.Text = s2.Substring(88, 9);
+                    pressure.Text = s2.Substring(99, 9);
+                    /*gyroAngle.Text = s2.Substring(109, 9);
                     leftFrontVolts.Text = s2.Substring(116, 9);
                     LeftFrontAmps.Text = s2.Substring(126, 9);
                     LeftFrontEncoder.Text = s2.Substring(136, 9);
@@ -118,15 +118,15 @@ namespace DataCollection2014
                     LeftBackEncoder.Text = s2.Substring(196, 9);
                     rightBackVolts.Text = s2.Substring(206, 9);
                     rightBackAmps.Text = s2.Substring(216, 9);
-                    RightBackEncoder.Text = s2.Substring(226, 9);
+                    RightBackEncoder.Text = s2.Substring(226, 9);*/
                     //shifterSolenoid = s2.Substring(236, 9);
                     //switchThingLOL = s2.Substring(246, 9);
-                    packetCounter.Text = s2.Substring(256, 5);
+                    packetCounter.Text = s2.Substring(259, 6);
                     panel1.BackColor = Color.Green;
                 }
             }
 
-            if (consoleQueue.Count > 0)
+            /*if (consoleQueue.Count > 0)
             {
                 String s3 = (String)consoleQueue.Dequeue();
                 if (s3 == null)
@@ -138,9 +138,9 @@ namespace DataCollection2014
                     NoConnection = false;
                     if(!s3.Equals("\n"))NetConsoleDisplay.AppendText(s3);
                 }
-            }
+            }*/
 
-            if ((dataQueue.Count == 0 && consoleQueue.Count == 0)&&NoConnection==false)
+            if ((dataQueue.Count == 0)&&NoConnection==false)
             {
                 ConsoleSB.Append("Connection lost at " + error);
                 DisconnectionMessages.AppendText("Connection lost at " + error + "\n");
@@ -170,7 +170,7 @@ namespace DataCollection2014
 
         private void fastSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            ListenTimer.Interval = 25;
+            ListenTimer.Interval = 75;
         }
 
         private void ListenTimer_Tick(object sender, EventArgs e)
@@ -196,7 +196,7 @@ namespace DataCollection2014
 
         private void ultraSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            ListenTimer.Interval = 10;
+            ListenTimer.Interval = 50;
         }
 
         private void mediumSpeed_CheckedChanged(object sender, EventArgs e)
@@ -206,7 +206,7 @@ namespace DataCollection2014
 
         private void slowSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            ListenTimer.Interval = 250;
+            ListenTimer.Interval = 200;
         }
 
         private void SavetoDisk_Click(object sender, EventArgs e)

@@ -102,8 +102,20 @@
             this.Stop = new System.Windows.Forms.Button();
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
+            this.label29 = new System.Windows.Forms.Label();
+            this.xAxis = new System.Windows.Forms.TextBox();
+            this.zAxis = new System.Windows.Forms.TextBox();
+            this.yAxis = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.trans = new System.Windows.Forms.TextBox();
+            this.pressure = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -128,6 +140,10 @@
             // 
             // General
             // 
+            this.General.Controls.Add(this.pressure);
+            this.General.Controls.Add(this.trans);
+            this.General.Controls.Add(this.label34);
+            this.General.Controls.Add(this.label33);
             this.General.Controls.Add(this.label20);
             this.General.Controls.Add(this.gyroAngle);
             this.General.Controls.Add(this.packetCounter);
@@ -180,9 +196,16 @@
             // 
             // panel10
             // 
+            this.panel10.Controls.Add(this.label32);
+            this.panel10.Controls.Add(this.label31);
+            this.panel10.Controls.Add(this.label30);
+            this.panel10.Controls.Add(this.yAxis);
+            this.panel10.Controls.Add(this.zAxis);
+            this.panel10.Controls.Add(this.xAxis);
+            this.panel10.Controls.Add(this.label29);
             this.panel10.Location = new System.Drawing.Point(215, 112);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(200, 100);
+            this.panel10.Size = new System.Drawing.Size(149, 100);
             this.panel10.TabIndex = 13;
             // 
             // panel9
@@ -809,6 +832,95 @@
             this.ListenTimer.Enabled = true;
             this.ListenTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 3);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(67, 13);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "Joystick Axis";
+            // 
+            // xAxis
+            // 
+            this.xAxis.Location = new System.Drawing.Point(4, 19);
+            this.xAxis.Name = "xAxis";
+            this.xAxis.Size = new System.Drawing.Size(100, 20);
+            this.xAxis.TabIndex = 1;
+            // 
+            // zAxis
+            // 
+            this.zAxis.Location = new System.Drawing.Point(4, 71);
+            this.zAxis.Name = "zAxis";
+            this.zAxis.Size = new System.Drawing.Size(100, 20);
+            this.zAxis.TabIndex = 2;
+            // 
+            // yAxis
+            // 
+            this.yAxis.Location = new System.Drawing.Point(4, 45);
+            this.yAxis.Name = "yAxis";
+            this.yAxis.Size = new System.Drawing.Size(100, 20);
+            this.yAxis.TabIndex = 3;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(107, 19);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(12, 13);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "x";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(107, 45);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(12, 13);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "y";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(107, 71);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(42, 13);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "z (twist)";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(382, 113);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(57, 13);
+            this.label33.TabIndex = 18;
+            this.label33.Text = "transducer";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(382, 164);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(76, 13);
+            this.label34.TabIndex = 19;
+            this.label34.Text = "pressure valve";
+            // 
+            // trans
+            // 
+            this.trans.Location = new System.Drawing.Point(385, 130);
+            this.trans.Name = "trans";
+            this.trans.Size = new System.Drawing.Size(100, 20);
+            this.trans.TabIndex = 20;
+            // 
+            // pressure
+            // 
+            this.pressure.Location = new System.Drawing.Point(385, 183);
+            this.pressure.Name = "pressure";
+            this.pressure.Size = new System.Drawing.Size(100, 20);
+            this.pressure.TabIndex = 21;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -824,6 +936,8 @@
             this.tabControl1.ResumeLayout(false);
             this.General.ResumeLayout(false);
             this.General.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -919,6 +1033,17 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox yAxis;
+        private System.Windows.Forms.TextBox zAxis;
+        private System.Windows.Forms.TextBox xAxis;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox pressure;
+        private System.Windows.Forms.TextBox trans;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
     }
 }
 
