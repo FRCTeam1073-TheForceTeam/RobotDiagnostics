@@ -40,6 +40,7 @@ namespace DataCollection2014
         public Thread consoleThread;
         public volatile bool NoConnection = false;
         public volatile bool stopIt = false;
+        public String[] parser= new String[30];
         public Form1()
         {
             InitializeComponent();
@@ -93,39 +94,47 @@ namespace DataCollection2014
                 String s2 = (String)dataQueue.Dequeue();
                 if (s2 == null)
                 {
-                    DisconnectionMessages.AppendText("Packet Error at " + error + "\n");
+                    disconnectionMessages.AppendText("Packet Error at " + error + "\n");
                     panel1.BackColor = Color.OrangeRed;
                 }
                 if (s2 != null)
                 {
+                    int sub = 0;
                     NoConnection = false;
-                    BatteryVolts.Text = s2.Substring(35, 9);
-                    xAxis.Text = s2.Substring(46, 9);
-                    yAxis.Text = s2.Substring(56, 9);
-                    zAxis.Text = s2.Substring(66, 9);
-                    BatteryAmps.Text = s2.Substring(77, 9);
-                    trans.Text = s2.Substring(88, 9);
-                    pressure.Text = s2.Substring(99, 9);
-                    /*gyroAngle.Text = s2.Substring(109, 9);
-                    leftFrontVolts.Text = s2.Substring(116, 9);
-                    LeftFrontAmps.Text = s2.Substring(126, 9);
-                    LeftFrontEncoder.Text = s2.Substring(136, 9);
-                    rightFrontVolts.Text = s2.Substring(146, 9);
-                    rightFrontAmps.Text = s2.Substring(156, 9);
-                    RightFrontEncoder.Text = s2.Substring(166, 9);
-                    leftBackVolts.Text = s2.Substring(176, 9);
-                    leftBackAmps.Text = s2.Substring(186, 9);
-                    LeftBackEncoder.Text = s2.Substring(196, 9);
-                    rightBackVolts.Text = s2.Substring(206, 9);
-                    rightBackAmps.Text = s2.Substring(216, 9);
-                    RightBackEncoder.Text = s2.Substring(226, 9);*/
-                    //shifterSolenoid = s2.Substring(236, 9);
-                    //switchThingLOL = s2.Substring(246, 9);
-                    packetCounter.Text = s2.Substring(259, 6);
+                    for (int i = 0; i < 174; i++)
+                    {
+                        if (s2.Substring(i,1).Equals(","))
+                        {
+                            parser[sub] = s2.Substring(i + 1, 5);
+                            sub++;
+                        }
+                    }
+                    batteryVolts.Text = parser[0];
+                    xAxis.Text = parser[1];
+                    yAxis.Text = parser[2];
+                    zAxis.Text = parser[3];
+                    batteryAmps.Text = parser[4];
+                    trans.Text = parser[5];
+                    pressure.Text = parser[6];
+                    gyroAngle.Text = parser[7];
+                    leftFrontVolts.Text = parser[8];
+                    leftFrontAmps.Text = parser[9];
+                    leftFrontEncoder.Text = parser[10];
+                    rightFrontVolts.Text = parser[11];
+                    rightFrontAmps.Text = parser[12];
+                    rightFrontEncoder.Text = parser[13];
+                    leftBackVolts.Text = parser[14];
+                    leftBackAmps.Text = parser[15];
+                    leftBackEncoder.Text = parser[16];
+                    rightBackVolts.Text = parser[17];
+                    rightBackAmps.Text = parser[18];
+                    rightBackEncoder.Text = parser[19];
+                    shifterStatus.Text = parser[20];
+                    switchBox.Text = parser[21];
+                    packetCounter.Text = parser[22];
                     panel1.BackColor = Color.Green;
                 }
             }
-
             /*if (consoleQueue.Count > 0)
             {
                 String s3 = (String)consoleQueue.Dequeue();
@@ -143,7 +152,7 @@ namespace DataCollection2014
             if ((dataQueue.Count == 0)&&NoConnection==false)
             {
                 ConsoleSB.Append("Connection lost at " + error);
-                DisconnectionMessages.AppendText("Connection lost at " + error + "\n");
+                disconnectionMessages.AppendText("Connection lost at " + error + "\n");
                 panel1.BackColor = Color.Red;
                 NoConnection = true;
                 if(stopIt)ListenTimer.Stop();
@@ -191,7 +200,7 @@ namespace DataCollection2014
             ListenTimer.Stop();
             dataQueue.Clear();
             consoleQueue.Clear();
-            NetConsoleDisplay.Text = "Listening Stopped\n";
+            netConsoleDisplay.Text = "Listening Stopped\n";
         }
 
         private void ultraSpeed_CheckedChanged(object sender, EventArgs e)

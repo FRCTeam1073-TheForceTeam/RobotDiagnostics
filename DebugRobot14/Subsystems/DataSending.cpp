@@ -19,64 +19,64 @@ void DataSending::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DataSending::SendTheData(){
+	static const int MaxBuffer = 1000;
+	char strBuffer[MaxBuffer];
+	int strIndex=0;
+	int length=2;
 	Dashboard &dash = DriverStation::GetInstance()->GetHighPriorityDashboardPacker();
-	//Dashboard &dash2 = DriverStation::GetInstance()->GetHighPriorityDashboardPacker();
-			DriverStation *drive = DriverStation::GetInstance();
-			stickStuff=new SmartJoystick(1);
-			char buffer[1024];
-			//char buff[100];
-			static int count = 0;
-			float battery = drive->GetBatteryVoltage();
-			float x = stickStuff->GetAxis(Joystick::kXAxis);
-			float y =stickStuff->GetAxis(Joystick::kYAxis);
-			float z =stickStuff->GetAxis(Joystick::kZAxis);
-			float batteryCurrent=RobotMap::chasisBatteryCurrent->GetVoltage();
-			float idk=RobotMap::chasisPSITransducer120->GetVoltage();
-			float pressureValue=RobotMap::launcherArmCompressor->GetPressureSwitchValue();
-			float gyroAngle=RobotMap::driveTrainDriveGyro->GetAngle();
+	DriverStation *drive = DriverStation::GetInstance();
+	stickStuff=new SmartJoystick(1);
+	char buffer[1024];
+	static int count = 0;
+	float battery = drive->GetBatteryVoltage();
+	float x = stickStuff->GetAxis(Joystick::kXAxis);
+	float y =stickStuff->GetAxis(Joystick::kYAxis);
+	float z =stickStuff->GetAxis(Joystick::kZAxis);
+	float batteryCurrent=RobotMap::chasisBatteryCurrent->GetVoltage();
+	float trans=RobotMap::chasisPSITransducer120->GetVoltage();
+	float pressureValue=RobotMap::launcherArmCompressor->GetPressureSwitchValue();
+	float gyroAngle=RobotMap::driveTrainDriveGyro->GetAngle();
+	float leftFrontVoltage=RobotMap::driveTrainFrontLeft->GetOutputVoltage();
+	float leftFrontCurrent=RobotMap::driveTrainFrontLeft->GetOutputCurrent();
+	float leftFrontPosition=RobotMap::driveTrainFrontLeft->GetPosition();
+	float rightFrontVoltage=RobotMap::driveTrainFrontRight->GetOutputVoltage();
+	float rightFrontCurrent=RobotMap::driveTrainFrontRight->GetOutputCurrent();
+	float rightFrontPosition=RobotMap::driveTrainFrontRight->GetPosition();
+	float leftRearVoltage=RobotMap::driveTrainRearLeft->GetOutputCurrent();
+	float leftRearCurrent=RobotMap::driveTrainRearLeft->GetPosition();
+	float leftRearPosition=RobotMap::driveTrainRearLeft->GetOutputCurrent();
+	float rightRearVoltage=RobotMap::driveTrainRearRight->GetPosition();
+	float rightRearCurrent=RobotMap::driveTrainRearRight->GetOutputCurrent();
+	float rightRearPosition=RobotMap::driveTrainRearRight->GetPosition();
+	float shifterSolenoid=RobotMap::shifterSystemshifterSolenoid->Get();
+	int switchValue = RobotMap::shifterSystemShifterCompressor->GetPressureSwitchValue();
+	int len = sprintf(buffer, ",%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%.*f ,%d ,%d "
+		, length, battery, length, x, length, y, length, z, length, batteryCurrent, length, trans, length, pressureValue, length, gyroAngle, length, leftFrontVoltage,
+		length, leftFrontCurrent, length, leftFrontPosition, length, rightFrontVoltage, length, rightFrontCurrent, length, rightFrontPosition, length,
+		leftRearVoltage, length, leftRearCurrent, length, leftRearPosition, length, rightRearVoltage, length, rightRearCurrent, length, rightRearPosition
+		, length, shifterSolenoid, switchValue, count++);
+     if(strIndex+len < MaxBuffer){
+		strcpy(strBuffer+strIndex, buffer);
+		strIndex += len;}
+	dash.AddString(buffer);
+	dash.Finalize();
 			
-			float leftFrontVoltage=RobotMap::driveTrainFrontLeft->GetOutputVoltage();
-			float leftFrontCurrent=RobotMap::driveTrainFrontLeft->GetOutputCurrent();
-			float leftFrontPosition=RobotMap::driveTrainFrontLeft->GetPosition();
-			
-			float rightFrontVoltage=RobotMap::driveTrainFrontRight->GetOutputVoltage();
-			float rightFrontCurrent=RobotMap::driveTrainFrontRight->GetOutputCurrent();
-			float rightFrontPosition=RobotMap::driveTrainFrontRight->GetPosition();
-			
-			float leftRearVoltage=RobotMap::driveTrainRearLeft->GetOutputCurrent();
-			float leftRearCurrent=RobotMap::driveTrainRearLeft->GetPosition();
-			float leftRearPosition=RobotMap::driveTrainRearLeft->GetOutputCurrent();
-			
-			float rightRearVoltage=RobotMap::driveTrainRearRight->GetPosition();
-			float rightRearCurrent=RobotMap::driveTrainRearRight->GetOutputCurrent();
-			float rightRearPosition=RobotMap::driveTrainRearRight->GetPosition();
-			
-			float shifterSolenoid=RobotMap::shifterSystemshifterSolenoid->Get();
-			int switchValue = RobotMap::shifterSystemShifterCompressor->GetPressureSwitchValue();
-			//sprintf(buff, "lololol");
-			sprintf(buffer, "%f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %f  %d  %d",
-					battery, x,y,z, batteryCurrent,idk,pressureValue,leftFrontVoltage,
-					leftFrontCurrent,leftFrontPosition,rightFrontVoltage,rightFrontCurrent,rightFrontPosition,
-					leftRearVoltage,leftRearCurrent,leftRearPosition,rightRearVoltage,rightRearCurrent,
-					rightRearPosition,shifterSolenoid,gyroAngle,switchValue,count++);
-			//float test= 1.123456;
-			//float test2=9.876654;
-			//dash2.AddFloat(test);			
-			dash.AddString(buffer);
-			//dash.AddArray();
-			dash.Finalize();
-			char buf[100];
-			char buf2[100];
-			int setting = Robot::shifterSystem->GetGearSetting();
-			int driveMode = Robot::driveTrain->GetDriveMode();
-			if(driveMode==0)sprintf(buf2,"Drive Mode Error");
-			if(driveMode==1)sprintf(buf2,"Drive Mode Arcade");
-			if(driveMode==2)sprintf(buf2,"Drive Mode Meccanum");
-			if(setting==-1)sprintf(buf,"shifted down");
-			if(setting==0)sprintf(buf,"shifted off");
-			if(setting==1)sprintf(buf,"shifted up");
-			DriverStationLCD *lcd = DriverStationLCD::GetInstance();
-			lcd->PrintfLine(DriverStationLCD::kUser_Line1, "%s",buf);
-			lcd->PrintfLine(DriverStationLCD::kUser_Line2, "%s",buf2);
-			lcd->UpdateLCD();
+	char line1[100];
+	char line2[100];
+	char line3[100];
+	int setting = Robot::shifterSystem->GetGearSetting();
+	int driveMode = Robot::driveTrain->GetDriveMode();
+	float PSI = Robot::launcher->GetPSI();
+	if(driveMode==0)sprintf(line2,"Drive Mode Error");
+	if(driveMode==1)sprintf(line2,"Drive Mode Arcade");
+	if(driveMode==2)sprintf(line2,"Drive Mode Meccanum");
+	if(setting==-1)sprintf(line1,"Shifted Down");
+	if(setting==0)sprintf(line1,"Shifter Off");
+	if(setting==1)sprintf(line1,"Shifted Up");
+	sprintf(line3,"PSI is %f",PSI);
+	DriverStationLCD *lcd = DriverStationLCD::GetInstance();
+	lcd->PrintfLine(DriverStationLCD::kUser_Line1, "%s",line1);
+	lcd->PrintfLine(DriverStationLCD::kUser_Line2, "%s",line2);
+	lcd->PrintfLine(DriverStationLCD::kUser_Line3, "%s",line3);
+	lcd->UpdateLCD();
 }

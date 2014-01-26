@@ -31,16 +31,27 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
+            this.pressure = new System.Windows.Forms.TextBox();
+            this.trans = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.gyroAngle = new System.Windows.Forms.TextBox();
             this.packetCounter = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.yAxis = new System.Windows.Forms.TextBox();
+            this.zAxis = new System.Windows.Forms.TextBox();
+            this.xAxis = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.rightFrontAmps = new System.Windows.Forms.TextBox();
             this.leftBackAmps = new System.Windows.Forms.TextBox();
             this.rightBackAmps = new System.Windows.Forms.TextBox();
-            this.LeftFrontAmps = new System.Windows.Forms.TextBox();
+            this.leftFrontAmps = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -57,10 +68,10 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.RightFrontEncoder = new System.Windows.Forms.TextBox();
-            this.LeftBackEncoder = new System.Windows.Forms.TextBox();
-            this.RightBackEncoder = new System.Windows.Forms.TextBox();
-            this.LeftFrontEncoder = new System.Windows.Forms.TextBox();
+            this.rightFrontEncoder = new System.Windows.Forms.TextBox();
+            this.leftBackEncoder = new System.Windows.Forms.TextBox();
+            this.rightBackEncoder = new System.Windows.Forms.TextBox();
+            this.leftFrontEncoder = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -68,18 +79,18 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.BatteryID = new System.Windows.Forms.TextBox();
+            this.batteryID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.BatteryAmps = new System.Windows.Forms.TextBox();
-            this.BatteryVolts = new System.Windows.Forms.TextBox();
+            this.batteryAmps = new System.Windows.Forms.TextBox();
+            this.batteryVolts = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.DisconnectionMessages = new System.Windows.Forms.RichTextBox();
+            this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
             this.General2 = new System.Windows.Forms.TabPage();
             this.ConsoleStatus = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
-            this.NetConsoleDisplay = new System.Windows.Forms.RichTextBox();
+            this.netConsoleDisplay = new System.Windows.Forms.RichTextBox();
             this.Status = new System.Windows.Forms.TabPage();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -102,17 +113,11 @@
             this.Stop = new System.Windows.Forms.Button();
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
-            this.label29 = new System.Windows.Forms.Label();
-            this.xAxis = new System.Windows.Forms.TextBox();
-            this.zAxis = new System.Windows.Forms.TextBox();
-            this.yAxis = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.trans = new System.Windows.Forms.TextBox();
-            this.pressure = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.shifterStatus = new System.Windows.Forms.TextBox();
+            this.switchBox = new System.Windows.Forms.TextBox();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -124,6 +129,7 @@
             this.Status.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -140,10 +146,7 @@
             // 
             // General
             // 
-            this.General.Controls.Add(this.pressure);
-            this.General.Controls.Add(this.trans);
-            this.General.Controls.Add(this.label34);
-            this.General.Controls.Add(this.label33);
+            this.General.Controls.Add(this.panel11);
             this.General.Controls.Add(this.label20);
             this.General.Controls.Add(this.gyroAngle);
             this.General.Controls.Add(this.packetCounter);
@@ -153,7 +156,7 @@
             this.General.Controls.Add(this.panel7);
             this.General.Controls.Add(this.panel4);
             this.General.Controls.Add(this.panel3);
-            this.General.Controls.Add(this.DisconnectionMessages);
+            this.General.Controls.Add(this.disconnectionMessages);
             this.General.Location = new System.Drawing.Point(4, 22);
             this.General.Name = "General";
             this.General.Padding = new System.Windows.Forms.Padding(3);
@@ -161,6 +164,38 @@
             this.General.TabIndex = 0;
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
+            // 
+            // pressure
+            // 
+            this.pressure.Location = new System.Drawing.Point(6, 71);
+            this.pressure.Name = "pressure";
+            this.pressure.Size = new System.Drawing.Size(54, 20);
+            this.pressure.TabIndex = 21;
+            // 
+            // trans
+            // 
+            this.trans.Location = new System.Drawing.Point(6, 20);
+            this.trans.Name = "trans";
+            this.trans.Size = new System.Drawing.Size(54, 20);
+            this.trans.TabIndex = 20;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(3, 52);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(76, 13);
+            this.label34.TabIndex = 19;
+            this.label34.Text = "pressure valve";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(3, 4);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(57, 13);
+            this.label33.TabIndex = 18;
+            this.label33.Text = "transducer";
             // 
             // label20
             // 
@@ -208,12 +243,69 @@
             this.panel10.Size = new System.Drawing.Size(149, 100);
             this.panel10.TabIndex = 13;
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(107, 71);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(42, 13);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "z (twist)";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(107, 45);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(12, 13);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "y";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(107, 19);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(12, 13);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "x";
+            // 
+            // yAxis
+            // 
+            this.yAxis.Location = new System.Drawing.Point(4, 45);
+            this.yAxis.Name = "yAxis";
+            this.yAxis.Size = new System.Drawing.Size(100, 20);
+            this.yAxis.TabIndex = 3;
+            // 
+            // zAxis
+            // 
+            this.zAxis.Location = new System.Drawing.Point(4, 71);
+            this.zAxis.Name = "zAxis";
+            this.zAxis.Size = new System.Drawing.Size(100, 20);
+            this.zAxis.TabIndex = 2;
+            // 
+            // xAxis
+            // 
+            this.xAxis.Location = new System.Drawing.Point(4, 19);
+            this.xAxis.Name = "xAxis";
+            this.xAxis.Size = new System.Drawing.Size(100, 20);
+            this.xAxis.TabIndex = 1;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 3);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(67, 13);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "Joystick Axis";
+            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.rightFrontAmps);
             this.panel9.Controls.Add(this.leftBackAmps);
             this.panel9.Controls.Add(this.rightBackAmps);
-            this.panel9.Controls.Add(this.LeftFrontAmps);
+            this.panel9.Controls.Add(this.leftFrontAmps);
             this.panel9.Controls.Add(this.label25);
             this.panel9.Controls.Add(this.label26);
             this.panel9.Controls.Add(this.label27);
@@ -245,12 +337,12 @@
             this.rightBackAmps.Size = new System.Drawing.Size(60, 20);
             this.rightBackAmps.TabIndex = 14;
             // 
-            // LeftFrontAmps
+            // leftFrontAmps
             // 
-            this.LeftFrontAmps.Location = new System.Drawing.Point(6, 29);
-            this.LeftFrontAmps.Name = "LeftFrontAmps";
-            this.LeftFrontAmps.Size = new System.Drawing.Size(60, 20);
-            this.LeftFrontAmps.TabIndex = 20;
+            this.leftFrontAmps.Location = new System.Drawing.Point(6, 29);
+            this.leftFrontAmps.Name = "leftFrontAmps";
+            this.leftFrontAmps.Size = new System.Drawing.Size(60, 20);
+            this.leftFrontAmps.TabIndex = 20;
             // 
             // label25
             // 
@@ -388,10 +480,10 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.RightFrontEncoder);
-            this.panel4.Controls.Add(this.LeftBackEncoder);
-            this.panel4.Controls.Add(this.RightBackEncoder);
-            this.panel4.Controls.Add(this.LeftFrontEncoder);
+            this.panel4.Controls.Add(this.rightFrontEncoder);
+            this.panel4.Controls.Add(this.leftBackEncoder);
+            this.panel4.Controls.Add(this.rightBackEncoder);
+            this.panel4.Controls.Add(this.leftFrontEncoder);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label10);
@@ -402,33 +494,33 @@
             this.panel4.Size = new System.Drawing.Size(138, 100);
             this.panel4.TabIndex = 10;
             // 
-            // RightFrontEncoder
+            // rightFrontEncoder
             // 
-            this.RightFrontEncoder.Location = new System.Drawing.Point(72, 29);
-            this.RightFrontEncoder.Name = "RightFrontEncoder";
-            this.RightFrontEncoder.Size = new System.Drawing.Size(60, 20);
-            this.RightFrontEncoder.TabIndex = 9;
+            this.rightFrontEncoder.Location = new System.Drawing.Point(72, 29);
+            this.rightFrontEncoder.Name = "rightFrontEncoder";
+            this.rightFrontEncoder.Size = new System.Drawing.Size(60, 20);
+            this.rightFrontEncoder.TabIndex = 9;
             // 
-            // LeftBackEncoder
+            // leftBackEncoder
             // 
-            this.LeftBackEncoder.Location = new System.Drawing.Point(6, 68);
-            this.LeftBackEncoder.Name = "LeftBackEncoder";
-            this.LeftBackEncoder.Size = new System.Drawing.Size(60, 20);
-            this.LeftBackEncoder.TabIndex = 10;
+            this.leftBackEncoder.Location = new System.Drawing.Point(6, 68);
+            this.leftBackEncoder.Name = "leftBackEncoder";
+            this.leftBackEncoder.Size = new System.Drawing.Size(60, 20);
+            this.leftBackEncoder.TabIndex = 10;
             // 
-            // RightBackEncoder
+            // rightBackEncoder
             // 
-            this.RightBackEncoder.Location = new System.Drawing.Point(72, 68);
-            this.RightBackEncoder.Name = "RightBackEncoder";
-            this.RightBackEncoder.Size = new System.Drawing.Size(60, 20);
-            this.RightBackEncoder.TabIndex = 8;
+            this.rightBackEncoder.Location = new System.Drawing.Point(72, 68);
+            this.rightBackEncoder.Name = "rightBackEncoder";
+            this.rightBackEncoder.Size = new System.Drawing.Size(60, 20);
+            this.rightBackEncoder.TabIndex = 8;
             // 
-            // LeftFrontEncoder
+            // leftFrontEncoder
             // 
-            this.LeftFrontEncoder.Location = new System.Drawing.Point(6, 29);
-            this.LeftFrontEncoder.Name = "LeftFrontEncoder";
-            this.LeftFrontEncoder.Size = new System.Drawing.Size(60, 20);
-            this.LeftFrontEncoder.TabIndex = 11;
+            this.leftFrontEncoder.Location = new System.Drawing.Point(6, 29);
+            this.leftFrontEncoder.Name = "leftFrontEncoder";
+            this.leftFrontEncoder.Size = new System.Drawing.Size(60, 20);
+            this.leftFrontEncoder.TabIndex = 11;
             // 
             // label13
             // 
@@ -478,11 +570,11 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.BatteryID);
+            this.panel3.Controls.Add(this.batteryID);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.BatteryAmps);
-            this.panel3.Controls.Add(this.BatteryVolts);
+            this.panel3.Controls.Add(this.batteryAmps);
+            this.panel3.Controls.Add(this.batteryVolts);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(6, 6);
@@ -499,12 +591,12 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "V";
             // 
-            // BatteryID
+            // batteryID
             // 
-            this.BatteryID.Location = new System.Drawing.Point(34, 69);
-            this.BatteryID.Name = "BatteryID";
-            this.BatteryID.Size = new System.Drawing.Size(42, 20);
-            this.BatteryID.TabIndex = 8;
+            this.batteryID.Location = new System.Drawing.Point(34, 69);
+            this.batteryID.Name = "batteryID";
+            this.batteryID.Size = new System.Drawing.Size(42, 20);
+            this.batteryID.TabIndex = 8;
             // 
             // label6
             // 
@@ -524,19 +616,19 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "#";
             // 
-            // BatteryAmps
+            // batteryAmps
             // 
-            this.BatteryAmps.Location = new System.Drawing.Point(23, 46);
-            this.BatteryAmps.Name = "BatteryAmps";
-            this.BatteryAmps.Size = new System.Drawing.Size(60, 20);
-            this.BatteryAmps.TabIndex = 7;
+            this.batteryAmps.Location = new System.Drawing.Point(23, 46);
+            this.batteryAmps.Name = "batteryAmps";
+            this.batteryAmps.Size = new System.Drawing.Size(60, 20);
+            this.batteryAmps.TabIndex = 7;
             // 
-            // BatteryVolts
+            // batteryVolts
             // 
-            this.BatteryVolts.Location = new System.Drawing.Point(23, 20);
-            this.BatteryVolts.Name = "BatteryVolts";
-            this.BatteryVolts.Size = new System.Drawing.Size(60, 20);
-            this.BatteryVolts.TabIndex = 8;
+            this.batteryVolts.Location = new System.Drawing.Point(23, 20);
+            this.batteryVolts.Name = "batteryVolts";
+            this.batteryVolts.Size = new System.Drawing.Size(60, 20);
+            this.batteryVolts.TabIndex = 8;
             // 
             // label4
             // 
@@ -556,16 +648,16 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Battery Status";
             // 
-            // DisconnectionMessages
+            // disconnectionMessages
             // 
-            this.DisconnectionMessages.AccessibleDescription = "stuff";
-            this.DisconnectionMessages.AccessibleName = "textBox";
-            this.DisconnectionMessages.Location = new System.Drawing.Point(4, 112);
-            this.DisconnectionMessages.Name = "DisconnectionMessages";
-            this.DisconnectionMessages.ReadOnly = true;
-            this.DisconnectionMessages.Size = new System.Drawing.Size(205, 68);
-            this.DisconnectionMessages.TabIndex = 8;
-            this.DisconnectionMessages.Text = "look for disconnection messages here ";
+            this.disconnectionMessages.AccessibleDescription = "stuff";
+            this.disconnectionMessages.AccessibleName = "textBox";
+            this.disconnectionMessages.Location = new System.Drawing.Point(4, 112);
+            this.disconnectionMessages.Name = "disconnectionMessages";
+            this.disconnectionMessages.ReadOnly = true;
+            this.disconnectionMessages.Size = new System.Drawing.Size(205, 68);
+            this.disconnectionMessages.TabIndex = 8;
+            this.disconnectionMessages.Text = "look for disconnection messages here ";
             // 
             // General2
             // 
@@ -579,7 +671,7 @@
             // ConsoleStatus
             // 
             this.ConsoleStatus.Controls.Add(this.label12);
-            this.ConsoleStatus.Controls.Add(this.NetConsoleDisplay);
+            this.ConsoleStatus.Controls.Add(this.netConsoleDisplay);
             this.ConsoleStatus.Location = new System.Drawing.Point(4, 22);
             this.ConsoleStatus.Name = "ConsoleStatus";
             this.ConsoleStatus.Padding = new System.Windows.Forms.Padding(3);
@@ -597,14 +689,14 @@
             this.label12.TabIndex = 2;
             this.label12.Text = "NetConsole Information";
             // 
-            // NetConsoleDisplay
+            // netConsoleDisplay
             // 
-            this.NetConsoleDisplay.Location = new System.Drawing.Point(16, 20);
-            this.NetConsoleDisplay.Name = "NetConsoleDisplay";
-            this.NetConsoleDisplay.ReadOnly = true;
-            this.NetConsoleDisplay.Size = new System.Drawing.Size(420, 207);
-            this.NetConsoleDisplay.TabIndex = 1;
-            this.NetConsoleDisplay.Text = "";
+            this.netConsoleDisplay.Location = new System.Drawing.Point(16, 20);
+            this.netConsoleDisplay.Name = "netConsoleDisplay";
+            this.netConsoleDisplay.ReadOnly = true;
+            this.netConsoleDisplay.Size = new System.Drawing.Size(420, 207);
+            this.netConsoleDisplay.TabIndex = 1;
+            this.netConsoleDisplay.Text = "";
             // 
             // Status
             // 
@@ -832,94 +924,52 @@
             this.ListenTimer.Enabled = true;
             this.ListenTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
             // 
-            // label29
+            // label35
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(3, 3);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(67, 13);
-            this.label29.TabIndex = 0;
-            this.label29.Text = "Joystick Axis";
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(66, 4);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(81, 13);
+            this.label35.TabIndex = 22;
+            this.label35.Text = "Shifter Solenoid";
             // 
-            // xAxis
+            // label36
             // 
-            this.xAxis.Location = new System.Drawing.Point(4, 19);
-            this.xAxis.Name = "xAxis";
-            this.xAxis.Size = new System.Drawing.Size(100, 20);
-            this.xAxis.TabIndex = 1;
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(83, 52);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(71, 13);
+            this.label36.TabIndex = 23;
+            this.label36.Text = "Switch thing?";
             // 
-            // zAxis
+            // shifterStatus
             // 
-            this.zAxis.Location = new System.Drawing.Point(4, 71);
-            this.zAxis.Name = "zAxis";
-            this.zAxis.Size = new System.Drawing.Size(100, 20);
-            this.zAxis.TabIndex = 2;
+            this.shifterStatus.Location = new System.Drawing.Point(69, 19);
+            this.shifterStatus.Name = "shifterStatus";
+            this.shifterStatus.Size = new System.Drawing.Size(78, 20);
+            this.shifterStatus.TabIndex = 24;
             // 
-            // yAxis
+            // switchBox
             // 
-            this.yAxis.Location = new System.Drawing.Point(4, 45);
-            this.yAxis.Name = "yAxis";
-            this.yAxis.Size = new System.Drawing.Size(100, 20);
-            this.yAxis.TabIndex = 3;
+            this.switchBox.Location = new System.Drawing.Point(86, 71);
+            this.switchBox.Name = "switchBox";
+            this.switchBox.Size = new System.Drawing.Size(61, 20);
+            this.switchBox.TabIndex = 25;
             // 
-            // label30
+            // panel11
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(107, 19);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(12, 13);
-            this.label30.TabIndex = 4;
-            this.label30.Text = "x";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(107, 45);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(12, 13);
-            this.label31.TabIndex = 5;
-            this.label31.Text = "y";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(107, 71);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(42, 13);
-            this.label32.TabIndex = 6;
-            this.label32.Text = "z (twist)";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(382, 113);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(57, 13);
-            this.label33.TabIndex = 18;
-            this.label33.Text = "transducer";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(382, 164);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(76, 13);
-            this.label34.TabIndex = 19;
-            this.label34.Text = "pressure valve";
-            // 
-            // trans
-            // 
-            this.trans.Location = new System.Drawing.Point(385, 130);
-            this.trans.Name = "trans";
-            this.trans.Size = new System.Drawing.Size(100, 20);
-            this.trans.TabIndex = 20;
-            // 
-            // pressure
-            // 
-            this.pressure.Location = new System.Drawing.Point(385, 183);
-            this.pressure.Name = "pressure";
-            this.pressure.Size = new System.Drawing.Size(100, 20);
-            this.pressure.TabIndex = 21;
+            this.panel11.Controls.Add(this.label33);
+            this.panel11.Controls.Add(this.label34);
+            this.panel11.Controls.Add(this.pressure);
+            this.panel11.Controls.Add(this.switchBox);
+            this.panel11.Controls.Add(this.trans);
+            this.panel11.Controls.Add(this.shifterStatus);
+            this.panel11.Controls.Add(this.label35);
+            this.panel11.Controls.Add(this.label36);
+            this.panel11.Location = new System.Drawing.Point(370, 112);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(159, 115);
+            this.panel11.TabIndex = 26;
             // 
             // Form1
             // 
@@ -954,6 +1004,8 @@
             this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -972,27 +1024,27 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox RightFrontEncoder;
-        private System.Windows.Forms.TextBox LeftBackEncoder;
-        private System.Windows.Forms.TextBox RightBackEncoder;
-        private System.Windows.Forms.TextBox LeftFrontEncoder;
+        private System.Windows.Forms.TextBox rightFrontEncoder;
+        private System.Windows.Forms.TextBox leftBackEncoder;
+        private System.Windows.Forms.TextBox rightBackEncoder;
+        private System.Windows.Forms.TextBox leftFrontEncoder;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox BatteryID;
+        private System.Windows.Forms.TextBox batteryID;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox BatteryAmps;
-        private System.Windows.Forms.TextBox BatteryVolts;
+        private System.Windows.Forms.TextBox batteryAmps;
+        private System.Windows.Forms.TextBox batteryVolts;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.RichTextBox DisconnectionMessages;
+        public System.Windows.Forms.RichTextBox disconnectionMessages;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.RichTextBox NetConsoleDisplay;
+        private System.Windows.Forms.RichTextBox netConsoleDisplay;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label1;
@@ -1020,7 +1072,7 @@
         private System.Windows.Forms.TextBox rightFrontAmps;
         private System.Windows.Forms.TextBox leftBackAmps;
         private System.Windows.Forms.TextBox rightBackAmps;
-        private System.Windows.Forms.TextBox LeftFrontAmps;
+        private System.Windows.Forms.TextBox leftFrontAmps;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
@@ -1044,6 +1096,11 @@
         private System.Windows.Forms.TextBox trans;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.TextBox switchBox;
+        private System.Windows.Forms.TextBox shifterStatus;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
     }
 }
 
