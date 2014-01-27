@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef SHIFTDOWN_H
-#define SHIFTDOWN_H
+#ifndef ANGLEDOWN_H
+#define ANGLEDOWN_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class shiftDown: public Command {
+class angleDown: public Command {
 public:
-	shiftDown();
+	angleDown();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

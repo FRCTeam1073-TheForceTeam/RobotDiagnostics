@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef COMPRESSARM_H
-#define COMPRESSARM_H
+#ifndef COMPRESS_H
+#define COMPRESS_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class compressArm: public Command {
+class compress: public Command {
 public:
-	compressArm();
+	compress();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

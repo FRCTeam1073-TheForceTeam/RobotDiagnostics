@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef DECOMPRESSARM_H
-#define DECOMPRESSARM_H
+#ifndef COLLECTFASTER_H
+#define COLLECTFASTER_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class deCompressArm: public Command {
+class collectFaster: public Command {
 public:
-	deCompressArm();
+	collectFaster();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

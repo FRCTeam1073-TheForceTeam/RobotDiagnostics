@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef COMPRESSSHIFTER_H
-#define COMPRESSSHIFTER_H
+#ifndef ANGLEUP_H
+#define ANGLEUP_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class compressShifter: public Command {
+class angleUp: public Command {
 public:
-	compressShifter();
+	angleUp();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
