@@ -101,7 +101,7 @@ namespace DataCollection2014
                 {
                     int sub = 0;
                     NoConnection = false;
-                    for (int i = 0; i < 174; i++)
+                    for (int i = 0; i < 207; i++)
                     {
                         if (s2.Substring(i,1).Equals(","))
                         {
@@ -114,8 +114,8 @@ namespace DataCollection2014
                     yAxis.Text = parser[2];
                     zAxis.Text = parser[3];
                     batteryAmps.Text = parser[4];
-                    trans.Text = parser[5];
-                    pressure.Text = parser[6];
+                    launcherSolenoid.Text = parser[5];
+                    highSwitch.Text = parser[6];
                     gyroAngle.Text = parser[7];
                     leftFrontVolts.Text = parser[8];
                     leftFrontAmps.Text = parser[9];
@@ -130,8 +130,13 @@ namespace DataCollection2014
                     rightBackAmps.Text = parser[18];
                     rightBackEncoder.Text = parser[19];
                     shifterStatus.Text = parser[20];
-                    switchBox.Text = parser[21];
-                    packetCounter.Text = parser[22];
+                    collectorAngle.Text = parser[21];
+                    highSwitch.Text = parser[22];
+                    lowSwitch.Text = parser[23];
+                    elevationBox.Text = parser[24];
+                    leftVictor.Text = parser[25];
+                    rightVictor.Text = parser[26];
+                    packetCounter.Text = parser[27];
                     panel1.BackColor = Color.Green;
                 }
             }

@@ -31,10 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
-            this.pressure = new System.Windows.Forms.TextBox();
-            this.trans = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.label33 = new System.Windows.Forms.Label();
+            this.launcherSolenoid = new System.Windows.Forms.TextBox();
+            this.shifterStatus = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.gyroAngle = new System.Windows.Forms.TextBox();
             this.packetCounter = new System.Windows.Forms.TextBox();
@@ -88,6 +89,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
             this.General2 = new System.Windows.Forms.TabPage();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.label37 = new System.Windows.Forms.Label();
+            this.lowSwitch = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.highSwitch = new System.Windows.Forms.TextBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.rightVictor = new System.Windows.Forms.TextBox();
+            this.leftVictor = new System.Windows.Forms.TextBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.collectorAngle = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
             this.ConsoleStatus = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
             this.netConsoleDisplay = new System.Windows.Forms.RichTextBox();
@@ -113,23 +127,24 @@
             this.Stop = new System.Windows.Forms.Button();
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.shifterStatus = new System.Windows.Forms.TextBox();
-            this.switchBox = new System.Windows.Forms.TextBox();
-            this.panel11 = new System.Windows.Forms.Panel();
+            this.label40 = new System.Windows.Forms.Label();
+            this.elevationBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.General2.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.ConsoleStatus.SuspendLayout();
             this.Status.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -165,37 +180,48 @@
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
             // 
-            // pressure
+            // panel11
             // 
-            this.pressure.Location = new System.Drawing.Point(6, 71);
-            this.pressure.Name = "pressure";
-            this.pressure.Size = new System.Drawing.Size(54, 20);
-            this.pressure.TabIndex = 21;
-            // 
-            // trans
-            // 
-            this.trans.Location = new System.Drawing.Point(6, 20);
-            this.trans.Name = "trans";
-            this.trans.Size = new System.Drawing.Size(54, 20);
-            this.trans.TabIndex = 20;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(3, 52);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(76, 13);
-            this.label34.TabIndex = 19;
-            this.label34.Text = "pressure valve";
+            this.panel11.Controls.Add(this.label33);
+            this.panel11.Controls.Add(this.launcherSolenoid);
+            this.panel11.Controls.Add(this.shifterStatus);
+            this.panel11.Controls.Add(this.label35);
+            this.panel11.Location = new System.Drawing.Point(370, 112);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(159, 115);
+            this.panel11.TabIndex = 26;
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(3, 4);
+            this.label33.Location = new System.Drawing.Point(3, 3);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(57, 13);
+            this.label33.Size = new System.Drawing.Size(96, 13);
             this.label33.TabIndex = 18;
-            this.label33.Text = "transducer";
+            this.label33.Text = "Launcher Solenoid";
+            // 
+            // launcherSolenoid
+            // 
+            this.launcherSolenoid.Location = new System.Drawing.Point(6, 19);
+            this.launcherSolenoid.Name = "launcherSolenoid";
+            this.launcherSolenoid.Size = new System.Drawing.Size(54, 20);
+            this.launcherSolenoid.TabIndex = 20;
+            // 
+            // shifterStatus
+            // 
+            this.shifterStatus.Location = new System.Drawing.Point(4, 58);
+            this.shifterStatus.Name = "shifterStatus";
+            this.shifterStatus.Size = new System.Drawing.Size(78, 20);
+            this.shifterStatus.TabIndex = 24;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(3, 42);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(81, 13);
+            this.label35.TabIndex = 22;
+            this.label35.Text = "Shifter Solenoid";
             // 
             // label20
             // 
@@ -661,12 +687,128 @@
             // 
             // General2
             // 
+            this.General2.Controls.Add(this.panel14);
+            this.General2.Controls.Add(this.panel13);
+            this.General2.Controls.Add(this.panel12);
             this.General2.Location = new System.Drawing.Point(4, 22);
             this.General2.Name = "General2";
             this.General2.Size = new System.Drawing.Size(535, 233);
             this.General2.TabIndex = 3;
             this.General2.Text = "General2";
             this.General2.UseVisualStyleBackColor = true;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.label37);
+            this.panel14.Controls.Add(this.lowSwitch);
+            this.panel14.Controls.Add(this.label34);
+            this.panel14.Controls.Add(this.highSwitch);
+            this.panel14.Location = new System.Drawing.Point(203, 0);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(182, 52);
+            this.panel14.TabIndex = 32;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(97, 7);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(86, 13);
+            this.label37.TabIndex = 29;
+            this.label37.Text = "Low Switch Limit";
+            // 
+            // lowSwitch
+            // 
+            this.lowSwitch.Location = new System.Drawing.Point(100, 24);
+            this.lowSwitch.Name = "lowSwitch";
+            this.lowSwitch.Size = new System.Drawing.Size(79, 20);
+            this.lowSwitch.TabIndex = 28;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(3, 7);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(88, 13);
+            this.label34.TabIndex = 26;
+            this.label34.Text = "High Switch Limit";
+            // 
+            // highSwitch
+            // 
+            this.highSwitch.Location = new System.Drawing.Point(3, 24);
+            this.highSwitch.Name = "highSwitch";
+            this.highSwitch.Size = new System.Drawing.Size(84, 20);
+            this.highSwitch.TabIndex = 27;
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.label39);
+            this.panel13.Controls.Add(this.label38);
+            this.panel13.Controls.Add(this.rightVictor);
+            this.panel13.Controls.Add(this.leftVictor);
+            this.panel13.Location = new System.Drawing.Point(403, 0);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(136, 42);
+            this.panel13.TabIndex = 31;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(68, 0);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(62, 13);
+            this.label39.TabIndex = 3;
+            this.label39.Text = "Right Victor";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(3, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(55, 13);
+            this.label38.TabIndex = 2;
+            this.label38.Text = "Left Victor";
+            // 
+            // rightVictor
+            // 
+            this.rightVictor.Location = new System.Drawing.Point(71, 16);
+            this.rightVictor.Name = "rightVictor";
+            this.rightVictor.Size = new System.Drawing.Size(59, 20);
+            this.rightVictor.TabIndex = 1;
+            // 
+            // leftVictor
+            // 
+            this.leftVictor.Location = new System.Drawing.Point(0, 16);
+            this.leftVictor.Name = "leftVictor";
+            this.leftVictor.Size = new System.Drawing.Size(55, 20);
+            this.leftVictor.TabIndex = 0;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.elevationBox);
+            this.panel12.Controls.Add(this.label40);
+            this.panel12.Controls.Add(this.collectorAngle);
+            this.panel12.Controls.Add(this.label36);
+            this.panel12.Location = new System.Drawing.Point(3, 3);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(183, 43);
+            this.panel12.TabIndex = 30;
+            // 
+            // collectorAngle
+            // 
+            this.collectorAngle.Location = new System.Drawing.Point(6, 16);
+            this.collectorAngle.Name = "collectorAngle";
+            this.collectorAngle.Size = new System.Drawing.Size(61, 20);
+            this.collectorAngle.TabIndex = 29;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(3, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(78, 13);
+            this.label36.TabIndex = 28;
+            this.label36.Text = "Collector Angle";
             // 
             // ConsoleStatus
             // 
@@ -924,52 +1066,21 @@
             this.ListenTimer.Enabled = true;
             this.ListenTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
             // 
-            // label35
+            // label40
             // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(66, 4);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(81, 13);
-            this.label35.TabIndex = 22;
-            this.label35.Text = "Shifter Solenoid";
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(100, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(51, 13);
+            this.label40.TabIndex = 30;
+            this.label40.Text = "Elevation";
             // 
-            // label36
+            // elevationBox
             // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(83, 52);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(71, 13);
-            this.label36.TabIndex = 23;
-            this.label36.Text = "Switch thing?";
-            // 
-            // shifterStatus
-            // 
-            this.shifterStatus.Location = new System.Drawing.Point(69, 19);
-            this.shifterStatus.Name = "shifterStatus";
-            this.shifterStatus.Size = new System.Drawing.Size(78, 20);
-            this.shifterStatus.TabIndex = 24;
-            // 
-            // switchBox
-            // 
-            this.switchBox.Location = new System.Drawing.Point(86, 71);
-            this.switchBox.Name = "switchBox";
-            this.switchBox.Size = new System.Drawing.Size(61, 20);
-            this.switchBox.TabIndex = 25;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.label33);
-            this.panel11.Controls.Add(this.label34);
-            this.panel11.Controls.Add(this.pressure);
-            this.panel11.Controls.Add(this.switchBox);
-            this.panel11.Controls.Add(this.trans);
-            this.panel11.Controls.Add(this.shifterStatus);
-            this.panel11.Controls.Add(this.label35);
-            this.panel11.Controls.Add(this.label36);
-            this.panel11.Location = new System.Drawing.Point(370, 112);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(159, 115);
-            this.panel11.TabIndex = 26;
+            this.elevationBox.Location = new System.Drawing.Point(100, 16);
+            this.elevationBox.Name = "elevationBox";
+            this.elevationBox.Size = new System.Drawing.Size(51, 20);
+            this.elevationBox.TabIndex = 31;
             // 
             // Form1
             // 
@@ -986,6 +1097,8 @@
             this.tabControl1.ResumeLayout(false);
             this.General.ResumeLayout(false);
             this.General.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -996,6 +1109,13 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.General2.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.ConsoleStatus.ResumeLayout(false);
             this.ConsoleStatus.PerformLayout();
             this.Status.ResumeLayout(false);
@@ -1004,8 +1124,6 @@
             this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1092,15 +1210,26 @@
         private System.Windows.Forms.TextBox zAxis;
         private System.Windows.Forms.TextBox xAxis;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox pressure;
-        private System.Windows.Forms.TextBox trans;
-        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox launcherSolenoid;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.TextBox switchBox;
         private System.Windows.Forms.TextBox shifterStatus;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox highSwitch;
+        private System.Windows.Forms.TextBox collectorAngle;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox lowSwitch;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox rightVictor;
+        private System.Windows.Forms.TextBox leftVictor;
+        private System.Windows.Forms.TextBox elevationBox;
+        private System.Windows.Forms.Label label40;
     }
 }
 
