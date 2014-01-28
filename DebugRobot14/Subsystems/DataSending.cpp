@@ -9,7 +9,6 @@ DataSending::DataSending() : Subsystem("DataSending") {
 	driverStick = new SmartJoystick(1);
 	count=0;
 }
-    
 void DataSending::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
@@ -20,13 +19,10 @@ void DataSending::InitDefaultCommand() {
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-
 void DataSending::SendTheData(){
-	
 	strIndex = 0;
 	Dashboard &dash = DriverStation::GetInstance()->GetHighPriorityDashboardPacker();
 	DriverStation *drive = DriverStation::GetInstance();
-	
 	
 	Send(count++);
 	Send(drive->GetBatteryVoltage());
@@ -35,11 +31,8 @@ void DataSending::SendTheData(){
 	Send(driverStick->GetAxis(Joystick::kZAxis));
 	Send(RobotMap::chasisBatteryCurrent->GetVoltage());
 	Send(RobotMap::launcherLauncherSolenoid->Get());
-	
 	bool pressureSwitch =(bool)RobotMap::compressionCompressor->GetPressureSwitchValue();
 	Send(pressureSwitch);
-	//printf("willie %s\n",strBuffer);
-	
 	Send(RobotMap::driveTrainDriveGyro->GetAngle());
 	Send(RobotMap::driveTrainFrontLeft->GetOutputVoltage());
 	Send(RobotMap::driveTrainFrontLeft->GetOutputCurrent());
@@ -70,14 +63,14 @@ void DataSending::SendTheData(){
 	char line3[100];
 	int setting = Robot::shifterSystem->GetGearSetting();
 	int driveMode = Robot::driveTrain->GetDriveMode();
-	float PSI = RobotMap::compressionCompressor->GetPressureSwitchValue();
 	if(driveMode==0)sprintf(line2,"Drive Mode Error");
 	if(driveMode==1)sprintf(line2,"Drive Mode Arcade");
 	if(driveMode==2)sprintf(line2,"Drive Mode Meccanum");
 	if(setting==-1)sprintf(line1,"Shifted Down");
 	if(setting==0)sprintf(line1,"Shifter Off");
 	if(setting==1)sprintf(line1,"Shifted Up");
-	sprintf(line3,"PSI is %f",PSI);
+	if(pressureSwitch)sprintf(line3,"PSI is 0");
+	if(!pressureSwitch)sprintf(line3,"PSI is 1");
 	DriverStationLCD *lcd = DriverStationLCD::GetInstance();
 	lcd->PrintfLine(DriverStationLCD::kUser_Line1, "%s",line1);
 	lcd->PrintfLine(DriverStationLCD::kUser_Line2, "%s",line2);
@@ -93,18 +86,15 @@ void DataSending::Send(double f, int digits)
 		strIndex += len;
 	}
 }
-
 void DataSending::Send(bool b)
 {
 	int len = 2;
 	if(strIndex+len < MaxBuffer){
 		if(b)	strcpy(strBuffer+strIndex, "1,");
 		else	strcpy(strBuffer+strIndex, "0,");
-		
 		strIndex += len;
 	}
 }
-
 void DataSending::Send(int i)
 {
 	char buff[20];
@@ -114,7 +104,6 @@ void DataSending::Send(int i)
 		strIndex += len;
 	}
 }
-
 void DataSending::Send(char *s)
 {
 	char buff[81];

@@ -13,7 +13,6 @@ public:
 	DataSending();
 	void InitDefaultCommand();
 	void SendTheData();
-	
 private:
 	int count;
 	void Send(bool b);
