@@ -11,6 +11,7 @@ sendData::sendData() {
 // Called just before this Command runs the first time
 void sendData::Initialize() {
 	printf("You are now sending data\n");
+	
 }
 // Called repeatedly when this Command is scheduled to run
 void sendData::Execute() {
@@ -28,3 +29,5 @@ void sendData::End() {
 // subsystems is scheduled to run
 void sendData::Interrupted() {
 }
+
+

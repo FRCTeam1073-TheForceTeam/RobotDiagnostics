@@ -99,16 +99,9 @@ namespace DataCollection2014
                 }
                 if (s2 != null)
                 {
-                    int sub = 0;
-                    NoConnection = false;
-                    for (int i = 0; i < 207; i++)
-                    {
-                        if (s2.Substring(i,1).Equals(","))
-                        {
-                            parser[sub] = s2.Substring(i + 1, 5);
-                            sub++;
-                        }
-                    }
+                    char delim =',';
+                    parser=s2.Split(delim);
+                   
                     batteryVolts.Text = parser[0];
                     xAxis.Text = parser[1];
                     yAxis.Text = parser[2];
@@ -140,19 +133,19 @@ namespace DataCollection2014
                     panel1.BackColor = Color.Green;
                 }
             }
-            /*if (consoleQueue.Count > 0)
+            if (consoleQueue.Count > 0)
             {
                 String s3 = (String)consoleQueue.Dequeue();
                 if (s3 == null)
                 {
-                    DisconnectionMessages.AppendText("Packet Error at " + error + "\n");
+                    disconnectionMessages.AppendText("Packet Error at " + error + "\n");
                 }
                 if (s3 != null)
                 {
                     NoConnection = false;
-                    if(!s3.Equals("\n"))NetConsoleDisplay.AppendText(s3);
+                    if(!s3.Equals("\n"))netConsoleDisplay.AppendText(s3);
                 }
-            }*/
+            }
 
             if ((dataQueue.Count == 0)&&NoConnection==false)
             {

@@ -19,6 +19,14 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
+	
+
+	
+private:
+	
 };
+
+
+
 
 #endif
