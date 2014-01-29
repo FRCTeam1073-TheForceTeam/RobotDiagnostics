@@ -17,6 +17,6 @@ void Launcher::InitDefaultCommand() {
 }
 void Launcher::Launch(){
 	launcherSolenoid->Set(true);
-	Wait(3.0);
+	Wait(2.0);
 	launcherSolenoid->Set(false);
 }

@@ -42,10 +42,10 @@ void DataSending::SendTheData(){
 	Send(RobotMap::driveTrainFrontRight->GetOutputVoltage());
 	Send(RobotMap::driveTrainFrontRight->GetOutputCurrent());
 	Send(RobotMap::driveTrainFrontRight->GetPosition());
+	Send(RobotMap::driveTrainRearLeft->GetOutputVoltage());
 	Send(RobotMap::driveTrainRearLeft->GetOutputCurrent());
 	Send(RobotMap::driveTrainRearLeft->GetPosition());
-	Send(RobotMap::driveTrainRearLeft->GetOutputCurrent());
-	Send(RobotMap::driveTrainRearRight->GetPosition());
+	Send(RobotMap::driveTrainRearRight->GetOutputVoltage());
 	Send(RobotMap::driveTrainRearRight->GetOutputCurrent());
 	Send(RobotMap::driveTrainRearRight->GetPosition());
 	Send(RobotMap::shifterSystemShifterSolenoid->Get());

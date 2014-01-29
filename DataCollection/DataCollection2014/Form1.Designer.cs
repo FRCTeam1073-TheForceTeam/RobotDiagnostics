@@ -137,9 +137,6 @@
             this.Stop = new System.Windows.Forms.Button();
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
-            this.label45 = new System.Windows.Forms.Label();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -157,7 +154,6 @@
             this.Status.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel16.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -700,7 +696,6 @@
             // 
             // General2
             // 
-            this.General2.Controls.Add(this.panel16);
             this.General2.Controls.Add(this.panel15);
             this.General2.Controls.Add(this.panel14);
             this.General2.Controls.Add(this.panel13);
@@ -1168,31 +1163,6 @@
             this.ListenTimer.Enabled = true;
             this.ListenTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
             // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(5, 3);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(41, 13);
-            this.label45.TabIndex = 34;
-            this.label45.Text = "label45";
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.textBox1);
-            this.panel16.Controls.Add(this.label45);
-            this.panel16.Location = new System.Drawing.Point(124, 65);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(200, 100);
-            this.panel16.TabIndex = 35;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(8, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(57, 20);
-            this.textBox1.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1237,8 +1207,6 @@
             this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1353,9 +1321,6 @@
         private System.Windows.Forms.TextBox downTime;
         private System.Windows.Forms.TextBox loadTime;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label45;
     }
 }
 

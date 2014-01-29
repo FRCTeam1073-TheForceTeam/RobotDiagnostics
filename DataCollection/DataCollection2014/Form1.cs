@@ -133,7 +133,7 @@ namespace DataCollection2014
                     loadTime.Text = parser[28];
                     downTime.Text = parser[29];
                     percentCPU.Text = parser[30];
-                    textBox1.Text = parser[31];
+                    //textBox1.Text = parser[31];
                     panel1.BackColor = Color.Green;
                 }
             }
@@ -203,6 +203,39 @@ namespace DataCollection2014
             dataQueue.Clear();
             consoleQueue.Clear();
             netConsoleDisplay.Text = "Listening Stopped\n";
+
+            batteryVolts.Text = null;
+            xAxis.Text = null;
+            yAxis.Text = null;
+            zAxis.Text = null;
+            batteryAmps.Text = null;
+            launcherSolenoid.Text = null;
+            highSwitch.Text = null;
+            gyroAngle.Text = null;
+            leftFrontVolts.Text = null;
+            leftFrontAmps.Text = null;
+            leftFrontEncoder.Text = null;
+            rightFrontVolts.Text = null;
+            rightFrontAmps.Text = null;
+            rightFrontEncoder.Text = null;
+            leftBackVolts.Text = null;
+            leftBackAmps.Text = null;
+            leftBackEncoder.Text = null;
+            rightBackVolts.Text = null;
+            rightBackAmps.Text = null;
+            rightBackEncoder.Text = null;
+            shifterStatus.Text = null;
+            collectorAngle.Text = null;
+            highSwitch.Text = null;
+            lowSwitch.Text = null;
+            elevationBox.Text = null;
+            leftVictor.Text = null;
+            rightVictor.Text = null;
+            packetCounter.Text = null;
+            loadTime.Text = null;
+            downTime.Text = null;
+            percentCPU.Text = null;
+            //
         }
 
         private void ultraSpeed_CheckedChanged(object sender, EventArgs e)
