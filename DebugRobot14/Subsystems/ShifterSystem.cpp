@@ -18,19 +18,19 @@ void ShifterSystem::InitDefaultCommand() {
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-int ShifterSystem::GetGearSetting(){
+string ShifterSystem::GetGearSetting(){
 	//printf("Getting Gear Setting...\n");
 	if(shifterSolenoid->Get()==DoubleSolenoid::kForward){
 		//printf("yes it is in low\n");
-		return -1;
+		return "low";
 	}
 	if(shifterSolenoid->Get()==DoubleSolenoid::kReverse){
 		//printf("yes it is in high\n");
-		return 1;
+		return "high";
 	}
 	if(shifterSolenoid->Get()==DoubleSolenoid::kOff){
 		//printf("yes it is off\n");
-		return 0;
+		return "off";
 	}
 	return 0;
 }

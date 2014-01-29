@@ -22,6 +22,7 @@ public:
 	static SmartGyro* driveTrainDriveGyro;
 	static DoubleSolenoid* shifterSystemShifterSolenoid;
 	static Solenoid* launcherLauncherSolenoid;
+	static StallableAnalogEncoder* dataSendingbatteryCurrent;
 	static Compressor* compressionCompressor;
 	static Servo* collectorAngleAdjuster;
 	static DigitalInput* collectorHighLimit;

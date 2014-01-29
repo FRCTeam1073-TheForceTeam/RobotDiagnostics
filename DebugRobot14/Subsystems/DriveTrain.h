@@ -20,9 +20,6 @@ public:
 	void InitDefaultCommand();
 	void ArcadeDrive(Joystick *stick);
 	void MecanumDrive(float joystickX, float joystickY, float joystickTwist);
-	float ReadAndReportAngle();
-	void ReportEncoders();
-	int GetDriveMode();
-	void SendTheData();
+	string GetDriveMode();
 };
 #endif
