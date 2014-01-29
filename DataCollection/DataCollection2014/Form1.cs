@@ -100,8 +100,8 @@ namespace DataCollection2014
                 if (s2 != null)
                 {
                     char delim =',';
-                    parser=s2.Split(delim);
-                   
+                    String parsed = s2.Substring(35, s2.Length - 35);
+                    parser = parsed.Split(delim);
                     batteryVolts.Text = parser[0];
                     xAxis.Text = parser[1];
                     yAxis.Text = parser[2];
@@ -130,6 +130,10 @@ namespace DataCollection2014
                     leftVictor.Text = parser[25];
                     rightVictor.Text = parser[26];
                     packetCounter.Text = parser[27];
+                    loadTime.Text = parser[28];
+                    downTime.Text = parser[29];
+                    percentCPU.Text = parser[30];
+                    textBox1.Text = parser[31];
                     panel1.BackColor = Color.Green;
                 }
             }

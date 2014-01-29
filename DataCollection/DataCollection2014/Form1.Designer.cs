@@ -89,6 +89,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
             this.General2 = new System.Windows.Forms.TabPage();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.percentCPU = new System.Windows.Forms.TextBox();
+            this.downTime = new System.Windows.Forms.TextBox();
+            this.loadTime = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
             this.lowSwitch = new System.Windows.Forms.TextBox();
@@ -100,6 +108,8 @@
             this.rightVictor = new System.Windows.Forms.TextBox();
             this.leftVictor = new System.Windows.Forms.TextBox();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.elevationBox = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.collectorAngle = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.ConsoleStatus = new System.Windows.Forms.TabPage();
@@ -127,8 +137,9 @@
             this.Stop = new System.Windows.Forms.Button();
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
-            this.label40 = new System.Windows.Forms.Label();
-            this.elevationBox = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -138,6 +149,7 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.General2.SuspendLayout();
+            this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -145,6 +157,7 @@
             this.Status.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -687,6 +700,8 @@
             // 
             // General2
             // 
+            this.General2.Controls.Add(this.panel16);
+            this.General2.Controls.Add(this.panel15);
             this.General2.Controls.Add(this.panel14);
             this.General2.Controls.Add(this.panel13);
             this.General2.Controls.Add(this.panel12);
@@ -697,13 +712,84 @@
             this.General2.Text = "General2";
             this.General2.UseVisualStyleBackColor = true;
             // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.label44);
+            this.panel15.Controls.Add(this.label43);
+            this.panel15.Controls.Add(this.label42);
+            this.panel15.Controls.Add(this.percentCPU);
+            this.panel15.Controls.Add(this.downTime);
+            this.panel15.Controls.Add(this.loadTime);
+            this.panel15.Controls.Add(this.label41);
+            this.panel15.Location = new System.Drawing.Point(3, 52);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(115, 138);
+            this.panel15.TabIndex = 33;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(6, 99);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(40, 13);
+            this.label44.TabIndex = 6;
+            this.label44.Text = "% CPU";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(6, 59);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(61, 13);
+            this.label43.TabIndex = 5;
+            this.label43.Text = "Down Time";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(6, 20);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(47, 13);
+            this.label42.TabIndex = 4;
+            this.label42.Text = "Up Time";
+            // 
+            // percentCPU
+            // 
+            this.percentCPU.Location = new System.Drawing.Point(6, 115);
+            this.percentCPU.Name = "percentCPU";
+            this.percentCPU.Size = new System.Drawing.Size(100, 20);
+            this.percentCPU.TabIndex = 3;
+            // 
+            // downTime
+            // 
+            this.downTime.Location = new System.Drawing.Point(6, 75);
+            this.downTime.Name = "downTime";
+            this.downTime.Size = new System.Drawing.Size(100, 20);
+            this.downTime.TabIndex = 2;
+            // 
+            // loadTime
+            // 
+            this.loadTime.Location = new System.Drawing.Point(6, 36);
+            this.loadTime.Name = "loadTime";
+            this.loadTime.Size = new System.Drawing.Size(100, 20);
+            this.loadTime.TabIndex = 1;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(6, 4);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(38, 13);
+            this.label41.TabIndex = 0;
+            this.label41.Text = "Timing";
+            // 
             // panel14
             // 
             this.panel14.Controls.Add(this.label37);
             this.panel14.Controls.Add(this.lowSwitch);
             this.panel14.Controls.Add(this.label34);
             this.panel14.Controls.Add(this.highSwitch);
-            this.panel14.Location = new System.Drawing.Point(203, 0);
+            this.panel14.Location = new System.Drawing.Point(209, 7);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(182, 52);
             this.panel14.TabIndex = 32;
@@ -746,7 +832,7 @@
             this.panel13.Controls.Add(this.label38);
             this.panel13.Controls.Add(this.rightVictor);
             this.panel13.Controls.Add(this.leftVictor);
-            this.panel13.Location = new System.Drawing.Point(403, 0);
+            this.panel13.Location = new System.Drawing.Point(403, 7);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(136, 42);
             this.panel13.TabIndex = 31;
@@ -789,10 +875,26 @@
             this.panel12.Controls.Add(this.label40);
             this.panel12.Controls.Add(this.collectorAngle);
             this.panel12.Controls.Add(this.label36);
-            this.panel12.Location = new System.Drawing.Point(3, 3);
+            this.panel12.Location = new System.Drawing.Point(3, 7);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(183, 43);
             this.panel12.TabIndex = 30;
+            // 
+            // elevationBox
+            // 
+            this.elevationBox.Location = new System.Drawing.Point(100, 16);
+            this.elevationBox.Name = "elevationBox";
+            this.elevationBox.Size = new System.Drawing.Size(51, 20);
+            this.elevationBox.TabIndex = 31;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(100, 0);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(51, 13);
+            this.label40.TabIndex = 30;
+            this.label40.Text = "Elevation";
             // 
             // collectorAngle
             // 
@@ -1066,21 +1168,30 @@
             this.ListenTimer.Enabled = true;
             this.ListenTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
             // 
-            // label40
+            // label45
             // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(100, 0);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(51, 13);
-            this.label40.TabIndex = 30;
-            this.label40.Text = "Elevation";
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(5, 3);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(41, 13);
+            this.label45.TabIndex = 34;
+            this.label45.Text = "label45";
             // 
-            // elevationBox
+            // panel16
             // 
-            this.elevationBox.Location = new System.Drawing.Point(100, 16);
-            this.elevationBox.Name = "elevationBox";
-            this.elevationBox.Size = new System.Drawing.Size(51, 20);
-            this.elevationBox.TabIndex = 31;
+            this.panel16.Controls.Add(this.textBox1);
+            this.panel16.Controls.Add(this.label45);
+            this.panel16.Location = new System.Drawing.Point(124, 65);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(200, 100);
+            this.panel16.TabIndex = 35;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(8, 23);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(57, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -1110,6 +1221,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.General2.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel13.ResumeLayout(false);
@@ -1124,6 +1237,8 @@
             this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1230,6 +1345,17 @@
         private System.Windows.Forms.TextBox leftVictor;
         private System.Windows.Forms.TextBox elevationBox;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox percentCPU;
+        private System.Windows.Forms.TextBox downTime;
+        private System.Windows.Forms.TextBox loadTime;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label45;
     }
 }
 
