@@ -42,18 +42,14 @@ void DataSending::SendTheData(){
 	Send(RobotMap::collectorElevationEncoder->GetVoltage());
 	Send(RobotMap::collectorLeftCollect->Get());
 	Send(RobotMap::collectorRightCollect->Get());
-	Send(count++);	
-	t2=Timer::GetFPGATimestamp();
+		t2=Timer::GetFPGATimestamp();
 	totalExeucted=t2-t1;
 	percentCPU=totalExeucted/downTime;
 	Send(totalExeucted,4);
 	Send(downTime,4);
 	Send(percentCPU,4);
 	dash.AddString(strBuffer);
-	dash.Finalize();
-	UpdateUserLCD();
-	//printf("%")
-}
+	dash.Finalize();}
 void DataSending::Send(double f, int digits)
 {
 	char buff[20];
