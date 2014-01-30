@@ -29,7 +29,7 @@ namespace DataCollection2014
         public EndPoint dataEndpoint = (EndPoint)(dataIPEndPoint);
         public static IPEndPoint consoleIPEndPoint = new IPEndPoint(IPAddress.Any, 1166);
         public static Socket consoleSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        public EndPoint consoleEndpoint = (EndPoint)(dataIPEndPoint);
+        public EndPoint consoleEndpoint = (EndPoint)(consoleIPEndPoint);
         public int recv;
         public int crecv;
         public Queue dataQueue = new Queue();
@@ -41,6 +41,8 @@ namespace DataCollection2014
         public volatile bool NoConnection = false;
         public volatile bool stopIt = false;
         public String[] parser= new String[30];
+        public int saveNumber = 0;
+        public StringBuilder failSafe = new StringBuilder();
         public Form1()
         {
             InitializeComponent();
@@ -101,6 +103,12 @@ namespace DataCollection2014
                 {
                     char delim =',';
                     String parsed = s2.Substring(35, s2.Length - 35);
+                    timeStamp = DateTime.Now;
+                    String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+                    DataSB.Append(path2 + ",");
+                    DataSB.Append(parsed);
+                    failSafe.Append(path2 + ",");
+                    failSafe.Append(parsed);
                     parser = parsed.Split(delim);
                     batteryVolts.Text = parser[0];
                     xAxis.Text = parser[1];
@@ -133,7 +141,7 @@ namespace DataCollection2014
                     loadTime.Text = parser[28];
                     downTime.Text = parser[29];
                     percentCPU.Text = parser[30];
-                    //textBox1.Text = parser[31];
+                    talonSpeed.Text = parser[31];
                     panel1.BackColor = Color.Green;
                 }
             }
@@ -193,6 +201,8 @@ namespace DataCollection2014
         {
             StartListenerThreads();
             ListenTimer.Start();
+            fileSaveTimer.Start();
+            saveNumber++;
         }
 
         private void Stop_Click(object sender, EventArgs e)
@@ -202,6 +212,7 @@ namespace DataCollection2014
             ListenTimer.Stop();
             dataQueue.Clear();
             consoleQueue.Clear();
+            fileSaveTimer.Stop();
             netConsoleDisplay.Text = "Listening Stopped\n";
 
             batteryVolts.Text = null;
@@ -270,6 +281,12 @@ namespace DataCollection2014
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             stopIt = true;
+        }
+
+        private void fileSaveTimer_Tick(object sender, EventArgs e)
+        {
+            File.AppendAllText("C:\\tmp"+saveNumber+".csv", failSafe.ToString());
+            failSafe.Clear();
         }
     }
 }

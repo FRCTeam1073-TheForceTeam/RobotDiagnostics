@@ -103,6 +103,8 @@
             this.label34 = new System.Windows.Forms.Label();
             this.highSwitch = new System.Windows.Forms.TextBox();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.talonSpeed = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.rightVictor = new System.Windows.Forms.TextBox();
@@ -137,6 +139,7 @@
             this.Stop = new System.Windows.Forms.Button();
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
+            this.fileSaveTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -823,14 +826,32 @@
             // 
             // panel13
             // 
+            this.panel13.Controls.Add(this.talonSpeed);
+            this.panel13.Controls.Add(this.label45);
             this.panel13.Controls.Add(this.label39);
             this.panel13.Controls.Add(this.label38);
             this.panel13.Controls.Add(this.rightVictor);
             this.panel13.Controls.Add(this.leftVictor);
             this.panel13.Location = new System.Drawing.Point(403, 7);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(136, 42);
+            this.panel13.Size = new System.Drawing.Size(136, 62);
             this.panel13.TabIndex = 31;
+            // 
+            // talonSpeed
+            // 
+            this.talonSpeed.Location = new System.Drawing.Point(71, 39);
+            this.talonSpeed.Name = "talonSpeed";
+            this.talonSpeed.Size = new System.Drawing.Size(58, 20);
+            this.talonSpeed.TabIndex = 5;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(-3, 45);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(68, 13);
+            this.label45.TabIndex = 4;
+            this.label45.Text = "Talon Speed";
             // 
             // label39
             // 
@@ -839,7 +860,7 @@
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(62, 13);
             this.label39.TabIndex = 3;
-            this.label39.Text = "Right Victor";
+            this.label39.Text = "Right Talon";
             // 
             // label38
             // 
@@ -848,7 +869,7 @@
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(55, 13);
             this.label38.TabIndex = 2;
-            this.label38.Text = "Left Victor";
+            this.label38.Text = "Left Talon";
             // 
             // rightVictor
             // 
@@ -1163,6 +1184,12 @@
             this.ListenTimer.Enabled = true;
             this.ListenTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
             // 
+            // fileSaveTimer
+            // 
+            this.fileSaveTimer.Enabled = true;
+            this.fileSaveTimer.Interval = 250;
+            this.fileSaveTimer.Tick += new System.EventHandler(this.fileSaveTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1321,6 +1348,9 @@
         private System.Windows.Forms.TextBox downTime;
         private System.Windows.Forms.TextBox loadTime;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox talonSpeed;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Timer fileSaveTimer;
     }
 }
 

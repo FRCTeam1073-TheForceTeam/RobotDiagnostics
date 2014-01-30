@@ -15,8 +15,6 @@ void driveArcarde::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void driveArcarde::Execute() {
 	Robot::driveTrain->ArcadeDrive(Robot::oi->getJoystick1());
-	Robot::driveTrain->ReadAndReportAngle();
-	Robot::driveTrain->ReportEncoders();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool driveArcarde::IsFinished() {
