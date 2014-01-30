@@ -42,7 +42,7 @@ void DataSending::SendTheData(){
 	Send(RobotMap::collectorElevationEncoder->GetVoltage());
 	Send(RobotMap::collectorLeftCollect->Get());
 	Send(RobotMap::collectorRightCollect->Get());
-		t2=Timer::GetFPGATimestamp();
+	t2=Timer::GetFPGATimestamp();
 	totalExeucted=t2-t1;
 	percentCPU=totalExeucted/downTime;
 	Send(totalExeucted,4);
