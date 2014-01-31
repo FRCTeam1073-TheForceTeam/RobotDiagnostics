@@ -27,7 +27,7 @@ namespace DataCollection2014
         public static IPEndPoint dataIPEndPoint = new IPEndPoint(IPAddress.Any, 1165);
         public static Socket dataSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         public EndPoint dataEndpoint = (EndPoint)(dataIPEndPoint);
-        public static IPEndPoint consoleIPEndPoint = new IPEndPoint(IPAddress.Any, 1166);
+        public static IPEndPoint consoleIPEndPoint = new IPEndPoint(IPAddress.Any, 6666);
         public static Socket consoleSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         public EndPoint consoleEndpoint = (EndPoint)(consoleIPEndPoint);
         public int recv;
@@ -101,48 +101,53 @@ namespace DataCollection2014
                 }
                 if (s2 != null)
                 {
-                    char delim =',';
-                    String parsed = s2.Substring(35, s2.Length - 35);
-                    timeStamp = DateTime.Now;
-                    String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-                    DataSB.Append(path2 + ",");
-                    DataSB.Append(parsed);
-                    failSafe.Append(path2 + ",");
-                    failSafe.Append(parsed);
-                    parser = parsed.Split(delim);
-                    batteryVolts.Text = parser[0];
-                    xAxis.Text = parser[1];
-                    yAxis.Text = parser[2];
-                    zAxis.Text = parser[3];
-                    batteryAmps.Text = parser[4];
-                    launcherSolenoid.Text = parser[5];
-                    highSwitch.Text = parser[6];
-                    gyroAngle.Text = parser[7];
-                    leftFrontVolts.Text = parser[8];
-                    leftFrontAmps.Text = parser[9];
-                    leftFrontEncoder.Text = parser[10];
-                    rightFrontVolts.Text = parser[11];
-                    rightFrontAmps.Text = parser[12];
-                    rightFrontEncoder.Text = parser[13];
-                    leftBackVolts.Text = parser[14];
-                    leftBackAmps.Text = parser[15];
-                    leftBackEncoder.Text = parser[16];
-                    rightBackVolts.Text = parser[17];
-                    rightBackAmps.Text = parser[18];
-                    rightBackEncoder.Text = parser[19];
-                    shifterStatus.Text = parser[20];
-                    collectorAngle.Text = parser[21];
-                    highSwitch.Text = parser[22];
-                    lowSwitch.Text = parser[23];
-                    elevationBox.Text = parser[24];
-                    leftVictor.Text = parser[25];
-                    rightVictor.Text = parser[26];
-                    packetCounter.Text = parser[27];
-                    loadTime.Text = parser[28];
-                    downTime.Text = parser[29];
-                    percentCPU.Text = parser[30];
-                    talonSpeed.Text = parser[31];
-                    panel1.BackColor = Color.Green;
+                    try
+                    {
+                        char delim = ',';
+                        String parsed = s2.Substring(35, s2.Length - 35);
+                        timeStamp = DateTime.Now;
+                        String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+                        DataSB.Append(path2 + ",");
+                        DataSB.Append(parsed);
+                        failSafe.Append(path2 + ",");
+                        failSafe.Append(parsed);
+                        parser = parsed.Split(delim);
+                        batteryVolts.Text = parser[0];
+                        xAxis.Text = parser[1];
+                        yAxis.Text = parser[2];
+                        zAxis.Text = parser[3];
+                        batteryAmps.Text = parser[4];
+                        launcherSolenoid.Text = parser[5];
+                        highSwitch.Text = parser[6];
+                        gyroAngle.Text = parser[7];
+                        leftFrontVolts.Text = parser[8];
+                        leftFrontAmps.Text = parser[9];
+                        leftFrontEncoder.Text = parser[10];
+                        rightFrontVolts.Text = parser[11];
+                        rightFrontAmps.Text = parser[12];
+                        rightFrontEncoder.Text = parser[13];
+                        leftBackVolts.Text = parser[14];
+                        leftBackAmps.Text = parser[15];
+                        leftBackEncoder.Text = parser[16];
+                        rightBackVolts.Text = parser[17];
+                        rightBackAmps.Text = parser[18];
+                        rightBackEncoder.Text = parser[19];
+                        shifterStatus.Text = parser[20];
+                        collectorAngle.Text = parser[21];
+                        highSwitch.Text = parser[22];
+                        lowSwitch.Text = parser[23];
+                        elevationBox.Text = parser[24];
+                        leftVictor.Text = parser[25];
+                        rightVictor.Text = parser[26];
+                        packetCounter.Text = parser[27];
+                        loadTime.Text = parser[28];
+                        downTime.Text = parser[29];
+                        percentCPU.Text = parser[30];
+                        talonSpeed.Text = parser[31];
+                        panel1.BackColor = Color.Green;
+                    }
+                    catch (System.IndexOutOfRangeException e){
+                    }
                 }
             }
             if (consoleQueue.Count > 0)
@@ -207,6 +212,11 @@ namespace DataCollection2014
 
         private void Stop_Click(object sender, EventArgs e)
         {
+            timeStamp = DateTime.Now;
+            String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+            File.WriteAllText("C:\\" + path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
+            File.WriteAllText("C:\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
+            matchNumber++;
             if(dataThread!=null)dataThread.Suspend();
             if(consoleThread!=null)consoleThread.Suspend();
             ListenTimer.Stop();
@@ -287,6 +297,11 @@ namespace DataCollection2014
         {
             File.AppendAllText("C:\\tmp"+saveNumber+".csv", failSafe.ToString());
             failSafe.Clear();
+        }
+
+        private void clearConsole_Click(object sender, EventArgs e)
+        {
+            netConsoleDisplay.Clear();
         }
     }
 }

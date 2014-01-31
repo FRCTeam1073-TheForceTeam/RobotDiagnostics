@@ -17,6 +17,8 @@ public:
 	void SendTheData();
 	void UpdateUserLCD();
 	void GetJagInfo();
+	void GetJagTest();
+	void InitializeBackGroundTask();
 private:
 	int count;
 	void Send(bool b);

@@ -3,6 +3,7 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "DriveTrain.h"
 #include "../Robotmap.h"
 #include "../Commands/drive.h"
+#include "../Commands/driveArcarde.h"
 const float TWIST_CONSTANT = 0.7f;
 static const float MECANUM_CONSTANT = 1.4142;
 int mode=0;
@@ -69,4 +70,9 @@ string DriveTrain::GetDriveMode(){
 	if(mode==1)return "Arcade";
 	if(mode==2)return "Mecanum";
 	return 0;
+}
+void DriveTrain::ChangeDriveMode(){
+	if(mode==0) new drive();
+	if(mode==1) new drive();
+	if(mode==2) new driveArcarde();
 }

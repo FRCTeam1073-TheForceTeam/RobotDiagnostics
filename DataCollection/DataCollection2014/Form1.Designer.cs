@@ -140,6 +140,7 @@
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
             this.fileSaveTimer = new System.Windows.Forms.Timer(this.components);
+            this.clearConsole = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -930,6 +931,7 @@
             // 
             // ConsoleStatus
             // 
+            this.ConsoleStatus.Controls.Add(this.clearConsole);
             this.ConsoleStatus.Controls.Add(this.label12);
             this.ConsoleStatus.Controls.Add(this.netConsoleDisplay);
             this.ConsoleStatus.Location = new System.Drawing.Point(4, 22);
@@ -1190,6 +1192,16 @@
             this.fileSaveTimer.Interval = 250;
             this.fileSaveTimer.Tick += new System.EventHandler(this.fileSaveTimer_Tick);
             // 
+            // clearConsole
+            // 
+            this.clearConsole.Location = new System.Drawing.Point(443, 20);
+            this.clearConsole.Name = "clearConsole";
+            this.clearConsole.Size = new System.Drawing.Size(75, 23);
+            this.clearConsole.TabIndex = 3;
+            this.clearConsole.Text = "Clear Screen";
+            this.clearConsole.UseVisualStyleBackColor = true;
+            this.clearConsole.Click += new System.EventHandler(this.clearConsole_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1351,6 +1363,7 @@
         private System.Windows.Forms.TextBox talonSpeed;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Timer fileSaveTimer;
+        private System.Windows.Forms.Button clearConsole;
     }
 }
 

@@ -21,5 +21,6 @@ public:
 	void ArcadeDrive(Joystick *stick);
 	void MecanumDrive(float joystickX, float joystickY, float joystickTwist);
 	string GetDriveMode();
+	void ChangeDriveMode();
 };
 #endif
