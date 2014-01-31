@@ -4,7 +4,7 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "../Robotmap.h"
 #include "../Commands/drive.h"
 #include "../Commands/driveArcarde.h"
-const float TWIST_CONSTANT = 0.7f;
+const float TWIST_CONSTANT = 0.8f;
 static const float MECANUM_CONSTANT = 1.4142;
 int mode=0;
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
@@ -72,7 +72,16 @@ string DriveTrain::GetDriveMode(){
 	return 0;
 }
 void DriveTrain::ChangeDriveMode(){
-	if(mode==0) new drive();
-	if(mode==1) new drive();
-	if(mode==2) new driveArcarde();
+	bool changed=false;
+	if(mode==0) {
+		new drive();
+		changed=true;
+	}
+	if(mode==1&&!changed) {
+		new drive();
+		changed=true;
+	}
+	if(mode==2&&!changed) {
+		new driveArcarde();
+	}
 }

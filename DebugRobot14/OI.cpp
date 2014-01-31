@@ -36,7 +36,7 @@ OI::OI() {
 	launchBall = new JoystickButton(joystick1, 6);
 	launchBall->WhenPressed(new launch());
 	switchDriveButton = new JoystickButton(joystick1, 4);
-	switchDriveButton->WhenPressed(new drive());
+	switchDriveButton->WhenPressed(new switchDrive());
 	compressButton = new JoystickButton(joystick1, 2);
 	compressButton->WhileHeld(new compress());
      
