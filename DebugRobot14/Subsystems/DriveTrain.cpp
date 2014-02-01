@@ -71,17 +71,3 @@ string DriveTrain::GetDriveMode(){
 	if(mode==2)return "Mecanum";
 	return 0;
 }
-void DriveTrain::ChangeDriveMode(){
-	bool changed=false;
-	if(mode==0) {
-		new drive();
-		changed=true;
-	}
-	if(mode==1&&!changed) {
-		new drive();
-		changed=true;
-	}
-	if(mode==2&&!changed) {
-		new driveArcarde();
-	}
-}

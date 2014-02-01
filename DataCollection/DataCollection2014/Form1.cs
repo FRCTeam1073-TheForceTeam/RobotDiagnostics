@@ -43,6 +43,7 @@ namespace DataCollection2014
         public String[] parser= new String[30];
         public int saveNumber = 0;
         public StringBuilder failSafe = new StringBuilder();
+        public volatile bool saveToDisk = true;
         public Form1()
         {
             InitializeComponent();
@@ -109,8 +110,11 @@ namespace DataCollection2014
                         String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
                         DataSB.Append(path2 + ",");
                         DataSB.Append(parsed);
-                        failSafe.Append(path2 + ",");
-                        failSafe.Append(parsed);
+                        if (saveToDisk)
+                        {
+                            failSafe.Append(path2 + ",");
+                            failSafe.Append(parsed);
+                        }
                         parser = parsed.Split(delim);
                         batteryVolts.Text = parser[0];
                         xAxis.Text = parser[1];
@@ -160,7 +164,8 @@ namespace DataCollection2014
                 if (s3 != null)
                 {
                     NoConnection = false;
-                    if(!s3.Equals("\n"))netConsoleDisplay.AppendText(s3);
+                    String newNetConsole = s3.Substring(0, s3.Length - 2);
+                    if(!s3.Equals("\n"))netConsoleDisplay.AppendText(newNetConsole);
                 }
             }
 
@@ -295,13 +300,26 @@ namespace DataCollection2014
 
         private void fileSaveTimer_Tick(object sender, EventArgs e)
         {
-            File.AppendAllText("C:\\tmp"+saveNumber+".csv", failSafe.ToString());
-            failSafe.Clear();
+            if (saveToDisk)
+            {
+                File.AppendAllText("C:\\tmp" + saveNumber + ".csv", failSafe.ToString());
+                failSafe.Clear();
+            }
         }
 
         private void clearConsole_Click(object sender, EventArgs e)
         {
             netConsoleDisplay.Clear();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            saveToDisk = true;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            saveToDisk = false;
         }
     }
 }

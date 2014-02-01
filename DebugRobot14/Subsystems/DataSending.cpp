@@ -28,8 +28,8 @@ void DataSending::SendTheData(){
 	Dashboard &dash = DriverStation::GetInstance()->GetHighPriorityDashboardPacker();
 	DriverStation *drive = DriverStation::GetInstance();
 	Send(drive->GetBatteryVoltage());
-	Send(Robot::oi->getJoystick1()->GetX()*-1);
-	Send(Robot::oi->getJoystick1()->GetY());
+	Send(Robot::oi->getJoystick1()->GetX());
+	Send(Robot::oi->getJoystick1()->GetY()*-1);
 	Send(Robot::oi->getJoystick1()->GetZ());
 	Send(batteryCurrent->GetVoltage());
 	Send(RobotMap::launcherLauncherSolenoid->Get());
@@ -163,6 +163,7 @@ void
 DataSending::InitializeBackGroundTask()
 {
 	printf("Initiation ocurred\n");
+	printf("This robot is currently being monitered\n");
 	BackgroundTask = new Task("BackGroundTask", BackroundFunction );
 	BackgroundSemaphore = semMCreate(SEM_DELETE_SAFE | SEM_INVERSION_SAFE); // synchronize access to multi-value registers
 	BackgroundTask->Start();

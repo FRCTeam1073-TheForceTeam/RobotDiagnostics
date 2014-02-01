@@ -115,6 +115,7 @@
             this.collectorAngle = new System.Windows.Forms.TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.ConsoleStatus = new System.Windows.Forms.TabPage();
+            this.clearConsole = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.netConsoleDisplay = new System.Windows.Forms.RichTextBox();
             this.Status = new System.Windows.Forms.TabPage();
@@ -140,7 +141,10 @@
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
             this.fileSaveTimer = new System.Windows.Forms.Timer(this.components);
-            this.clearConsole = new System.Windows.Forms.Button();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label46 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -158,6 +162,7 @@
             this.Status.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -942,6 +947,16 @@
             this.ConsoleStatus.Text = "NetConsole";
             this.ConsoleStatus.UseVisualStyleBackColor = true;
             // 
+            // clearConsole
+            // 
+            this.clearConsole.Location = new System.Drawing.Point(443, 20);
+            this.clearConsole.Name = "clearConsole";
+            this.clearConsole.Size = new System.Drawing.Size(75, 23);
+            this.clearConsole.TabIndex = 3;
+            this.clearConsole.Text = "Clear Screen";
+            this.clearConsole.UseVisualStyleBackColor = true;
+            this.clearConsole.Click += new System.EventHandler(this.clearConsole_Click);
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -962,6 +977,7 @@
             // 
             // Status
             // 
+            this.Status.Controls.Add(this.panel16);
             this.Status.Controls.Add(this.label15);
             this.Status.Controls.Add(this.label14);
             this.Status.Controls.Add(this.label1);
@@ -1192,15 +1208,48 @@
             this.fileSaveTimer.Interval = 250;
             this.fileSaveTimer.Tick += new System.EventHandler(this.fileSaveTimer_Tick);
             // 
-            // clearConsole
+            // panel16
             // 
-            this.clearConsole.Location = new System.Drawing.Point(443, 20);
-            this.clearConsole.Name = "clearConsole";
-            this.clearConsole.Size = new System.Drawing.Size(75, 23);
-            this.clearConsole.TabIndex = 3;
-            this.clearConsole.Text = "Clear Screen";
-            this.clearConsole.UseVisualStyleBackColor = true;
-            this.clearConsole.Click += new System.EventHandler(this.clearConsole_Click);
+            this.panel16.Controls.Add(this.radioButton2);
+            this.panel16.Controls.Add(this.radioButton1);
+            this.panel16.Controls.Add(this.label46);
+            this.panel16.Location = new System.Drawing.Point(170, 129);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(200, 100);
+            this.panel16.TabIndex = 19;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(5, 8);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(122, 13);
+            this.label46.TabIndex = 0;
+            this.label46.Text = "Save to backup log file?";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(8, 29);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(86, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Yes (Default)";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(8, 52);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(37, 17);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.Text = "no";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // Form1
             // 
@@ -1246,6 +1295,8 @@
             this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1364,6 +1415,10 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Timer fileSaveTimer;
         private System.Windows.Forms.Button clearConsole;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label46;
     }
 }
 
