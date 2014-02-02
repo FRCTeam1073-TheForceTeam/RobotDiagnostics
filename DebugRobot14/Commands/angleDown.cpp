@@ -13,7 +13,7 @@ void angleDown::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void angleDown::Execute() {
-	Robot::collector->AngleDown();
+	Robot::collector->SetAngleDown();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool angleDown::IsFinished() {

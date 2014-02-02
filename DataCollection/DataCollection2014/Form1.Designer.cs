@@ -89,6 +89,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
             this.General2 = new System.Windows.Forms.TabPage();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.setSpeed = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.ultrasonic = new System.Windows.Forms.TextBox();
+            this.transducer = new System.Windows.Forms.TextBox();
+            this.collectorAmps = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.collectorVolts = new System.Windows.Forms.TextBox();
             this.panel15 = new System.Windows.Forms.Panel();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
@@ -110,24 +121,24 @@
             this.rightVictor = new System.Windows.Forms.TextBox();
             this.leftVictor = new System.Windows.Forms.TextBox();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.matchTime = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
             this.elevationBox = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.collectorAngle = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
             this.ConsoleStatus = new System.Windows.Forms.TabPage();
             this.clearConsole = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.netConsoleDisplay = new System.Windows.Forms.RichTextBox();
             this.Status = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label46 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.label17 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.slowSpeed = new System.Windows.Forms.RadioButton();
@@ -141,10 +152,6 @@
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
             this.fileSaveTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.label46 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -154,15 +161,16 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.General2.SuspendLayout();
+            this.panel17.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel12.SuspendLayout();
             this.ConsoleStatus.SuspendLayout();
             this.Status.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel16.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -254,7 +262,7 @@
             // 
             this.gyroAngle.Location = new System.Drawing.Point(84, 199);
             this.gyroAngle.Name = "gyroAngle";
-            this.gyroAngle.Size = new System.Drawing.Size(64, 20);
+            this.gyroAngle.Size = new System.Drawing.Size(91, 20);
             this.gyroAngle.TabIndex = 16;
             // 
             // packetCounter
@@ -705,6 +713,7 @@
             // 
             // General2
             // 
+            this.General2.Controls.Add(this.panel17);
             this.General2.Controls.Add(this.panel15);
             this.General2.Controls.Add(this.panel14);
             this.General2.Controls.Add(this.panel13);
@@ -715,6 +724,103 @@
             this.General2.TabIndex = 3;
             this.General2.Text = "General2";
             this.General2.UseVisualStyleBackColor = true;
+            // 
+            // panel17
+            // 
+            this.panel17.Controls.Add(this.setSpeed);
+            this.panel17.Controls.Add(this.label51);
+            this.panel17.Controls.Add(this.ultrasonic);
+            this.panel17.Controls.Add(this.transducer);
+            this.panel17.Controls.Add(this.collectorAmps);
+            this.panel17.Controls.Add(this.label49);
+            this.panel17.Controls.Add(this.label48);
+            this.panel17.Controls.Add(this.label47);
+            this.panel17.Controls.Add(this.label36);
+            this.panel17.Controls.Add(this.collectorVolts);
+            this.panel17.Location = new System.Drawing.Point(124, 64);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(268, 100);
+            this.panel17.TabIndex = 34;
+            // 
+            // setSpeed
+            // 
+            this.setSpeed.Location = new System.Drawing.Point(166, 17);
+            this.setSpeed.Name = "setSpeed";
+            this.setSpeed.Size = new System.Drawing.Size(62, 20);
+            this.setSpeed.TabIndex = 37;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(163, 0);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(101, 13);
+            this.label51.TabIndex = 36;
+            this.label51.Text = "Collector Set Speed";
+            // 
+            // ultrasonic
+            // 
+            this.ultrasonic.Location = new System.Drawing.Point(84, 73);
+            this.ultrasonic.Name = "ultrasonic";
+            this.ultrasonic.Size = new System.Drawing.Size(65, 20);
+            this.ultrasonic.TabIndex = 35;
+            // 
+            // transducer
+            // 
+            this.transducer.Location = new System.Drawing.Point(6, 73);
+            this.transducer.Name = "transducer";
+            this.transducer.Size = new System.Drawing.Size(61, 20);
+            this.transducer.TabIndex = 34;
+            // 
+            // collectorAmps
+            // 
+            this.collectorAmps.Location = new System.Drawing.Point(83, 16);
+            this.collectorAmps.Name = "collectorAmps";
+            this.collectorAmps.Size = new System.Drawing.Size(66, 20);
+            this.collectorAmps.TabIndex = 33;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(80, 56);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(54, 13);
+            this.label49.TabIndex = 32;
+            this.label49.Text = "Ultrasonic";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(6, 56);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(66, 13);
+            this.label48.TabIndex = 31;
+            this.label48.Text = "Transducers";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(80, 0);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(77, 13);
+            this.label47.TabIndex = 30;
+            this.label47.Text = "Collector Amps";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(0, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(74, 13);
+            this.label36.TabIndex = 28;
+            this.label36.Text = "Collector Volts";
+            // 
+            // collectorVolts
+            // 
+            this.collectorVolts.Location = new System.Drawing.Point(6, 16);
+            this.collectorVolts.Name = "collectorVolts";
+            this.collectorVolts.Size = new System.Drawing.Size(61, 20);
+            this.collectorVolts.TabIndex = 29;
             // 
             // panel15
             // 
@@ -893,14 +999,30 @@
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.matchTime);
+            this.panel12.Controls.Add(this.label50);
             this.panel12.Controls.Add(this.elevationBox);
             this.panel12.Controls.Add(this.label40);
-            this.panel12.Controls.Add(this.collectorAngle);
-            this.panel12.Controls.Add(this.label36);
             this.panel12.Location = new System.Drawing.Point(3, 7);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(183, 43);
             this.panel12.TabIndex = 30;
+            // 
+            // matchTime
+            // 
+            this.matchTime.Location = new System.Drawing.Point(4, 15);
+            this.matchTime.Name = "matchTime";
+            this.matchTime.Size = new System.Drawing.Size(63, 20);
+            this.matchTime.TabIndex = 33;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(1, 0);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(63, 13);
+            this.label50.TabIndex = 32;
+            this.label50.Text = "Match Time";
             // 
             // elevationBox
             // 
@@ -918,22 +1040,6 @@
             this.label40.TabIndex = 30;
             this.label40.Text = "Elevation";
             // 
-            // collectorAngle
-            // 
-            this.collectorAngle.Location = new System.Drawing.Point(6, 16);
-            this.collectorAngle.Name = "collectorAngle";
-            this.collectorAngle.Size = new System.Drawing.Size(61, 20);
-            this.collectorAngle.TabIndex = 29;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(3, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(78, 13);
-            this.label36.TabIndex = 28;
-            this.label36.Text = "Collector Angle";
-            // 
             // ConsoleStatus
             // 
             this.ConsoleStatus.Controls.Add(this.clearConsole);
@@ -949,9 +1055,9 @@
             // 
             // clearConsole
             // 
-            this.clearConsole.Location = new System.Drawing.Point(443, 20);
+            this.clearConsole.Location = new System.Drawing.Point(481, 18);
             this.clearConsole.Name = "clearConsole";
-            this.clearConsole.Size = new System.Drawing.Size(75, 23);
+            this.clearConsole.Size = new System.Drawing.Size(48, 23);
             this.clearConsole.TabIndex = 3;
             this.clearConsole.Text = "Clear Screen";
             this.clearConsole.UseVisualStyleBackColor = true;
@@ -971,19 +1077,15 @@
             this.netConsoleDisplay.Location = new System.Drawing.Point(16, 20);
             this.netConsoleDisplay.Name = "netConsoleDisplay";
             this.netConsoleDisplay.ReadOnly = true;
-            this.netConsoleDisplay.Size = new System.Drawing.Size(420, 207);
+            this.netConsoleDisplay.Size = new System.Drawing.Size(459, 207);
             this.netConsoleDisplay.TabIndex = 1;
             this.netConsoleDisplay.Text = "";
             // 
             // Status
             // 
             this.Status.Controls.Add(this.panel16);
-            this.Status.Controls.Add(this.label15);
-            this.Status.Controls.Add(this.label14);
             this.Status.Controls.Add(this.label1);
             this.Status.Controls.Add(this.panel8);
-            this.Status.Controls.Add(this.panel6);
-            this.Status.Controls.Add(this.panel5);
             this.Status.Controls.Add(this.panel2);
             this.Status.Controls.Add(this.panel1);
             this.Status.Location = new System.Drawing.Point(4, 22);
@@ -993,23 +1095,48 @@
             this.Status.Text = "Status";
             this.Status.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // panel16
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(275, 7);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 13);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Buttons";
+            this.panel16.Controls.Add(this.radioButton2);
+            this.panel16.Controls.Add(this.radioButton1);
+            this.panel16.Controls.Add(this.label46);
+            this.panel16.Location = new System.Drawing.Point(96, 56);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(200, 100);
+            this.panel16.TabIndex = 19;
             // 
-            // label14
+            // radioButton2
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(125, 7);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(67, 13);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Joystick Axis";
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(8, 52);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(37, 17);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.Text = "no";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(8, 29);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(86, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Yes (Default)";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(5, 8);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(122, 13);
+            this.label46.TabIndex = 0;
+            this.label46.Text = "Save to backup log file?";
             // 
             // label1
             // 
@@ -1063,21 +1190,6 @@
             this.label17.Size = new System.Drawing.Size(107, 13);
             this.label17.TabIndex = 0;
             this.label17.Text = "When Dissconected:";
-            // 
-            // panel6
-            // 
-            this.panel6.Location = new System.Drawing.Point(215, 23);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(165, 100);
-            this.panel6.TabIndex = 14;
-            // 
-            // panel5
-            // 
-            this.panel5.Location = new System.Drawing.Point(108, 23);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(101, 101);
-            this.panel5.TabIndex = 13;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // panel2
             // 
@@ -1208,49 +1320,6 @@
             this.fileSaveTimer.Interval = 250;
             this.fileSaveTimer.Tick += new System.EventHandler(this.fileSaveTimer_Tick);
             // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.radioButton2);
-            this.panel16.Controls.Add(this.radioButton1);
-            this.panel16.Controls.Add(this.label46);
-            this.panel16.Location = new System.Drawing.Point(170, 129);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(200, 100);
-            this.panel16.TabIndex = 19;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(5, 8);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(122, 13);
-            this.label46.TabIndex = 0;
-            this.label46.Text = "Save to backup log file?";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(8, 29);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(86, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Yes (Default)";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(8, 52);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(37, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "no";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1261,8 +1330,10 @@
             this.Controls.Add(this.Pause);
             this.Controls.Add(this.Listen);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "DataListener2014";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.tabControl1.ResumeLayout(false);
             this.General.ResumeLayout(false);
             this.General.PerformLayout();
@@ -1279,6 +1350,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.General2.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel14.ResumeLayout(false);
@@ -1291,12 +1364,12 @@
             this.ConsoleStatus.PerformLayout();
             this.Status.ResumeLayout(false);
             this.Status.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1336,15 +1409,11 @@
         public System.Windows.Forms.RichTextBox disconnectionMessages;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RichTextBox netConsoleDisplay;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton slowSpeed;
@@ -1390,7 +1459,7 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.TextBox highSwitch;
-        private System.Windows.Forms.TextBox collectorAngle;
+        private System.Windows.Forms.TextBox collectorVolts;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel14;
@@ -1419,6 +1488,17 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.TextBox ultrasonic;
+        private System.Windows.Forms.TextBox transducer;
+        private System.Windows.Forms.TextBox collectorAmps;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.TextBox matchTime;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.TextBox setSpeed;
+        private System.Windows.Forms.Label label51;
     }
 }
 

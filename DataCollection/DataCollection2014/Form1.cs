@@ -46,7 +46,10 @@ namespace DataCollection2014
         public volatile bool saveToDisk = true;
         public Form1()
         {
+            this.MaximizeBox = false;
             InitializeComponent();
+            dataSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            consoleSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             consoleSocket.Bind(consoleIPEndPoint);
             dataSocket.Bind(dataIPEndPoint);
             ListenTimer.Enabled = true;
@@ -71,6 +74,7 @@ namespace DataCollection2014
             while (true)
             {
                 recv = dataSocket.ReceiveFrom(dataByte, ref dataEndpoint);
+
                 dataString = Encoding.ASCII.GetString(dataByte, 0, recv);
                 dataQueue.Enqueue(dataString + "\n");
             }
@@ -137,7 +141,7 @@ namespace DataCollection2014
                         rightBackAmps.Text = parser[18];
                         rightBackEncoder.Text = parser[19];
                         shifterStatus.Text = parser[20];
-                        collectorAngle.Text = parser[21];
+                        collectorVolts.Text = parser[21];
                         highSwitch.Text = parser[22];
                         lowSwitch.Text = parser[23];
                         elevationBox.Text = parser[24];
@@ -148,6 +152,11 @@ namespace DataCollection2014
                         downTime.Text = parser[29];
                         percentCPU.Text = parser[30];
                         talonSpeed.Text = parser[31];
+                        collectorAmps.Text = parser[32];
+                        transducer.Text = parser[33];
+                        ultrasonic.Text = parser[34];
+                        matchTime.Text = parser[35];
+                        setSpeed.Text = parser[36];
                         panel1.BackColor = Color.Green;
                     }
                     catch (System.IndexOutOfRangeException e){
@@ -179,15 +188,6 @@ namespace DataCollection2014
             }
             dataQueue.Clear();
             consoleQueue.Clear();
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle rect = new Rectangle(0, 0, 100, 100);
-            Rectangle thing = new Rectangle(45, 45, 10, 10);
-            Pen lol = new Pen(Color.Black);
-            e.Graphics.DrawEllipse(lol, rect);
-            e.Graphics.FillRectangle(Brushes.Black, thing);
         }
 
         private void Pause_Click(object sender, EventArgs e)
@@ -251,7 +251,7 @@ namespace DataCollection2014
             rightBackAmps.Text = null;
             rightBackEncoder.Text = null;
             shifterStatus.Text = null;
-            collectorAngle.Text = null;
+            collectorVolts.Text = null;
             highSwitch.Text = null;
             lowSwitch.Text = null;
             elevationBox.Text = null;
@@ -261,6 +261,12 @@ namespace DataCollection2014
             loadTime.Text = null;
             downTime.Text = null;
             percentCPU.Text = null;
+            talonSpeed.Text = null;
+            collectorAmps.Text = null;
+            transducer.Text = null;
+            ultrasonic.Text = null;
+            matchTime.Text = null;
+            setSpeed.Text = null;
             //
         }
 
@@ -320,6 +326,14 @@ namespace DataCollection2014
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             saveToDisk = false;
+        }
+
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            MessageBox.Show("There is no closing of the Application");
+            e.Cancel = true;
+            this.Show();
+            //this.WindowState = FormWindowState.Minimized;
         }
     }
 }

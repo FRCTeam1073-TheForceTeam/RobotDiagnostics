@@ -13,7 +13,7 @@ void angleUp::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void angleUp::Execute() {
-	Robot::collector->AngleUp();
+	Robot::collector->SetAngleUp();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool angleUp::IsFinished() {

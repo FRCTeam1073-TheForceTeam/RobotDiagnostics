@@ -17,8 +17,6 @@ namespace DataCollection2014
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            Application.ExitThread();
-            Application.Exit();
         }
     }
 }
