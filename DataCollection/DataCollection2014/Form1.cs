@@ -44,6 +44,7 @@ namespace DataCollection2014
         public int saveNumber = 0;
         public StringBuilder failSafe = new StringBuilder();
         public volatile bool saveToDisk = true;
+        public string appPath;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -55,6 +56,7 @@ namespace DataCollection2014
             ListenTimer.Enabled = true;
             ListenTimer.Interval = 100;
             ListenTimer.Stop();
+            appPath = Path.GetDirectoryName(Application.ExecutablePath);
         }
 
         public void StartListenerThreads()
@@ -211,6 +213,7 @@ namespace DataCollection2014
         {
             StartListenerThreads();
             ListenTimer.Start();
+            fileSaveTimer.Enabled = true;
             fileSaveTimer.Start();
             saveNumber++;
         }
@@ -219,8 +222,8 @@ namespace DataCollection2014
         {
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            File.WriteAllText("C:\\" + path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
-            File.WriteAllText("C:\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
+            File.WriteAllText(appPath + "\\"+ path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
+            File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
             matchNumber++;
             if(dataThread!=null)dataThread.Suspend();
             if(consoleThread!=null)consoleThread.Suspend();
@@ -289,8 +292,8 @@ namespace DataCollection2014
         {
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            File.WriteAllText("C:\\" + path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
-            File.WriteAllText("C:\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
+            File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
+            File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
             matchNumber++;
         }
 
@@ -308,7 +311,7 @@ namespace DataCollection2014
         {
             if (saveToDisk)
             {
-                File.AppendAllText("C:\\tmp" + saveNumber + ".csv", failSafe.ToString());
+                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", failSafe.ToString());
                 failSafe.Clear();
             }
         }

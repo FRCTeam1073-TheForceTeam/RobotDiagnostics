@@ -1316,7 +1316,6 @@
             // 
             // fileSaveTimer
             // 
-            this.fileSaveTimer.Enabled = true;
             this.fileSaveTimer.Interval = 250;
             this.fileSaveTimer.Tick += new System.EventHandler(this.fileSaveTimer_Tick);
             // 
