@@ -20,13 +20,12 @@ public:
 	static RobotDrive* driveTrainRobotDrive;
 	static SmartGyro* driveTrainDriveGyro;
 	static DoubleSolenoid* shifterSystemShifterSolenoid;
-	static Solenoid* launcherLauncherSolenoid;
+	static Solenoid* launcherLauncherSolenoid1;
+	static Solenoid* launcherLauncherSolenoid2;
 	static StallableAnalogEncoder* dataSendingBatteryCurrent;
 	static StallableAnalogEncoder* dataSendingTransducers;
 	static StallableAnalogEncoder* dataSendingUltrasonic;
 	static Compressor* compressionCompressor;
-	static DigitalInput* collectorHighLimit;
-	static DigitalInput* collectorLowLimit;
 	static StallableAnalogEncoder* collectorElevationEncoder;
 	static SpeedController* collectorLeftCollect;
 	static SpeedController* collectorRightCollect;

@@ -32,8 +32,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.label33 = new System.Windows.Forms.Label();
-            this.launcherSolenoid = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.pressureValue = new System.Windows.Forms.TextBox();
             this.shifterStatus = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -89,6 +89,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
             this.General2 = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.launcherSolenoid2 = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.launcherSolenoid1 = new System.Windows.Forms.TextBox();
             this.panel17 = new System.Windows.Forms.Panel();
             this.setSpeed = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
@@ -161,6 +166,7 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.General2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -208,36 +214,36 @@
             // 
             // panel11
             // 
-            this.panel11.Controls.Add(this.label33);
-            this.panel11.Controls.Add(this.launcherSolenoid);
+            this.panel11.Controls.Add(this.label52);
+            this.panel11.Controls.Add(this.pressureValue);
             this.panel11.Controls.Add(this.shifterStatus);
             this.panel11.Controls.Add(this.label35);
             this.panel11.Location = new System.Drawing.Point(370, 112);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(159, 115);
+            this.panel11.Size = new System.Drawing.Size(159, 121);
             this.panel11.TabIndex = 26;
             // 
-            // label33
+            // label52
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(3, 3);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(96, 13);
-            this.label33.TabIndex = 18;
-            this.label33.Text = "Launcher Solenoid";
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(4, 1);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(77, 13);
+            this.label52.TabIndex = 28;
+            this.label52.Text = "Pressure value";
             // 
-            // launcherSolenoid
+            // pressureValue
             // 
-            this.launcherSolenoid.Location = new System.Drawing.Point(6, 19);
-            this.launcherSolenoid.Name = "launcherSolenoid";
-            this.launcherSolenoid.Size = new System.Drawing.Size(54, 20);
-            this.launcherSolenoid.TabIndex = 20;
+            this.pressureValue.Location = new System.Drawing.Point(4, 19);
+            this.pressureValue.Name = "pressureValue";
+            this.pressureValue.Size = new System.Drawing.Size(43, 20);
+            this.pressureValue.TabIndex = 27;
             // 
             // shifterStatus
             // 
             this.shifterStatus.Location = new System.Drawing.Point(4, 58);
             this.shifterStatus.Name = "shifterStatus";
-            this.shifterStatus.Size = new System.Drawing.Size(78, 20);
+            this.shifterStatus.Size = new System.Drawing.Size(56, 20);
             this.shifterStatus.TabIndex = 24;
             // 
             // label35
@@ -690,6 +696,7 @@
             this.label4.Size = new System.Drawing.Size(18, 13);
             this.label4.TabIndex = 7;
             this.label4.Text = "ID";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -713,6 +720,7 @@
             // 
             // General2
             // 
+            this.General2.Controls.Add(this.panel5);
             this.General2.Controls.Add(this.panel17);
             this.General2.Controls.Add(this.panel15);
             this.General2.Controls.Add(this.panel14);
@@ -724,6 +732,49 @@
             this.General2.TabIndex = 3;
             this.General2.Text = "General2";
             this.General2.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label15);
+            this.panel5.Controls.Add(this.launcherSolenoid2);
+            this.panel5.Controls.Add(this.label33);
+            this.panel5.Controls.Add(this.launcherSolenoid1);
+            this.panel5.Location = new System.Drawing.Point(399, 76);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(133, 154);
+            this.panel5.TabIndex = 35;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 44);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(105, 13);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "Launcher Solenoid 2";
+            // 
+            // launcherSolenoid2
+            // 
+            this.launcherSolenoid2.Location = new System.Drawing.Point(6, 60);
+            this.launcherSolenoid2.Name = "launcherSolenoid2";
+            this.launcherSolenoid2.Size = new System.Drawing.Size(54, 20);
+            this.launcherSolenoid2.TabIndex = 24;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(3, 4);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(105, 13);
+            this.label33.TabIndex = 21;
+            this.label33.Text = "Launcher Solenoid 1";
+            // 
+            // launcherSolenoid1
+            // 
+            this.launcherSolenoid1.Location = new System.Drawing.Point(6, 20);
+            this.launcherSolenoid1.Name = "launcherSolenoid1";
+            this.launcherSolenoid1.Size = new System.Drawing.Size(54, 20);
+            this.launcherSolenoid1.TabIndex = 22;
             // 
             // panel17
             // 
@@ -899,7 +950,7 @@
             this.panel14.Controls.Add(this.lowSwitch);
             this.panel14.Controls.Add(this.label34);
             this.panel14.Controls.Add(this.highSwitch);
-            this.panel14.Location = new System.Drawing.Point(209, 7);
+            this.panel14.Location = new System.Drawing.Point(207, 6);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(182, 52);
             this.panel14.TabIndex = 32;
@@ -1349,6 +1400,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.General2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
             this.panel15.ResumeLayout(false);
@@ -1451,8 +1504,6 @@
         private System.Windows.Forms.TextBox zAxis;
         private System.Windows.Forms.TextBox xAxis;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox launcherSolenoid;
-        private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.TextBox shifterStatus;
         private System.Windows.Forms.Label label35;
@@ -1498,6 +1549,13 @@
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.TextBox setSpeed;
         private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox launcherSolenoid2;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox launcherSolenoid1;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox pressureValue;
     }
 }
 

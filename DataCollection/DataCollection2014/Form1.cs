@@ -45,6 +45,7 @@ namespace DataCollection2014
         public StringBuilder failSafe = new StringBuilder();
         public volatile bool saveToDisk = true;
         public string appPath;
+        public volatile bool secretClose = false;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -127,38 +128,39 @@ namespace DataCollection2014
                         yAxis.Text = parser[2];
                         zAxis.Text = parser[3];
                         batteryAmps.Text = parser[4];
-                        launcherSolenoid.Text = parser[5];
-                        highSwitch.Text = parser[6];
-                        gyroAngle.Text = parser[7];
-                        leftFrontVolts.Text = parser[8];
-                        leftFrontAmps.Text = parser[9];
-                        leftFrontEncoder.Text = parser[10];
-                        rightFrontVolts.Text = parser[11];
-                        rightFrontAmps.Text = parser[12];
-                        rightFrontEncoder.Text = parser[13];
-                        leftBackVolts.Text = parser[14];
-                        leftBackAmps.Text = parser[15];
-                        leftBackEncoder.Text = parser[16];
-                        rightBackVolts.Text = parser[17];
-                        rightBackAmps.Text = parser[18];
-                        rightBackEncoder.Text = parser[19];
-                        shifterStatus.Text = parser[20];
-                        collectorVolts.Text = parser[21];
-                        highSwitch.Text = parser[22];
-                        lowSwitch.Text = parser[23];
-                        elevationBox.Text = parser[24];
-                        leftVictor.Text = parser[25];
-                        rightVictor.Text = parser[26];
-                        packetCounter.Text = parser[27];
-                        loadTime.Text = parser[28];
-                        downTime.Text = parser[29];
-                        percentCPU.Text = parser[30];
-                        talonSpeed.Text = parser[31];
-                        collectorAmps.Text = parser[32];
-                        transducer.Text = parser[33];
-                        ultrasonic.Text = parser[34];
-                        matchTime.Text = parser[35];
-                        setSpeed.Text = parser[36];
+                        launcherSolenoid1.Text = parser[5];
+                        launcherSolenoid2.Text = parser[6];
+                        pressureValue.Text = parser[7];
+                        gyroAngle.Text = parser[8];
+                        leftFrontVolts.Text = parser[9];
+                        leftFrontAmps.Text = parser[10];
+                        leftFrontEncoder.Text = parser[11];
+                        rightFrontVolts.Text = parser[12];
+                        rightFrontAmps.Text = parser[13];
+                        rightFrontEncoder.Text = parser[14];
+                        leftBackVolts.Text = parser[15];
+                        leftBackAmps.Text = parser[16];
+                        leftBackEncoder.Text = parser[17];
+                        rightBackVolts.Text = parser[18];
+                        rightBackAmps.Text = parser[19];
+                        rightBackEncoder.Text = parser[20];
+                        shifterStatus.Text = parser[21];
+                        collectorVolts.Text = parser[22];
+                        highSwitch.Text = "not in use";
+                        lowSwitch.Text = "not in use";
+                        elevationBox.Text = parser[23];
+                        leftVictor.Text = parser[24];
+                        rightVictor.Text = parser[25];
+                        packetCounter.Text = parser[26];
+                        loadTime.Text = parser[27];
+                        downTime.Text = parser[28];
+                        percentCPU.Text = parser[29];
+                        talonSpeed.Text = parser[30];
+                        collectorAmps.Text = parser[31];
+                        transducer.Text = parser[32];
+                        ultrasonic.Text = parser[33];
+                        matchTime.Text = parser[34];
+                        setSpeed.Text = parser[35];
                         panel1.BackColor = Color.Green;
                     }
                     catch (System.IndexOutOfRangeException e){
@@ -238,7 +240,8 @@ namespace DataCollection2014
             yAxis.Text = null;
             zAxis.Text = null;
             batteryAmps.Text = null;
-            launcherSolenoid.Text = null;
+            launcherSolenoid1.Text = null;
+            launcherSolenoid2.Text = null;
             highSwitch.Text = null;
             gyroAngle.Text = null;
             leftFrontVolts.Text = null;
@@ -333,10 +336,19 @@ namespace DataCollection2014
 
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
         {
-            MessageBox.Show("There is no closing of the Application");
-            e.Cancel = true;
-            this.Show();
+            if (!secretClose)
+            {
+                MessageBox.Show("There is no closing of the Application");
+                e.Cancel = true;
+                this.Show();
+            }
             //this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            secretClose = true;
+            this.Close();
         }
     }
 }
