@@ -13,7 +13,6 @@ DoubleSolenoid* RobotMap::shifterSystemShifterSolenoid = NULL;
 Solenoid* RobotMap::launcherLauncherSolenoid1 = NULL;
 Solenoid* RobotMap::launcherLauncherSolenoid2 = NULL;
 StallableAnalogEncoder* RobotMap::dataSendingBatteryCurrent = NULL;
-StallableAnalogEncoder* RobotMap::dataSendingTransducers = NULL;
 StallableAnalogEncoder* RobotMap::dataSendingUltrasonic = NULL;
 Compressor* RobotMap::compressionCompressor = NULL;
 StallableAnalogEncoder* RobotMap::collectorElevationEncoder = NULL;
@@ -56,11 +55,8 @@ void RobotMap::init() {
 	launcherLauncherSolenoid2 = new Solenoid(1, 4);
 	lw->AddActuator("Launcher", "LauncherSolenoid2", launcherLauncherSolenoid2);
 	
-	dataSendingBatteryCurrent = new StallableAnalogEncoder(1, 2);
+	dataSendingBatteryCurrent = new StallableAnalogEncoder(1, 5);
 	lw->AddSensor("DataSending", "BatteryCurrent", dataSendingBatteryCurrent);
-	
-	dataSendingTransducers = new StallableAnalogEncoder(1, 3);
-	lw->AddSensor("DataSending", "Transducers", dataSendingTransducers);
 	
 	dataSendingUltrasonic = new StallableAnalogEncoder(1, 4);
 	lw->AddSensor("DataSending", "Ultrasonic", dataSendingUltrasonic);
@@ -68,7 +64,7 @@ void RobotMap::init() {
 	compressionCompressor = new Compressor(1, 1, 1, 1);
 	
 	
-	collectorElevationEncoder = new StallableAnalogEncoder(1, 5);
+	collectorElevationEncoder = new StallableAnalogEncoder(1, 2);
 	lw->AddSensor("Collector", "ElevationEncoder", collectorElevationEncoder);
 	
 	collectorLeftCollect = new Talon(1, 2);

@@ -155,12 +155,12 @@ namespace DataCollection2014
                         loadTime.Text = parser[27];
                         downTime.Text = parser[28];
                         percentCPU.Text = parser[29];
-                        talonSpeed.Text = parser[30];
-                        collectorAmps.Text = parser[31];
-                        transducer.Text = parser[32];
-                        ultrasonic.Text = parser[33];
-                        matchTime.Text = parser[34];
-                        setSpeed.Text = parser[35];
+                        collectorAmps.Text = parser[30];
+                        transducer1.Text = parser[31];
+                        ultrasonic.Text = parser[32];
+                        matchTime.Text = parser[33];
+                        setSpeed.Text = parser[34];
+                        transducer2.Text = parser[35];
                         panel1.BackColor = Color.Green;
                     }
                     catch (System.IndexOutOfRangeException e){
@@ -267,9 +267,8 @@ namespace DataCollection2014
             loadTime.Text = null;
             downTime.Text = null;
             percentCPU.Text = null;
-            talonSpeed.Text = null;
             collectorAmps.Text = null;
-            transducer.Text = null;
+            transducer1.Text = null;
             ultrasonic.Text = null;
             matchTime.Text = null;
             setSpeed.Text = null;

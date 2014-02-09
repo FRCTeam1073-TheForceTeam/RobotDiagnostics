@@ -95,10 +95,12 @@
             this.label33 = new System.Windows.Forms.Label();
             this.launcherSolenoid1 = new System.Windows.Forms.TextBox();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.transducer2 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.setSpeed = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.ultrasonic = new System.Windows.Forms.TextBox();
-            this.transducer = new System.Windows.Forms.TextBox();
+            this.transducer1 = new System.Windows.Forms.TextBox();
             this.collectorAmps = new System.Windows.Forms.TextBox();
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
@@ -119,8 +121,6 @@
             this.label34 = new System.Windows.Forms.Label();
             this.highSwitch = new System.Windows.Forms.TextBox();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.talonSpeed = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.rightVictor = new System.Windows.Forms.TextBox();
@@ -778,10 +778,12 @@
             // 
             // panel17
             // 
+            this.panel17.Controls.Add(this.transducer2);
+            this.panel17.Controls.Add(this.label14);
             this.panel17.Controls.Add(this.setSpeed);
             this.panel17.Controls.Add(this.label51);
             this.panel17.Controls.Add(this.ultrasonic);
-            this.panel17.Controls.Add(this.transducer);
+            this.panel17.Controls.Add(this.transducer1);
             this.panel17.Controls.Add(this.collectorAmps);
             this.panel17.Controls.Add(this.label49);
             this.panel17.Controls.Add(this.label48);
@@ -792,6 +794,22 @@
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(268, 100);
             this.panel17.TabIndex = 34;
+            // 
+            // transducer2
+            // 
+            this.transducer2.Location = new System.Drawing.Point(161, 73);
+            this.transducer2.Name = "transducer2";
+            this.transducer2.Size = new System.Drawing.Size(61, 20);
+            this.transducer2.TabIndex = 39;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(161, 56);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(67, 13);
+            this.label14.TabIndex = 38;
+            this.label14.Text = "Transducer2";
             // 
             // setSpeed
             // 
@@ -816,12 +834,12 @@
             this.ultrasonic.Size = new System.Drawing.Size(65, 20);
             this.ultrasonic.TabIndex = 35;
             // 
-            // transducer
+            // transducer1
             // 
-            this.transducer.Location = new System.Drawing.Point(6, 73);
-            this.transducer.Name = "transducer";
-            this.transducer.Size = new System.Drawing.Size(61, 20);
-            this.transducer.TabIndex = 34;
+            this.transducer1.Location = new System.Drawing.Point(6, 73);
+            this.transducer1.Name = "transducer1";
+            this.transducer1.Size = new System.Drawing.Size(61, 20);
+            this.transducer1.TabIndex = 34;
             // 
             // collectorAmps
             // 
@@ -844,9 +862,9 @@
             this.label48.AutoSize = true;
             this.label48.Location = new System.Drawing.Point(6, 56);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(66, 13);
+            this.label48.Size = new System.Drawing.Size(67, 13);
             this.label48.TabIndex = 31;
-            this.label48.Text = "Transducers";
+            this.label48.Text = "Transducer1";
             // 
             // label47
             // 
@@ -989,32 +1007,14 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.talonSpeed);
-            this.panel13.Controls.Add(this.label45);
             this.panel13.Controls.Add(this.label39);
             this.panel13.Controls.Add(this.label38);
             this.panel13.Controls.Add(this.rightVictor);
             this.panel13.Controls.Add(this.leftVictor);
             this.panel13.Location = new System.Drawing.Point(403, 7);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(136, 62);
+            this.panel13.Size = new System.Drawing.Size(136, 43);
             this.panel13.TabIndex = 31;
-            // 
-            // talonSpeed
-            // 
-            this.talonSpeed.Location = new System.Drawing.Point(71, 39);
-            this.talonSpeed.Name = "talonSpeed";
-            this.talonSpeed.Size = new System.Drawing.Size(58, 20);
-            this.talonSpeed.TabIndex = 5;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(-3, 45);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(68, 13);
-            this.label45.TabIndex = 4;
-            this.label45.Text = "Talon Speed";
             // 
             // label39
             // 
@@ -1530,8 +1530,6 @@
         private System.Windows.Forms.TextBox downTime;
         private System.Windows.Forms.TextBox loadTime;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox talonSpeed;
-        private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Timer fileSaveTimer;
         private System.Windows.Forms.Button clearConsole;
         private System.Windows.Forms.Panel panel16;
@@ -1540,7 +1538,7 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.TextBox ultrasonic;
-        private System.Windows.Forms.TextBox transducer;
+        private System.Windows.Forms.TextBox transducer1;
         private System.Windows.Forms.TextBox collectorAmps;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label48;
@@ -1556,6 +1554,8 @@
         private System.Windows.Forms.TextBox launcherSolenoid1;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.TextBox pressureValue;
+        private System.Windows.Forms.TextBox transducer2;
+        private System.Windows.Forms.Label label14;
     }
 }
 
