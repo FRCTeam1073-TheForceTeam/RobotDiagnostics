@@ -46,6 +46,8 @@ namespace DataCollection2014
         public volatile bool saveToDisk = true;
         public string appPath;
         public volatile bool secretClose = false;
+        public volatile bool ignoringInput = false;
+        public int parseNumber = 0;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -58,6 +60,11 @@ namespace DataCollection2014
             ListenTimer.Interval = 100;
             ListenTimer.Stop();
             appPath = Path.GetDirectoryName(Application.ExecutablePath);
+            StartListenerThreads();
+            ListenTimer.Start();
+            fileSaveTimer.Enabled = true;
+            fileSaveTimer.Start();
+            saveNumber++;
         }
 
         public void StartListenerThreads()
@@ -123,48 +130,66 @@ namespace DataCollection2014
                             failSafe.Append(parsed);
                         }
                         parser = parsed.Split(delim);
-                        batteryVolts.Text = parser[0];
-                        xAxis.Text = parser[1];
-                        yAxis.Text = parser[2];
-                        zAxis.Text = parser[3];
-                        batteryAmps.Text = parser[4];
-                        launcherSolenoid1.Text = parser[5];
-                        launcherSolenoid2.Text = parser[6];
-                        pressureValue.Text = parser[7];
-                        gyroAngle.Text = parser[8];
-                        leftFrontVolts.Text = parser[9];
-                        leftFrontAmps.Text = parser[10];
-                        leftFrontEncoder.Text = parser[11];
-                        rightFrontVolts.Text = parser[12];
-                        rightFrontAmps.Text = parser[13];
-                        rightFrontEncoder.Text = parser[14];
-                        leftBackVolts.Text = parser[15];
-                        leftBackAmps.Text = parser[16];
-                        leftBackEncoder.Text = parser[17];
-                        rightBackVolts.Text = parser[18];
-                        rightBackAmps.Text = parser[19];
-                        rightBackEncoder.Text = parser[20];
-                        shifterStatus.Text = parser[21];
-                        collectorVolts.Text = parser[22];
-                        highSwitch.Text = "not in use";
-                        lowSwitch.Text = "not in use";
-                        elevationBox.Text = parser[23];
-                        leftVictor.Text = parser[24];
-                        rightVictor.Text = parser[25];
-                        packetCounter.Text = parser[26];
-                        loadTime.Text = parser[27];
-                        downTime.Text = parser[28];
-                        percentCPU.Text = parser[29];
-                        collectorAmps.Text = parser[30];
-                        transducer1.Text = parser[31];
-                        ultrasonic.Text = parser[32];
-                        matchTime.Text = parser[33];
-                        setSpeed.Text = parser[34];
-                        transducer2.Text = parser[35];
+                        batteryVolts.Text = parser[parseNumber++];
+                        batteryAmps.Text = parser[parseNumber++];
+                        xAxis.Text = parser[parseNumber++];
+                        yAxis.Text = parser[parseNumber++];
+                        zAxis.Text = parser[parseNumber++];
+                        operatorX.Text = parser[parseNumber++];
+                        operatorY.Text = parser[parseNumber++];
+                        throttle.Text = parser[parseNumber++];
+                        leftFrontSpeed.Text = parser[parseNumber++];
+                        leftFrontVolts.Text = parser[parseNumber++];
+                        leftFrontAmps.Text = parser[parseNumber++];
+                        leftFrontEncoder.Text = parser[parseNumber++];
+                        leftFrontInVolts.Text = parser[parseNumber++];
+                        leftFrontTemp.Text = parser[parseNumber++];
+                        rightFrontSpeed.Text = parser[parseNumber++];
+                        rightFrontVolts.Text = parser[parseNumber++];
+                        rightFrontAmps.Text = parser[parseNumber++];
+                        rightFrontEncoder.Text = parser[parseNumber++];
+                        rightFrontInVolts.Text = parser[parseNumber++];
+                        rightFrontTemp.Text = parser[parseNumber++];
+                        leftBackSpeed.Text = parser[parseNumber++];
+                        leftBackVolts.Text = parser[parseNumber++];
+                        leftBackAmps.Text = parser[parseNumber++];
+                        leftBackEncoder.Text = parser[parseNumber++];
+                        leftBackInVolts.Text = parser[parseNumber++];
+                        leftBackTemp.Text = parser[parseNumber++];
+                        rightBackSpeed.Text = parser[parseNumber++];
+                        rightBackVolts.Text = parser[parseNumber++];
+                        rightBackAmps.Text = parser[parseNumber++];
+                        rightBackEncoder.Text = parser[parseNumber++];
+                        rightBackInVolts.Text = parser[parseNumber++];
+                        rightBackTemp.Text = parser[parseNumber++];
+                        collectorInputSpeed.Text = parser[parseNumber++];
+                        collecterOutputVoltage.Text = parser[parseNumber++];
+                        collectorOutputCurrent.Text = parser[parseNumber++];
+                        collectorInputVoltage.Text = parser[parseNumber++];
+                        collectorTemp.Text = parser[parseNumber++];
+                        collectorFrontLimit.Text = parser[parseNumber++];
+                        collectorReverseLimit.Text = parser[parseNumber++];
+                        launcherSolenoid1.Text = parser[parseNumber++];
+                        launcherSolenoid2.Text = parser[parseNumber++];
+                        shifterStatus.Text = parser[parseNumber++];
+                        pressureValue.Text = parser[parseNumber++];
+                        ultrasonic.Text = parser[parseNumber++];
+                        gyroAngle.Text = parser[parseNumber++];
+                        elevationBox.Text = parser[parseNumber++];
+                        transducer1.Text = parser[parseNumber++];
+                        transducer2.Text = parser[parseNumber++];
+                        leftVictor.Text = parser[parseNumber++];
+                        rightVictor.Text = parser[parseNumber++];
+                        packetCounter.Text = parser[parseNumber++];
+                        loadTime.Text = parser[parseNumber++];
+                        downTime.Text = parser[parseNumber++];
+                        percentCPU.Text = parser[parseNumber++];
+                        matchTime.Text = parser[parseNumber++];
                         panel1.BackColor = Color.Green;
                     }
                     catch (System.IndexOutOfRangeException e){
                     }
+                    parseNumber = 0;
                 }
             }
             if (consoleQueue.Count > 0)
@@ -178,7 +203,7 @@ namespace DataCollection2014
                 {
                     NoConnection = false;
                     String newNetConsole = s3.Substring(0, s3.Length - 2);
-                    if(!s3.Equals("\n"))netConsoleDisplay.AppendText(newNetConsole);
+                    if(!s3.Equals("\n")&&!ignoringInput)netConsoleDisplay.AppendText(newNetConsole);
                 }
             }
 
@@ -242,7 +267,6 @@ namespace DataCollection2014
             batteryAmps.Text = null;
             launcherSolenoid1.Text = null;
             launcherSolenoid2.Text = null;
-            highSwitch.Text = null;
             gyroAngle.Text = null;
             leftFrontVolts.Text = null;
             leftFrontAmps.Text = null;
@@ -257,9 +281,6 @@ namespace DataCollection2014
             rightBackAmps.Text = null;
             rightBackEncoder.Text = null;
             shifterStatus.Text = null;
-            collectorVolts.Text = null;
-            highSwitch.Text = null;
-            lowSwitch.Text = null;
             elevationBox.Text = null;
             leftVictor.Text = null;
             rightVictor.Text = null;
@@ -267,11 +288,9 @@ namespace DataCollection2014
             loadTime.Text = null;
             downTime.Text = null;
             percentCPU.Text = null;
-            collectorAmps.Text = null;
             transducer1.Text = null;
             ultrasonic.Text = null;
             matchTime.Text = null;
-            setSpeed.Text = null;
             //
         }
 
@@ -348,6 +367,12 @@ namespace DataCollection2014
         {
             secretClose = true;
             this.Close();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            //TODO make sure that this actually works
+            //ignoringInput = true;
         }
     }
 }
