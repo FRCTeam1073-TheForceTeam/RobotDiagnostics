@@ -182,7 +182,7 @@ namespace DataCollection2014
                         gyroAngle.Text = parser[parseNumber++];
                         elevationBox.Text = parser[parseNumber++];
                         transducer1.Text = parser[parseNumber++];
-                        transducer2.Text = parser[parseNumber++];
+                        //transducer2.Text = parser[parseNumber++];
                         leftVictor.Text = parser[parseNumber++];
                         rightVictor.Text = parser[parseNumber++];
                         packetCounter.Text = parser[parseNumber++];

@@ -36,7 +36,7 @@ void DataSending::SendTheData(){
 	Send(RobotMap::driveTrainGyro->GetAngle());
 	Send(RobotMap::elevatorElevationEncoder->GetVoltage());
 	Send(RobotMap::launcherLowPressureSwitch->GetVoltage());//transducer1
-	Send(RobotMap::launcherHighPressureSwitch->GetVoltage());//transducer2
+	//Send(RobotMap::launcherHighPressureSwitch->GetVoltage());//transducer2
 	Send(RobotMap::collectorLeftRoller->Get());//talon info
 	Send(RobotMap::collectorRightRoller->Get());
 	Send(count++);//number of packets
