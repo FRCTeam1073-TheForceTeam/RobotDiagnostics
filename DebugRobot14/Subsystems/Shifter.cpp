@@ -11,18 +11,6 @@ Shifter::Shifter() : Subsystem("Shifter") {
 void Shifter::InitDefaultCommand() {
 	doubleSolenoid->Set(DoubleSolenoid::kOff);
 }
-string Shifter::GetGearSetting(){
-	if(doubleSolenoid->Get()==DoubleSolenoid::kForward){
-		return "low";
-	}
-	if(doubleSolenoid->Get()==DoubleSolenoid::kReverse){
-		return "high";
-	}
-	if(doubleSolenoid->Get()==DoubleSolenoid::kOff){
-		return "off";
-	}
-	return 0;
-}
 void Shifter::Shift(){
 	bool changed=false;
 	if(doubleSolenoid->Get()==DoubleSolenoid::kOff){

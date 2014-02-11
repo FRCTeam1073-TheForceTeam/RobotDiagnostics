@@ -14,8 +14,8 @@ void collectSlower::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void collectSlower::Execute() {
-	RobotMap::collectorLeftRoller->Set(Robot::collector->GetSpeed(),Talon::kPeriodMultiplier_1X);
-	RobotMap::collectorRightRoller->Set(Robot::collector->GetSpeed(),Talon::kPeriodMultiplier_1X);
+	RobotMap::collectorLeftRoller->Set(Robot::collector->GetSpeed());
+	RobotMap::collectorRightRoller->Set(Robot::collector->GetSpeed());
 }
 // Make this return true when this Command no longer needs to run execute()
 bool collectSlower::IsFinished() {

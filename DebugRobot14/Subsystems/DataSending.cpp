@@ -35,8 +35,8 @@ void DataSending::SendTheData(){
 	Send(RobotMap::robotRangeFinderUltrasonicSensor->GetVoltage()*INCHES_CONSTANT);
 	Send(RobotMap::driveTrainGyro->GetAngle());
 	Send(RobotMap::elevatorElevationEncoder->GetVoltage());
-	Send(1.0f);//transducer1
-	Send(1.0f);//transducer2
+	Send(RobotMap::launcherLowPressureSwitch->GetVoltage());//transducer1
+	Send(RobotMap::launcherHighPressureSwitch->GetVoltage());//transducer2
 	Send(RobotMap::collectorLeftRoller->Get());//talon info
 	Send(RobotMap::collectorRightRoller->Get());
 	Send(count++);//number of packets
@@ -93,8 +93,8 @@ void DataSending::UpdateUserLCD(){
 	char line3[100];
 	char line4[100];
 	char line5[100];
-	string setting = "Shifter is "+Robot::shifter->GetGearSetting();
-	string driveMode = "Drive mode "+Robot::driveTrain->GetDriveMode();
+	string setting = "Shifter is "+GetGearSetting();
+	string driveMode = "Drive mode Mecanum";//+Robot::driveTrain->GetDriveMode();
 	strcpy(line1,setting.c_str());
 	strcpy(line2,driveMode.c_str());
 	if((bool)RobotMap::airCompressorCompressor->GetPressureSwitchValue())sprintf(line3,"PSI is 1");
@@ -116,6 +116,7 @@ void DataSending::GetJagInfo(){
 	Send(RobotMap::driveTrainLeftFront->GetPosition());
 	Send(RobotMap::driveTrainLeftFront->GetBusVoltage());
 	Send(RobotMap::driveTrainLeftFront->GetTemperature());
+	Send((int)RobotMap::driveTrainLeftFront->GetFaults());
 	
 	Send(RobotMap::driveTrainRightFront->Get());
 	Send(RobotMap::driveTrainRightFront->GetOutputVoltage());
@@ -123,21 +124,24 @@ void DataSending::GetJagInfo(){
 	Send(RobotMap::driveTrainRightFront->GetPosition());
 	Send(RobotMap::driveTrainRightFront->GetBusVoltage());
 	Send(RobotMap::driveTrainRightFront->GetTemperature());
-	
+	Send((int)RobotMap::driveTrainRightFront->GetFaults());
+
 	Send(RobotMap::driveTrainLeftBack->Get());
 	Send(RobotMap::driveTrainLeftBack->GetOutputVoltage());
 	Send(RobotMap::driveTrainLeftBack->GetOutputCurrent());
 	Send(RobotMap::driveTrainLeftBack->GetPosition());
 	Send(RobotMap::driveTrainLeftBack->GetBusVoltage());
 	Send(RobotMap::driveTrainLeftBack->GetTemperature());
-	
+	Send((int)RobotMap::driveTrainLeftBack->GetFaults());
+
 	Send(RobotMap::driveTrainRightBack->Get());
 	Send(RobotMap::driveTrainRightBack->GetOutputVoltage());
 	Send(RobotMap::driveTrainRightBack->GetOutputCurrent());
 	Send(RobotMap::driveTrainRightBack->GetPosition());
 	Send(RobotMap::driveTrainRightBack->GetBusVoltage());
 	Send(RobotMap::driveTrainRightBack->GetTemperature());
-	
+	Send((int)RobotMap::driveTrainRightBack->GetFaults());
+
 	Send(RobotMap::elevatorAngleAdjuster->Get());
 	Send(RobotMap::elevatorAngleAdjuster->GetOutputVoltage());
 	Send(RobotMap::elevatorAngleAdjuster->GetOutputCurrent());
@@ -145,13 +149,14 @@ void DataSending::GetJagInfo(){
 	Send(RobotMap::elevatorAngleAdjuster->GetTemperature());
 	Send(RobotMap::elevatorAngleAdjuster->GetForwardLimitOK());
 	Send(RobotMap::elevatorAngleAdjuster->GetReverseLimitOK());
+	Send((int)RobotMap::elevatorAngleAdjuster->GetFaults());
 }
 void DataSending::GetJoystickInfo(){
 	Send(Robot::oi->getDriveStick()->GetX());
-	Send(Robot::oi->getDriveStick()->GetY()*-1);
+	Send(Robot::oi->getDriveStick()->GetY());
 	Send(Robot::oi->getDriveStick()->GetZ());
 	Send(Robot::oi->getOperatorStick()->GetX());
-	Send(Robot::oi->getOperatorStick()->GetY()*-1);
+	Send(Robot::oi->getOperatorStick()->GetY());
 	Send(Robot::oi->getThrottle()->GetX());
 }
 const float periodicIntervalSec = .05f;
@@ -175,4 +180,16 @@ DataSending::InitializeBackGroundTask()
 	BackgroundSemaphore = semMCreate(SEM_DELETE_SAFE | SEM_INVERSION_SAFE); // synchronize access to multi-value registers
 	BackgroundTask->Start();
 	printf("This robot is currently being monitered\n");
+}
+string DataSending::GetGearSetting(){
+	if(RobotMap::shifterDoubleSolenoid->Get()==DoubleSolenoid::kForward){
+		return "low";
+	}
+	if(RobotMap::shifterDoubleSolenoid->Get()==DoubleSolenoid::kReverse){
+		return "high";
+	}
+	if(RobotMap::shifterDoubleSolenoid->Get()==DoubleSolenoid::kOff){
+		return "off";
+	}
+	return 0;
 }

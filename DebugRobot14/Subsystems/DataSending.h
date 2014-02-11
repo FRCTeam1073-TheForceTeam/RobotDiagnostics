@@ -20,6 +20,7 @@ public:
 	void GetJoystickInfo();
 	void GetJagTest();
 	void InitializeBackGroundTask();
+	string GetGearSetting();
 private:
 	int count;
 	void Send(bool b);

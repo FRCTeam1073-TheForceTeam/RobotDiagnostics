@@ -76,21 +76,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
             this.JagInfo = new System.Windows.Forms.TabPage();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
-            this.collectorReverseLimit = new System.Windows.Forms.TextBox();
-            this.collectorFrontLimit = new System.Windows.Forms.TextBox();
-            this.collectorInputVoltage = new System.Windows.Forms.TextBox();
-            this.collectorTemp = new System.Windows.Forms.TextBox();
-            this.collectorInputSpeed = new System.Windows.Forms.TextBox();
-            this.collectorOutputCurrent = new System.Windows.Forms.TextBox();
-            this.label74 = new System.Windows.Forms.Label();
-            this.collecterOutputVoltage = new System.Windows.Forms.TextBox();
-            this.label73 = new System.Windows.Forms.Label();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label70 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.rightBackError = new System.Windows.Forms.TextBox();
+            this.leftBackError = new System.Windows.Forms.TextBox();
+            this.leftFrontError = new System.Windows.Forms.TextBox();
+            this.rightFrontError = new System.Windows.Forms.TextBox();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
             this.rightFrontTemp = new System.Windows.Forms.TextBox();
             this.leftBackTemp = new System.Windows.Forms.TextBox();
@@ -152,8 +147,23 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
             this.General2 = new System.Windows.Forms.TabPage();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.collectorReverseLimit = new System.Windows.Forms.TextBox();
+            this.collectorFrontLimit = new System.Windows.Forms.TextBox();
+            this.collectorInputVoltage = new System.Windows.Forms.TextBox();
+            this.collectorTemp = new System.Windows.Forms.TextBox();
+            this.collectorInputSpeed = new System.Windows.Forms.TextBox();
+            this.collectorOutputCurrent = new System.Windows.Forms.TextBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.collecterOutputVoltage = new System.Windows.Forms.TextBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label78 = new System.Windows.Forms.Label();
             this.ultrasonic = new System.Windows.Forms.TextBox();
@@ -221,7 +231,7 @@
             this.panel10.SuspendLayout();
             this.panel3.SuspendLayout();
             this.JagInfo.SuspendLayout();
-            this.panel20.SuspendLayout();
+            this.panel24.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -229,6 +239,7 @@
             this.panel7.SuspendLayout();
             this.panel4.SuspendLayout();
             this.General2.SuspendLayout();
+            this.panel20.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel17.SuspendLayout();
@@ -662,7 +673,7 @@
             // 
             // JagInfo
             // 
-            this.JagInfo.Controls.Add(this.panel20);
+            this.JagInfo.Controls.Add(this.panel24);
             this.JagInfo.Controls.Add(this.panel19);
             this.JagInfo.Controls.Add(this.panel18);
             this.JagInfo.Controls.Add(this.panel6);
@@ -670,7 +681,6 @@
             this.JagInfo.Controls.Add(this.panel9);
             this.JagInfo.Controls.Add(this.panel7);
             this.JagInfo.Controls.Add(this.panel4);
-            this.JagInfo.Controls.Add(this.label68);
             this.JagInfo.Location = new System.Drawing.Point(4, 22);
             this.JagInfo.Name = "JagInfo";
             this.JagInfo.Size = new System.Drawing.Size(535, 233);
@@ -678,138 +688,94 @@
             this.JagInfo.Text = "Jag Info";
             this.JagInfo.UseVisualStyleBackColor = true;
             // 
-            // panel20
+            // panel24
             // 
-            this.panel20.Controls.Add(this.label75);
-            this.panel20.Controls.Add(this.label71);
-            this.panel20.Controls.Add(this.collectorReverseLimit);
-            this.panel20.Controls.Add(this.collectorFrontLimit);
-            this.panel20.Controls.Add(this.collectorInputVoltage);
-            this.panel20.Controls.Add(this.collectorTemp);
-            this.panel20.Controls.Add(this.collectorInputSpeed);
-            this.panel20.Controls.Add(this.collectorOutputCurrent);
-            this.panel20.Controls.Add(this.label74);
-            this.panel20.Controls.Add(this.collecterOutputVoltage);
-            this.panel20.Controls.Add(this.label73);
-            this.panel20.Controls.Add(this.label72);
-            this.panel20.Controls.Add(this.label70);
-            this.panel20.Controls.Add(this.label69);
-            this.panel20.Location = new System.Drawing.Point(438, 0);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(94, 233);
-            this.panel20.TabIndex = 23;
+            this.panel24.Controls.Add(this.rightBackError);
+            this.panel24.Controls.Add(this.leftBackError);
+            this.panel24.Controls.Add(this.leftFrontError);
+            this.panel24.Controls.Add(this.rightFrontError);
+            this.panel24.Controls.Add(this.label83);
+            this.panel24.Controls.Add(this.label82);
+            this.panel24.Controls.Add(this.label81);
+            this.panel24.Controls.Add(this.label80);
+            this.panel24.Controls.Add(this.label79);
+            this.panel24.Location = new System.Drawing.Point(432, 20);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(100, 108);
+            this.panel24.TabIndex = 23;
             // 
-            // label75
+            // rightBackError
             // 
-            this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(10, 201);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(71, 13);
-            this.label75.TabIndex = 16;
-            this.label75.Text = "Reverse Limit";
+            this.rightBackError.Location = new System.Drawing.Point(58, 84);
+            this.rightBackError.Name = "rightBackError";
+            this.rightBackError.Size = new System.Drawing.Size(42, 20);
+            this.rightBackError.TabIndex = 8;
             // 
-            // label71
+            // leftBackError
             // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(10, 171);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(55, 13);
-            this.label71.TabIndex = 15;
-            this.label71.Text = "Front Limit";
+            this.leftBackError.Location = new System.Drawing.Point(3, 84);
+            this.leftBackError.Name = "leftBackError";
+            this.leftBackError.Size = new System.Drawing.Size(42, 20);
+            this.leftBackError.TabIndex = 7;
             // 
-            // collectorReverseLimit
+            // leftFrontError
             // 
-            this.collectorReverseLimit.Location = new System.Drawing.Point(13, 213);
-            this.collectorReverseLimit.Name = "collectorReverseLimit";
-            this.collectorReverseLimit.Size = new System.Drawing.Size(63, 20);
-            this.collectorReverseLimit.TabIndex = 14;
+            this.leftFrontError.Location = new System.Drawing.Point(3, 32);
+            this.leftFrontError.Name = "leftFrontError";
+            this.leftFrontError.Size = new System.Drawing.Size(42, 20);
+            this.leftFrontError.TabIndex = 6;
             // 
-            // collectorFrontLimit
+            // rightFrontError
             // 
-            this.collectorFrontLimit.Location = new System.Drawing.Point(13, 184);
-            this.collectorFrontLimit.Name = "collectorFrontLimit";
-            this.collectorFrontLimit.Size = new System.Drawing.Size(63, 20);
-            this.collectorFrontLimit.TabIndex = 13;
+            this.rightFrontError.Location = new System.Drawing.Point(58, 32);
+            this.rightFrontError.Name = "rightFrontError";
+            this.rightFrontError.Size = new System.Drawing.Size(42, 20);
+            this.rightFrontError.TabIndex = 5;
             // 
-            // collectorInputVoltage
+            // label83
             // 
-            this.collectorInputVoltage.Location = new System.Drawing.Point(13, 112);
-            this.collectorInputVoltage.Name = "collectorInputVoltage";
-            this.collectorInputVoltage.Size = new System.Drawing.Size(63, 20);
-            this.collectorInputVoltage.TabIndex = 12;
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(64, 68);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(22, 13);
+            this.label83.TabIndex = 4;
+            this.label83.Text = "RB";
             // 
-            // collectorTemp
+            // label82
             // 
-            this.collectorTemp.Location = new System.Drawing.Point(13, 80);
-            this.collectorTemp.Name = "collectorTemp";
-            this.collectorTemp.Size = new System.Drawing.Size(63, 20);
-            this.collectorTemp.TabIndex = 11;
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(6, 68);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(20, 13);
+            this.label82.TabIndex = 3;
+            this.label82.Text = "LB";
             // 
-            // collectorInputSpeed
+            // label81
             // 
-            this.collectorInputSpeed.Location = new System.Drawing.Point(13, 151);
-            this.collectorInputSpeed.Name = "collectorInputSpeed";
-            this.collectorInputSpeed.Size = new System.Drawing.Size(63, 20);
-            this.collectorInputSpeed.TabIndex = 10;
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(65, 16);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(21, 13);
+            this.label81.TabIndex = 2;
+            this.label81.Text = "RF";
             // 
-            // collectorOutputCurrent
+            // label80
             // 
-            this.collectorOutputCurrent.Location = new System.Drawing.Point(13, 45);
-            this.collectorOutputCurrent.Name = "collectorOutputCurrent";
-            this.collectorOutputCurrent.Size = new System.Drawing.Size(63, 20);
-            this.collectorOutputCurrent.TabIndex = 9;
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(6, 16);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(19, 13);
+            this.label80.TabIndex = 1;
+            this.label80.Text = "LF";
             // 
-            // label74
+            // label79
             // 
-            this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(10, 64);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(74, 13);
-            this.label74.TabIndex = 6;
-            this.label74.Text = "Tempature (C)";
-            // 
-            // collecterOutputVoltage
-            // 
-            this.collecterOutputVoltage.Location = new System.Drawing.Point(13, 13);
-            this.collecterOutputVoltage.Name = "collecterOutputVoltage";
-            this.collecterOutputVoltage.Size = new System.Drawing.Size(63, 20);
-            this.collecterOutputVoltage.TabIndex = 7;
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(10, 135);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(65, 13);
-            this.label73.TabIndex = 5;
-            this.label73.Text = "Input Speed";
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(10, 100);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(70, 13);
-            this.label72.TabIndex = 4;
-            this.label72.Text = "Input Voltage";
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(10, 32);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(76, 13);
-            this.label70.TabIndex = 2;
-            this.label70.Text = "Output Current";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(10, 0);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(78, 13);
-            this.label69.TabIndex = 1;
-            this.label69.Text = "Output Voltage";
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(30, 0);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(34, 13);
+            this.label79.TabIndex = 0;
+            this.label79.Text = "Errors";
             // 
             // panel19
             // 
@@ -1354,17 +1320,9 @@
             this.label9.TabIndex = 9;
             this.label9.Text = "Right Front";
             // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(367, 4);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(75, 13);
-            this.label68.TabIndex = 0;
-            this.label68.Text = "Elevator Jag->";
-            // 
             // General2
             // 
+            this.General2.Controls.Add(this.panel20);
             this.General2.Controls.Add(this.panel11);
             this.General2.Controls.Add(this.panel5);
             this.General2.Controls.Add(this.panel17);
@@ -1375,6 +1333,149 @@
             this.General2.TabIndex = 3;
             this.General2.Text = "General2";
             this.General2.UseVisualStyleBackColor = true;
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.label75);
+            this.panel20.Controls.Add(this.label68);
+            this.panel20.Controls.Add(this.label71);
+            this.panel20.Controls.Add(this.collectorReverseLimit);
+            this.panel20.Controls.Add(this.collectorFrontLimit);
+            this.panel20.Controls.Add(this.collectorInputVoltage);
+            this.panel20.Controls.Add(this.collectorTemp);
+            this.panel20.Controls.Add(this.collectorInputSpeed);
+            this.panel20.Controls.Add(this.collectorOutputCurrent);
+            this.panel20.Controls.Add(this.label74);
+            this.panel20.Controls.Add(this.collecterOutputVoltage);
+            this.panel20.Controls.Add(this.label73);
+            this.panel20.Controls.Add(this.label72);
+            this.panel20.Controls.Add(this.label70);
+            this.panel20.Controls.Add(this.label69);
+            this.panel20.Location = new System.Drawing.Point(232, 106);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(300, 127);
+            this.panel20.TabIndex = 38;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(159, 67);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(71, 13);
+            this.label75.TabIndex = 16;
+            this.label75.Text = "Reverse Limit";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(159, 26);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(55, 13);
+            this.label71.TabIndex = 15;
+            this.label71.Text = "Front Limit";
+            // 
+            // collectorReverseLimit
+            // 
+            this.collectorReverseLimit.Location = new System.Drawing.Point(162, 82);
+            this.collectorReverseLimit.Name = "collectorReverseLimit";
+            this.collectorReverseLimit.Size = new System.Drawing.Size(63, 20);
+            this.collectorReverseLimit.TabIndex = 14;
+            // 
+            // collectorFrontLimit
+            // 
+            this.collectorFrontLimit.Location = new System.Drawing.Point(162, 39);
+            this.collectorFrontLimit.Name = "collectorFrontLimit";
+            this.collectorFrontLimit.Size = new System.Drawing.Size(63, 20);
+            this.collectorFrontLimit.TabIndex = 13;
+            // 
+            // collectorInputVoltage
+            // 
+            this.collectorInputVoltage.Location = new System.Drawing.Point(90, 82);
+            this.collectorInputVoltage.Name = "collectorInputVoltage";
+            this.collectorInputVoltage.Size = new System.Drawing.Size(63, 20);
+            this.collectorInputVoltage.TabIndex = 12;
+            // 
+            // collectorTemp
+            // 
+            this.collectorTemp.Location = new System.Drawing.Point(226, 42);
+            this.collectorTemp.Name = "collectorTemp";
+            this.collectorTemp.Size = new System.Drawing.Size(63, 20);
+            this.collectorTemp.TabIndex = 11;
+            // 
+            // collectorInputSpeed
+            // 
+            this.collectorInputSpeed.Location = new System.Drawing.Point(90, 42);
+            this.collectorInputSpeed.Name = "collectorInputSpeed";
+            this.collectorInputSpeed.Size = new System.Drawing.Size(63, 20);
+            this.collectorInputSpeed.TabIndex = 10;
+            // 
+            // collectorOutputCurrent
+            // 
+            this.collectorOutputCurrent.Location = new System.Drawing.Point(6, 39);
+            this.collectorOutputCurrent.Name = "collectorOutputCurrent";
+            this.collectorOutputCurrent.Size = new System.Drawing.Size(63, 20);
+            this.collectorOutputCurrent.TabIndex = 9;
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(223, 26);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(74, 13);
+            this.label74.TabIndex = 6;
+            this.label74.Text = "Tempature (C)";
+            // 
+            // collecterOutputVoltage
+            // 
+            this.collecterOutputVoltage.Location = new System.Drawing.Point(6, 80);
+            this.collecterOutputVoltage.Name = "collecterOutputVoltage";
+            this.collecterOutputVoltage.Size = new System.Drawing.Size(63, 20);
+            this.collecterOutputVoltage.TabIndex = 7;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(87, 26);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(65, 13);
+            this.label73.TabIndex = 5;
+            this.label73.Text = "Input Speed";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(87, 70);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(70, 13);
+            this.label72.TabIndex = 4;
+            this.label72.Text = "Input Voltage";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(3, 26);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(76, 13);
+            this.label70.TabIndex = 2;
+            this.label70.Text = "Output Current";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(3, 67);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(78, 13);
+            this.label69.TabIndex = 1;
+            this.label69.Text = "Output Voltage";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(3, 5);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(66, 13);
+            this.label68.TabIndex = 37;
+            this.label68.Text = "Elevator Jag";
             // 
             // panel11
             // 
@@ -1948,8 +2049,8 @@
             this.panel3.PerformLayout();
             this.JagInfo.ResumeLayout(false);
             this.JagInfo.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             this.panel18.ResumeLayout(false);
@@ -1963,6 +2064,8 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.General2.ResumeLayout(false);
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -2054,18 +2157,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TabPage JagInfo;
-        private System.Windows.Forms.Panel panel20;
-        private System.Windows.Forms.TextBox collectorInputVoltage;
-        private System.Windows.Forms.TextBox collectorTemp;
-        private System.Windows.Forms.TextBox collectorInputSpeed;
-        private System.Windows.Forms.TextBox collectorOutputCurrent;
-        private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.TextBox collecterOutputVoltage;
-        private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.TextBox rightFrontTemp;
         private System.Windows.Forms.TextBox leftBackTemp;
@@ -2127,10 +2218,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.TextBox collectorReverseLimit;
-        private System.Windows.Forms.TextBox collectorFrontLimit;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.TextBox matchTime;
         private System.Windows.Forms.Label label50;
@@ -2168,6 +2255,32 @@
         private System.Windows.Forms.Label label77;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.TextBox pressureValue;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.TextBox rightBackError;
+        private System.Windows.Forms.TextBox leftBackError;
+        private System.Windows.Forms.TextBox leftFrontError;
+        private System.Windows.Forms.TextBox rightFrontError;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox collectorReverseLimit;
+        private System.Windows.Forms.TextBox collectorFrontLimit;
+        private System.Windows.Forms.TextBox collectorInputVoltage;
+        private System.Windows.Forms.TextBox collectorTemp;
+        private System.Windows.Forms.TextBox collectorInputSpeed;
+        private System.Windows.Forms.TextBox collectorOutputCurrent;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.TextBox collecterOutputVoltage;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label68;
     }
 }
 
