@@ -97,10 +97,10 @@ void DataSending::UpdateUserLCD(){
 	string driveMode = "Drive mode Mecanum";//+Robot::driveTrain->GetDriveMode();
 	strcpy(line1,setting.c_str());
 	strcpy(line2,driveMode.c_str());
-	if((bool)RobotMap::airCompressorCompressor->GetPressureSwitchValue())sprintf(line3,"PSI is 1");
-	if(!(bool)RobotMap::airCompressorCompressor->GetPressureSwitchValue())sprintf(line3,"PSI is 0");
-	sprintf(line4,"Elevation is %f",RobotMap::elevatorElevationEncoder->GetVoltage());
-	sprintf(line5, "Battery Current is %f",batteryCurrent->GetVoltage());
+	if((bool)RobotMap::airCompressorCompressor->GetPressureSwitchValue())sprintf(line3,"Sufficent Pressure");
+	if(!(bool)RobotMap::airCompressorCompressor->GetPressureSwitchValue())sprintf(line3,"Insufficient Pressure");
+	sprintf(line4,"Elevation voltage is %f",RobotMap::elevatorElevationEncoder->GetVoltage());
+	sprintf(line5, "Battery Current is %f Amps",((batteryCurrent->GetVoltage()-2.5)*AMPS_CONSTANT));
 	DriverStationLCD *lcd = DriverStationLCD::GetInstance();
 	lcd->PrintfLine(DriverStationLCD::kUser_Line1, "%s",line1);
 	lcd->PrintfLine(DriverStationLCD::kUser_Line2, "%s",line2);
@@ -125,7 +125,6 @@ void DataSending::GetJagInfo(){
 	Send(RobotMap::driveTrainRightFront->GetBusVoltage());
 	Send(RobotMap::driveTrainRightFront->GetTemperature());
 	Send((int)RobotMap::driveTrainRightFront->GetFaults());
-
 	Send(RobotMap::driveTrainLeftBack->Get());
 	Send(RobotMap::driveTrainLeftBack->GetOutputVoltage());
 	Send(RobotMap::driveTrainLeftBack->GetOutputCurrent());
@@ -133,7 +132,6 @@ void DataSending::GetJagInfo(){
 	Send(RobotMap::driveTrainLeftBack->GetBusVoltage());
 	Send(RobotMap::driveTrainLeftBack->GetTemperature());
 	Send((int)RobotMap::driveTrainLeftBack->GetFaults());
-
 	Send(RobotMap::driveTrainRightBack->Get());
 	Send(RobotMap::driveTrainRightBack->GetOutputVoltage());
 	Send(RobotMap::driveTrainRightBack->GetOutputCurrent());
@@ -141,7 +139,6 @@ void DataSending::GetJagInfo(){
 	Send(RobotMap::driveTrainRightBack->GetBusVoltage());
 	Send(RobotMap::driveTrainRightBack->GetTemperature());
 	Send((int)RobotMap::driveTrainRightBack->GetFaults());
-
 	Send(RobotMap::elevatorAngleAdjuster->Get());
 	Send(RobotMap::elevatorAngleAdjuster->GetOutputVoltage());
 	Send(RobotMap::elevatorAngleAdjuster->GetOutputCurrent());
