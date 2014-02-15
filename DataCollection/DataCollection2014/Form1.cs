@@ -406,9 +406,15 @@ namespace DataCollection2014
         {
             if (saveToDisk)
             {
-                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", failSafe.ToString());
-                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", netFailSafe.ToString());
-                failSafe.Clear();
+                try
+                {
+                    File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", failSafe.ToString());
+                    File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", netFailSafe.ToString());
+                    failSafe.Clear();
+                }
+                catch (IOException)
+                {
+                }
             }
         }
 
