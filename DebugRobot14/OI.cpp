@@ -23,21 +23,21 @@ OI::OI() {
 	
 	driveStick = new SmartJoystick(1);
 	
-	arcadeDriveButton = new JoystickButton(driveStick, 5);
+	arcadeDriveButton = new JoystickButton(driveStick, 10);
 	arcadeDriveButton->WhenPressed(new driveArcarde());
-	collectSlowerButton = new JoystickButton(driveStick, 11);
+	collectSlowerButton = new JoystickButton(driveStick, 3);
 	collectSlowerButton->WhenPressed(new collectSlower());
-	collectFasterButton = new JoystickButton(driveStick, 12);
+	collectFasterButton = new JoystickButton(driveStick, 5);
 	collectFasterButton->WhenPressed(new collectFaster());
-	angleDownButton = new JoystickButton(driveStick, 9);
+	angleDownButton = new JoystickButton(driveStick, 4);
 	angleDownButton->WhenPressed(new angleDown());
-	angleUpButton = new JoystickButton(driveStick, 10);
+	angleUpButton = new JoystickButton(driveStick, 6);
 	angleUpButton->WhenPressed(new angleUp());
 	shiftButton = new JoystickButton(driveStick, 8);
 	shiftButton->WhenPressed(new shift());
-	lauchBall = new JoystickButton(driveStick, 6);
+	lauchBall = new JoystickButton(driveStick, 7);
 	lauchBall->WhenPressed(new launch());
-	mecanumDriveButton = new JoystickButton(driveStick, 4);
+	mecanumDriveButton = new JoystickButton(driveStick, 9);
 	mecanumDriveButton->WhenPressed(new drive());
 	compressButton = new JoystickButton(driveStick, 2);
 	compressButton->WhenPressed(new compress());

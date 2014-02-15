@@ -48,6 +48,7 @@ namespace DataCollection2014
         public volatile bool secretClose = false;
         public int ignoringInput = 2;
         public int parseNumber = 0;
+        public StringBuilder netFailSafe = new StringBuilder();
         public Form1()
         {
             this.MaximizeBox = false;
@@ -65,6 +66,22 @@ namespace DataCollection2014
             fileSaveTimer.Enabled = true;
             fileSaveTimer.Start();
             saveNumber++;
+            timeStamp = DateTime.Now;
+            String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+            DataSB.Append(path2 + "," + "Battery Volts,"+"Battery Amps,"+"Drive Stick X,"+
+            "Drive Stick Y,"+"Drive Stick Z,"+"Operator Stick X,"+"Operator Stick Y,"+"Throttle,"+
+            "Front Left Speed,"+"Front Left Out Volts,"+"Front Left Current,"+"Front Left Position,"+
+            "Front Left In Volts,"+"Front Left Temp(C),"+"Front Left Faults,"+"Front Right Speed,"+
+            "Front Right Out Volts,"+"Front Right Current,"+"Front Right Position,"+"Front Right In Volts,"+
+            "Front Right Temp(C),"+"Front Right Faults,"+"Back Left Speed,"+"Back Left Out Volts,"+
+            "Back Left Current,"+"Back Left Position,"+"Back Left Out Volts,"+"Back Left Temp(C),"+
+            "Back Left Faults,"+"Back Right Speed,"+"Back Right Out Volts,"+"Back Right Current,"+
+            "Back Right Position,"+"Back Right In Volts,"+"Back Right Temp(C),"+"Back Right Faults,"+
+            "Angle Speed,"+"Angle Out Volts,"+"Angle Current,"+"Angle In Volts,"+"Angle Temp,"+
+            "Angle Foward Limit,"+"Angle Reverse Limit,"+"Angle Faults,"+"Left Launcher Solenoid,"+
+            "Right Launcher Solenoid,"+"Shifter Solenoid,"+"Air Compressor Switch,"+"Ultrasonic Distance(cm),"+
+            "Gyro Angle,"+"Elevation Volts,"+"Low Transducer(PSI),"+"High Transducer(PSI),"+"Left Talon,"+
+            "Right Talon,"+"Packet Count,"+"Uptime(s),"+"Downtime(s),"+"% CPU,"+"Match Time,");
         }
 
         public void StartListenerThreads()
@@ -188,7 +205,7 @@ namespace DataCollection2014
                         gyroAngle.Text = parser[parseNumber++];
                         elevationBox.Text = parser[parseNumber++];
                         transducer1.Text = parser[parseNumber++];
-                        //transducer2.Text = parser[parseNumber++];
+                        transducer2.Text = parser[parseNumber++];
                         leftVictor.Text = parser[parseNumber++];
                         rightVictor.Text = parser[parseNumber++];
                         packetCounter.Text = parser[parseNumber++];
@@ -216,9 +233,14 @@ namespace DataCollection2014
                     String newNetConsole = s3.Substring(0, s3.Length - 2);
                     if (!s3.Equals("\n"))
                     {
+                        if (saveToDisk)
+                        {
+                            netFailSafe.Append(newNetConsole);
+                        }
                         if (ignoringInput % 2 == 0)
                         {
                             netConsoleDisplay.AppendText(newNetConsole);
+                            ConsoleSB.Append(s3);
                         }
                         else
                         {}
@@ -232,7 +254,8 @@ namespace DataCollection2014
 
             if ((dataQueue.Count == 0)&&NoConnection==false)
             {
-                ConsoleSB.Append("Connection lost at " + error);
+                ConsoleSB.Append("Connection lost at " + error + "\n");
+                netFailSafe.Append("Connection lost at " + error + "\n");
                 disconnectionMessages.AppendText("Connection lost at " + error + "\n");
                 panel1.BackColor = Color.Red;
                 NoConnection = true;
@@ -282,38 +305,66 @@ namespace DataCollection2014
             consoleQueue.Clear();
             fileSaveTimer.Stop();
             netConsoleDisplay.Text = "Listening Stopped\n";
-
             batteryVolts.Text = null;
+            batteryAmps.Text = null;
             xAxis.Text = null;
             yAxis.Text = null;
             zAxis.Text = null;
-            batteryAmps.Text = null;
-            launcherSolenoid1.Text = null;
-            launcherSolenoid2.Text = null;
-            gyroAngle.Text = null;
+            operatorX.Text = null;
+            operatorY.Text = null;
+            throttle.Text = null;
+            leftFrontSpeed.Text = null;
             leftFrontVolts.Text = null;
             leftFrontAmps.Text = null;
             leftFrontEncoder.Text = null;
+            leftFrontInVolts.Text = null;
+            leftFrontTemp.Text = null;
+            leftFrontError.Text = null;
+            rightFrontSpeed.Text = null;
             rightFrontVolts.Text = null;
             rightFrontAmps.Text = null;
             rightFrontEncoder.Text = null;
+            rightFrontInVolts.Text = null;
+            rightFrontTemp.Text = null;
+            rightFrontError.Text = null;
+            leftBackSpeed.Text = null;
             leftBackVolts.Text = null;
             leftBackAmps.Text = null;
             leftBackEncoder.Text = null;
+            leftBackInVolts.Text = null;
+            leftBackTemp.Text = null;
+            leftBackError.Text = null;
+            rightBackSpeed.Text = null;
             rightBackVolts.Text = null;
             rightBackAmps.Text = null;
             rightBackEncoder.Text = null;
+            rightBackInVolts.Text = null;
+            rightBackTemp.Text = null;
+            rightBackError.Text = null;
+            collectorInputSpeed.Text = null;
+            collecterOutputVoltage.Text = null;
+            collectorOutputCurrent.Text = null;
+            collectorInputVoltage.Text = null;
+            collectorTemp.Text = null;
+            collectorFrontLimit.Text = null;
+            collectorReverseLimit.Text = null;
+            collectorFaults.Text = null;
+            launcherSolenoid1.Text = null;
+            launcherSolenoid2.Text = null;
             shifterStatus.Text = null;
+            pressureValue.Text = null;
+            ultrasonic.Text = null;
+            gyroAngle.Text = null;
             elevationBox.Text = null;
+            transducer1.Text = null;
             leftVictor.Text = null;
             rightVictor.Text = null;
             packetCounter.Text = null;
             loadTime.Text = null;
             downTime.Text = null;
             percentCPU.Text = null;
-            transducer1.Text = null;
-            ultrasonic.Text = null;
             matchTime.Text = null;
+            transducer2.Text = null;
             //
         }
 
@@ -356,6 +407,7 @@ namespace DataCollection2014
             if (saveToDisk)
             {
                 File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", failSafe.ToString());
+                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", netFailSafe.ToString());
                 failSafe.Clear();
             }
         }

@@ -10,12 +10,13 @@ collectSlower::collectSlower() {
 }
 // Called just before this Command runs the first time
 void collectSlower::Initialize() {
-	Robot::collector->SetSpeed(Robot::collector->GetSpeed()-0.10);
+	Robot::collector->SetLeftSpeed(Robot::collector->GetLeftSpeed()+0.10);
+	Robot::collector->SetRightSpeed(Robot::collector->GetRightSpeed()-0.10);
 }
 // Called repeatedly when this Command is scheduled to run
 void collectSlower::Execute() {
-	RobotMap::collectorLeftRoller->Set(Robot::collector->GetSpeed());
-	RobotMap::collectorRightRoller->Set(Robot::collector->GetSpeed());
+	RobotMap::collectorLeftRoller->Set(Robot::collector->GetLeftSpeed());
+	RobotMap::collectorRightRoller->Set(Robot::collector->GetRightSpeed());
 }
 // Make this return true when this Command no longer needs to run execute()
 bool collectSlower::IsFinished() {
