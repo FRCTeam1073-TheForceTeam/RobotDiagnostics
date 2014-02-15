@@ -46,7 +46,7 @@ namespace DataCollection2014
         public volatile bool saveToDisk = true;
         public string appPath;
         public volatile bool secretClose = false;
-        public volatile bool ignoringInput = false;
+        public int ignoringInput = 2;
         public int parseNumber = 0;
         public Form1()
         {
@@ -214,7 +214,19 @@ namespace DataCollection2014
                 {
                     NoConnection = false;
                     String newNetConsole = s3.Substring(0, s3.Length - 2);
-                    if(!s3.Equals("\n")&&!ignoringInput)netConsoleDisplay.AppendText(newNetConsole);
+                    if (!s3.Equals("\n"))
+                    {
+                        if (ignoringInput % 2 == 0)
+                        {
+                            netConsoleDisplay.AppendText(newNetConsole);
+                        }
+                        else
+                        {}
+                        if (ignoringInput == 1000)
+                        {
+                            ignoringInput = 2;
+                        }
+                    }
                 }
             }
 
@@ -382,8 +394,7 @@ namespace DataCollection2014
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            //TODO make sure that this actually works
-            //ignoringInput = true;
+            ignoringInput++;
         }
     }
 }
