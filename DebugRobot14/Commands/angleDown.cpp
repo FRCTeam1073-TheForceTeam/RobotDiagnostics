@@ -8,7 +8,7 @@ angleDown::angleDown() {
 }
 // Called just before this Command runs the first time
 void angleDown::Initialize() {
-	Robot::elevator->SetAngleSpeed(Robot::elevator->GetAngleSpeed()-0.50);
+	Robot::elevator->SetAngleSpeed(Robot::elevator->GetAngleSpeed()-0.20);
 }
 // Called repeatedly when this Command is scheduled to run
 void angleDown::Execute() {

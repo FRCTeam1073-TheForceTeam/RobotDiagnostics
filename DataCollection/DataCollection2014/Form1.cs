@@ -138,6 +138,7 @@ namespace DataCollection2014
                         operatorX.Text = parser[parseNumber++];
                         operatorY.Text = parser[parseNumber++];
                         throttle.Text = parser[parseNumber++];
+
                         leftFrontSpeed.Text = parser[parseNumber++];
                         leftFrontVolts.Text = parser[parseNumber++];
                         leftFrontAmps.Text = parser[parseNumber++];
@@ -145,6 +146,7 @@ namespace DataCollection2014
                         leftFrontInVolts.Text = parser[parseNumber++];
                         leftFrontTemp.Text = parser[parseNumber++];
                         leftFrontError.Text = parser[parseNumber++];
+
                         rightFrontSpeed.Text = parser[parseNumber++];
                         rightFrontVolts.Text = parser[parseNumber++];
                         rightFrontAmps.Text = parser[parseNumber++];
@@ -152,6 +154,7 @@ namespace DataCollection2014
                         rightFrontInVolts.Text = parser[parseNumber++];
                         rightFrontTemp.Text = parser[parseNumber++];
                         rightFrontError.Text = parser[parseNumber++];
+
                         leftBackSpeed.Text = parser[parseNumber++];
                         leftBackVolts.Text = parser[parseNumber++];
                         leftBackAmps.Text = parser[parseNumber++];
@@ -159,6 +162,7 @@ namespace DataCollection2014
                         leftBackInVolts.Text = parser[parseNumber++];
                         leftBackTemp.Text = parser[parseNumber++];
                         leftBackError.Text = parser[parseNumber++];
+
                         rightBackSpeed.Text = parser[parseNumber++];
                         rightBackVolts.Text = parser[parseNumber++];
                         rightBackAmps.Text = parser[parseNumber++];
@@ -166,6 +170,7 @@ namespace DataCollection2014
                         rightBackInVolts.Text = parser[parseNumber++];
                         rightBackTemp.Text = parser[parseNumber++];
                         rightBackError.Text = parser[parseNumber++];
+
                         collectorInputSpeed.Text = parser[parseNumber++];
                         collecterOutputVoltage.Text = parser[parseNumber++];
                         collectorOutputCurrent.Text = parser[parseNumber++];
@@ -173,6 +178,7 @@ namespace DataCollection2014
                         collectorTemp.Text = parser[parseNumber++];
                         collectorFrontLimit.Text = parser[parseNumber++];
                         collectorReverseLimit.Text = parser[parseNumber++];
+                        collectorFaults.Text = parser[parseNumber++];
                         
                         launcherSolenoid1.Text = parser[parseNumber++];
                         launcherSolenoid2.Text = parser[parseNumber++];

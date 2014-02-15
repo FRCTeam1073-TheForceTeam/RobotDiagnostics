@@ -150,6 +150,7 @@
             this.General2 = new System.Windows.Forms.TabPage();
             this.panel20 = new System.Windows.Forms.Panel();
             this.label75 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
             this.collectorReverseLimit = new System.Windows.Forms.TextBox();
             this.collectorFrontLimit = new System.Windows.Forms.TextBox();
@@ -163,7 +164,6 @@
             this.label72 = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label78 = new System.Windows.Forms.Label();
             this.ultrasonic = new System.Windows.Forms.TextBox();
@@ -220,6 +220,8 @@
             this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
             this.fileSaveTimer = new System.Windows.Forms.Timer(this.components);
+            this.collectorFaults = new System.Windows.Forms.TextBox();
+            this.label84 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel23.SuspendLayout();
@@ -1336,6 +1338,8 @@
             // 
             // panel20
             // 
+            this.panel20.Controls.Add(this.label84);
+            this.panel20.Controls.Add(this.collectorFaults);
             this.panel20.Controls.Add(this.label75);
             this.panel20.Controls.Add(this.label68);
             this.panel20.Controls.Add(this.label71);
@@ -1364,6 +1368,15 @@
             this.label75.Size = new System.Drawing.Size(71, 13);
             this.label75.TabIndex = 16;
             this.label75.Text = "Reverse Limit";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(3, 5);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(66, 13);
+            this.label68.TabIndex = 37;
+            this.label68.Text = "Elevator Jag";
             // 
             // label71
             // 
@@ -1397,7 +1410,7 @@
             // 
             // collectorTemp
             // 
-            this.collectorTemp.Location = new System.Drawing.Point(226, 42);
+            this.collectorTemp.Location = new System.Drawing.Point(229, 39);
             this.collectorTemp.Name = "collectorTemp";
             this.collectorTemp.Size = new System.Drawing.Size(63, 20);
             this.collectorTemp.TabIndex = 11;
@@ -1419,7 +1432,7 @@
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(223, 26);
+            this.label74.Location = new System.Drawing.Point(226, 23);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(74, 13);
             this.label74.TabIndex = 6;
@@ -1467,15 +1480,6 @@
             this.label69.Size = new System.Drawing.Size(78, 13);
             this.label69.TabIndex = 1;
             this.label69.Text = "Output Voltage";
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(3, 5);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(66, 13);
-            this.label68.TabIndex = 37;
-            this.label68.Text = "Elevator Jag";
             // 
             // panel11
             // 
@@ -2015,6 +2019,22 @@
             this.fileSaveTimer.Interval = 250;
             this.fileSaveTimer.Tick += new System.EventHandler(this.fileSaveTimer_Tick);
             // 
+            // collectorFaults
+            // 
+            this.collectorFaults.Location = new System.Drawing.Point(229, 83);
+            this.collectorFaults.Name = "collectorFaults";
+            this.collectorFaults.Size = new System.Drawing.Size(63, 20);
+            this.collectorFaults.TabIndex = 39;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(228, 66);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(35, 13);
+            this.label84.TabIndex = 40;
+            this.label84.Text = "Faults";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2281,6 +2301,8 @@
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.Label label84;
+        private System.Windows.Forms.TextBox collectorFaults;
     }
 }
 
