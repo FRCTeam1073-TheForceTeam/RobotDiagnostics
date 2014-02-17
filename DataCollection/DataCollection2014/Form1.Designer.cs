@@ -216,8 +216,7 @@
             this.Listen = new System.Windows.Forms.Button();
             this.Pause = new System.Windows.Forms.Button();
             this.Stop = new System.Windows.Forms.Button();
-            this.ListenTimer = new System.Windows.Forms.Timer(this.components);
-            this.fileSaveTimer = new System.Windows.Forms.Timer(this.components);
+            this.DataTimer = new System.Windows.Forms.Timer(this.components);
             this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
@@ -1821,9 +1820,9 @@
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(5, 8);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(122, 13);
+            this.label46.Size = new System.Drawing.Size(105, 13);
             this.label46.TabIndex = 0;
-            this.label46.Text = "Save to backup log file?";
+            this.label46.Text = "Save to backup file?";
             // 
             // label1
             // 
@@ -1984,20 +1983,16 @@
             this.Stop.UseVisualStyleBackColor = true;
             this.Stop.Click += new System.EventHandler(this.Stop_Click);
             // 
-            // ListenTimer
+            // DataTimer
             // 
-            this.ListenTimer.Enabled = true;
-            this.ListenTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
-            // 
-            // fileSaveTimer
-            // 
-            this.fileSaveTimer.Interval = 250;
-            this.fileSaveTimer.Tick += new System.EventHandler(this.fileSaveTimer_Tick);
+            this.DataTimer.Enabled = true;
+            this.DataTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
             // 
             // ConsoleTimer
             // 
             this.ConsoleTimer.Enabled = true;
             this.ConsoleTimer.Interval = 10;
+            this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
             // 
             // Form1
             // 
@@ -2078,7 +2073,7 @@
         private System.Windows.Forms.Button Listen;
         private System.Windows.Forms.Button Pause;
         private System.Windows.Forms.Button Stop;
-        private System.Windows.Forms.Timer ListenTimer;
+        private System.Windows.Forms.Timer DataTimer;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox batteryID;
         private System.Windows.Forms.Label label7;
@@ -2119,7 +2114,6 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox rightVictor;
         private System.Windows.Forms.TextBox leftVictor;
-        private System.Windows.Forms.Timer fileSaveTimer;
         private System.Windows.Forms.Button clearConsole;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.RadioButton radioButton2;

@@ -41,15 +41,19 @@ namespace DataCollection2014
         public volatile bool NoConnection = false;
         public volatile bool stopIt = false;
         public String[] parser= new String[30];
-        public StringBuilder failSafe = new StringBuilder();
+        //public StringBuilder failSafe = new StringBuilder();
         public volatile bool saveToDisk = true;
         public string appPath;
         public volatile bool secretClose = false;
         public int ignoringInput = 2;
         public int parseNumber = 0;
-        public StringBuilder netFailSafe = new StringBuilder();
+        //public StringBuilder netFailSafe = new StringBuilder();
         public String FormatedTopRow;
         public volatile bool firstTime = true;
+        public int saveNumber = 0;
+        public int fileSaver = 0;
+        public volatile bool consoleFirstTime = true;
+        public int consoleSaveNumber = 0;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -58,14 +62,12 @@ namespace DataCollection2014
             consoleSocket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             consoleSocket.Bind(consoleIPEndPoint);
             dataSocket.Bind(dataIPEndPoint);
-            ListenTimer.Enabled = true;
-            ListenTimer.Interval = 100;
-            ListenTimer.Stop();
+            DataTimer.Enabled = true;
+            DataTimer.Interval = 100;
+            DataTimer.Stop();
             appPath = Path.GetDirectoryName(Application.ExecutablePath);
             StartListenerThreads();
-            ListenTimer.Start();
-            fileSaveTimer.Enabled = true;
-            fileSaveTimer.Start();
+            DataTimer.Start();
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
             FormatedTopRow = (path2 + "," + "Battery Volts,"+"Battery Amps,"+"Drive Stick X,"+
@@ -82,7 +84,7 @@ namespace DataCollection2014
             "Right Launcher Solenoid,"+"Shifter Solenoid,"+"Air Compressor Switch,"+"Ultrasonic Distance(cm),"+
             "Gyro Angle,"+"Elevation Volts,"+"Low Transducer(PSI),"+"High Transducer(PSI),"+"Left Talon,"+
             "Right Talon,"+"Packet Count,"+"Uptime(s),"+"Downtime(s),"+"% CPU,"+"Match Time,\n");
-            DataSB.Append(FormatedTopRow);
+            //DataSB.Append(FormatedTopRow);
             this.WindowState = FormWindowState.Minimized;
         }
 
@@ -103,7 +105,6 @@ namespace DataCollection2014
             while (true)
             {
                 recv = dataSocket.ReceiveFrom(dataByte, ref dataEndpoint);
-
                 dataString = Encoding.ASCII.GetString(dataByte, 0, recv);
                 dataQueue.Enqueue(dataString);
             }
@@ -116,10 +117,69 @@ namespace DataCollection2014
             {
                 crecv = consoleSocket.ReceiveFrom(consoleByte, ref consoleEndpoint);
                 consoleString = Encoding.ASCII.GetString(consoleByte, 0, crecv);
-                consoleQueue.Enqueue(consoleString + "\n");
+                consoleQueue.Enqueue(consoleString);
             }
         }
-
+        public void displayConsoledata()
+        {
+            if (consoleQueue.Count == 0)
+            {
+                timeStamp = DateTime.Now;
+                String error = String.Format("{0:HH-mm-ss}", timeStamp);
+                ConsoleSB.Append("Console Connection lost at " + error + "\n");
+                disconnectionMessages.AppendText("Console connection lost at " + error + "\n");
+            }
+            if (consoleQueue.Count > 0)
+            {
+                String s3 = (String)consoleQueue.Dequeue();
+                if (s3 == null)
+                {
+                    timeStamp = DateTime.Now;
+                    String error = String.Format("{0:HH-mm-ss}", timeStamp);
+                    ConsoleSB.Append("Console packet error at " + error + "\n");
+                    disconnectionMessages.AppendText("Console packet Error at " + error + "\n");
+                }
+                if (s3 != null)
+                {
+                    NoConnection = false;
+                    String newNetConsole = s3.Substring(0, s3.Length - 2);
+                    if (!s3.Equals("\n"))
+                    {
+                        if (saveToDisk)
+                        {
+                            fileSaver++;
+                            ConsoleSB.Append(s3);
+                            if (fileSaver == 5)
+                            {
+                                try
+                                {
+                                    if (consoleFirstTime)
+                                    {
+                                        while (File.Exists(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf")) consoleSaveNumber++;
+                                        consoleFirstTime = false;
+                                    }
+                                    File.AppendAllText(appPath + "\\" + "tmp" +consoleSaveNumber+ ".rtf", ConsoleSB.ToString());
+                                    ConsoleSB.Clear();
+                                }
+                                catch (IOException) { }
+                                fileSaver = 0;
+                            }
+                        }
+                        if (ignoringInput % 2 == 0)
+                        {
+                            netConsoleDisplay.AppendText(s3);
+                        }
+                        else
+                        { }
+                        if (ignoringInput == 1000)
+                        {
+                            ignoringInput = 2;
+                        }
+                    }
+                }
+            }
+            consoleQueue.Clear();
+        }
         public void displayData()
         {
             timeStamp= DateTime.Now;
@@ -141,17 +201,23 @@ namespace DataCollection2014
                         String parsed = s2.Substring(35, s2.Length - 35);
                         timeStamp = DateTime.Now;
                         String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-                        DataSB.Append(path2 + ",");
-                        DataSB.Append(parsed);
+                        //DataSB.Append(path2 + ",");
+                        //DataSB.Append(parsed);
                         if (saveToDisk)
                         {
                             if (firstTime)
                             {
-                                failSafe.Append(FormatedTopRow);
+                                while (File.Exists(appPath + "\\" + "tmp" +saveNumber+ ".csv")) saveNumber++;
+                                DataSB.Append(FormatedTopRow);
                                 firstTime = false;
                             }
-                            failSafe.Append(path2 + ",");
-                            failSafe.Append(parsed);
+                            DataSB.Append(path2 + ",");
+                            DataSB.Append(parsed);
+                            try
+                            {
+                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString());
+                            }
+                            catch (IOException) { }
                         }
                         parser = parsed.Split(delim);
                         batteryVolts.Text = parser[parseNumber++];
@@ -220,67 +286,34 @@ namespace DataCollection2014
                         percentCPU.Text = parser[parseNumber++];
                         matchTime.Text = parser[parseNumber++];
                         panel1.BackColor = Color.Green;
+                        DataSB.Clear();
                     }
                     catch (System.IndexOutOfRangeException e){
                     }
                     parseNumber = 0;
                 }
             }
-            if (consoleQueue.Count > 0)
-            {
-                String s3 = (String)consoleQueue.Dequeue();
-                if (s3 == null)
-                {
-                    disconnectionMessages.AppendText("Packet Error at " + error + "\n");
-                }
-                if (s3 != null)
-                {
-                    NoConnection = false;
-                    String newNetConsole = s3.Substring(0, s3.Length - 2);
-                    if (!s3.Equals("\n"))
-                    {
-                        if (saveToDisk)
-                        {
-                            netFailSafe.Append(s3);
-                        }
-                        if (ignoringInput % 2 == 0)
-                        {
-                            netConsoleDisplay.AppendText(newNetConsole);
-                            ConsoleSB.Append(s3);
-                        }
-                        else
-                        {}
-                        if (ignoringInput == 1000)
-                        {
-                            ignoringInput = 2;
-                        }
-                    }
-                }
-            }
-
             if ((dataQueue.Count == 0)&&NoConnection==false)
             {
-                ConsoleSB.Append("Connection lost at " + error + "\n");
-                netFailSafe.Append("Connection lost at " + error + "\n");
-                disconnectionMessages.AppendText("Connection lost at " + error + "\n");
+                //netFailSafe.Append("Connection lost at " + error + "\n");
+                disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
                 panel1.BackColor = Color.Red;
                 NoConnection = true;
-                if(stopIt)ListenTimer.Stop();
+                if(stopIt)DataTimer.Stop();
             }
             dataQueue.Clear();
-            consoleQueue.Clear();
         }
 
         private void Pause_Click(object sender, EventArgs e)
         {
             if (dataThread!=null)dataThread.Suspend();
             if (consoleThread!=null)consoleThread.Suspend();
-            ListenTimer.Stop();
+            DataTimer.Stop();
         }
 
         private void fastSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            ListenTimer.Interval = 75;
+            DataTimer.Interval = 75;
         }
 
         private void ListenTimer_Tick(object sender, EventArgs e)
@@ -291,28 +324,28 @@ namespace DataCollection2014
         private void Listen_Click(object sender, EventArgs e)
         {
             StartListenerThreads();
-            ListenTimer.Start();
+            DataTimer.Start();
             ConsoleTimer.Start();
-            fileSaveTimer.Enabled = true;
-            fileSaveTimer.Start();
         }
 
         private void Stop_Click(object sender, EventArgs e)
         {
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            File.WriteAllText(appPath + "\\"+ path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
-            File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
-            File.Delete(appPath + "\\" + "tmp" + ".csv");
-            File.Delete(appPath + "\\" + "tmp" + ".rtf");
+            File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+            File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+            //File.WriteAllText(appPath + "\\"+ path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
+            //File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
+            //File.Delete(appPath + "\\" + "tmp" +saveNumber+ ".csv");
+            //File.Delete(appPath + "\\" + "tmp" + ".rtf");
             matchNumber++;
             firstTime = true;
+            consoleFirstTime = true;
             if(dataThread!=null)dataThread.Suspend();
             if(consoleThread!=null)consoleThread.Suspend();
-            ListenTimer.Stop();
+            DataTimer.Stop();
             dataQueue.Clear();
             consoleQueue.Clear();
-            fileSaveTimer.Stop();
             ConsoleTimer.Stop();
             netConsoleDisplay.Text = "Listening Stopped\n";
             batteryVolts.Text = null;
@@ -378,17 +411,17 @@ namespace DataCollection2014
 
         private void ultraSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            ListenTimer.Interval = 50;
+            DataTimer.Interval = 50;
         }
 
         private void mediumSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            ListenTimer.Interval = 100;
+            DataTimer.Interval = 100;
         }
 
         private void slowSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            ListenTimer.Interval = 200;
+            DataTimer.Interval = 200;
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
@@ -399,22 +432,6 @@ namespace DataCollection2014
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             stopIt = true;
-        }
-
-        private void fileSaveTimer_Tick(object sender, EventArgs e)
-        {
-            if (saveToDisk)
-            {
-                try
-                {
-                    File.AppendAllText(appPath + "\\" + "tmp" + ".csv", failSafe.ToString());
-                    File.AppendAllText(appPath + "\\" + "tmp" + ".rtf", netFailSafe.ToString());
-                    failSafe.Clear();
-                    netFailSafe.Clear();
-                }
-                catch (IOException)
-                { }//MessageBox.Show("ERROR: Please insert the USB drive back in!!!1!");}
-            }
         }
 
         private void clearConsole_Click(object sender, EventArgs e)
@@ -452,6 +469,11 @@ namespace DataCollection2014
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             ignoringInput++;
+        }
+
+        private void ConsoleTimer_Tick(object sender, EventArgs e)
+        {
+            displayConsoledata();
         }
     }
 }
