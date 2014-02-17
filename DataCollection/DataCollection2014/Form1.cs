@@ -70,7 +70,7 @@ namespace DataCollection2014
             DataTimer.Start();
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            FormatedTopRow = (path2 + "," + "Battery Volts,"+"Battery Amps,"+"Drive Stick X,"+
+            FormatedTopRow = (path2 + "," + "Time Stamp," + "Battery Volts,"+"Battery Amps,"+"Drive Stick X,"+
             "Drive Stick Y,"+"Drive Stick Z,"+"Operator Stick X,"+"Operator Stick Y,"+"Front Left Speed,"+
             "Front Left Out Volts,"+"Front Left Current,"+"Front Left Position,"+"Front Left In Volts,"+
             "Front Left Temp(C),"+"Front Left Faults,"+"Front Right Speed,"+"Front Right Out Volts,"+
@@ -149,7 +149,7 @@ namespace DataCollection2014
                         {
                             fileSaver++;
                             ConsoleSB.Append(s3);
-                            if (fileSaver == 5)
+                            if (fileSaver == 10)
                             {
                                 try
                                 {
@@ -201,6 +201,7 @@ namespace DataCollection2014
                         String parsed = s2.Substring(35, s2.Length - 35);
                         timeStamp = DateTime.Now;
                         String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+                        String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
                         //DataSB.Append(path2 + ",");
                         //DataSB.Append(parsed);
                         if (saveToDisk)
@@ -212,6 +213,7 @@ namespace DataCollection2014
                                 firstTime = false;
                             }
                             DataSB.Append(path2 + ",");
+                            DataSB.Append(exactSeconds + ",");
                             DataSB.Append(parsed);
                             try
                             {
@@ -309,6 +311,7 @@ namespace DataCollection2014
             if (dataThread!=null)dataThread.Suspend();
             if (consoleThread!=null)consoleThread.Suspend();
             DataTimer.Stop();
+            ConsoleTimer.Stop();
         }
 
         private void fastSpeed_CheckedChanged(object sender, EventArgs e)
@@ -332,8 +335,8 @@ namespace DataCollection2014
         {
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
-            File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+            if(File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv"))File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+            if(File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf"))File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
             //File.WriteAllText(appPath + "\\"+ path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
             //File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
             //File.Delete(appPath + "\\" + "tmp" +saveNumber+ ".csv");
@@ -474,6 +477,11 @@ namespace DataCollection2014
         private void ConsoleTimer_Tick(object sender, EventArgs e)
         {
             displayConsoledata();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            disconnectionMessages.Clear();
         }
     }
 }

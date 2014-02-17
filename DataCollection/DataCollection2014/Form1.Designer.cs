@@ -218,6 +218,7 @@
             this.Stop = new System.Windows.Forms.Button();
             this.DataTimer = new System.Windows.Forms.Timer(this.components);
             this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel22.SuspendLayout();
@@ -263,6 +264,7 @@
             // 
             // General
             // 
+            this.General.Controls.Add(this.button1);
             this.General.Controls.Add(this.panel22);
             this.General.Controls.Add(this.panel21);
             this.General.Controls.Add(this.panel14);
@@ -361,7 +363,7 @@
             // 
             this.panel14.Controls.Add(this.label20);
             this.panel14.Controls.Add(this.gyroAngle);
-            this.panel14.Location = new System.Drawing.Point(233, 127);
+            this.panel14.Location = new System.Drawing.Point(235, 78);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(67, 45);
             this.panel14.TabIndex = 35;
@@ -1994,6 +1996,16 @@
             this.ConsoleTimer.Interval = 10;
             this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(243, 131);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Clear Errors";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2255,6 +2267,7 @@
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.TextBox collectorFaults;
         private System.Windows.Forms.Timer ConsoleTimer;
+        private System.Windows.Forms.Button button1;
     }
 }
 
