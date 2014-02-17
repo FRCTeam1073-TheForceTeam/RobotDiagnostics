@@ -41,7 +41,6 @@ namespace DataCollection2014
         public volatile bool NoConnection = false;
         public volatile bool stopIt = false;
         public String[] parser= new String[30];
-        public int saveNumber = 0;
         public StringBuilder failSafe = new StringBuilder();
         public volatile bool saveToDisk = true;
         public string appPath;
@@ -49,6 +48,8 @@ namespace DataCollection2014
         public int ignoringInput = 2;
         public int parseNumber = 0;
         public StringBuilder netFailSafe = new StringBuilder();
+        public String FormatedTopRow;
+        public volatile bool firstTime = true;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -65,10 +66,9 @@ namespace DataCollection2014
             ListenTimer.Start();
             fileSaveTimer.Enabled = true;
             fileSaveTimer.Start();
-            saveNumber++;
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            DataSB.Append(path2 + "," + "Battery Volts,"+"Battery Amps,"+"Drive Stick X,"+
+            FormatedTopRow = (path2 + "," + "Battery Volts,"+"Battery Amps,"+"Drive Stick X,"+
             "Drive Stick Y,"+"Drive Stick Z,"+"Operator Stick X,"+"Operator Stick Y,"+"Throttle,"+
             "Front Left Speed,"+"Front Left Out Volts,"+"Front Left Current,"+"Front Left Position,"+
             "Front Left In Volts,"+"Front Left Temp(C),"+"Front Left Faults,"+"Front Right Speed,"+
@@ -81,7 +81,9 @@ namespace DataCollection2014
             "Angle Foward Limit,"+"Angle Reverse Limit,"+"Angle Faults,"+"Left Launcher Solenoid,"+
             "Right Launcher Solenoid,"+"Shifter Solenoid,"+"Air Compressor Switch,"+"Ultrasonic Distance(cm),"+
             "Gyro Angle,"+"Elevation Volts,"+"Low Transducer(PSI),"+"High Transducer(PSI),"+"Left Talon,"+
-            "Right Talon,"+"Packet Count,"+"Uptime(s),"+"Downtime(s),"+"% CPU,"+"Match Time,");
+            "Right Talon,"+"Packet Count,"+"Uptime(s),"+"Downtime(s),"+"% CPU,"+"Match Time,\n");
+            DataSB.Append(FormatedTopRow);
+            this.WindowState = FormWindowState.Minimized;
         }
 
         public void StartListenerThreads()
@@ -103,7 +105,7 @@ namespace DataCollection2014
                 recv = dataSocket.ReceiveFrom(dataByte, ref dataEndpoint);
 
                 dataString = Encoding.ASCII.GetString(dataByte, 0, recv);
-                dataQueue.Enqueue(dataString + "\n");
+                dataQueue.Enqueue(dataString);
             }
         }
 
@@ -143,6 +145,11 @@ namespace DataCollection2014
                         DataSB.Append(parsed);
                         if (saveToDisk)
                         {
+                            if (firstTime)
+                            {
+                                failSafe.Append(FormatedTopRow);
+                                firstTime = false;
+                            }
                             failSafe.Append(path2 + ",");
                             failSafe.Append(parsed);
                         }
@@ -154,7 +161,6 @@ namespace DataCollection2014
                         zAxis.Text = parser[parseNumber++];
                         operatorX.Text = parser[parseNumber++];
                         operatorY.Text = parser[parseNumber++];
-                        throttle.Text = parser[parseNumber++];
 
                         leftFrontSpeed.Text = parser[parseNumber++];
                         leftFrontVolts.Text = parser[parseNumber++];
@@ -235,7 +241,7 @@ namespace DataCollection2014
                     {
                         if (saveToDisk)
                         {
-                            netFailSafe.Append(newNetConsole);
+                            netFailSafe.Append(s3);
                         }
                         if (ignoringInput % 2 == 0)
                         {
@@ -286,9 +292,9 @@ namespace DataCollection2014
         {
             StartListenerThreads();
             ListenTimer.Start();
+            ConsoleTimer.Start();
             fileSaveTimer.Enabled = true;
             fileSaveTimer.Start();
-            saveNumber++;
         }
 
         private void Stop_Click(object sender, EventArgs e)
@@ -297,13 +303,17 @@ namespace DataCollection2014
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
             File.WriteAllText(appPath + "\\"+ path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
             File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
+            File.Delete(appPath + "\\" + "tmp" + ".csv");
+            File.Delete(appPath + "\\" + "tmp" + ".rtf");
             matchNumber++;
+            firstTime = true;
             if(dataThread!=null)dataThread.Suspend();
             if(consoleThread!=null)consoleThread.Suspend();
             ListenTimer.Stop();
             dataQueue.Clear();
             consoleQueue.Clear();
             fileSaveTimer.Stop();
+            ConsoleTimer.Stop();
             netConsoleDisplay.Text = "Listening Stopped\n";
             batteryVolts.Text = null;
             batteryAmps.Text = null;
@@ -312,7 +322,6 @@ namespace DataCollection2014
             zAxis.Text = null;
             operatorX.Text = null;
             operatorY.Text = null;
-            throttle.Text = null;
             leftFrontSpeed.Text = null;
             leftFrontVolts.Text = null;
             leftFrontAmps.Text = null;
@@ -365,7 +374,6 @@ namespace DataCollection2014
             percentCPU.Text = null;
             matchTime.Text = null;
             transducer2.Text = null;
-            //
         }
 
         private void ultraSpeed_CheckedChanged(object sender, EventArgs e)
@@ -381,15 +389,6 @@ namespace DataCollection2014
         private void slowSpeed_CheckedChanged(object sender, EventArgs e)
         {
             ListenTimer.Interval = 200;
-        }
-
-        private void SavetoDisk_Click(object sender, EventArgs e)
-        {
-            timeStamp = DateTime.Now;
-            String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
-            File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
-            matchNumber++;
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
@@ -408,13 +407,13 @@ namespace DataCollection2014
             {
                 try
                 {
-                    File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", failSafe.ToString());
-                    File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", netFailSafe.ToString());
+                    File.AppendAllText(appPath + "\\" + "tmp" + ".csv", failSafe.ToString());
+                    File.AppendAllText(appPath + "\\" + "tmp" + ".rtf", netFailSafe.ToString());
                     failSafe.Clear();
+                    netFailSafe.Clear();
                 }
                 catch (IOException)
-                {
-                }
+                { }//MessageBox.Show("ERROR: Please insert the USB drive back in!!!1!");}
             }
         }
 

@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.label37 = new System.Windows.Forms.Label();
-            this.throttle = new System.Windows.Forms.TextBox();
             this.panel22 = new System.Windows.Forms.Panel();
             this.label47 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -149,6 +146,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.General2 = new System.Windows.Forms.TabPage();
             this.panel20 = new System.Windows.Forms.Panel();
+            this.label84 = new System.Windows.Forms.Label();
+            this.collectorFaults = new System.Windows.Forms.TextBox();
             this.label75 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
@@ -217,14 +216,11 @@
             this.Listen = new System.Windows.Forms.Button();
             this.Pause = new System.Windows.Forms.Button();
             this.Stop = new System.Windows.Forms.Button();
-            this.SavetoDisk = new System.Windows.Forms.Button();
             this.ListenTimer = new System.Windows.Forms.Timer(this.components);
             this.fileSaveTimer = new System.Windows.Forms.Timer(this.components);
-            this.collectorFaults = new System.Windows.Forms.TextBox();
-            this.label84 = new System.Windows.Forms.Label();
+            this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
-            this.panel23.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -268,7 +264,6 @@
             // 
             // General
             // 
-            this.General.Controls.Add(this.panel23);
             this.General.Controls.Add(this.panel22);
             this.General.Controls.Add(this.panel21);
             this.General.Controls.Add(this.panel14);
@@ -284,31 +279,6 @@
             this.General.TabIndex = 0;
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
-            // 
-            // panel23
-            // 
-            this.panel23.Controls.Add(this.label37);
-            this.panel23.Controls.Add(this.throttle);
-            this.panel23.Location = new System.Drawing.Point(233, 75);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(76, 46);
-            this.panel23.TabIndex = 38;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(4, 4);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(43, 13);
-            this.label37.TabIndex = 1;
-            this.label37.Text = "Throttle";
-            // 
-            // throttle
-            // 
-            this.throttle.Location = new System.Drawing.Point(4, 23);
-            this.throttle.Name = "throttle";
-            this.throttle.Size = new System.Drawing.Size(64, 20);
-            this.throttle.TabIndex = 0;
             // 
             // panel22
             // 
@@ -1360,6 +1330,22 @@
             this.panel20.Size = new System.Drawing.Size(300, 127);
             this.panel20.TabIndex = 38;
             // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(228, 66);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(35, 13);
+            this.label84.TabIndex = 40;
+            this.label84.Text = "Faults";
+            // 
+            // collectorFaults
+            // 
+            this.collectorFaults.Location = new System.Drawing.Point(229, 83);
+            this.collectorFaults.Name = "collectorFaults";
+            this.collectorFaults.Size = new System.Drawing.Size(63, 20);
+            this.collectorFaults.TabIndex = 39;
+            // 
             // label75
             // 
             this.label75.AutoSize = true;
@@ -1916,6 +1902,7 @@
             // slowSpeed
             // 
             this.slowSpeed.AutoSize = true;
+            this.slowSpeed.Checked = true;
             this.slowSpeed.Location = new System.Drawing.Point(-1, 85);
             this.slowSpeed.Name = "slowSpeed";
             this.slowSpeed.Size = new System.Drawing.Size(48, 17);
@@ -1928,12 +1915,10 @@
             // ultraSpeed
             // 
             this.ultraSpeed.AutoSize = true;
-            this.ultraSpeed.Checked = true;
             this.ultraSpeed.Location = new System.Drawing.Point(-1, 16);
             this.ultraSpeed.Name = "ultraSpeed";
             this.ultraSpeed.Size = new System.Drawing.Size(47, 17);
             this.ultraSpeed.TabIndex = 3;
-            this.ultraSpeed.TabStop = true;
             this.ultraSpeed.Text = "Ultra";
             this.ultraSpeed.UseVisualStyleBackColor = true;
             this.ultraSpeed.CheckedChanged += new System.EventHandler(this.ultraSpeed_CheckedChanged);
@@ -1999,16 +1984,6 @@
             this.Stop.UseVisualStyleBackColor = true;
             this.Stop.Click += new System.EventHandler(this.Stop_Click);
             // 
-            // SavetoDisk
-            // 
-            this.SavetoDisk.Location = new System.Drawing.Point(155, 277);
-            this.SavetoDisk.Name = "SavetoDisk";
-            this.SavetoDisk.Size = new System.Drawing.Size(77, 23);
-            this.SavetoDisk.TabIndex = 4;
-            this.SavetoDisk.Text = "Save to Disk";
-            this.SavetoDisk.UseVisualStyleBackColor = true;
-            this.SavetoDisk.Click += new System.EventHandler(this.SavetoDisk_Click);
-            // 
             // ListenTimer
             // 
             this.ListenTimer.Enabled = true;
@@ -2019,28 +1994,16 @@
             this.fileSaveTimer.Interval = 250;
             this.fileSaveTimer.Tick += new System.EventHandler(this.fileSaveTimer_Tick);
             // 
-            // collectorFaults
+            // ConsoleTimer
             // 
-            this.collectorFaults.Location = new System.Drawing.Point(229, 83);
-            this.collectorFaults.Name = "collectorFaults";
-            this.collectorFaults.Size = new System.Drawing.Size(63, 20);
-            this.collectorFaults.TabIndex = 39;
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(228, 66);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(35, 13);
-            this.label84.TabIndex = 40;
-            this.label84.Text = "Faults";
+            this.ConsoleTimer.Enabled = true;
+            this.ConsoleTimer.Interval = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(567, 302);
-            this.Controls.Add(this.SavetoDisk);
             this.Controls.Add(this.Stop);
             this.Controls.Add(this.Pause);
             this.Controls.Add(this.Listen);
@@ -2051,8 +2014,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.tabControl1.ResumeLayout(false);
             this.General.ResumeLayout(false);
-            this.panel23.ResumeLayout(false);
-            this.panel23.PerformLayout();
             this.panel22.ResumeLayout(false);
             this.panel22.PerformLayout();
             this.panel21.ResumeLayout(false);
@@ -2117,7 +2078,6 @@
         private System.Windows.Forms.Button Listen;
         private System.Windows.Forms.Button Pause;
         private System.Windows.Forms.Button Stop;
-        private System.Windows.Forms.Button SavetoDisk;
         private System.Windows.Forms.Timer ListenTimer;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox batteryID;
@@ -2254,9 +2214,6 @@
         private System.Windows.Forms.TextBox packetCounter;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox throttle;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label36;
@@ -2303,6 +2260,7 @@
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.TextBox collectorFaults;
+        private System.Windows.Forms.Timer ConsoleTimer;
     }
 }
 
