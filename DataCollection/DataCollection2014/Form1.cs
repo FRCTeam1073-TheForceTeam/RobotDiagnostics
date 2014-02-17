@@ -71,10 +71,10 @@ namespace DataCollection2014
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
             FormatedTopRow = (path2 + "," + "Battery Volts,"+"Battery Amps,"+"Drive Stick X,"+
-            "Drive Stick Y,"+"Drive Stick Z,"+"Operator Stick X,"+"Operator Stick Y,"+"Throttle,"+
-            "Front Left Speed,"+"Front Left Out Volts,"+"Front Left Current,"+"Front Left Position,"+
-            "Front Left In Volts,"+"Front Left Temp(C),"+"Front Left Faults,"+"Front Right Speed,"+
-            "Front Right Out Volts,"+"Front Right Current,"+"Front Right Position,"+"Front Right In Volts,"+
+            "Drive Stick Y,"+"Drive Stick Z,"+"Operator Stick X,"+"Operator Stick Y,"+"Front Left Speed,"+
+            "Front Left Out Volts,"+"Front Left Current,"+"Front Left Position,"+"Front Left In Volts,"+
+            "Front Left Temp(C),"+"Front Left Faults,"+"Front Right Speed,"+"Front Right Out Volts,"+
+            "Front Right Current,"+"Front Right Position,"+"Front Right In Volts,"+
             "Front Right Temp(C),"+"Front Right Faults,"+"Back Left Speed,"+"Back Left Out Volts,"+
             "Back Left Current,"+"Back Left Position,"+"Back Left Out Volts,"+"Back Left Temp(C),"+
             "Back Left Faults,"+"Back Right Speed,"+"Back Right Out Volts,"+"Back Right Current,"+
