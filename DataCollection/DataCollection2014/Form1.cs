@@ -54,6 +54,7 @@ namespace DataCollection2014
         public int fileSaver = 0;
         public volatile bool consoleFirstTime = true;
         public int consoleSaveNumber = 0;
+        public volatile bool noConsoleConnection = false;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -122,12 +123,16 @@ namespace DataCollection2014
         }
         public void displayConsoledata()
         {
-            if (consoleQueue.Count == 0)
+            if (consoleQueue.Count == 0&&noConsoleConnection==false)
             {
                 timeStamp = DateTime.Now;
                 String error = String.Format("{0:HH-mm-ss}", timeStamp);
                 ConsoleSB.Append("Console Connection lost at " + error + "\n");
                 disconnectionMessages.AppendText("Console connection lost at " + error + "\n");
+                noConsoleConnection = true;
+                panel1.BackColor = Color.Orange;
+                if (noConsoleConnection && NoConnection) panel1.BackColor = Color.Red;
+                if (stopIt) ConsoleTimer.Stop();
             }
             if (consoleQueue.Count > 0)
             {
@@ -141,7 +146,7 @@ namespace DataCollection2014
                 }
                 if (s3 != null)
                 {
-                    NoConnection = false;
+                    noConsoleConnection = false;
                     String newNetConsole = s3.Substring(0, s3.Length - 2);
                     if (!s3.Equals("\n"))
                     {
@@ -217,7 +222,7 @@ namespace DataCollection2014
                             DataSB.Append(parsed);
                             try
                             {
-                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString());
+                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString()+"\n");
                             }
                             catch (IOException) { }
                         }
@@ -299,7 +304,8 @@ namespace DataCollection2014
             {
                 //netFailSafe.Append("Connection lost at " + error + "\n");
                 disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
-                panel1.BackColor = Color.Red;
+                panel1.BackColor = Color.Orange;
+                if (noConsoleConnection && NoConnection) panel1.BackColor = Color.Red;
                 NoConnection = true;
                 if(stopIt)DataTimer.Stop();
             }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel22 = new System.Windows.Forms.Panel();
             this.label47 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -218,7 +219,6 @@
             this.Stop = new System.Windows.Forms.Button();
             this.DataTimer = new System.Windows.Forms.Timer(this.components);
             this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel22.SuspendLayout();
@@ -280,6 +280,16 @@
             this.General.TabIndex = 0;
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(243, 131);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Clear Errors";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel22
             // 
@@ -1788,7 +1798,7 @@
             this.panel16.Controls.Add(this.radioButton2);
             this.panel16.Controls.Add(this.radioButton1);
             this.panel16.Controls.Add(this.label46);
-            this.panel16.Location = new System.Drawing.Point(96, 79);
+            this.panel16.Location = new System.Drawing.Point(115, 78);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(130, 75);
             this.panel16.TabIndex = 19;
@@ -1886,19 +1896,19 @@
             this.panel2.Controls.Add(this.ultraSpeed);
             this.panel2.Controls.Add(this.mediumSpeed);
             this.panel2.Controls.Add(this.fastSpeed);
-            this.panel2.Location = new System.Drawing.Point(12, 52);
+            this.panel2.Location = new System.Drawing.Point(12, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(74, 104);
+            this.panel2.Size = new System.Drawing.Size(97, 105);
             this.panel2.TabIndex = 12;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Location = new System.Drawing.Point(0, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
+            this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Update Speed";
+            this.label2.Text = "Update Speed (ms)";
             // 
             // slowSpeed
             // 
@@ -1906,10 +1916,10 @@
             this.slowSpeed.Checked = true;
             this.slowSpeed.Location = new System.Drawing.Point(-1, 85);
             this.slowSpeed.Name = "slowSpeed";
-            this.slowSpeed.Size = new System.Drawing.Size(48, 17);
+            this.slowSpeed.Size = new System.Drawing.Size(72, 17);
             this.slowSpeed.TabIndex = 6;
             this.slowSpeed.TabStop = true;
-            this.slowSpeed.Text = "Slow";
+            this.slowSpeed.Text = "Slow(200)";
             this.slowSpeed.UseVisualStyleBackColor = true;
             this.slowSpeed.CheckedChanged += new System.EventHandler(this.slowSpeed_CheckedChanged);
             // 
@@ -1918,9 +1928,9 @@
             this.ultraSpeed.AutoSize = true;
             this.ultraSpeed.Location = new System.Drawing.Point(-1, 16);
             this.ultraSpeed.Name = "ultraSpeed";
-            this.ultraSpeed.Size = new System.Drawing.Size(47, 17);
+            this.ultraSpeed.Size = new System.Drawing.Size(65, 17);
             this.ultraSpeed.TabIndex = 3;
-            this.ultraSpeed.Text = "Ultra";
+            this.ultraSpeed.Text = "Ultra(50)";
             this.ultraSpeed.UseVisualStyleBackColor = true;
             this.ultraSpeed.CheckedChanged += new System.EventHandler(this.ultraSpeed_CheckedChanged);
             // 
@@ -1929,9 +1939,9 @@
             this.mediumSpeed.AutoSize = true;
             this.mediumSpeed.Location = new System.Drawing.Point(-1, 62);
             this.mediumSpeed.Name = "mediumSpeed";
-            this.mediumSpeed.Size = new System.Drawing.Size(62, 17);
+            this.mediumSpeed.Size = new System.Drawing.Size(86, 17);
             this.mediumSpeed.TabIndex = 5;
-            this.mediumSpeed.Text = "Medium";
+            this.mediumSpeed.Text = "Medium(100)";
             this.mediumSpeed.UseVisualStyleBackColor = true;
             this.mediumSpeed.CheckedChanged += new System.EventHandler(this.mediumSpeed_CheckedChanged);
             // 
@@ -1940,9 +1950,9 @@
             this.fastSpeed.AutoSize = true;
             this.fastSpeed.Location = new System.Drawing.Point(-1, 39);
             this.fastSpeed.Name = "fastSpeed";
-            this.fastSpeed.Size = new System.Drawing.Size(45, 17);
+            this.fastSpeed.Size = new System.Drawing.Size(63, 17);
             this.fastSpeed.TabIndex = 4;
-            this.fastSpeed.Text = "Fast";
+            this.fastSpeed.Text = "Fast(75)";
             this.fastSpeed.UseVisualStyleBackColor = true;
             this.fastSpeed.CheckedChanged += new System.EventHandler(this.fastSpeed_CheckedChanged);
             // 
@@ -1995,16 +2005,6 @@
             this.ConsoleTimer.Enabled = true;
             this.ConsoleTimer.Interval = 10;
             this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(243, 131);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Clear Errors";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
