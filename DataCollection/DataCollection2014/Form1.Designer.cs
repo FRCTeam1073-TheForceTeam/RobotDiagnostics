@@ -203,10 +203,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label46 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.label17 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.slowSpeed = new System.Windows.Forms.RadioButton();
@@ -245,7 +241,6 @@
             this.ConsoleStatus.SuspendLayout();
             this.Status.SuspendLayout();
             this.panel16.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1783,7 +1778,6 @@
             // 
             this.Status.Controls.Add(this.panel16);
             this.Status.Controls.Add(this.label1);
-            this.Status.Controls.Add(this.panel8);
             this.Status.Controls.Add(this.panel2);
             this.Status.Controls.Add(this.panel1);
             this.Status.Location = new System.Drawing.Point(4, 22);
@@ -1845,50 +1839,6 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Connection Status";
             // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.radioButton6);
-            this.panel8.Controls.Add(this.radioButton5);
-            this.panel8.Controls.Add(this.label17);
-            this.panel8.Location = new System.Drawing.Point(12, 160);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(152, 57);
-            this.panel8.TabIndex = 15;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Checked = true;
-            this.radioButton6.Location = new System.Drawing.Point(3, 39);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(151, 17);
-            this.radioButton6.TabIndex = 2;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Resume When Connected";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(3, 16);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(92, 17);
-            this.radioButton5.TabIndex = 1;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Stop Listening";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(0, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(108, 13);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "When Disconnected:";
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label2);
@@ -1913,12 +1863,10 @@
             // slowSpeed
             // 
             this.slowSpeed.AutoSize = true;
-            this.slowSpeed.Checked = true;
             this.slowSpeed.Location = new System.Drawing.Point(-1, 85);
             this.slowSpeed.Name = "slowSpeed";
             this.slowSpeed.Size = new System.Drawing.Size(72, 17);
             this.slowSpeed.TabIndex = 6;
-            this.slowSpeed.TabStop = true;
             this.slowSpeed.Text = "Slow(200)";
             this.slowSpeed.UseVisualStyleBackColor = true;
             this.slowSpeed.CheckedChanged += new System.EventHandler(this.slowSpeed_CheckedChanged);
@@ -1937,10 +1885,12 @@
             // mediumSpeed
             // 
             this.mediumSpeed.AutoSize = true;
+            this.mediumSpeed.Checked = true;
             this.mediumSpeed.Location = new System.Drawing.Point(-1, 62);
             this.mediumSpeed.Name = "mediumSpeed";
             this.mediumSpeed.Size = new System.Drawing.Size(86, 17);
             this.mediumSpeed.TabIndex = 5;
+            this.mediumSpeed.TabStop = true;
             this.mediumSpeed.Text = "Medium(100)";
             this.mediumSpeed.UseVisualStyleBackColor = true;
             this.mediumSpeed.CheckedChanged += new System.EventHandler(this.mediumSpeed_CheckedChanged);
@@ -2003,7 +1953,7 @@
             // ConsoleTimer
             // 
             this.ConsoleTimer.Enabled = true;
-            this.ConsoleTimer.Interval = 10;
+            this.ConsoleTimer.Interval = 1;
             this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
             // 
             // Form1
@@ -2068,8 +2018,6 @@
             this.Status.PerformLayout();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -2099,10 +2047,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.RichTextBox netConsoleDisplay;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton slowSpeed;

@@ -39,7 +39,6 @@ namespace DataCollection2014
         public Thread dataThread;
         public Thread consoleThread;
         public volatile bool NoConnection = false;
-        public volatile bool stopIt = false;
         public String[] parser= new String[30];
         //public StringBuilder failSafe = new StringBuilder();
         public volatile bool saveToDisk = true;
@@ -86,7 +85,7 @@ namespace DataCollection2014
             "Gyro Angle,"+"Elevation Volts,"+"Low Transducer(PSI),"+"High Transducer(PSI),"+"Left Talon,"+
             "Right Talon,"+"Packet Count,"+"Uptime(s),"+"Downtime(s),"+"% CPU,"+"Match Time,\n");
             //DataSB.Append(FormatedTopRow);
-            this.WindowState = FormWindowState.Minimized;
+            //this.WindowState = FormWindowState.Minimized;
         }
 
         public void StartListenerThreads()
@@ -130,9 +129,6 @@ namespace DataCollection2014
                 ConsoleSB.Append("Console Connection lost at " + error + "\n");
                 disconnectionMessages.AppendText("Console connection lost at " + error + "\n");
                 noConsoleConnection = true;
-                panel1.BackColor = Color.Orange;
-                if (noConsoleConnection && NoConnection) panel1.BackColor = Color.Red;
-                if (stopIt) ConsoleTimer.Stop();
             }
             if (consoleQueue.Count > 0)
             {
@@ -196,7 +192,6 @@ namespace DataCollection2014
                 if (s2 == null)
                 {
                     disconnectionMessages.AppendText("Packet Error at " + error + "\n");
-                    panel1.BackColor = Color.OrangeRed;
                 }
                 if (s2 != null)
                 {
@@ -292,8 +287,8 @@ namespace DataCollection2014
                         downTime.Text = parser[parseNumber++];
                         percentCPU.Text = parser[parseNumber++];
                         matchTime.Text = parser[parseNumber++];
-                        panel1.BackColor = Color.Green;
                         DataSB.Clear();
+                        NoConnection = false;
                     }
                     catch (System.IndexOutOfRangeException e){
                     }
@@ -304,10 +299,7 @@ namespace DataCollection2014
             {
                 //netFailSafe.Append("Connection lost at " + error + "\n");
                 disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
-                panel1.BackColor = Color.Orange;
-                if (noConsoleConnection && NoConnection) panel1.BackColor = Color.Red;
                 NoConnection = true;
-                if(stopIt)DataTimer.Stop();
             }
             dataQueue.Clear();
         }
@@ -328,6 +320,17 @@ namespace DataCollection2014
         private void ListenTimer_Tick(object sender, EventArgs e)
         {
             displayData();
+            SetConnectionStatus();
+        }
+
+        private void SetConnectionStatus()
+        {
+            if (NoConnection && noConsoleConnection) panel1.BackColor = Color.Red;
+            else
+            {
+                if (NoConnection || noConsoleConnection) panel1.BackColor = Color.Orange;
+                if (!NoConnection && !noConsoleConnection) panel1.BackColor = Color.Green;
+            }
         }
 
         private void Listen_Click(object sender, EventArgs e)
@@ -431,16 +434,6 @@ namespace DataCollection2014
         private void slowSpeed_CheckedChanged(object sender, EventArgs e)
         {
             DataTimer.Interval = 200;
-        }
-
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-            stopIt = false;
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
-        {
-            stopIt = true;
         }
 
         private void clearConsole_Click(object sender, EventArgs e)
