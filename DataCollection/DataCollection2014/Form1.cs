@@ -54,6 +54,8 @@ namespace DataCollection2014
         public volatile bool consoleFirstTime = true;
         public int consoleSaveNumber = 0;
         public volatile bool noConsoleConnection = false;
+        double oldMatchTime = 0;
+        double newMatchTime = 0;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -76,7 +78,7 @@ namespace DataCollection2014
             "Front Left Temp(C),"+"Front Left Faults,"+"Front Right Speed,"+"Front Right Out Volts,"+
             "Front Right Current,"+"Front Right Position,"+"Front Right In Volts,"+
             "Front Right Temp(C),"+"Front Right Faults,"+"Back Left Speed,"+"Back Left Out Volts,"+
-            "Back Left Current,"+"Back Left Position,"+"Back Left Out Volts,"+"Back Left Temp(C),"+
+            "Back Left Current,"+"Back Left Position,"+"Back Left In Volts,"+"Back Left Temp(C),"+
             "Back Left Faults,"+"Back Right Speed,"+"Back Right Out Volts,"+"Back Right Current,"+
             "Back Right Position,"+"Back Right In Volts,"+"Back Right Temp(C),"+"Back Right Faults,"+
             "Angle Speed,"+"Angle Out Volts,"+"Angle Current,"+"Angle In Volts,"+"Angle Temp,"+
@@ -286,7 +288,13 @@ namespace DataCollection2014
                         loadTime.Text = parser[parseNumber++];
                         downTime.Text = parser[parseNumber++];
                         percentCPU.Text = parser[parseNumber++];
-                        matchTime.Text = parser[parseNumber++];
+                        matchTime.Text = parser[parseNumber];
+                        oldMatchTime = newMatchTime;
+                        try
+                        {
+                            newMatchTime = Double.Parse(parser[parseNumber++]);
+                        }
+                        catch (FormatException) {}
                         DataSB.Clear();
                         NoConnection = false;
                     }
@@ -321,6 +329,16 @@ namespace DataCollection2014
         {
             displayData();
             SetConnectionStatus();
+            if (isEnabled())
+            {
+                label37.Text = "Enabled";
+                label37.BackColor = Color.Green;
+            }
+            if (!isEnabled())
+            {
+                label37.Text = "Disabled";
+                label37.BackColor = Color.Red;
+            }
         }
 
         private void SetConnectionStatus()
@@ -481,6 +499,12 @@ namespace DataCollection2014
         private void button1_Click(object sender, EventArgs e)
         {
             disconnectionMessages.Clear();
+        }
+
+        private bool isEnabled()
+        {
+            if (newMatchTime.Equals(oldMatchTime)) return false;
+            else return true;
         }
     }
 }

@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel22 = new System.Windows.Forms.Panel();
             this.label47 = new System.Windows.Forms.Label();
@@ -217,6 +220,7 @@
             this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -259,6 +263,7 @@
             // 
             // General
             // 
+            this.General.Controls.Add(this.panel8);
             this.General.Controls.Add(this.button1);
             this.General.Controls.Add(this.panel22);
             this.General.Controls.Add(this.panel21);
@@ -275,6 +280,34 @@
             this.General.TabIndex = 0;
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label37);
+            this.panel8.Controls.Add(this.label17);
+            this.panel8.Location = new System.Drawing.Point(236, 161);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(82, 40);
+            this.panel8.TabIndex = 39;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Red;
+            this.label37.Location = new System.Drawing.Point(17, 22);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(48, 13);
+            this.label37.TabIndex = 1;
+            this.label37.Text = "Disabled";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(7, 4);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 13);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Robot Status";
             // 
             // button1
             // 
@@ -1971,6 +2004,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.tabControl1.ResumeLayout(false);
             this.General.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel22.ResumeLayout(false);
             this.panel22.PerformLayout();
             this.panel21.ResumeLayout(false);
@@ -2212,6 +2247,9 @@
         private System.Windows.Forms.TextBox collectorFaults;
         private System.Windows.Forms.Timer ConsoleTimer;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label17;
     }
 }
 
