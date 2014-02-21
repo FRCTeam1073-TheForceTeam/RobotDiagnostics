@@ -206,23 +206,7 @@ namespace DataCollection2014
                         String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
                         //DataSB.Append(path2 + ",");
                         //DataSB.Append(parsed);
-                        if (saveToDisk)
-                        {
-                            if (firstTime)
-                            {
-                                while (File.Exists(appPath + "\\" + "tmp" +saveNumber+ ".csv")) saveNumber++;
-                                DataSB.Append(FormatedTopRow);
-                                firstTime = false;
-                            }
-                            DataSB.Append(path2 + ",");
-                            DataSB.Append(exactSeconds + ",");
-                            DataSB.Append(parsed);
-                            try
-                            {
-                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString()+"\n");
-                            }
-                            catch (IOException) { }
-                        }
+                        
                         parser = parsed.Split(delim);
                         batteryVolts.Text = parser[parseNumber++];
                         batteryAmps.Text = parser[parseNumber++];
@@ -295,6 +279,23 @@ namespace DataCollection2014
                             newMatchTime = Double.Parse(parser[parseNumber++]);
                         }
                         catch (FormatException) {}
+                        if (saveToDisk&&isEnabled())
+                        {
+                            if (firstTime)
+                            {
+                                while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
+                                DataSB.Append(FormatedTopRow);
+                                firstTime = false;
+                            }
+                            DataSB.Append(path2 + ",");
+                            DataSB.Append(exactSeconds + ",");
+                            DataSB.Append(parsed);
+                            try
+                            {
+                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");
+                            }
+                            catch (IOException) { }
+                        }
                         DataSB.Clear();
                         NoConnection = false;
                     }
@@ -329,12 +330,12 @@ namespace DataCollection2014
         {
             displayData();
             SetConnectionStatus();
-            if (isEnabled())
+            if (isEnabled()&&!NoConnection)
             {
                 label37.Text = "Enabled";
                 label37.BackColor = Color.Green;
             }
-            if (!isEnabled())
+            if (!isEnabled()||NoConnection)
             {
                 label37.Text = "Disabled";
                 label37.BackColor = Color.Red;
