@@ -11,6 +11,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Collections;
 using System.IO;
+using System.Net.NetworkInformation;
 
 namespace DataCollection2014
 {
@@ -55,6 +56,9 @@ namespace DataCollection2014
         public int consoleSaveNumber = 0;
         public volatile bool noConsoleConnection = false;
         public volatile bool isEnabled = false;
+        public volatile bool consoleConnection = false;
+        public Ping cameraPinger = new Ping();
+        public volatile bool cameraExists = false;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -83,8 +87,8 @@ namespace DataCollection2014
             "Angle Speed,"+"Angle Out Volts,"+"Angle Current,"+"Angle In Volts,"+"Angle Temp,"+
             "Angle Foward Limit,"+"Angle Reverse Limit,"+"Angle Faults,"+"Left Launcher Solenoid,"+
             "Right Launcher Solenoid,"+"Shifter Solenoid,"+"Air Compressor Switch,"+"Ultrasonic Distance(cm),"+
-            "Gyro Angle,"+"Elevation Volts,"+"Low Transducer(PSI),"+"High Transducer(PSI),"+"Left Talon,"+
-            "Right Talon,"+"Packet Count,"+"Uptime(s),"+"Downtime(s),"+"% CPU,"+"Match Time,\n");
+            "Gyro Angle,"+"Elevation Volts,"+"High Transducer(PSI),"+"Left Talon,"+
+            "Right Talon,"+"Packet Count,"+"Uptime(s),"+"Downtime(s),"+"% CPU,"+"Match Time," + "isEnabled\n");
             //DataSB.Append(FormatedTopRow);
             //this.WindowState = FormWindowState.Minimized;
         }
@@ -125,6 +129,7 @@ namespace DataCollection2014
         {
             if (consoleQueue.Count == 0&&noConsoleConnection==false)
             {
+                
                 timeStamp = DateTime.Now;
                 String error = String.Format("{0:HH-mm-ss}", timeStamp);
                 ConsoleSB.Append("Console Connection lost at " + error + "\n");
@@ -143,6 +148,7 @@ namespace DataCollection2014
                 }
                 if (s3 != null)
                 {
+                    consoleConnection = true;
                     noConsoleConnection = false;
                     String newNetConsole = s3.Substring(0, s3.Length - 2);
                     if (!s3.Equals("\n"))
@@ -181,6 +187,7 @@ namespace DataCollection2014
                 }
             }
             consoleQueue.Clear();
+           
         }
         public void displayData()
         {
@@ -271,7 +278,9 @@ namespace DataCollection2014
                         downTime.Text = parser[parseNumber++];
                         percentCPU.Text = parser[parseNumber++];
                         matchTime.Text = parser[parseNumber++];
-                        isEnabled = Boolean.Parse(parser[parseNumber++]);
+                        isReallyEnabled.Text = parser[parseNumber];
+                        if(isReallyEnabled.Text.Equals ("1"))isEnabled=true;
+                        if(isReallyEnabled.Text.Equals("0")) isEnabled = false;
                         if (!saveToDisk)
                         {
                             
@@ -365,11 +374,11 @@ namespace DataCollection2014
 
         private void SetConnectionStatus()
         {
-            if (NoConnection && noConsoleConnection) panel1.BackColor = Color.Red;
+            if (NoConnection && !consoleConnection) panel1.BackColor = Color.Red;
             else
             {
-                if (NoConnection || noConsoleConnection) panel1.BackColor = Color.Orange;
-                if (!NoConnection && !noConsoleConnection) panel1.BackColor = Color.Green;
+                if (NoConnection || !consoleConnection) panel1.BackColor = Color.Orange;
+                if (!NoConnection && consoleConnection) panel1.BackColor = Color.Green;
             }
         }
 
@@ -493,10 +502,8 @@ namespace DataCollection2014
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
         {
             if (!secretClose)
-            {
-                
+            { 
                // MessageBox.Show("There is no closing of the Application");
-
                 switch (MessageBox.Show(this, "Are you sure you want to close? (It will be logged!)", "Are you sure...", MessageBoxButtons.YesNo))
                 {
                     case DialogResult.No:
@@ -535,6 +542,19 @@ namespace DataCollection2014
         private void button1_Click(object sender, EventArgs e)
         {
             disconnectionMessages.Clear();
+        }
+
+        private void pingTimer_Tick(object sender, EventArgs e)
+        {
+            PingReply reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 100);
+            if (reply.Status == IPStatus.Success)
+            {
+                cameraStats.BackColor = Color.Green;
+            }
+            else
+            {
+                cameraStats.BackColor = Color.Red;
+            }
         }
     }
 }

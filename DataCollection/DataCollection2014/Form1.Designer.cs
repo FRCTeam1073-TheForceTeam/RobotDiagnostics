@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
+            this.isReallyEnabled = new System.Windows.Forms.TextBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -199,6 +200,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.netConsoleDisplay = new System.Windows.Forms.RichTextBox();
             this.Status = new System.Windows.Forms.TabPage();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label48 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -216,10 +221,9 @@
             this.Stop = new System.Windows.Forms.Button();
             this.DataTimer = new System.Windows.Forms.Timer(this.components);
             this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.label48 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.pingTimer = new System.Windows.Forms.Timer(this.components);
+            this.label85 = new System.Windows.Forms.Label();
+            this.cameraStats = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -246,9 +250,9 @@
             this.panel13.SuspendLayout();
             this.ConsoleStatus.SuspendLayout();
             this.Status.SuspendLayout();
+            this.panel23.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel23.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -266,6 +270,7 @@
             // 
             // General
             // 
+            this.General.Controls.Add(this.isReallyEnabled);
             this.General.Controls.Add(this.panel8);
             this.General.Controls.Add(this.button1);
             this.General.Controls.Add(this.panel22);
@@ -283,6 +288,13 @@
             this.General.TabIndex = 0;
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
+            // 
+            // isReallyEnabled
+            // 
+            this.isReallyEnabled.Location = new System.Drawing.Point(235, 208);
+            this.isReallyEnabled.Name = "isReallyEnabled";
+            this.isReallyEnabled.Size = new System.Drawing.Size(32, 20);
+            this.isReallyEnabled.TabIndex = 40;
             // 
             // panel8
             // 
@@ -1794,6 +1806,8 @@
             // 
             // Status
             // 
+            this.Status.Controls.Add(this.cameraStats);
+            this.Status.Controls.Add(this.label85);
             this.Status.Controls.Add(this.panel23);
             this.Status.Controls.Add(this.panel16);
             this.Status.Controls.Add(this.label1);
@@ -1805,6 +1819,47 @@
             this.Status.TabIndex = 2;
             this.Status.Text = "Status";
             this.Status.UseVisualStyleBackColor = true;
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.radioButton4);
+            this.panel23.Controls.Add(this.radioButton3);
+            this.panel23.Controls.Add(this.label48);
+            this.panel23.Location = new System.Drawing.Point(116, 7);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(117, 65);
+            this.panel23.TabIndex = 20;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(6, 42);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(43, 17);
+            this.radioButton4.TabIndex = 2;
+            this.radioButton4.Text = "Yes";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 22);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(79, 17);
+            this.radioButton3.TabIndex = 1;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "No(Default)";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(3, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(115, 13);
+            this.label48.TabIndex = 0;
+            this.label48.Text = "Save data if  disabled?";
             // 
             // panel16
             // 
@@ -1975,46 +2030,28 @@
             this.ConsoleTimer.Interval = 1;
             this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
             // 
-            // panel23
+            // pingTimer
             // 
-            this.panel23.Controls.Add(this.radioButton4);
-            this.panel23.Controls.Add(this.radioButton3);
-            this.panel23.Controls.Add(this.label48);
-            this.panel23.Location = new System.Drawing.Point(116, 7);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(117, 65);
-            this.panel23.TabIndex = 20;
+            this.pingTimer.Enabled = true;
+            this.pingTimer.Interval = 1000;
+            this.pingTimer.Tick += new System.EventHandler(this.pingTimer_Tick);
             // 
-            // label48
+            // label85
             // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(3, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(115, 13);
-            this.label48.TabIndex = 0;
-            this.label48.Text = "Save data if  disabled?";
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(262, 7);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(76, 13);
+            this.label85.TabIndex = 21;
+            this.label85.Text = "Camera Status";
             // 
-            // radioButton3
+            // cameraStats
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 22);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(79, 17);
-            this.radioButton3.TabIndex = 1;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "No(Default)";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 42);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(43, 17);
-            this.radioButton4.TabIndex = 2;
-            this.radioButton4.Text = "Yes";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.cameraStats.BackColor = System.Drawing.SystemColors.Desktop;
+            this.cameraStats.Location = new System.Drawing.Point(265, 23);
+            this.cameraStats.Name = "cameraStats";
+            this.cameraStats.Size = new System.Drawing.Size(73, 43);
+            this.cameraStats.TabIndex = 22;
             // 
             // Form1
             // 
@@ -2031,6 +2068,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.tabControl1.ResumeLayout(false);
             this.General.ResumeLayout(false);
+            this.General.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel22.ResumeLayout(false);
@@ -2078,12 +2116,12 @@
             this.ConsoleStatus.PerformLayout();
             this.Status.ResumeLayout(false);
             this.Status.PerformLayout();
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel23.ResumeLayout(false);
-            this.panel23.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2281,6 +2319,10 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox isReallyEnabled;
+        private System.Windows.Forms.Timer pingTimer;
+        private System.Windows.Forms.Panel cameraStats;
+        private System.Windows.Forms.Label label85;
     }
 }
 
