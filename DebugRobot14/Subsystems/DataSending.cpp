@@ -36,7 +36,6 @@ void DataSending::SendTheData(){
 	Send(RobotMap::robotRangeFinderUltrasonicSensor->GetVoltage()*INCHES_CONSTANT);
 	Send(RobotMap::driveTrainGyro->GetAngle());
 	Send(RobotMap::elevatorElevationEncoder->GetVoltage());
-	Send(RobotMap::launcherLowPressureSwitch->GetVoltage()*PSI_CONSTANT);//transducer1
 	Send(RobotMap::launcherHighPressureSwitch->GetVoltage()*PSI_CONSTANT);//transducer2
 	Send(RobotMap::collectorLeftRoller->Get()*-1);//talon info
 	Send(RobotMap::collectorRightRoller->Get());
@@ -48,6 +47,7 @@ void DataSending::SendTheData(){
 	Send(downTime,4);
 	Send(percentCPU,4);
 	Send(drive->GetMatchTime());
+	Send(drive->IsEnabled());
 	dash.AddString(strBuffer);
 	dash.Finalize();
 	UpdateUserLCD();

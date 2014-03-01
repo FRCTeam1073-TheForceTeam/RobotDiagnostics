@@ -54,8 +54,7 @@ namespace DataCollection2014
         public volatile bool consoleFirstTime = true;
         public int consoleSaveNumber = 0;
         public volatile bool noConsoleConnection = false;
-        double oldMatchTime = 0;
-        double newMatchTime = 0;
+        public volatile bool isEnabled = false;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -264,7 +263,6 @@ namespace DataCollection2014
                         ultrasonic.Text = parser[parseNumber++];
                         gyroAngle.Text = parser[parseNumber++];
                         elevationBox.Text = parser[parseNumber++];
-                        transducer1.Text = parser[parseNumber++];
                         transducer2.Text = parser[parseNumber++];
                         leftVictor.Text = parser[parseNumber++];
                         rightVictor.Text = parser[parseNumber++];
@@ -272,29 +270,52 @@ namespace DataCollection2014
                         loadTime.Text = parser[parseNumber++];
                         downTime.Text = parser[parseNumber++];
                         percentCPU.Text = parser[parseNumber++];
-                        matchTime.Text = parser[parseNumber];
-                        oldMatchTime = newMatchTime;
-                        try
+                        matchTime.Text = parser[parseNumber++];
+                        isEnabled = Boolean.Parse(parser[parseNumber++]);
+                        if (!saveToDisk)
                         {
-                            newMatchTime = Double.Parse(parser[parseNumber++]);
+                            
                         }
-                        catch (FormatException) {}
-                        if (saveToDisk&&isEnabled())
+                        else
                         {
-                            if (firstTime)
+                            if (isEnabled)
                             {
-                                while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
-                                DataSB.Append(FormatedTopRow);
-                                firstTime = false;
+                                if (firstTime)
+                                {
+                                    while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
+                                    DataSB.Append(FormatedTopRow);
+                                    firstTime = false;
+                                }
+                                DataSB.Append(path2 + ",");
+                                DataSB.Append(exactSeconds + ",");
+                                DataSB.Append(parsed);
+                                try
+                                {
+                                    File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");
+                                }
+                                catch (IOException) { }
                             }
-                            DataSB.Append(path2 + ",");
-                            DataSB.Append(exactSeconds + ",");
-                            DataSB.Append(parsed);
-                            try
+                            else
                             {
-                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");
+                                if (radioButton3.Checked) { }
+                                else
+                                {
+                                    if (firstTime)
+                                    {
+                                        while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
+                                        DataSB.Append(FormatedTopRow);
+                                        firstTime = false;
+                                    }
+                                    DataSB.Append(path2 + ",");
+                                    DataSB.Append(exactSeconds + ",");
+                                    DataSB.Append(parsed);
+                                    try
+                                    {
+                                        File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");
+                                    }
+                                    catch (IOException) { }
+                                }
                             }
-                            catch (IOException) { }
                         }
                         DataSB.Clear();
                         NoConnection = false;
@@ -330,12 +351,12 @@ namespace DataCollection2014
         {
             displayData();
             SetConnectionStatus();
-            if (isEnabled()&&!NoConnection)
+            if (isEnabled&&!NoConnection)
             {
                 label37.Text = "Enabled";
                 label37.BackColor = Color.Green;
             }
-            if (!isEnabled()||NoConnection)
+            if (!isEnabled||NoConnection)
             {
                 label37.Text = "Disabled";
                 label37.BackColor = Color.Red;
@@ -429,7 +450,6 @@ namespace DataCollection2014
             ultrasonic.Text = null;
             gyroAngle.Text = null;
             elevationBox.Text = null;
-            transducer1.Text = null;
             leftVictor.Text = null;
             rightVictor.Text = null;
             packetCounter.Text = null;
@@ -474,9 +494,24 @@ namespace DataCollection2014
         {
             if (!secretClose)
             {
-                MessageBox.Show("There is no closing of the Application");
-                e.Cancel = true;
-                this.Show();
+                
+               // MessageBox.Show("There is no closing of the Application");
+
+                switch (MessageBox.Show(this, "Are you sure you want to close? (It will be logged!)", "Are you sure...", MessageBoxButtons.YesNo))
+                {
+                    case DialogResult.No:
+                        e.Cancel = true;
+                        break;
+                    default:
+                        timeStamp = DateTime.Now;
+                        String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
+                        String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed!");
+                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf")) File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", exactSeconds + "," + "Form Closed!");
+                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf")) File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+                        break;
+                }        
             }
             //this.WindowState = FormWindowState.Minimized;
         }
@@ -500,12 +535,6 @@ namespace DataCollection2014
         private void button1_Click(object sender, EventArgs e)
         {
             disconnectionMessages.Clear();
-        }
-
-        private bool isEnabled()
-        {
-            if (newMatchTime.Equals(oldMatchTime)) return false;
-            else return true;
         }
     }
 }

@@ -187,8 +187,6 @@
             this.pressureValue = new System.Windows.Forms.TextBox();
             this.transducer2 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.transducer1 = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.label51 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
@@ -218,6 +216,10 @@
             this.Stop = new System.Windows.Forms.Button();
             this.DataTimer = new System.Windows.Forms.Timer(this.components);
             this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.label48 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -246,6 +248,7 @@
             this.Status.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel23.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1637,11 +1640,9 @@
             this.panel17.Controls.Add(this.pressureValue);
             this.panel17.Controls.Add(this.transducer2);
             this.panel17.Controls.Add(this.label14);
-            this.panel17.Controls.Add(this.transducer1);
-            this.panel17.Controls.Add(this.label48);
             this.panel17.Location = new System.Drawing.Point(145, 3);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(171, 100);
+            this.panel17.Size = new System.Drawing.Size(171, 65);
             this.panel17.TabIndex = 34;
             // 
             // label77
@@ -1671,7 +1672,7 @@
             // 
             // transducer2
             // 
-            this.transducer2.Location = new System.Drawing.Point(12, 74);
+            this.transducer2.Location = new System.Drawing.Point(12, 35);
             this.transducer2.Name = "transducer2";
             this.transducer2.Size = new System.Drawing.Size(61, 20);
             this.transducer2.TabIndex = 39;
@@ -1679,27 +1680,11 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 58);
+            this.label14.Location = new System.Drawing.Point(9, 19);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 13);
             this.label14.TabIndex = 38;
             this.label14.Text = "Transducer2";
-            // 
-            // transducer1
-            // 
-            this.transducer1.Location = new System.Drawing.Point(12, 35);
-            this.transducer1.Name = "transducer1";
-            this.transducer1.Size = new System.Drawing.Size(61, 20);
-            this.transducer1.TabIndex = 34;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(9, 19);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(67, 13);
-            this.label48.TabIndex = 31;
-            this.label48.Text = "Transducer1";
             // 
             // panel13
             // 
@@ -1809,6 +1794,7 @@
             // 
             // Status
             // 
+            this.Status.Controls.Add(this.panel23);
             this.Status.Controls.Add(this.panel16);
             this.Status.Controls.Add(this.label1);
             this.Status.Controls.Add(this.panel2);
@@ -1989,6 +1975,47 @@
             this.ConsoleTimer.Interval = 1;
             this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
             // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.radioButton4);
+            this.panel23.Controls.Add(this.radioButton3);
+            this.panel23.Controls.Add(this.label48);
+            this.panel23.Location = new System.Drawing.Point(116, 7);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(117, 65);
+            this.panel23.TabIndex = 20;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(3, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(115, 13);
+            this.label48.TabIndex = 0;
+            this.label48.Text = "Save data if  disabled?";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 22);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(79, 17);
+            this.radioButton3.TabIndex = 1;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "No(Default)";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(6, 42);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(43, 17);
+            this.radioButton4.TabIndex = 2;
+            this.radioButton4.Text = "Yes";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2055,6 +2082,8 @@
             this.panel16.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2111,8 +2140,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Panel panel17;
-        private System.Windows.Forms.TextBox transducer1;
-        private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox launcherSolenoid2;
@@ -2250,6 +2277,10 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label48;
     }
 }
 
