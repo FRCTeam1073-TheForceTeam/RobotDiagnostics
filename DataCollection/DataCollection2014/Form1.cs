@@ -115,7 +115,9 @@ namespace DataCollection2014
             {
                 try
                 {
-                    reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 10);
+                    try
+                    {reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 10);}
+                    catch (InvalidOperationException) { }
                     if (reply.Status == IPStatus.Success)
                     {
                         cameraStats.BackColor = Color.Green;
@@ -193,11 +195,27 @@ namespace DataCollection2014
                                 {
                                     if (consoleFirstTime)
                                     {
+                                        if(File.Exists("P:\\here.txt"))
+                                        {
+                                            while (File.Exists("P:\\" + "tmp" + consoleSaveNumber + ".rtf")) consoleSaveNumber++;
+                                            consoleFirstTime = false;
+                                        }
+                                        else
+                                        {
                                         while (File.Exists(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf")) consoleSaveNumber++;
                                         consoleFirstTime = false;
+                                        }
                                     }
-                                    File.AppendAllText(appPath + "\\" + "tmp" +consoleSaveNumber+ ".rtf", ConsoleSB.ToString());
-                                    ConsoleSB.Clear();
+                                    if (File.Exists("P:\\here.txt"))
+                                    {
+                                        File.AppendAllText("P:\\" + "tmp" + consoleSaveNumber + ".rtf", ConsoleSB.ToString());
+                                        ConsoleSB.Clear();
+                                    }
+                                    else
+                                    {
+                                        File.AppendAllText(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", ConsoleSB.ToString());
+                                        ConsoleSB.Clear();
+                                    }
                                 }
                                 catch (IOException) { }
                                 fileSaver = 0;
@@ -312,25 +330,33 @@ namespace DataCollection2014
                         if(isReallyEnabled.Text.Equals ("1"))isEnabled=true;
                         if(isReallyEnabled.Text.Equals("0")) isEnabled = false;
                         if (!saveToDisk)
-                        {
-                            
-                        }
+                        {}
                         else
                         {
                             if (isEnabled)
                             {
                                 if (firstTime)
                                 {
-                                    while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
-                                    DataSB.Append(FormatedTopRow);
-                                    firstTime = false;
+                                    if (File.Exists("P:\\here.txt"))
+                                    {
+                                        while (File.Exists("P:\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
+                                        DataSB.Append(FormatedTopRow);
+                                        firstTime = false;
+                                    }
+                                    else
+                                    {
+                                        while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
+                                        DataSB.Append(FormatedTopRow);
+                                        firstTime = false;
+                                    }
                                 }
                                 DataSB.Append(path2 + ",");
                                 DataSB.Append(exactSeconds + ",");
                                 DataSB.Append(parsed);
                                 try
                                 {
-                                    File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");
+                                    if (File.Exists("P:\\here.txt")){File.AppendAllText("P:\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");}
+                                    else{File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");}
                                 }
                                 catch (IOException) { }
                             }
@@ -341,16 +367,26 @@ namespace DataCollection2014
                                 {
                                     if (firstTime)
                                     {
-                                        while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
-                                        DataSB.Append(FormatedTopRow);
-                                        firstTime = false;
+                                        if (File.Exists("P:\\here.txt"))
+                                        {
+                                            while (File.Exists("P:\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
+                                            DataSB.Append(FormatedTopRow);
+                                            firstTime = false;
+                                        }
+                                        else
+                                        {
+                                            while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
+                                            DataSB.Append(FormatedTopRow);
+                                            firstTime = false;
+                                        }
                                     }
                                     DataSB.Append(path2 + ",");
                                     DataSB.Append(exactSeconds + ",");
                                     DataSB.Append(parsed);
                                     try
                                     {
-                                        File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");
+                                        if (File.Exists("P:\\here.txt")){File.AppendAllText("P:\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");}
+                                        else{File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", DataSB.ToString() + "\n");}
                                     }
                                     catch (IOException) { }
                                 }
@@ -359,7 +395,7 @@ namespace DataCollection2014
                         DataSB.Clear();
                         NoConnection = false;
                     }
-                    catch (System.IndexOutOfRangeException e){
+                    catch (System.IndexOutOfRangeException){
                     }
                     parseNumber = 0;
                 }
@@ -377,7 +413,7 @@ namespace DataCollection2014
         {
             if (dataThread!=null)dataThread.Suspend();
             if (consoleThread!=null)consoleThread.Suspend();
-            if (pinggerThread != null) pinggerThread.Suspend();
+            if (pinggerThread != null) pinggerThread.Abort();
             DataTimer.Stop();
             ConsoleTimer.Stop();
         }
@@ -424,8 +460,16 @@ namespace DataCollection2014
         {
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            if(File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv"))File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
-            if(File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf"))File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+            if (File.Exists("P:\\here.txt"))
+            {
+                if (File.Exists("P:\\" + "tmp" + saveNumber + ".csv")) File.Move("P:\\" + "tmp" + saveNumber + ".csv", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+                if (File.Exists("P:\\" + "tmp" + saveNumber + ".rtf")) File.Move("P:\\" + "tmp" + consoleSaveNumber + ".rtf", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+            }
+            else
+            {
+                if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+                if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf")) File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+            }
             //File.WriteAllText(appPath + "\\"+ path2 + "_Match" + matchNumber + ".rtf", ConsoleSB.ToString());
             //File.WriteAllText(appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv", DataSB.ToString());
             //File.Delete(appPath + "\\" + "tmp" +saveNumber+ ".csv");
@@ -435,7 +479,7 @@ namespace DataCollection2014
             consoleFirstTime = true;
             if(dataThread!=null)dataThread.Suspend();
             if(consoleThread!=null)consoleThread.Suspend();
-            if (pinggerThread != null) pinggerThread.Suspend();
+            if (pinggerThread != null) pinggerThread.Abort();
             DataTimer.Stop();
             dataQueue.Clear();
             consoleQueue.Clear();
@@ -499,6 +543,7 @@ namespace DataCollection2014
             percentCPU.Text = null;
             matchTime.Text = null;
             transducer2.Text = null;
+            isReallyEnabled.Text = null;
         }
 
         private void ultraSpeed_CheckedChanged(object sender, EventArgs e)
@@ -545,10 +590,32 @@ namespace DataCollection2014
                         timeStamp = DateTime.Now;
                         String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
                         String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed!");
-                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf")) File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", exactSeconds + "," + "Form Closed!");
-                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
-                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf")) File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+                        if (File.Exists("P:\\here.txt"))
+                        {
+                            if (File.Exists("P:\\" + "tmp" + saveNumber + ".csv"))
+                            {
+                                File.AppendAllText("P:\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed!");
+                                File.Move("P:\\" + "tmp" + saveNumber + ".csv", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+                            }
+                            if (File.Exists("P:\\" + "tmp" + saveNumber + ".rtf"))
+                            {
+                                File.AppendAllText("P:\\" + "tmp" + saveNumber + ".rtf", "Form Closed!");
+                                File.Move("P:\\" + "tmp" + consoleSaveNumber + ".rtf", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+                            }
+                        }
+                        else
+                        {
+                            if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv"))
+                            {
+                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed!");
+                                File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+                            }
+                            if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf"))
+                            {
+                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", "Form Closed!");
+                                File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+                            }
+                        }
                         break;
                 }        
             }
