@@ -546,14 +546,23 @@ namespace DataCollection2014
 
         private void pingTimer_Tick(object sender, EventArgs e)
         {
-            PingReply reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 100);
-            if (reply.Status == IPStatus.Success)
+            try
             {
-                cameraStats.BackColor = Color.Green;
+                PingReply reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 100);
+                if (reply.Status == IPStatus.Success)
+                {
+                    cameraStats.BackColor = Color.Green;
+                }
+                else
+                {
+                    cameraStats.BackColor = Color.Red;
+                }
             }
-            else
+            catch (PingException)
             {
-                cameraStats.BackColor = Color.Red;
+                timeStamp = DateTime.Now;
+                String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
+                disconnectionMessages.AppendText("Ping Exeption at " + exactSeconds+"\n");
             }
         }
     }

@@ -200,6 +200,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.netConsoleDisplay = new System.Windows.Forms.RichTextBox();
             this.Status = new System.Windows.Forms.TabPage();
+            this.cameraStats = new System.Windows.Forms.Panel();
+            this.label85 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -222,8 +224,6 @@
             this.DataTimer = new System.Windows.Forms.Timer(this.components);
             this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
             this.pingTimer = new System.Windows.Forms.Timer(this.components);
-            this.label85 = new System.Windows.Forms.Label();
-            this.cameraStats = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1820,6 +1820,23 @@
             this.Status.Text = "Status";
             this.Status.UseVisualStyleBackColor = true;
             // 
+            // cameraStats
+            // 
+            this.cameraStats.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cameraStats.Location = new System.Drawing.Point(265, 23);
+            this.cameraStats.Name = "cameraStats";
+            this.cameraStats.Size = new System.Drawing.Size(73, 43);
+            this.cameraStats.TabIndex = 22;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(262, 7);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(76, 13);
+            this.label85.TabIndex = 21;
+            this.label85.Text = "Camera Status";
+            // 
             // panel23
             // 
             this.panel23.Controls.Add(this.radioButton4);
@@ -2035,23 +2052,6 @@
             this.pingTimer.Enabled = true;
             this.pingTimer.Interval = 1000;
             this.pingTimer.Tick += new System.EventHandler(this.pingTimer_Tick);
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(262, 7);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(76, 13);
-            this.label85.TabIndex = 21;
-            this.label85.Text = "Camera Status";
-            // 
-            // cameraStats
-            // 
-            this.cameraStats.BackColor = System.Drawing.SystemColors.Desktop;
-            this.cameraStats.Location = new System.Drawing.Point(265, 23);
-            this.cameraStats.Name = "cameraStats";
-            this.cameraStats.Size = new System.Drawing.Size(73, 43);
-            this.cameraStats.TabIndex = 22;
             // 
             // Form1
             // 
