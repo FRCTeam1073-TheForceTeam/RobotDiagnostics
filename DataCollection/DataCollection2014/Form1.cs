@@ -61,6 +61,7 @@ namespace DataCollection2014
         public Ping cameraPinger = new Ping();
         public volatile bool cameraExists = false;
         public float totalHertz;
+        public PingReply reply;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -110,23 +111,26 @@ namespace DataCollection2014
 
         public void pingDatCamera()
         {
-            try
+            while (true)
             {
-                PingReply reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 10);
-                if (reply.Status == IPStatus.Success)
+                try
                 {
-                    cameraStats.BackColor = Color.Green;
+                    reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 10);
+                    if (reply.Status == IPStatus.Success)
+                    {
+                        cameraStats.BackColor = Color.Green;
+                    }
+                    else
+                    {
+                        cameraStats.BackColor = Color.Red;
+                    }
                 }
-                else
+                catch (PingException)
                 {
-                    cameraStats.BackColor = Color.Red;
+                    timeStamp = DateTime.Now;
+                    String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
+                    disconnectionMessages.AppendText("Ping Exeption at " + exactSeconds + "\n");
                 }
-            }
-            catch (PingException)
-            {
-                timeStamp = DateTime.Now;
-                String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
-                disconnectionMessages.AppendText("Ping Exeption at " + exactSeconds+"\n");
             }
         }
         public void listen4Data()
@@ -373,15 +377,7 @@ namespace DataCollection2014
         {
             if (dataThread!=null)dataThread.Suspend();
             if (consoleThread!=null)consoleThread.Suspend();
-            while (true)
-            {
-                try
-                {
-                    if (pinggerThread != null) pinggerThread.Suspend();
-                }
-                catch (ThreadStateException) { }
-                if (pinggerThread.ThreadState == ThreadState.Stopped) break;
-            }
+            if (pinggerThread != null) pinggerThread.Suspend();
             DataTimer.Stop();
             ConsoleTimer.Stop();
         }
@@ -439,15 +435,7 @@ namespace DataCollection2014
             consoleFirstTime = true;
             if(dataThread!=null)dataThread.Suspend();
             if(consoleThread!=null)consoleThread.Suspend();
-            while(true)
-            {
-                try
-                {
-                    if (pinggerThread != null) pinggerThread.Suspend();
-                }
-                catch (ThreadStateException) { }
-                if (pinggerThread.ThreadState == ThreadState.Stopped) break;
-            }
+            if (pinggerThread != null) pinggerThread.Suspend();
             DataTimer.Stop();
             dataQueue.Clear();
             consoleQueue.Clear();
