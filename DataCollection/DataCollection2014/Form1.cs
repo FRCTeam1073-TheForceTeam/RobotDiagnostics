@@ -39,6 +39,7 @@ namespace DataCollection2014
         public int joystickY = new int();
         public Thread dataThread;
         public Thread consoleThread;
+        public Thread pinggerThread;
         public volatile bool NoConnection = false;
         public String[] parser= new String[30];
         //public StringBuilder failSafe = new StringBuilder();
@@ -59,6 +60,7 @@ namespace DataCollection2014
         public volatile bool consoleConnection = false;
         public Ping cameraPinger = new Ping();
         public volatile bool cameraExists = false;
+        public float totalHertz;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -97,12 +99,36 @@ namespace DataCollection2014
         {
             dataThread = new Thread(new ThreadStart(listen4Data));
             consoleThread = new Thread(new ThreadStart(listen4Netconsole));
+            pinggerThread = new Thread(new ThreadStart(pingDatCamera));
             dataThread.IsBackground = true;
             consoleThread.IsBackground = true;
+            pinggerThread.IsBackground = true;
             dataThread.Start();
             consoleThread.Start();
+            pinggerThread.Start();
         }
 
+        public void pingDatCamera()
+        {
+            try
+            {
+                PingReply reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 10);
+                if (reply.Status == IPStatus.Success)
+                {
+                    cameraStats.BackColor = Color.Green;
+                }
+                else
+                {
+                    cameraStats.BackColor = Color.Red;
+                }
+            }
+            catch (PingException)
+            {
+                timeStamp = DateTime.Now;
+                String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
+                disconnectionMessages.AppendText("Ping Exeption at " + exactSeconds+"\n");
+            }
+        }
         public void listen4Data()
         {
 
@@ -347,6 +373,15 @@ namespace DataCollection2014
         {
             if (dataThread!=null)dataThread.Suspend();
             if (consoleThread!=null)consoleThread.Suspend();
+            while (true)
+            {
+                try
+                {
+                    if (pinggerThread != null) pinggerThread.Suspend();
+                }
+                catch (ThreadStateException) { }
+                if (pinggerThread.ThreadState == ThreadState.Stopped) break;
+            }
             DataTimer.Stop();
             ConsoleTimer.Stop();
         }
@@ -404,6 +439,15 @@ namespace DataCollection2014
             consoleFirstTime = true;
             if(dataThread!=null)dataThread.Suspend();
             if(consoleThread!=null)consoleThread.Suspend();
+            while(true)
+            {
+                try
+                {
+                    if (pinggerThread != null) pinggerThread.Suspend();
+                }
+                catch (ThreadStateException) { }
+                if (pinggerThread.ThreadState == ThreadState.Stopped) break;
+            }
             DataTimer.Stop();
             dataQueue.Clear();
             consoleQueue.Clear();
@@ -546,23 +590,19 @@ namespace DataCollection2014
 
         private void pingTimer_Tick(object sender, EventArgs e)
         {
-            try
+            totalHertz = 1000 / DataTimer.Interval;
+            label87.Text = "" + totalHertz + "Hz";
+            if (NoConnection)
             {
-                PingReply reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 100);
-                if (reply.Status == IPStatus.Success)
-                {
-                    cameraStats.BackColor = Color.Green;
-                }
-                else
-                {
-                    cameraStats.BackColor = Color.Red;
-                }
+                label87.Text = "0Hz";
+                label87.ForeColor = Color.Red;
             }
-            catch (PingException)
+            else
             {
-                timeStamp = DateTime.Now;
-                String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
-                disconnectionMessages.AppendText("Ping Exeption at " + exactSeconds+"\n");
+                if (label87.Text == "20Hz") label87.ForeColor=Color.Green;
+                if (label87.Text == "13Hz") label87.ForeColor = Color.YellowGreen;
+                if (label87.Text == "10Hz") label87.ForeColor = Color.Yellow;
+                if (label87.Text == "5Hz") label87.ForeColor = Color.Orange;
             }
         }
     }

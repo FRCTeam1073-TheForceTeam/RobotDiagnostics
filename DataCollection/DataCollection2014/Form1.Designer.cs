@@ -224,6 +224,9 @@
             this.DataTimer = new System.Windows.Forms.Timer(this.components);
             this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
             this.pingTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.label86 = new System.Windows.Forms.Label();
+            this.label87 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -253,6 +256,7 @@
             this.panel23.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel25.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1806,6 +1810,7 @@
             // 
             // Status
             // 
+            this.Status.Controls.Add(this.panel25);
             this.Status.Controls.Add(this.cameraStats);
             this.Status.Controls.Add(this.label85);
             this.Status.Controls.Add(this.panel23);
@@ -2053,6 +2058,35 @@
             this.pingTimer.Interval = 1000;
             this.pingTimer.Tick += new System.EventHandler(this.pingTimer_Tick);
             // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.label87);
+            this.panel25.Controls.Add(this.label86);
+            this.panel25.Location = new System.Drawing.Point(11, 160);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(111, 61);
+            this.panel25.TabIndex = 23;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(4, 4);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(105, 13);
+            this.label86.TabIndex = 0;
+            this.label86.Text = "Currently Listening at";
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label87.ForeColor = System.Drawing.Color.Lime;
+            this.label87.Location = new System.Drawing.Point(1, 17);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(109, 33);
+            this.label87.TabIndex = 1;
+            this.label87.Text = "LOLOL";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2122,6 +2156,8 @@
             this.panel16.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2323,6 +2359,9 @@
         private System.Windows.Forms.Timer pingTimer;
         private System.Windows.Forms.Panel cameraStats;
         private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.Label label86;
     }
 }
 
