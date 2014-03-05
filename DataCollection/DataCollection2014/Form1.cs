@@ -579,45 +579,80 @@ namespace DataCollection2014
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
         {
             if (!secretClose)
-            { 
-               // MessageBox.Show("There is no closing of the Application");
-                switch (MessageBox.Show(this, "Are you sure you want to close? (It will be logged!)", "Are you sure...", MessageBoxButtons.YesNo))
+            {
+                if (e.CloseReason == CloseReason.WindowsShutDown)
                 {
-                    case DialogResult.No:
-                        e.Cancel = true;
-                        break;
-                    default:
-                        timeStamp = DateTime.Now;
-                        String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
-                        String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-                        if (File.Exists("P:\\here.txt"))
+                    timeStamp = DateTime.Now;
+                    String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
+                    String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+                    if (File.Exists("P:\\here.txt"))
+                    {
+                        if (File.Exists("P:\\" + "tmp" + saveNumber + ".csv"))
                         {
-                            if (File.Exists("P:\\" + "tmp" + saveNumber + ".csv"))
-                            {
-                                File.AppendAllText("P:\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed!");
-                                File.Move("P:\\" + "tmp" + saveNumber + ".csv", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
-                            }
-                            if (File.Exists("P:\\" + "tmp" + saveNumber + ".rtf"))
-                            {
-                                File.AppendAllText("P:\\" + "tmp" + saveNumber + ".rtf", "Form Closed!");
-                                File.Move("P:\\" + "tmp" + consoleSaveNumber + ".rtf", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
-                            }
+                            File.AppendAllText("P:\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed due to Windows shutdown!");
+                            File.Move("P:\\" + "tmp" + saveNumber + ".csv", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
                         }
-                        else
+                        if (File.Exists("P:\\" + "tmp" + saveNumber + ".rtf"))
                         {
-                            if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv"))
-                            {
-                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed!");
-                                File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
-                            }
-                            if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf"))
-                            {
-                                File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", "Form Closed!");
-                                File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
-                            }
+                            File.AppendAllText("P:\\" + "tmp" + saveNumber + ".rtf", "Form Closed due to Windows shutdown!");
+                            File.Move("P:\\" + "tmp" + consoleSaveNumber + ".rtf", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
                         }
-                        break;
-                }        
+                    }
+                    else
+                    {
+                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv"))
+                        {
+                            File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed due to windows shutdown!");
+                            File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+                        }
+                        if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf"))
+                        {
+                            File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", "Form Closed due to windows shutdown!");
+                            File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+                        }
+                    }
+                }
+                else
+                {
+                    // MessageBox.Show("There is no closing of the Application");
+                    switch (MessageBox.Show(this, "Are you sure you want to close? (It will be logged!)", "Are you sure...", MessageBoxButtons.YesNo))
+                    {
+                        case DialogResult.No:
+                            e.Cancel = true;
+                            break;
+                        default:
+                            timeStamp = DateTime.Now;
+                            String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
+                            String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+                            if (File.Exists("P:\\here.txt"))
+                            {
+                                if (File.Exists("P:\\" + "tmp" + saveNumber + ".csv"))
+                                {
+                                    File.AppendAllText("P:\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed!");
+                                    File.Move("P:\\" + "tmp" + saveNumber + ".csv", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+                                }
+                                if (File.Exists("P:\\" + "tmp" + saveNumber + ".rtf"))
+                                {
+                                    File.AppendAllText("P:\\" + "tmp" + saveNumber + ".rtf", "Form Closed!");
+                                    File.Move("P:\\" + "tmp" + consoleSaveNumber + ".rtf", "P:\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+                                }
+                            }
+                            else
+                            {
+                                if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv"))
+                                {
+                                    File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".csv", exactSeconds + "," + "Form Closed!");
+                                    File.Move(appPath + "\\" + "tmp" + saveNumber + ".csv", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".csv");
+                                }
+                                if (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".rtf"))
+                                {
+                                    File.AppendAllText(appPath + "\\" + "tmp" + saveNumber + ".rtf", "Form Closed!");
+                                    File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
+                                }
+                            }
+                            break;
+                    }
+                }
             }
             //this.WindowState = FormWindowState.Minimized;
         }
