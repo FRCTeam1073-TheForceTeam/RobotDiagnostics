@@ -118,14 +118,18 @@ namespace DataCollection2014
                     try
                     {reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 10);}
                     catch (InvalidOperationException) { }
-                    if (reply.Status == IPStatus.Success)
+                    try
                     {
-                        cameraStats.BackColor = Color.Green;
+                        if (reply.Status == IPStatus.Success)
+                        {
+                            cameraStats.BackColor = Color.Green;
+                        }
+                        else
+                        {
+                            cameraStats.BackColor = Color.Red;
+                        }
                     }
-                    else
-                    {
-                        cameraStats.BackColor = Color.Red;
-                    }
+                    catch (NullReferenceException) { }
                 }
                 catch (PingException)
                 {
@@ -164,8 +168,8 @@ namespace DataCollection2014
                 
                 timeStamp = DateTime.Now;
                 String error = String.Format("{0:HH-mm-ss}", timeStamp);
-                ConsoleSB.Append("Console Connection lost at " + error + "\n");
-                disconnectionMessages.AppendText("Console connection lost at " + error + "\n");
+                //ConsoleSB.Append("Console Connection lost at " + error + "\n");
+                //disconnectionMessages.AppendText("Console connection lost at " + error + "\n");
                 noConsoleConnection = true;
             }
             if (consoleQueue.Count > 0)
@@ -671,6 +675,7 @@ namespace DataCollection2014
         private void ConsoleTimer_Tick(object sender, EventArgs e)
         {
             displayConsoledata();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
