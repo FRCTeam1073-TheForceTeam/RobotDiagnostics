@@ -62,6 +62,7 @@ namespace DataCollection2014
         public volatile bool cameraExists = false;
         public float totalHertz;
         public PingReply reply;
+        private int connectionTimeout = 0;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -137,6 +138,7 @@ namespace DataCollection2014
                     String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
                     disconnectionMessages.AppendText("Ping Exeption at " + exactSeconds + "\n");
                 }
+                System.Threading.Thread.Sleep(500);
             }
         }
         public void listen4Data()
@@ -249,11 +251,12 @@ namespace DataCollection2014
             if (dataQueue.Count > 0)
             {
                 String s2 = (String)dataQueue.Dequeue();
+                connectionTimeout = 0;
                 if (s2 == null)
                 {
                     disconnectionMessages.AppendText("Packet Error at " + error + "\n");
                 }
-                if (s2 != null)
+                else
                 {
                     try
                     {
@@ -404,12 +407,6 @@ namespace DataCollection2014
                     parseNumber = 0;
                 }
             }
-            if ((dataQueue.Count == 0)&&NoConnection==false)
-            {
-                //netFailSafe.Append("Connection lost at " + error + "\n");
-                disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
-                NoConnection = true;
-            }
             dataQueue.Clear();
         }
 
@@ -429,20 +426,30 @@ namespace DataCollection2014
 
         private void ListenTimer_Tick(object sender, EventArgs e)
         {
-            displayData();
-            SetConnectionStatus();
-            if (isEnabled&&!NoConnection)
-            {
-                label37.Text = "Enabled";
-                label37.BackColor = Color.Green;
-            }
-            if (!isEnabled||NoConnection)
-            {
-                label37.Text = "Disabled";
-                label37.BackColor = Color.Red;
-            }
-        }
+            connectionTimeout++;
+            
+                displayData();
+                if (connectionTimeout >= 1000 / DataTimer.Interval) //connection timout is 1s
+                {
+                    timeStamp = DateTime.Now;
+                    String error = String.Format("{0:HH-mm-ss}", timeStamp);
+                    disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
+                    NoConnection = true;
+                }
+                SetConnectionStatus();
+                if (isEnabled && !NoConnection)
+                {
+                    label37.Text = "Enabled";
+                    label37.BackColor = Color.Green;
+                }
+                if (!isEnabled || NoConnection)
+                {
+                    label37.Text = "Disabled";
+                    label37.BackColor = Color.Red;
+                }
+            
 
+        }
         private void SetConnectionStatus()
         {
             if (NoConnection && !consoleConnection) panel1.BackColor = Color.Red;
