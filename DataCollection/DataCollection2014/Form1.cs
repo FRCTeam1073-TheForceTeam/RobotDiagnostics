@@ -17,52 +17,55 @@ namespace DataCollection2014
 {
     public partial class Form1 : Form
     {
-        public DateTime timeStamp = new DateTime();
-        public int matchNumber = 1;
-        public StringBuilder DataSB = new StringBuilder();
-        public String dataString;
-        public StringBuilder ConsoleSB = new StringBuilder();
-        public String consoleString;
-        public byte[] dataByte;
-        public byte[] consoleByte;
-        public static IPEndPoint dataIPEndPoint = new IPEndPoint(IPAddress.Any, 1165);
-        public static Socket dataSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        public EndPoint dataEndpoint = (EndPoint)(dataIPEndPoint);
-        public static IPEndPoint consoleIPEndPoint = new IPEndPoint(IPAddress.Any, 6666);
-        public static Socket consoleSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-        public EndPoint consoleEndpoint = (EndPoint)(consoleIPEndPoint);
-        public int recv;
-        public int crecv;
-        public Queue dataQueue = new Queue();
-        public Queue consoleQueue = new Queue();
-        public int joystickX = new int();
-        public int joystickY = new int();
-        public Thread dataThread;
-        public Thread consoleThread;
-        public Thread pinggerThread;
-        public volatile bool NoConnection = false;
-        public String[] parser= new String[30];
-        //public StringBuilder failSafe = new StringBuilder();
-        public volatile bool saveToDisk = true;
-        public string appPath;
-        public volatile bool secretClose = false;
-        public int ignoringInput = 2;
-        public int parseNumber = 0;
-        //public StringBuilder netFailSafe = new StringBuilder();
-        public String FormatedTopRow;
-        public volatile bool firstTime = true;
-        public int saveNumber = 0;
-        public int fileSaver = 0;
-        public volatile bool consoleFirstTime = true;
-        public int consoleSaveNumber = 0;
-        public volatile bool noConsoleConnection = false;
-        public volatile bool isEnabled = false;
-        public volatile bool consoleConnection = false;
-        public Ping cameraPinger = new Ping();
-        public volatile bool cameraExists = false;
-        public float totalHertz;
-        public PingReply reply;
+        private DateTime timeStamp = new DateTime();
+        private int matchNumber = 1;
+        private StringBuilder DataSB = new StringBuilder();
+        private String dataString;
+        private StringBuilder ConsoleSB = new StringBuilder();
+        private String consoleString;
+        private byte[] dataByte;
+        private byte[] consoleByte;
+        private static IPEndPoint dataIPEndPoint = new IPEndPoint(IPAddress.Any, 1165);
+        private static Socket dataSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        private EndPoint dataEndpoint = (EndPoint)(dataIPEndPoint);
+        private static IPEndPoint consoleIPEndPoint = new IPEndPoint(IPAddress.Any, 6666);
+        private static Socket consoleSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+        private EndPoint consoleEndpoint = (EndPoint)(consoleIPEndPoint);
+        private int recv;
+        private int crecv;
+        private Queue dataQueue = new Queue();
+        private Queue consoleQueue = new Queue();
+        private int joystickX = new int();
+        private int joystickY = new int();
+        private Thread dataThread;
+        private Thread consoleThread;
+        private Thread pinggerThread;
+        private volatile bool NoConnection = false;
+        private String[] parser= new String[30];
+        //private StringBuilder failSafe = new StringBuilder();
+        private volatile bool saveToDisk = true;
+        private string appPath;
+        private volatile bool secretClose = false;
+        private int ignoringInput = 2;
+        private int parseNumber = 0;
+        //private StringBuilder netFailSafe = new StringBuilder();
+        private String FormatedTopRow;
+        private volatile bool firstTime = true;
+        private int saveNumber = 0;
+        private int fileSaver = 0;
+        private volatile bool consoleFirstTime = true;
+        private int consoleSaveNumber = 0;
+        private volatile bool noConsoleConnection = false;
+        private volatile bool isEnabled = false;
+        private volatile bool consoleConnection = false;
+        private Ping cameraPinger = new Ping();
+        private volatile bool cameraExists = false;
+        private float totalHertz;
+        private PingReply reply;
         private int connectionTimeout = 0;
+        private int deleteDataSaveNumber = 0;
+        private int deleteConsoleSaveNumber = 0;
+        private int enoughPressure = 0;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -92,7 +95,7 @@ namespace DataCollection2014
             "Angle Foward Limit,"+"Angle Reverse Limit,"+"Angle Faults,"+"Left Launcher Solenoid,"+
             "Right Launcher Solenoid,"+"Shifter Solenoid,"+"Air Compressor Switch,"+"Ultrasonic Distance(cm),"+
             "Gyro Angle,"+"Elevation Volts,"+"High Transducer(PSI),"+"Left Talon,"+
-            "Right Talon,"+"Packet Count,"+"Uptime(s),"+"Downtime(s),"+"% CPU,"+"Match Time," + "isEnabled\n");
+            "Right Talon,"+"Packet Count,"+"Refresh Rate,"+"Match Time," + "isEnabled\n");
             //DataSB.Append(FormatedTopRow);
             //this.WindowState = FormWindowState.Minimized;
         }
@@ -322,6 +325,8 @@ namespace DataCollection2014
                         launcherSolenoid2.Text = parser[parseNumber++];
                         shifterStatus.Text = parser[parseNumber++];
                         pressureValue.Text = parser[parseNumber++];
+                        try { enoughPressure = int.Parse(pressureValue.Text); }
+                        catch(FormatException){}
                         ultrasonic.Text = parser[parseNumber++];
                         gyroAngle.Text = parser[parseNumber++];
                         elevationBox.Text = parser[parseNumber++];
@@ -329,9 +334,8 @@ namespace DataCollection2014
                         leftVictor.Text = parser[parseNumber++];
                         rightVictor.Text = parser[parseNumber++];
                         packetCounter.Text = parser[parseNumber++];
-                        loadTime.Text = parser[parseNumber++];
-                        downTime.Text = parser[parseNumber++];
-                        percentCPU.Text = parser[parseNumber++];
+                        try { DataTimer.Interval = int.Parse(parser[parseNumber++]); }
+                        catch (FormatException) { }
                         matchTime.Text = parser[parseNumber++];
                         isReallyEnabled.Text = parser[parseNumber];
                         if(isReallyEnabled.Text.Equals ("1"))isEnabled=true;
@@ -419,11 +423,6 @@ namespace DataCollection2014
             ConsoleTimer.Stop();
         }
 
-        private void fastSpeed_CheckedChanged(object sender, EventArgs e)
-        {
-            DataTimer.Interval = 75;
-        }
-
         private void ListenTimer_Tick(object sender, EventArgs e)
         {
             connectionTimeout++;
@@ -436,28 +435,50 @@ namespace DataCollection2014
                     disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
                     NoConnection = true;
                 }
-                SetConnectionStatus();
-                if (isEnabled && !NoConnection)
-                {
-                    label37.Text = "Enabled";
-                    label37.BackColor = Color.Green;
-                }
-                if (!isEnabled || NoConnection)
-                {
-                    label37.Text = "Disabled";
-                    label37.BackColor = Color.Red;
-                }
-            
-
+                UpdateUI();
         }
-        private void SetConnectionStatus()
+        private void UpdateUI()
         {
+            if (isEnabled && !NoConnection)
+            {
+                label37.Text = "Enabled";
+                label37.BackColor = Color.Green;
+            }
+            if (!isEnabled || NoConnection)
+            {
+                label37.Text = "Disabled";
+                label37.BackColor = Color.Red;
+            }
             if (NoConnection && !consoleConnection) panel1.BackColor = Color.Red;
             else
             {
                 if (NoConnection || !consoleConnection) panel1.BackColor = Color.Orange;
                 if (!NoConnection && consoleConnection) panel1.BackColor = Color.Green;
             }
+            if (launcherSolenoid1.Text.Equals("1")) launcher1.Text = "on";
+            if (launcherSolenoid2.Text.Equals("1")) launcher2.Text = "on";
+            if (launcherSolenoid1.Text.Equals("0")) launcher1.Text = "off";
+            if (launcherSolenoid2.Text.Equals("0")) launcher2.Text = "off";
+            if (shifterStatus.Text.Equals("0")) shiftah.Text = "off";
+            if (shifterStatus.Text.Equals("1")) shiftah.Text = "low";
+            if (shifterStatus.Text.Equals("2")) shiftah.Text = "high";
+            totalHertz = 1000 / DataTimer.Interval;
+            label87.Text = "" + totalHertz + "Hz";
+            if (NoConnection)
+            {
+                label87.Text = "0Hz";
+                label87.ForeColor = Color.Red;
+            }
+            else
+            {
+                if (totalHertz>=20) label87.ForeColor = Color.Green;
+                if (totalHertz<20&&totalHertz>=13) label87.ForeColor = Color.YellowGreen;
+                if (totalHertz<13&&totalHertz>=10) label87.ForeColor = Color.Yellow;
+                if (totalHertz<10&&totalHertz>=5) label87.ForeColor = Color.Orange;
+                if (totalHertz<5&&totalHertz>=2) label87.ForeColor = Color.OrangeRed;
+            }
+            if (enoughPressure == 1) label2.Text = "Sufficent";
+            if (enoughPressure == 0) label2.Text = "Insufficent";
         }
 
         private void Listen_Click(object sender, EventArgs e)
@@ -549,29 +570,13 @@ namespace DataCollection2014
             leftVictor.Text = null;
             rightVictor.Text = null;
             packetCounter.Text = null;
-            loadTime.Text = null;
-            downTime.Text = null;
-            percentCPU.Text = null;
+            //refresh rate
             matchTime.Text = null;
             transducer2.Text = null;
             isReallyEnabled.Text = null;
         }
 
-        private void ultraSpeed_CheckedChanged(object sender, EventArgs e)
-        {
-            DataTimer.Interval = 50;
-        }
-
-        private void mediumSpeed_CheckedChanged(object sender, EventArgs e)
-        {
-            DataTimer.Interval = 100;
-        }
-
-        private void slowSpeed_CheckedChanged(object sender, EventArgs e)
-        {
-            DataTimer.Interval = 200;
-        }
-
+       
         private void clearConsole_Click(object sender, EventArgs e)
         {
             netConsoleDisplay.Clear();
@@ -585,6 +590,34 @@ namespace DataCollection2014
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             saveToDisk = false;
+            deleteConsoleSaveNumber = consoleSaveNumber;
+            deleteDataSaveNumber = saveNumber;
+            if (File.Exists("P:\\here.txt"))
+            {
+                while(File.Exists("P:\\" + "tmp" + deleteDataSaveNumber + ".csv"))
+                {
+                    File.Delete("P:\\" + "tmp" + deleteDataSaveNumber + ".csv");
+                    deleteDataSaveNumber++;
+                }
+                while(File.Exists("P:\\" + "tmp" + deleteConsoleSaveNumber + ".rtf"))
+                {
+                    File.Delete("P:\\" + "tmp" + deleteConsoleSaveNumber + ".csv");
+                    deleteConsoleSaveNumber++;
+                }
+            }
+            else
+            {
+                while (File.Exists(appPath + "\\" + "tmp" + deleteDataSaveNumber + ".csv"))
+                {
+                    File.Delete(appPath + "\\" + "tmp" + deleteDataSaveNumber + ".csv");
+                    deleteDataSaveNumber++;
+                }
+                while (File.Exists(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf"))
+                {
+                    File.Delete(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf");
+                    deleteConsoleSaveNumber++;
+                }
+            }
         }
 
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
@@ -668,12 +701,6 @@ namespace DataCollection2014
             //this.WindowState = FormWindowState.Minimized;
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-            secretClose = true;
-            this.Close();
-        }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             ignoringInput++;
@@ -682,7 +709,6 @@ namespace DataCollection2014
         private void ConsoleTimer_Tick(object sender, EventArgs e)
         {
             displayConsoledata();
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -690,22 +716,11 @@ namespace DataCollection2014
             disconnectionMessages.Clear();
         }
 
-        private void pingTimer_Tick(object sender, EventArgs e)
+       
+
+        private void label4_Click(object sender, EventArgs e)
         {
-            totalHertz = 1000 / DataTimer.Interval;
-            label87.Text = "" + totalHertz + "Hz";
-            if (NoConnection)
-            {
-                label87.Text = "0Hz";
-                label87.ForeColor = Color.Red;
-            }
-            else
-            {
-                if (label87.Text == "20Hz") label87.ForeColor=Color.Green;
-                if (label87.Text == "13Hz") label87.ForeColor = Color.YellowGreen;
-                if (label87.Text == "10Hz") label87.ForeColor = Color.Yellow;
-                if (label87.Text == "5Hz") label87.ForeColor = Color.Orange;
-            }
+            MessageBox.Show("LOL not anymore!!!1");
         }
     }
 }
