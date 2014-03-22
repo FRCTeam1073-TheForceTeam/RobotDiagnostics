@@ -334,8 +334,10 @@ namespace DataCollection2014
                         leftVictor.Text = parser[parseNumber++];
                         rightVictor.Text = parser[parseNumber++];
                         packetCounter.Text = parser[parseNumber++];
-                        try { DataTimer.Interval = int.Parse(parser[parseNumber++]); }
-                        catch (FormatException) { }
+                        float number = float.Parse(parser[parseNumber++]);
+                        float moreNumber = number * 1000;
+                        int converted = (int)moreNumber;
+                        DataTimer.Interval = converted;
                         matchTime.Text = parser[parseNumber++];
                         isReallyEnabled.Text = parser[parseNumber];
                         if(isReallyEnabled.Text.Equals ("1"))isEnabled=true;
@@ -462,7 +464,7 @@ namespace DataCollection2014
             if (shifterStatus.Text.Equals("0")) shiftah.Text = "off";
             if (shifterStatus.Text.Equals("1")) shiftah.Text = "low";
             if (shifterStatus.Text.Equals("2")) shiftah.Text = "high";
-            totalHertz = 1000 / DataTimer.Interval;
+            totalHertz = 1000/DataTimer.Interval;
             label87.Text = "" + totalHertz + "Hz";
             if (NoConnection)
             {
