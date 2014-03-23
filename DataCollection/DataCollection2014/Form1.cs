@@ -696,6 +696,7 @@ namespace DataCollection2014
                                     File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
                                 }
                             }
+                            this.Close();
                             break;
                     }
                 }
