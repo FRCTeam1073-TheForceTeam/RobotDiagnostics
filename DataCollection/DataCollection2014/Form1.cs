@@ -311,7 +311,7 @@ namespace DataCollection2014
                         rightBackInVolts.Text = parser[parseNumber++];
                         rightBackTemp.Text = parser[parseNumber++];
                         rightBackError.Text = parser[parseNumber++];
-
+                        
                         collectorInputSpeed.Text = parser[parseNumber++];
                         collecterOutputVoltage.Text = parser[parseNumber++];
                         collectorOutputCurrent.Text = parser[parseNumber++];
@@ -661,7 +661,7 @@ namespace DataCollection2014
                 else
                 {
                     // MessageBox.Show("There is no closing of the Application");
-                    switch (MessageBox.Show(this, "Are you sure you want to close? (It will be logged!)", "Are you sure...", MessageBoxButtons.YesNo))
+                    switch (MessageBox.Show(this, "Are you sure you want to close? (It will be logged!)", "Wait a second...", MessageBoxButtons.YesNo))
                     {
                         case DialogResult.No:
                             e.Cancel = true;
@@ -696,7 +696,7 @@ namespace DataCollection2014
                                     File.Move(appPath + "\\" + "tmp" + consoleSaveNumber + ".rtf", appPath + "\\" + path2 + "_Match" + matchNumber + "DATA" + ".rtf");
                                 }
                             }
-                            this.Close();
+                            this.Dispose();
                             break;
                     }
                 }
