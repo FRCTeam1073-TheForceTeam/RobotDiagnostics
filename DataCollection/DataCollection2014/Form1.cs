@@ -191,7 +191,7 @@ namespace DataCollection2014
                 {
                     consoleConnection = true;
                     noConsoleConnection = false;
-                    String newNetConsole = s3.Substring(0, s3.Length - 2);
+                    String newNetConsole = s3.Substring(0, s3.Length - 2);//arguement out of range acception
                     if (!s3.Equals("\n"))
                     {
                         if (saveToDisk)
