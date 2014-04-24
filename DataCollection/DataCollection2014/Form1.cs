@@ -274,53 +274,31 @@ namespace DataCollection2014
                         parser = parsed.Split(delim);
                         batteryVolts.Text = parser[parseNumber++];
                         batteryAmps.Text = parser[parseNumber++];
+
                         xAxis.Text = parser[parseNumber++];
                         yAxis.Text = parser[parseNumber++];
                         zAxis.Text = parser[parseNumber++];
-                        operatorX.Text = parser[parseNumber++];
-                        operatorY.Text = parser[parseNumber++];
+                        fowardDirection.Text = parser[parseNumber++];
+                        driveMode.Text = parser[parseNumber++];
+                        highGear.Text = parser[parseNumber++];
+                        lowGear.Text = parser[parseNumber++];
+                        catchMode.Text = parser[parseNumber++];
+                        collectToShoot.Text = parser[parseNumber++];
+                        collectDown1.Text = parser[parseNumber++];
+                        CollectDown2.Text = parser[parseNumber++];
+                        collectUp1.Text = parser[parseNumber++];
+                        collectUp2.Text = parser[parseNumber++];
+                        toggelKollect.Text = parser[parseNumber++];
+                        konstantKollect.Text = parser[parseNumber++];
+                        purge.Text = parser[parseNumber++];
+                        lauchBall.Text = parser[parseNumber++];
 
                         leftFrontSpeed.Text = parser[parseNumber++];
-                        leftFrontVolts.Text = parser[parseNumber++];
-                        leftFrontAmps.Text = parser[parseNumber++];
-                        leftFrontEncoder.Text = parser[parseNumber++];
-                        leftFrontInVolts.Text = parser[parseNumber++];
-                        leftFrontTemp.Text = parser[parseNumber++];
-                        leftFrontError.Text = parser[parseNumber++];
-
                         rightFrontSpeed.Text = parser[parseNumber++];
-                        rightFrontVolts.Text = parser[parseNumber++];
-                        rightFrontAmps.Text = parser[parseNumber++];
-                        rightFrontEncoder.Text = parser[parseNumber++];
-                        rightFrontInVolts.Text = parser[parseNumber++];
-                        rightFrontTemp.Text = parser[parseNumber++];
-                        rightFrontError.Text = parser[parseNumber++];
-
                         leftBackSpeed.Text = parser[parseNumber++];
-                        leftBackVolts.Text = parser[parseNumber++];
-                        leftBackAmps.Text = parser[parseNumber++];
-                        leftBackEncoder.Text = parser[parseNumber++];
-                        leftBackInVolts.Text = parser[parseNumber++];
-                        leftBackTemp.Text = parser[parseNumber++];
-                        leftBackError.Text = parser[parseNumber++];
-
                         rightBackSpeed.Text = parser[parseNumber++];
-                        rightBackVolts.Text = parser[parseNumber++];
-                        rightBackAmps.Text = parser[parseNumber++];
-                        rightBackEncoder.Text = parser[parseNumber++];
-                        rightBackInVolts.Text = parser[parseNumber++];
-                        rightBackTemp.Text = parser[parseNumber++];
-                        rightBackError.Text = parser[parseNumber++];
-                        
                         collectorInputSpeed.Text = parser[parseNumber++];
-                        collecterOutputVoltage.Text = parser[parseNumber++];
-                        collectorOutputCurrent.Text = parser[parseNumber++];
-                        collectorInputVoltage.Text = parser[parseNumber++];
-                        collectorTemp.Text = parser[parseNumber++];
-                        collectorFrontLimit.Text = parser[parseNumber++];
-                        collectorReverseLimit.Text = parser[parseNumber++];
-                        collectorFaults.Text = parser[parseNumber++];
-                        
+                                                
                         launcherSolenoid1.Text = parser[parseNumber++];
                         launcherSolenoid2.Text = parser[parseNumber++];
                         shifterStatus.Text = parser[parseNumber++];
@@ -329,10 +307,9 @@ namespace DataCollection2014
                         catch(FormatException){}
                         ultrasonic.Text = parser[parseNumber++];
                         gyroAngle.Text = parser[parseNumber++];
-                        elevationBox.Text = parser[parseNumber++];
-                        transducer2.Text = parser[parseNumber++];
-                        leftVictor.Text = parser[parseNumber++];
-                        rightVictor.Text = parser[parseNumber++];
+                        transducerPSI.Text = parser[parseNumber++];
+                        leftTalon.Text = parser[parseNumber++];
+                        rightTalon.Text = parser[parseNumber++];
                         packetCounter.Text = parser[parseNumber++];
                         float number = float.Parse(parser[parseNumber++]);
                         float moreNumber = number * 1000;
@@ -524,57 +501,38 @@ namespace DataCollection2014
             xAxis.Text = null;
             yAxis.Text = null;
             zAxis.Text = null;
-            operatorX.Text = null;
-            operatorY.Text = null;
+            fowardDirection.Text = null;
+            driveMode.Text = null;
+            highGear.Text = null;
+            lowGear.Text = null;
+            catchMode.Text = null;
+            collectToShoot.Text = null;
+            collectDown1.Text = null;
+            CollectDown2.Text = null;
+            collectUp1.Text = null;
+            collectUp2.Text = null;
+            toggelKollect.Text = null;
+            konstantKollect.Text = null;
+            purge.Text = null;
+            lauchBall.Text = null;
+
             leftFrontSpeed.Text = null;
-            leftFrontVolts.Text = null;
-            leftFrontAmps.Text = null;
-            leftFrontEncoder.Text = null;
-            leftFrontInVolts.Text = null;
-            leftFrontTemp.Text = null;
-            leftFrontError.Text = null;
             rightFrontSpeed.Text = null;
-            rightFrontVolts.Text = null;
-            rightFrontAmps.Text = null;
-            rightFrontEncoder.Text = null;
-            rightFrontInVolts.Text = null;
-            rightFrontTemp.Text = null;
-            rightFrontError.Text = null;
             leftBackSpeed.Text = null;
-            leftBackVolts.Text = null;
-            leftBackAmps.Text = null;
-            leftBackEncoder.Text = null;
-            leftBackInVolts.Text = null;
-            leftBackTemp.Text = null;
-            leftBackError.Text = null;
             rightBackSpeed.Text = null;
-            rightBackVolts.Text = null;
-            rightBackAmps.Text = null;
-            rightBackEncoder.Text = null;
-            rightBackInVolts.Text = null;
-            rightBackTemp.Text = null;
-            rightBackError.Text = null;
             collectorInputSpeed.Text = null;
-            collecterOutputVoltage.Text = null;
-            collectorOutputCurrent.Text = null;
-            collectorInputVoltage.Text = null;
-            collectorTemp.Text = null;
-            collectorFrontLimit.Text = null;
-            collectorReverseLimit.Text = null;
-            collectorFaults.Text = null;
             launcherSolenoid1.Text = null;
             launcherSolenoid2.Text = null;
             shifterStatus.Text = null;
             pressureValue.Text = null;
             ultrasonic.Text = null;
             gyroAngle.Text = null;
-            elevationBox.Text = null;
-            leftVictor.Text = null;
-            rightVictor.Text = null;
+            leftTalon.Text = null;
+            rightTalon.Text = null;
             packetCounter.Text = null;
             //refresh rate
             matchTime.Text = null;
-            transducer2.Text = null;
+            transducerPSI.Text = null;
             isReallyEnabled.Text = null;
         }
 

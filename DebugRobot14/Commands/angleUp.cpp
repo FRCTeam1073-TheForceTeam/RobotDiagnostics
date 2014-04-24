@@ -8,10 +8,10 @@ angleUp::angleUp() {
 }
 // Called just before this Command runs the first time
 void angleUp::Initialize() {
+	RobotMap::elevatorAngleAdjuster->Set(1.0f);
 }
 // Called repeatedly when this Command is scheduled to run
 void angleUp::Execute() {
-	RobotMap::elevatorAngleAdjuster->Set(1.0f);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool angleUp::IsFinished() {

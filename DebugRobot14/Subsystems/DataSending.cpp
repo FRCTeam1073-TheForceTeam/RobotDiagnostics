@@ -33,7 +33,6 @@ void DataSending::SendTheData(){
 	Send((bool)RobotMap::launcherCompressor->GetPressureSwitchValue());//sensor info
 	Send(RobotMap::robotRangeFinderUltrasonicSensor->GetVoltage()/VoltsPerCM);
 	Send(RobotMap::driveTrainGyro->GetAngle());
-	Send(RobotMap::elevatorElevationEncoder->GetVoltage());
 	Send(RobotMap::launcherHighPressureSwitch->GetVoltage()*PSI_CONSTANT);//transducer1
 	Send(RobotMap::collectorLeftRoller->Get()*-1);//talon info
 	Send(RobotMap::collectorRightRoller->Get());
