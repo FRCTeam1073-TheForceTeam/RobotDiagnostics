@@ -10,21 +10,21 @@ collectFaster::collectFaster() {
 }
 // Called just before this Command runs the first time
 void collectFaster::Initialize() {
-	Robot::collector->SetLeftSpeed(Robot::collector->GetLeftSpeed()-0.10);
-	Robot::collector->SetRightSpeed(Robot::collector->GetRightSpeed()+0.10);
+	
 }
 // Called repeatedly when this Command is scheduled to run
 void collectFaster::Execute() {
-	RobotMap::collectorLeftRoller->Set(Robot::collector->GetLeftSpeed());
-	RobotMap::collectorRightRoller->Set(Robot::collector->GetRightSpeed());
+	RobotMap::collectorLeftRoller->Set(1.0f);
+	RobotMap::collectorRightRoller->Set(-1.0f);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool collectFaster::IsFinished() {
-	return true;
+	return false;
 }
 // Called once after isFinished returns true
 void collectFaster::End() {
-	
+	RobotMap::collectorLeftRoller->Set(0.0f);
+	RobotMap::collectorRightRoller->Set(0.0f);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

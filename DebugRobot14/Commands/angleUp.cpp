@@ -8,20 +8,18 @@ angleUp::angleUp() {
 }
 // Called just before this Command runs the first time
 void angleUp::Initialize() {
-	Robot::elevator->SetAngleSpeed(Robot::elevator->GetAngleSpeed()+0.20);
 }
 // Called repeatedly when this Command is scheduled to run
 void angleUp::Execute() {
-	//Robot::elevator->SetAngleUp();
-	RobotMap::elevatorAngleAdjuster->Set(Robot::elevator->GetAngleSpeed());
+	RobotMap::elevatorAngleAdjuster->Set(1.0f);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool angleUp::IsFinished() {
-	return true;
+	return false;
 }
 // Called once after isFinished returns true
 void angleUp::End() {
-	
+	RobotMap::elevatorAngleAdjuster->Set(0.0f);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

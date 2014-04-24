@@ -13,7 +13,7 @@ void compress::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void compress::Execute() {
-	Robot::airCompressor->Compress();
+	Robot::launcher->Compress();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool compress::IsFinished() {
