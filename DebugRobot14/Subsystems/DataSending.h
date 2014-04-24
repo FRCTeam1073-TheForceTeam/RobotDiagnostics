@@ -17,7 +17,7 @@ public:
 	void UpdateUserLCD();
 	void GetVicInfo();
 	void GetDriveJoystickInfo();
-	//void GetOperatorJoystickInfo();
+	void GetOperatorJoystickInfo();
 	void InitializeBackGroundTask();
 	string GetGearSetting();
 private:

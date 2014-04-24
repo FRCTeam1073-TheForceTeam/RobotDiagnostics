@@ -115,26 +115,30 @@ void DataSending::GetDriveJoystickInfo(){
 	Send(Robot::oi->getDriveStick()->GetX());
 	Send(Robot::oi->getDriveStick()->GetY());
 	Send(Robot::oi->getDriveStick()->GetZ());
-	Send(Robot::oi->shiftButton->Get());
+	/*Send(Robot::oi->shiftButton->Get());
 	Send(Robot::oi->lauchBall->Get());
 	Send(Robot::oi->compressButton->Get());
 	Send(Robot::oi->angleUpButton->Get());
 	Send(Robot::oi->angleDownButton->Get());
 	Send(Robot::oi->collectFasterButton->Get());
-	Send(Robot::oi->collectSlowerButton->Get());
+	Send(Robot::oi->collectSlowerButton->Get());*/
 }
-/*void DataSending::GetOperatorJoystickInfo(){
-	Send(Robot::oi->catchModeButton->Get());
-	Send(Robot::oi->collectorToShooterButton->Get());
-	Send(Robot::oi->collectorDownButton->Get());
-	Send(Robot::oi->collectorDownButton2->Get());
-	Send(Robot::oi->collectorUpButton->Get());
-	Send(Robot::oi->collectorUpButton2->Get());
-	Send(Robot::oi->collectButtonToggle->Get());
-	Send(Robot::oi->collectButtonHold->Get());
-	Send(Robot::oi->purgeButton->Get());
-	Send(Robot::oi->launchBallButton->Get());
-}*/
+void DataSending::GetOperatorJoystickInfo(){
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+	Send(false);
+}
 int BackroundFunction(...)
 {
 	Wait(1.0);  //wait a second to make sure everything is ready
