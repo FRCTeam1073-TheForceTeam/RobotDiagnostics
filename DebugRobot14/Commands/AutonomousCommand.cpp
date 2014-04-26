@@ -9,7 +9,11 @@ AutonomousCommand::AutonomousCommand() {
 }
 // Called just before this Command runs the first time
 void AutonomousCommand::Initialize() {
-	
+	RobotMap::driveTrainLeftFront->Set(0.5f);
+	RobotMap::driveTrainRightFront->Set(0.5f);
+	Wait(1.0);
+	RobotMap::driveTrainLeftFront->Set(0.0f);
+	RobotMap::driveTrainRightFront->Set(0.0f);
 }
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {

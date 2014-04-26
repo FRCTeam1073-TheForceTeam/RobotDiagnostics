@@ -25,7 +25,7 @@ void DataSending::SendTheData(){
 	Send(drive->GetBatteryVoltage());//battery info
 	Send((batteryCurrent->GetVoltage()-2.5)*AMPS_CONSTANT);
 	GetDriveJoystickInfo();//joystick info
-	//GetOperatorJoystickInfo();//moar joystick info
+	GetOperatorJoystickInfo();//moar joystick info
 	GetVicInfo();//victor info
 	Send((bool)RobotMap::launcherSolenoidLeft->Get());//solenoid info
 	Send((bool)RobotMap::launcherSolenoidRight->Get());
@@ -114,14 +114,8 @@ void DataSending::GetDriveJoystickInfo(){
 	Send(Robot::oi->getDriveStick()->GetX());
 	Send(Robot::oi->getDriveStick()->GetY());
 	Send(Robot::oi->getDriveStick()->GetZ());
-	/*Send(Robot::oi->shiftButton->Get());
-	Send(Robot::oi->lauchBall->Get());
-	Send(Robot::oi->compressButton->Get());
-	Send(Robot::oi->angleUpButton->Get());
-	Send(Robot::oi->angleDownButton->Get());
-	Send(Robot::oi->collectFasterButton->Get());
-	Send(Robot::oi->collectSlowerButton->Get());*/
 }
+//Basicly send all of the "buttons" that this diag code does not use as not pressed
 void DataSending::GetOperatorJoystickInfo(){
 	Send(false);
 	Send(false);

@@ -8,7 +8,7 @@ angleDown::angleDown() {
 }
 // Called just before this Command runs the first time
 void angleDown::Initialize() {
-	RobotMap::elevatorAngleAdjuster->Set(-0.75f);
+	RobotMap::elevatorAngleAdjuster->Set(-1.0f);
 }
 // Called repeatedly when this Command is scheduled to run
 void angleDown::Execute() {
