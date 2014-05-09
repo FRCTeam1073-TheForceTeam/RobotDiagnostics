@@ -278,21 +278,8 @@ namespace DataCollection2014
                         xAxis.Text = parser[parseNumber++];
                         yAxis.Text = parser[parseNumber++];
                         zAxis.Text = parser[parseNumber++];
-                        fowardDirection.Text = parser[parseNumber++];
-                        driveMode.Text = parser[parseNumber++];
-                        highGear.Text = parser[parseNumber++];
-                        lowGear.Text = parser[parseNumber++];
-                        catchMode.Text = parser[parseNumber++];
-                        collectToShoot.Text = parser[parseNumber++];
-                        collectDown1.Text = parser[parseNumber++];
-                        CollectDown2.Text = parser[parseNumber++];
-                        collectUp1.Text = parser[parseNumber++];
-                        collectUp2.Text = parser[parseNumber++];
-                        toggelKollect.Text = parser[parseNumber++];
-                        konstantKollect.Text = parser[parseNumber++];
-                        purge.Text = parser[parseNumber++];
-                        lauchBall.Text = parser[parseNumber++];
-
+                        parseNumber++;
+                        parseNumber++;
                         leftFrontSpeed.Text = parser[parseNumber++];
                         rightFrontSpeed.Text = parser[parseNumber++];
                         leftBackSpeed.Text = parser[parseNumber++];
@@ -501,21 +488,7 @@ namespace DataCollection2014
             xAxis.Text = null;
             yAxis.Text = null;
             zAxis.Text = null;
-            fowardDirection.Text = null;
-            driveMode.Text = null;
-            highGear.Text = null;
-            lowGear.Text = null;
-            catchMode.Text = null;
-            collectToShoot.Text = null;
-            collectDown1.Text = null;
-            CollectDown2.Text = null;
-            collectUp1.Text = null;
-            collectUp2.Text = null;
-            toggelKollect.Text = null;
-            konstantKollect.Text = null;
-            purge.Text = null;
-            lauchBall.Text = null;
-
+            
             leftFrontSpeed.Text = null;
             rightFrontSpeed.Text = null;
             leftBackSpeed.Text = null;

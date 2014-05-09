@@ -103,31 +103,6 @@
             this.rightTalon = new System.Windows.Forms.TextBox();
             this.leftTalon = new System.Windows.Forms.TextBox();
             this.General = new System.Windows.Forms.TabPage();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.fowardDirection = new System.Windows.Forms.TextBox();
-            this.lowGear = new System.Windows.Forms.TextBox();
-            this.highGear = new System.Windows.Forms.TextBox();
-            this.driveMode = new System.Windows.Forms.TextBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.lauchBall = new System.Windows.Forms.TextBox();
-            this.purge = new System.Windows.Forms.TextBox();
-            this.toggelKollect = new System.Windows.Forms.TextBox();
-            this.konstantKollect = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.collectDown1 = new System.Windows.Forms.TextBox();
-            this.CollectDown2 = new System.Windows.Forms.TextBox();
-            this.collectUp1 = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.isReallyEnabled = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -158,13 +133,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.collectToShoot = new System.Windows.Forms.TextBox();
-            this.catchMode = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.collectUp2 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.Status.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -180,9 +148,6 @@
             this.panel17.SuspendLayout();
             this.panel13.SuspendLayout();
             this.General.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -190,7 +155,6 @@
             this.panel12.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // Listen
@@ -878,10 +842,6 @@
             // 
             // General
             // 
-            this.General.Controls.Add(this.panel9);
-            this.General.Controls.Add(this.panel6);
-            this.General.Controls.Add(this.panel7);
-            this.General.Controls.Add(this.panel4);
             this.General.Controls.Add(this.panel2);
             this.General.Controls.Add(this.panel8);
             this.General.Controls.Add(this.panel10);
@@ -896,225 +856,6 @@
             this.General.TabIndex = 0;
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.label17);
-            this.panel6.Controls.Add(this.label16);
-            this.panel6.Controls.Add(this.label13);
-            this.panel6.Controls.Add(this.label10);
-            this.panel6.Controls.Add(this.fowardDirection);
-            this.panel6.Controls.Add(this.lowGear);
-            this.panel6.Controls.Add(this.highGear);
-            this.panel6.Controls.Add(this.driveMode);
-            this.panel6.Location = new System.Drawing.Point(213, 147);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(99, 83);
-            this.panel6.TabIndex = 44;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(4, 62);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(53, 13);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Low Gear";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 23);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 13);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Drive Mode";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 42);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "High Gear";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 4);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Foward Dir";
-            // 
-            // fowardDirection
-            // 
-            this.fowardDirection.Location = new System.Drawing.Point(75, 3);
-            this.fowardDirection.Name = "fowardDirection";
-            this.fowardDirection.Size = new System.Drawing.Size(21, 20);
-            this.fowardDirection.TabIndex = 14;
-            // 
-            // lowGear
-            // 
-            this.lowGear.Location = new System.Drawing.Point(75, 62);
-            this.lowGear.Name = "lowGear";
-            this.lowGear.Size = new System.Drawing.Size(21, 20);
-            this.lowGear.TabIndex = 11;
-            // 
-            // highGear
-            // 
-            this.highGear.Location = new System.Drawing.Point(75, 42);
-            this.highGear.Name = "highGear";
-            this.highGear.Size = new System.Drawing.Size(21, 20);
-            this.highGear.TabIndex = 12;
-            // 
-            // driveMode
-            // 
-            this.driveMode.Location = new System.Drawing.Point(75, 23);
-            this.driveMode.Name = "driveMode";
-            this.driveMode.Size = new System.Drawing.Size(21, 20);
-            this.driveMode.TabIndex = 13;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.lauchBall);
-            this.panel7.Controls.Add(this.purge);
-            this.panel7.Controls.Add(this.toggelKollect);
-            this.panel7.Controls.Add(this.konstantKollect);
-            this.panel7.Controls.Add(this.label23);
-            this.panel7.Controls.Add(this.label22);
-            this.panel7.Controls.Add(this.label21);
-            this.panel7.Controls.Add(this.label18);
-            this.panel7.Location = new System.Drawing.Point(3, 186);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(207, 47);
-            this.panel7.TabIndex = 43;
-            // 
-            // lauchBall
-            // 
-            this.lauchBall.Location = new System.Drawing.Point(183, 24);
-            this.lauchBall.Name = "lauchBall";
-            this.lauchBall.Size = new System.Drawing.Size(21, 20);
-            this.lauchBall.TabIndex = 23;
-            // 
-            // purge
-            // 
-            this.purge.Location = new System.Drawing.Point(183, 0);
-            this.purge.Name = "purge";
-            this.purge.Size = new System.Drawing.Size(21, 20);
-            this.purge.TabIndex = 22;
-            // 
-            // toggelKollect
-            // 
-            this.toggelKollect.Location = new System.Drawing.Point(87, 24);
-            this.toggelKollect.Name = "toggelKollect";
-            this.toggelKollect.Size = new System.Drawing.Size(21, 20);
-            this.toggelKollect.TabIndex = 21;
-            // 
-            // konstantKollect
-            // 
-            this.konstantKollect.Location = new System.Drawing.Point(87, 2);
-            this.konstantKollect.Name = "konstantKollect";
-            this.konstantKollect.Size = new System.Drawing.Size(21, 20);
-            this.konstantKollect.TabIndex = 20;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(3, 5);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(81, 13);
-            this.label23.TabIndex = 8;
-            this.label23.Text = "ConstantCollect";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(3, 27);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(72, 13);
-            this.label22.TabIndex = 7;
-            this.label22.Text = "ToggleCollect";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(127, 3);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(35, 13);
-            this.label21.TabIndex = 6;
-            this.label21.Text = "Purge";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(127, 24);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 13);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Lauch Ball";
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.collectDown1);
-            this.panel4.Controls.Add(this.CollectDown2);
-            this.panel4.Controls.Add(this.collectUp1);
-            this.panel4.Controls.Add(this.label27);
-            this.panel4.Controls.Add(this.label26);
-            this.panel4.Controls.Add(this.label25);
-            this.panel4.Location = new System.Drawing.Point(315, 161);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(114, 69);
-            this.panel4.TabIndex = 42;
-            // 
-            // collectDown1
-            // 
-            this.collectDown1.Location = new System.Drawing.Point(83, 0);
-            this.collectDown1.Name = "collectDown1";
-            this.collectDown1.Size = new System.Drawing.Size(21, 20);
-            this.collectDown1.TabIndex = 18;
-            // 
-            // CollectDown2
-            // 
-            this.CollectDown2.Location = new System.Drawing.Point(83, 23);
-            this.CollectDown2.Name = "CollectDown2";
-            this.CollectDown2.Size = new System.Drawing.Size(21, 20);
-            this.CollectDown2.TabIndex = 17;
-            // 
-            // collectUp1
-            // 
-            this.collectUp1.Location = new System.Drawing.Point(83, 45);
-            this.collectUp1.Name = "collectUp1";
-            this.collectUp1.Size = new System.Drawing.Size(21, 20);
-            this.collectUp1.TabIndex = 16;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(3, 3);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(79, 13);
-            this.label27.TabIndex = 8;
-            this.label27.Text = "Collect Down 1";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(3, 26);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(79, 13);
-            this.label26.TabIndex = 7;
-            this.label26.Text = "Collect Down 2";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(3, 48);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(65, 13);
-            this.label25.TabIndex = 6;
-            this.label25.Text = "Collect Up 1";
             // 
             // panel2
             // 
@@ -1388,67 +1129,6 @@
             this.tabControl1.Size = new System.Drawing.Size(543, 259);
             this.tabControl1.TabIndex = 0;
             // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.collectUp2);
-            this.panel9.Controls.Add(this.label24);
-            this.panel9.Controls.Add(this.collectToShoot);
-            this.panel9.Controls.Add(this.catchMode);
-            this.panel9.Controls.Add(this.label28);
-            this.panel9.Controls.Add(this.label9);
-            this.panel9.Location = new System.Drawing.Point(435, 166);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(97, 64);
-            this.panel9.TabIndex = 45;
-            // 
-            // collectToShoot
-            // 
-            this.collectToShoot.Location = new System.Drawing.Point(74, 23);
-            this.collectToShoot.Name = "collectToShoot";
-            this.collectToShoot.Size = new System.Drawing.Size(21, 20);
-            this.collectToShoot.TabIndex = 23;
-            // 
-            // catchMode
-            // 
-            this.catchMode.Location = new System.Drawing.Point(74, -1);
-            this.catchMode.Name = "catchMode";
-            this.catchMode.Size = new System.Drawing.Size(21, 20);
-            this.catchMode.TabIndex = 22;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(3, 26);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(73, 13);
-            this.label28.TabIndex = 21;
-            this.label28.Text = "Collect2Shoot";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 2);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 13);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Catch Mode";
-            // 
-            // collectUp2
-            // 
-            this.collectUp2.Location = new System.Drawing.Point(74, 44);
-            this.collectUp2.Name = "collectUp2";
-            this.collectUp2.Size = new System.Drawing.Size(21, 20);
-            this.collectUp2.TabIndex = 25;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(3, 46);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(65, 13);
-            this.label24.TabIndex = 24;
-            this.label24.Text = "Collect Up 2";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1489,12 +1169,6 @@
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             this.General.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel8.ResumeLayout(false);
@@ -1508,8 +1182,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1620,38 +1292,6 @@
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.RichTextBox disconnectionMessages;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox fowardDirection;
-        private System.Windows.Forms.TextBox lowGear;
-        private System.Windows.Forms.TextBox highGear;
-        private System.Windows.Forms.TextBox driveMode;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.TextBox lauchBall;
-        private System.Windows.Forms.TextBox purge;
-        private System.Windows.Forms.TextBox toggelKollect;
-        private System.Windows.Forms.TextBox konstantKollect;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox collectDown1;
-        private System.Windows.Forms.TextBox CollectDown2;
-        private System.Windows.Forms.TextBox collectUp1;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox collectUp2;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox collectToShoot;
-        private System.Windows.Forms.TextBox catchMode;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label9;
     }
 }
 
