@@ -295,22 +295,6 @@ Children:
   - Name: Elevator
     Base: Subsystem
     Children:
-    - Name: Elevation Encoder
-      Base: Analog Input
-      Children: []
-      Properties:
-        Input Module (Analog): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id010
-          default: '1'
-          name: Input Module (Analog)
-          validators: *id011
-          value: '1'
-        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id012
-          default: '1'
-          name: Input Channel (Analog)
-          validators: *id013
-          value: '2'
     - Name: Angle Adjuster
       Base: Speed Controller
       Children: []

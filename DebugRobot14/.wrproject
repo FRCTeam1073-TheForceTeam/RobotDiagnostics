@@ -244,7 +244,7 @@
         </mapAttribute>
     </attributes>
     <buildtargets>
-        <buildtarget buildtool="Linker" name="CommandBasedRobotTemplate" passed="false" targetname="CommandBasedRobotTemplate">
+        <buildtarget buildtool="Linker" name="DebugRobot14" passed="false" targetname="DebugRobot14">
             <contents>
                 <folder name="/DebugRobot14" recursive="true"/>
             </contents>
