@@ -26,17 +26,17 @@ void RobotMap::init() {
 	driveTrainGyro = new SmartGyro(1, 1);
 	lw->AddSensor("Drive Train", "Gyro", driveTrainGyro);
 	driveTrainGyro->SetSensitivity(0.007);
-	driveTrainRightBack = new Victor(1, 4);
-	lw->AddActuator("Drive Train", "Right Back", (Victor*) driveTrainRightBack);
+	driveTrainRightBack = new SmartVictor(1, 6);
+	lw->AddActuator("Drive Train", "Right Back", (SmartVictor*) driveTrainRightBack);
 	
-	driveTrainLeftBack = new Victor(1, 3);
-	lw->AddActuator("Drive Train", "Left Back", (Victor*) driveTrainLeftBack);
+	driveTrainLeftBack = new SmartVictor(1, 7);
+	lw->AddActuator("Drive Train", "Left Back", (SmartVictor*) driveTrainLeftBack);
 	
-	driveTrainLeftFront = new Victor(1, 2);
-	lw->AddActuator("Drive Train", "Left Front", (Victor*) driveTrainLeftFront);
+	driveTrainLeftFront = new SmartVictor(1, 4);
+	lw->AddActuator("Drive Train", "Left Front", (SmartVictor*) driveTrainLeftFront);
 	
-	driveTrainRightFront = new Victor(1, 5);
-	lw->AddActuator("Drive Train", "Right Front", (Victor*) driveTrainRightFront);
+	driveTrainRightFront = new SmartVictor(1, 5);
+	lw->AddActuator("Drive Train", "Right Front", (SmartVictor*) driveTrainRightFront);
 	
 	launcherSolenoidLeft = new Solenoid(1, 1);
 	lw->AddActuator("Launcher", "SolenoidLeft", launcherSolenoidLeft);
@@ -47,10 +47,10 @@ void RobotMap::init() {
 	launcherCompressor = new Compressor(1, 1, 1, 1);
 	
 	
-	collectorLeftRoller = new Talon(1, 6);
+	collectorLeftRoller = new Talon(1, 2);
 	lw->AddActuator("Collector", "Left Roller", (Talon*) collectorLeftRoller);
 	
-	collectorRightRoller = new Talon(1, 7);
+	collectorRightRoller = new Talon(1, 3);
 	lw->AddActuator("Collector", "Right Roller", (Talon*) collectorRightRoller);
 	
 	shifterDoubleSolenoid = new DoubleSolenoid(1, 2, 3);      
