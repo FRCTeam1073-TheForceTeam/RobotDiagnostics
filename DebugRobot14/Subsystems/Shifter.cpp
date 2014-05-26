@@ -24,3 +24,9 @@ void Shifter::Shift(){
 	if(doubleSolenoid->Get()==DoubleSolenoid::kReverse&&!changed)
 		doubleSolenoid->Set(DoubleSolenoid::kForward);
 }
+void Shifter::ShiftHigh(){
+	doubleSolenoid->Set(DoubleSolenoid::kReverse);
+}
+void Shifter::ShiftLow(){
+	doubleSolenoid->Set(DoubleSolenoid::kForward);
+}

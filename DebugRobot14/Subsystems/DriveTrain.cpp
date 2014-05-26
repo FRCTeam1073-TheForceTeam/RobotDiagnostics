@@ -39,3 +39,21 @@ void DriveTrain::MecanumDrive(float joystickX, float joystickY, float joystickTw
 		leftBack->Set(leftBackVal);
 		rightBack->Set(rightBackVal);
 }
+void DriveTrain::AutoFoward(){
+	leftFront->Set(-1);
+	rightFront->Set(1);
+	leftBack->Set(-1);
+	rightBack->Set(1);
+}
+void DriveTrain::AutoReverse(){
+	leftFront->Set(1);
+	rightFront->Set(-1);
+	leftBack->Set(1);
+	rightBack->Set(-1);
+}
+void DriveTrain::Stop(){
+	leftFront->Set(0);
+	rightFront->Set(0);
+	leftBack->Set(0);
+	rightBack->Set(0);
+}

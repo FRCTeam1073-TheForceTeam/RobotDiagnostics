@@ -14,5 +14,7 @@ public:
 	Shifter();
 	void InitDefaultCommand();
 	void Shift();
+	void ShiftHigh();
+	void ShiftLow();
 };
 #endif

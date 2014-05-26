@@ -35,8 +35,6 @@ namespace DataCollection2014
         private int crecv;
         private Queue dataQueue = new Queue();
         private Queue consoleQueue = new Queue();
-        private int joystickX = new int();
-        private int joystickY = new int();
         private Thread dataThread;
         private Thread consoleThread;
         private Thread pinggerThread;
@@ -59,13 +57,30 @@ namespace DataCollection2014
         private volatile bool isEnabled = false;
         private volatile bool consoleConnection = false;
         private Ping cameraPinger = new Ping();
-        private volatile bool cameraExists = false;
         private float totalHertz;
         private PingReply reply;
         private int connectionTimeout = 0;
         private int deleteDataSaveNumber = 0;
         private int deleteConsoleSaveNumber = 0;
         private int enoughPressure = 0;
+        private bool isDiagnosticCode = false;
+        private volatile bool isShifting = false;
+        private volatile bool isAnglingUp = false;
+        private volatile bool isAnglingDown = false;
+        private volatile bool isCollectingFast = false;
+        private volatile bool isCollectingSlow = false;
+        private volatile bool isCompressing = false;
+        private volatile bool isLauching = false;
+        private float xAxisNum = 0;
+        private float yAxisNum = 0;
+        private float zAxisNum = 0;
+        private Rectangle border;
+        private Rectangle point;
+        private Rectangle rotation;
+        private int timesPer50Hz;
+        private int actualHz;
+        private String formatedTopRowDiag;
+        System.Drawing.Graphics graphics;
         public Form1()
         {
             this.MaximizeBox = false;
@@ -82,16 +97,74 @@ namespace DataCollection2014
             DataTimer.Start();
             timeStamp = DateTime.Now;
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
-            FormatedTopRow = (path2 + "," + "Time Stamp," + "Battery Volts,"+"Battery Amps,"+"Drive Stick X,"+
-            "Drive Stick Y,"+"Drive Stick Z,"+"Operator Stick X,"+"Operator Stick Y,"+"Front Left Speed,"+
-            "Front Right Speed,"+"Back Left Speed,"+"Back Right Speed,"+"Angle Speed,"+"Left Launcher Solenoid,"+
-            "Right Launcher Solenoid,"+"Shifter Solenoid,"+"Air Compressor Switch,"+"Ultrasonic Distance(cm),"+
-            "Gyro Angle,"+"Transducer(PSI),"+"Left Talon,"+"Right Talon,"+"Packet Count,"+"Refresh Rate,"
-            +"Match Time," + "isEnabled\n");
+            FormatedTopRow = (path2+","+
+            "Time Stamp,"+
+            "Battery Volts,"+
+            "Battery Amps,"+
+            "Drive Stick X,"+
+            "Drive Stick Y,"+
+            "Drive Stick Z,"+
+            "Front Left Speed,"+
+            "Front Right Speed,"+
+            "Back Left Speed,"+
+            "Back Right Speed,"+
+            "Angle Speed,"+
+            "Left Launcher Solenoid,"+
+            "Right Launcher Solenoid,"+
+            "Shifter Solenoid,"+
+            "Air Compressor Switch,"+
+            "Ultrasonic Distance(cm),"+
+            "Gyro Angle,"+
+            "Transducer(PSI),"+
+            "Left Talon,"+
+            "Right Talon,"+
+            "Packet Count,"+
+            "Refresh Rate,"+
+            "Match Time,"+
+            "isEnabled\n");
+            formatedTopRowDiag = (path2 + "," +
+            "Time Stamp," +
+            "Battery Volts," +
+            "Battery Amps," +
+            "Drive Stick X," +
+            "Drive Stick Y," +
+            "Drive Stick Z," +
+            "Shift Button" +
+            "Angle Down Button" +
+            "Angle Up Button" +
+            "Collect Fast Button" +
+            "Collect Slow Button" +
+            "Compress Button" +
+            "Lauch Ball Button" +
+            "Front Left Speed," +
+            "Front Right Speed," +
+            "Back Left Speed," +
+            "Back Right Speed," +
+            "Angle Speed," +
+            "Left Launcher Solenoid," +
+            "Right Launcher Solenoid," +
+            "Shifter Solenoid," +
+            "Air Compressor Switch," +
+            "Ultrasonic Distance(cm)," +
+            "Gyro Angle," +
+            "Transducer(PSI)," +
+            "Left Talon," +
+            "Right Talon," +
+            "Packet Count," +
+            "Refresh Rate," +
+            "Match Time," +
+            "isEnabled\n");
             //DataSB.Append(FormatedTopRow);
             //this.WindowState = FormWindowState.Minimized;
+            this.StartGraphics();
         }
-
+        public void StartGraphics()
+        {
+            graphics = panel4.CreateGraphics();
+            border = new Rectangle(0, 0, 100, 100);
+            point = new Rectangle(45, 45, 10, 10);
+            rotation = new Rectangle(0, 102, 50, 20);
+        }
         public void StartListenerThreads()
         {
             dataThread = new Thread(new ThreadStart(listen4Data));
@@ -264,40 +337,100 @@ namespace DataCollection2014
                         //DataSB.Append(parsed);
                         
                         parser = parsed.Split(delim);
-                        batteryVolts.Text = parser[parseNumber++];
-                        batteryAmps.Text = parser[parseNumber++];
 
-                        xAxis.Text = parser[parseNumber++];
-                        yAxis.Text = parser[parseNumber++];
-                        zAxis.Text = parser[parseNumber++];
-                        parseNumber++;
-                        parseNumber++;
-                        leftFrontSpeed.Text = parser[parseNumber++];
-                        rightFrontSpeed.Text = parser[parseNumber++];
-                        leftBackSpeed.Text = parser[parseNumber++];
-                        rightBackSpeed.Text = parser[parseNumber++];
-                        collectorInputSpeed.Text = parser[parseNumber++];
-                                                
-                        launcherSolenoid1.Text = parser[parseNumber++];
-                        launcherSolenoid2.Text = parser[parseNumber++];
-                        shifterStatus.Text = parser[parseNumber++];
-                        pressureValue.Text = parser[parseNumber++];
-                        try { enoughPressure = int.Parse(pressureValue.Text); }
-                        catch(FormatException){}
-                        ultrasonic.Text = parser[parseNumber++];
-                        gyroAngle.Text = parser[parseNumber++];
-                        transducerPSI.Text = parser[parseNumber++];
-                        leftTalon.Text = parser[parseNumber++];
-                        rightTalon.Text = parser[parseNumber++];
-                        packetCounter.Text = parser[parseNumber++];
-                        float number = float.Parse(parser[parseNumber++]);
-                        float moreNumber = number * 1000;
-                        int converted = (int)moreNumber;
-                        DataTimer.Interval = converted;
-                        matchTime.Text = parser[parseNumber++];
-                        isReallyEnabled.Text = parser[parseNumber];
-                        if(isReallyEnabled.Text.Equals ("1"))isEnabled=true;
-                        if(isReallyEnabled.Text.Equals("0")) isEnabled = false;
+                        if (parser[parseNumber++].Equals("1")) isDiagnosticCode = true; else isDiagnosticCode = false;
+                        //isDiagnosticCode = true;
+                        if (isDiagnosticCode)
+                        {   //battery system information
+                            batteryVolts.Text = parser[parseNumber++];
+                            batteryAmps.Text = parser[parseNumber++];
+                            //driver joystick information
+                            xAxis.Text = parser[parseNumber++];
+                            yAxis.Text = parser[parseNumber++];
+                            zAxis.Text = parser[parseNumber++];
+                            try { xAxisNum = float.Parse(xAxis.Text); }
+                            catch (FormatException) { xAxisNum = 0; }
+                            try { yAxisNum = float.Parse(yAxis.Text); }
+                            catch (FormatException) { yAxisNum = 0; }
+                            try { zAxisNum = float.Parse(zAxis.Text); }
+                            catch (FormatException) { zAxisNum = 0; }
+                            if (parser[parseNumber++].Equals("1")) isShifting = true; else isShifting = false;
+                            if (parser[parseNumber++].Equals("1")) isAnglingDown = true; else isAnglingDown = false;
+                            if (parser[parseNumber++].Equals("1")) isAnglingUp = true; else isAnglingUp = false;
+                            if (parser[parseNumber++].Equals("1")) isCollectingFast = true; else isCollectingFast = false;
+                            if (parser[parseNumber++].Equals("1")) isCollectingSlow = true; else isCollectingSlow = false;
+                            if (parser[parseNumber++].Equals("1")) isCompressing = true; else isCompressing = false;
+                            if (parser[parseNumber++].Equals("1")) isLauching = true; else isLauching = false;
+
+                            //drive train and elevator
+                            leftFrontSpeed.Text = parser[parseNumber++];
+                            rightFrontSpeed.Text = parser[parseNumber++];
+                            leftBackSpeed.Text = parser[parseNumber++];
+                            rightBackSpeed.Text = parser[parseNumber++];
+                            collectorInputSpeed.Text = parser[parseNumber++];
+                            //everything else
+                            launcherSolenoid1.Text = parser[parseNumber++];
+                            launcherSolenoid2.Text = parser[parseNumber++];
+                            shifterStatus.Text = parser[parseNumber++];
+                            pressureValue.Text = parser[parseNumber++];
+                            try { enoughPressure = int.Parse(pressureValue.Text); }
+                            catch (FormatException) { }
+                            ultrasonic.Text = parser[parseNumber++];
+                            gyroAngle.Text = parser[parseNumber++];
+                            transducerPSI.Text = parser[parseNumber++];
+                            leftTalon.Text = parser[parseNumber++];
+                            rightTalon.Text = parser[parseNumber++];
+                            packetCounter.Text = parser[parseNumber++];
+                            timesPer50Hz = (int.Parse(parser[parseNumber++]));
+                            actualHz = 50 / timesPer50Hz;
+                            DataTimer.Interval = 1000/actualHz;
+                            matchTime.Text = parser[parseNumber++];
+                            isReallyEnabled.Text = parser[parseNumber];
+                            if (isReallyEnabled.Text.Equals("1")) isEnabled = true; else isEnabled = false;
+                        }
+                        else
+                        {
+                            batteryVolts.Text = parser[parseNumber++];
+                            batteryAmps.Text = parser[parseNumber++];
+
+                            xAxis.Text = parser[parseNumber++];
+                            yAxis.Text = parser[parseNumber++];
+                            zAxis.Text = parser[parseNumber++];
+                            try { xAxisNum = float.Parse(xAxis.Text); }
+                            catch (FormatException) { xAxisNum = 0; }
+                            try { yAxisNum = float.Parse(yAxis.Text); }
+                            catch (FormatException) { yAxisNum = 0; }
+                            try { zAxisNum = float.Parse(zAxis.Text); }
+                            catch (FormatException) { zAxisNum = 0; }
+                            parseNumber++;
+                            parseNumber++;
+                            leftFrontSpeed.Text = parser[parseNumber++];
+                            rightFrontSpeed.Text = parser[parseNumber++];
+                            leftBackSpeed.Text = parser[parseNumber++];
+                            rightBackSpeed.Text = parser[parseNumber++];
+                            collectorInputSpeed.Text = parser[parseNumber++];
+
+                            launcherSolenoid1.Text = parser[parseNumber++];
+                            launcherSolenoid2.Text = parser[parseNumber++];
+                            shifterStatus.Text = parser[parseNumber++];
+                            pressureValue.Text = parser[parseNumber++];
+                            try { enoughPressure = int.Parse(pressureValue.Text); }
+                            catch (FormatException) { }
+                            ultrasonic.Text = parser[parseNumber++];
+                            gyroAngle.Text = parser[parseNumber++];
+                            transducerPSI.Text = parser[parseNumber++];
+                            leftTalon.Text = parser[parseNumber++];
+                            rightTalon.Text = parser[parseNumber++];
+                            packetCounter.Text = parser[parseNumber++];
+                            float number = float.Parse(parser[parseNumber++]);
+                            float moreNumber = number * 1000;
+                            int converted = (int)moreNumber;
+                            DataTimer.Interval = converted;
+                            matchTime.Text = parser[parseNumber++];
+                            isReallyEnabled.Text = parser[parseNumber];
+                            if (isReallyEnabled.Text.Equals("1")) isEnabled = true;
+                            if (isReallyEnabled.Text.Equals("0")) isEnabled = false;
+                        }
                         if (!saveToDisk)
                         {}
                         else
@@ -309,13 +442,15 @@ namespace DataCollection2014
                                     if (File.Exists("P:\\here.txt"))
                                     {
                                         while (File.Exists("P:\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
-                                        DataSB.Append(FormatedTopRow);
+                                        if (isDiagnosticCode) DataSB.Append(formatedTopRowDiag);
+                                        else DataSB.Append(FormatedTopRow);
                                         firstTime = false;
                                     }
                                     else
                                     {
                                         while (File.Exists(appPath + "\\" + "tmp" + saveNumber + ".csv")) saveNumber++;
-                                        DataSB.Append(FormatedTopRow);
+                                        if (isDiagnosticCode) DataSB.Append(formatedTopRowDiag);
+                                        else DataSB.Append(FormatedTopRow);
                                         firstTime = false;
                                     }
                                 }
@@ -377,15 +512,15 @@ namespace DataCollection2014
             if (dataThread!=null)dataThread.Suspend();
             if (consoleThread!=null)consoleThread.Suspend();
             if (pinggerThread != null) pinggerThread.Abort();
-            DataTimer.Stop();
-            ConsoleTimer.Stop();
+            this.DataTimer.Stop();
+            this.ConsoleTimer.Stop();
         }
 
         private void ListenTimer_Tick(object sender, EventArgs e)
         {
             connectionTimeout++;
             
-                displayData();
+                this.displayData();
                 if (connectionTimeout >= 1000 / DataTimer.Interval) //connection timout is 1s
                 {
                     timeStamp = DateTime.Now;
@@ -393,7 +528,7 @@ namespace DataCollection2014
                     disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
                     NoConnection = true;
                 }
-                UpdateUI();
+                this.UpdateUI();
         }
         private void UpdateUI()
         {
@@ -420,7 +555,8 @@ namespace DataCollection2014
             if (shifterStatus.Text.Equals("0")) shiftah.Text = "off";
             if (shifterStatus.Text.Equals("1")) shiftah.Text = "low";
             if (shifterStatus.Text.Equals("2")) shiftah.Text = "high";
-            totalHertz = 1000/DataTimer.Interval;
+            if (isDiagnosticCode) { totalHertz = actualHz; }
+            else { totalHertz = 1000 / this.DataTimer.Interval; }
             label87.Text = "" + totalHertz + "Hz";
             if (NoConnection)
             {
@@ -430,13 +566,66 @@ namespace DataCollection2014
             else
             {
                 if (totalHertz>=20) label87.ForeColor = Color.Green;
-                if (totalHertz<20&&totalHertz>=13) label87.ForeColor = Color.YellowGreen;
-                if (totalHertz<13&&totalHertz>=10) label87.ForeColor = Color.Yellow;
+                if (totalHertz<20&&totalHertz>=10) label87.ForeColor = Color.Yellow;
                 if (totalHertz<10&&totalHertz>=5) label87.ForeColor = Color.Orange;
                 if (totalHertz<5&&totalHertz>=2) label87.ForeColor = Color.OrangeRed;
             }
             if (enoughPressure == 1) label2.Text = "Sufficent";
             if (enoughPressure == 0) label2.Text = "Insufficent";
+            //draw the circle with the joystick in it and the z axis
+            float zProcessed = zAxisNum * 50;
+            float yProcessed = yAxisNum * 45;
+            float xProcessed = xAxisNum * 45;
+            int z = (int)zProcessed;
+            int y = (int)yProcessed;
+            int x = (int)xProcessed;
+            x = x * -1;
+            y = y * -1;
+            z = z + 50;
+            x = x + 45;
+            y = y + 45;
+            graphics.Clear(panel4.BackColor);
+            rotation.Width = z;
+            point.X = x;
+            point.Y = y;
+            graphics.DrawEllipse(Pens.Black, border);
+            graphics.FillEllipse(Brushes.Black, point);
+            graphics.FillRectangle(Brushes.Black, rotation);
+            //update the buttons
+            if(isShifting)
+                this.shiftButton.BackColor=Color.Green;
+            else
+                this.shiftButton.BackColor=Color.Red;
+
+            if (isAnglingDown)
+                this.AngleDownButton.BackColor = Color.Green;
+            else
+                this.AngleDownButton.BackColor = Color.Red;
+
+            if (isAnglingUp)
+                this.AngleUpButton.BackColor = Color.Green;
+            else
+                this.AngleUpButton.BackColor = Color.Red;
+
+            if (isCollectingFast)
+                this.CollectFasterButton.BackColor = Color.Green;
+            else
+                this.CollectFasterButton.BackColor = Color.Red;
+
+            if (isCollectingSlow)
+                this.CollectSlowerButton.BackColor = Color.Green;
+            else
+                this.CollectSlowerButton.BackColor = Color.Red;
+
+            if (isCompressing)
+                this.CompressButton.BackColor = Color.Green;
+            else
+                this.CompressButton.BackColor = Color.Red;
+
+            if (isLauching)
+                this.lauchBallButton.BackColor = Color.Green;
+            else
+                this.lauchBallButton.BackColor = Color.Red;
         }
 
         private void Listen_Click(object sender, EventArgs e)
@@ -647,6 +836,11 @@ namespace DataCollection2014
         private void label4_Click(object sender, EventArgs e)
         {
             MessageBox.Show("LOL not anymore!!!1");
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

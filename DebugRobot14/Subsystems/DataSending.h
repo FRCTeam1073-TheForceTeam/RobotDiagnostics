@@ -14,6 +14,7 @@ public:
 	DataSending();
 	void InitDefaultCommand();
 	void SendTheData();
+	string GetGearSetting();
 	int timesPerSecond;
 private:
 	int count;
@@ -28,6 +29,5 @@ private:
 	void GetVicInfo();
 	void GetDriveJoystickInfo();
 	void GetOperatorJoystickInfo();
-	string GetGearSetting();
 };
 #endif

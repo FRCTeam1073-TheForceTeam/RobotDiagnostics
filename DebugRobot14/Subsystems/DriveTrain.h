@@ -18,5 +18,8 @@ public:
 	DriveTrain();
 	void InitDefaultCommand();
 	void MecanumDrive(float joystickX, float joystickY, float joystickTwist);
+	void AutoFoward();
+	void AutoReverse();
+	void Stop();
 };
 #endif

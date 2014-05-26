@@ -29,29 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.DataTimer = new System.Windows.Forms.Timer(this.components);
+            this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
             this.Listen = new System.Windows.Forms.Button();
             this.Pause = new System.Windows.Forms.Button();
             this.Stop = new System.Windows.Forms.Button();
-            this.DataTimer = new System.Windows.Forms.Timer(this.components);
-            this.ConsoleTimer = new System.Windows.Forms.Timer(this.components);
             this.Status = new System.Windows.Forms.TabPage();
-            this.panel26 = new System.Windows.Forms.Panel();
-            this.label85 = new System.Windows.Forms.Label();
-            this.cameraStats = new System.Windows.Forms.Panel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.label87 = new System.Windows.Forms.Label();
-            this.label86 = new System.Windows.Forms.Label();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.label48 = new System.Windows.Forms.Label();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label46 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.CompressButton = new System.Windows.Forms.Panel();
+            this.CollectFasterButton = new System.Windows.Forms.Panel();
+            this.CollectSlowerButton = new System.Windows.Forms.Panel();
+            this.AngleDownButton = new System.Windows.Forms.Panel();
+            this.AngleUpButton = new System.Windows.Forms.Panel();
+            this.lauchBallButton = new System.Windows.Forms.Panel();
+            this.shiftButton = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.yAxis = new System.Windows.Forms.TextBox();
+            this.zAxis = new System.Windows.Forms.TextBox();
+            this.xAxis = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.NetConsole = new System.Windows.Forms.TabPage();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.clearConsole = new System.Windows.Forms.Button();
@@ -102,20 +110,29 @@
             this.label38 = new System.Windows.Forms.Label();
             this.rightTalon = new System.Windows.Forms.TextBox();
             this.leftTalon = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.General = new System.Windows.Forms.TabPage();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.label85 = new System.Windows.Forms.Label();
+            this.cameraStats = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.isReallyEnabled = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label48 = new System.Windows.Forms.Label();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.label87 = new System.Windows.Forms.Label();
+            this.label86 = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label46 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label37 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.yAxis = new System.Windows.Forms.TextBox();
-            this.zAxis = new System.Windows.Forms.TextBox();
-            this.xAxis = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
             this.packetCounter = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -131,14 +148,11 @@
             this.batteryVolts = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Status.SuspendLayout();
-            this.panel26.SuspendLayout();
-            this.panel15.SuspendLayout();
-            this.panel25.SuspendLayout();
-            this.panel23.SuspendLayout();
-            this.panel16.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.NetConsole.SuspendLayout();
             this.RobotInfo.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -147,15 +161,30 @@
             this.panel5.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel13.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.General.SuspendLayout();
+            this.panel26.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel23.SuspendLayout();
+            this.panel25.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // DataTimer
+            // 
+            this.DataTimer.Enabled = true;
+            this.DataTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
+            // 
+            // ConsoleTimer
+            // 
+            this.ConsoleTimer.Enabled = true;
+            this.ConsoleTimer.Interval = 1;
+            this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
             // 
             // Listen
             // 
@@ -187,196 +216,240 @@
             this.Stop.UseVisualStyleBackColor = true;
             this.Stop.Click += new System.EventHandler(this.Stop_Click);
             // 
-            // DataTimer
-            // 
-            this.DataTimer.Enabled = true;
-            this.DataTimer.Tick += new System.EventHandler(this.ListenTimer_Tick);
-            // 
-            // ConsoleTimer
-            // 
-            this.ConsoleTimer.Enabled = true;
-            this.ConsoleTimer.Interval = 1;
-            this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
-            // 
             // Status
             // 
-            this.Status.Controls.Add(this.panel26);
-            this.Status.Controls.Add(this.panel15);
-            this.Status.Controls.Add(this.panel25);
-            this.Status.Controls.Add(this.panel23);
-            this.Status.Controls.Add(this.panel16);
+            this.Status.Controls.Add(this.panel6);
+            this.Status.Controls.Add(this.panel4);
+            this.Status.Controls.Add(this.panel10);
             this.Status.Location = new System.Drawing.Point(4, 22);
             this.Status.Name = "Status";
             this.Status.Size = new System.Drawing.Size(535, 233);
             this.Status.TabIndex = 2;
-            this.Status.Text = "Status";
+            this.Status.Text = "Driver Info";
             this.Status.UseVisualStyleBackColor = true;
             // 
-            // panel26
+            // panel6
             // 
-            this.panel26.Controls.Add(this.label85);
-            this.panel26.Controls.Add(this.cameraStats);
-            this.panel26.Location = new System.Drawing.Point(5, 52);
-            this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(84, 65);
-            this.panel26.TabIndex = 25;
+            this.panel6.Controls.Add(this.CompressButton);
+            this.panel6.Controls.Add(this.CollectFasterButton);
+            this.panel6.Controls.Add(this.CollectSlowerButton);
+            this.panel6.Controls.Add(this.AngleDownButton);
+            this.panel6.Controls.Add(this.AngleUpButton);
+            this.panel6.Controls.Add(this.lauchBallButton);
+            this.panel6.Controls.Add(this.shiftButton);
+            this.panel6.Controls.Add(this.label21);
+            this.panel6.Controls.Add(this.label18);
+            this.panel6.Controls.Add(this.label17);
+            this.panel6.Controls.Add(this.label16);
+            this.panel6.Controls.Add(this.label13);
+            this.panel6.Controls.Add(this.label11);
+            this.panel6.Controls.Add(this.label10);
+            this.panel6.Controls.Add(this.label9);
+            this.panel6.Location = new System.Drawing.Point(244, 6);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(288, 224);
+            this.panel6.TabIndex = 17;
             // 
-            // label85
+            // CompressButton
             // 
-            this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(3, 2);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(76, 13);
-            this.label85.TabIndex = 21;
-            this.label85.Text = "Camera Status";
+            this.CompressButton.Location = new System.Drawing.Point(83, 165);
+            this.CompressButton.Name = "CompressButton";
+            this.CompressButton.Size = new System.Drawing.Size(26, 20);
+            this.CompressButton.TabIndex = 25;
             // 
-            // cameraStats
+            // CollectFasterButton
             // 
-            this.cameraStats.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.cameraStats.Location = new System.Drawing.Point(6, 18);
-            this.cameraStats.Name = "cameraStats";
-            this.cameraStats.Size = new System.Drawing.Size(73, 43);
-            this.cameraStats.TabIndex = 22;
+            this.CollectFasterButton.Location = new System.Drawing.Point(83, 113);
+            this.CollectFasterButton.Name = "CollectFasterButton";
+            this.CollectFasterButton.Size = new System.Drawing.Size(26, 20);
+            this.CollectFasterButton.TabIndex = 25;
             // 
-            // panel15
+            // CollectSlowerButton
             // 
-            this.panel15.Controls.Add(this.label1);
-            this.panel15.Controls.Add(this.panel1);
-            this.panel15.Location = new System.Drawing.Point(5, 7);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(108, 44);
-            this.panel15.TabIndex = 24;
+            this.CollectSlowerButton.Location = new System.Drawing.Point(83, 139);
+            this.CollectSlowerButton.Name = "CollectSlowerButton";
+            this.CollectSlowerButton.Size = new System.Drawing.Size(26, 20);
+            this.CollectSlowerButton.TabIndex = 25;
             // 
-            // label1
+            // AngleDownButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "Connection Status";
+            this.AngleDownButton.Location = new System.Drawing.Point(83, 87);
+            this.AngleDownButton.Name = "AngleDownButton";
+            this.AngleDownButton.Size = new System.Drawing.Size(26, 20);
+            this.AngleDownButton.TabIndex = 25;
             // 
-            // panel1
+            // AngleUpButton
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.ForeColor = System.Drawing.Color.Lime;
-            this.panel1.Location = new System.Drawing.Point(7, 16);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(90, 23);
-            this.panel1.TabIndex = 11;
+            this.AngleUpButton.Location = new System.Drawing.Point(83, 61);
+            this.AngleUpButton.Name = "AngleUpButton";
+            this.AngleUpButton.Size = new System.Drawing.Size(26, 20);
+            this.AngleUpButton.TabIndex = 25;
             // 
-            // panel25
+            // lauchBallButton
             // 
-            this.panel25.Controls.Add(this.label87);
-            this.panel25.Controls.Add(this.label86);
-            this.panel25.Location = new System.Drawing.Point(5, 123);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(111, 61);
-            this.panel25.TabIndex = 23;
+            this.lauchBallButton.Location = new System.Drawing.Point(83, 191);
+            this.lauchBallButton.Name = "lauchBallButton";
+            this.lauchBallButton.Size = new System.Drawing.Size(26, 20);
+            this.lauchBallButton.TabIndex = 25;
             // 
-            // label87
+            // shiftButton
             // 
-            this.label87.AutoSize = true;
-            this.label87.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label87.ForeColor = System.Drawing.Color.DimGray;
-            this.label87.Location = new System.Drawing.Point(1, 17);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(109, 33);
-            this.label87.TabIndex = 1;
-            this.label87.Text = "LOLOL";
+            this.shiftButton.Location = new System.Drawing.Point(83, 35);
+            this.shiftButton.Name = "shiftButton";
+            this.shiftButton.Size = new System.Drawing.Size(26, 20);
+            this.shiftButton.TabIndex = 24;
             // 
-            // label86
+            // label21
             // 
-            this.label86.AutoSize = true;
-            this.label86.Location = new System.Drawing.Point(4, 4);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(105, 13);
-            this.label86.TabIndex = 0;
-            this.label86.Text = "Currently Listening at";
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(3, 191);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(57, 13);
+            this.label21.TabIndex = 23;
+            this.label21.Text = "Lauch Ball";
             // 
-            // panel23
+            // label18
             // 
-            this.panel23.Controls.Add(this.radioButton4);
-            this.panel23.Controls.Add(this.radioButton3);
-            this.panel23.Controls.Add(this.label48);
-            this.panel23.Location = new System.Drawing.Point(119, 7);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(117, 65);
-            this.panel23.TabIndex = 20;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(3, 139);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(74, 13);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "Collect Slower";
             // 
-            // radioButton4
+            // label17
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 42);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(43, 17);
-            this.radioButton4.TabIndex = 2;
-            this.radioButton4.Text = "Yes";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 165);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(53, 13);
+            this.label17.TabIndex = 21;
+            this.label17.Text = "Compress";
             // 
-            // radioButton3
+            // label16
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 22);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(79, 17);
-            this.radioButton3.TabIndex = 1;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "No(Default)";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(3, 113);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "Collect Faster";
             // 
-            // label48
+            // label13
             // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(3, 0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(112, 13);
-            this.label48.TabIndex = 0;
-            this.label48.Text = "Save data if disabled?";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 87);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(65, 13);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Angle Down";
             // 
-            // panel16
+            // label11
             // 
-            this.panel16.Controls.Add(this.radioButton2);
-            this.panel16.Controls.Add(this.radioButton1);
-            this.panel16.Controls.Add(this.label46);
-            this.panel16.Location = new System.Drawing.Point(119, 78);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(130, 75);
-            this.panel16.TabIndex = 19;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 61);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(51, 13);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Angle Up";
             // 
-            // radioButton2
+            // label10
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(8, 52);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(37, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.Text = "no";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 35);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Shift";
             // 
-            // radioButton1
+            // label9
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(8, 29);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(86, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Yes (Default)";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 25);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Buttons";
             // 
-            // label46
+            // panel4
             // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(5, 8);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(105, 13);
-            this.label46.TabIndex = 0;
-            this.label46.Text = "Save to backup file?";
+            this.panel4.Location = new System.Drawing.Point(129, 6);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(101, 121);
+            this.panel4.TabIndex = 15;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.label32);
+            this.panel10.Controls.Add(this.label31);
+            this.panel10.Controls.Add(this.label30);
+            this.panel10.Controls.Add(this.yAxis);
+            this.panel10.Controls.Add(this.zAxis);
+            this.panel10.Controls.Add(this.xAxis);
+            this.panel10.Controls.Add(this.label29);
+            this.panel10.Location = new System.Drawing.Point(3, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(120, 100);
+            this.panel10.TabIndex = 14;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(76, 71);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(42, 13);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "z (twist)";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(76, 45);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(12, 13);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "y";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(76, 19);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(12, 13);
+            this.label30.TabIndex = 4;
+            this.label30.Text = "x";
+            // 
+            // yAxis
+            // 
+            this.yAxis.Location = new System.Drawing.Point(4, 45);
+            this.yAxis.Name = "yAxis";
+            this.yAxis.Size = new System.Drawing.Size(66, 20);
+            this.yAxis.TabIndex = 3;
+            // 
+            // zAxis
+            // 
+            this.zAxis.Location = new System.Drawing.Point(4, 71);
+            this.zAxis.Name = "zAxis";
+            this.zAxis.Size = new System.Drawing.Size(66, 20);
+            this.zAxis.TabIndex = 2;
+            // 
+            // xAxis
+            // 
+            this.xAxis.Location = new System.Drawing.Point(4, 19);
+            this.xAxis.Name = "xAxis";
+            this.xAxis.Size = new System.Drawing.Size(66, 20);
+            this.xAxis.TabIndex = 1;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 3);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(84, 13);
+            this.label29.TabIndex = 0;
+            this.label29.Text = "Driver Stick Axis";
             // 
             // NetConsole
             // 
@@ -840,14 +913,30 @@
             this.leftTalon.Size = new System.Drawing.Size(55, 20);
             this.leftTalon.TabIndex = 0;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.General);
+            this.tabControl1.Controls.Add(this.RobotInfo);
+            this.tabControl1.Controls.Add(this.NetConsole);
+            this.tabControl1.Controls.Add(this.Status);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(543, 259);
+            this.tabControl1.TabIndex = 0;
+            // 
             // General
             // 
-            this.General.Controls.Add(this.panel2);
+            this.General.Controls.Add(this.panel26);
+            this.General.Controls.Add(this.panel15);
+            this.General.Controls.Add(this.panel23);
+            this.General.Controls.Add(this.panel25);
+            this.General.Controls.Add(this.panel16);
             this.General.Controls.Add(this.panel8);
-            this.General.Controls.Add(this.panel10);
             this.General.Controls.Add(this.panel21);
             this.General.Controls.Add(this.panel12);
             this.General.Controls.Add(this.panel3);
+            this.General.Controls.Add(this.button1);
             this.General.Controls.Add(this.disconnectionMessages);
             this.General.Location = new System.Drawing.Point(4, 22);
             this.General.Name = "General";
@@ -857,11 +946,37 @@
             this.General.Text = "General";
             this.General.UseVisualStyleBackColor = true;
             // 
+            // panel26
+            // 
+            this.panel26.Controls.Add(this.label85);
+            this.panel26.Controls.Add(this.cameraStats);
+            this.panel26.Controls.Add(this.panel2);
+            this.panel26.Location = new System.Drawing.Point(198, 55);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(109, 43);
+            this.panel26.TabIndex = 46;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(16, 3);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(76, 13);
+            this.label85.TabIndex = 21;
+            this.label85.Text = "Camera Status";
+            // 
+            // cameraStats
+            // 
+            this.cameraStats.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cameraStats.Location = new System.Drawing.Point(10, 18);
+            this.cameraStats.Name = "cameraStats";
+            this.cameraStats.Size = new System.Drawing.Size(91, 18);
+            this.cameraStats.TabIndex = 22;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.isReallyEnabled);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(198, 112);
+            this.panel2.Location = new System.Drawing.Point(0, 65);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(120, 27);
             this.panel2.TabIndex = 41;
@@ -873,22 +988,150 @@
             this.isReallyEnabled.Size = new System.Drawing.Size(32, 20);
             this.isReallyEnabled.TabIndex = 40;
             // 
-            // button1
+            // panel15
             // 
-            this.button1.Location = new System.Drawing.Point(41, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 38;
-            this.button1.Text = "Clear Errors";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.panel15.Controls.Add(this.label1);
+            this.panel15.Controls.Add(this.panel1);
+            this.panel15.Location = new System.Drawing.Point(198, 6);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(109, 44);
+            this.panel15.TabIndex = 45;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Connection Status";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.ForeColor = System.Drawing.Color.Lime;
+            this.panel1.Location = new System.Drawing.Point(7, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(90, 23);
+            this.panel1.TabIndex = 11;
+            // 
+            // panel23
+            // 
+            this.panel23.Controls.Add(this.radioButton4);
+            this.panel23.Controls.Add(this.radioButton3);
+            this.panel23.Controls.Add(this.label48);
+            this.panel23.Location = new System.Drawing.Point(123, 161);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(117, 65);
+            this.panel23.TabIndex = 43;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(6, 42);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(43, 17);
+            this.radioButton4.TabIndex = 2;
+            this.radioButton4.Text = "Yes";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 22);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(79, 17);
+            this.radioButton3.TabIndex = 1;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "No(Default)";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(3, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(112, 13);
+            this.label48.TabIndex = 0;
+            this.label48.Text = "Save data if disabled?";
+            // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.label87);
+            this.panel25.Controls.Add(this.label86);
+            this.panel25.Location = new System.Drawing.Point(6, 161);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(111, 59);
+            this.panel25.TabIndex = 44;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label87.ForeColor = System.Drawing.Color.DimGray;
+            this.label87.Location = new System.Drawing.Point(1, 17);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(109, 33);
+            this.label87.TabIndex = 1;
+            this.label87.Text = "LOLOL";
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(4, 4);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(105, 13);
+            this.label86.TabIndex = 0;
+            this.label86.Text = "Currently Listening at";
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.radioButton2);
+            this.panel16.Controls.Add(this.radioButton1);
+            this.panel16.Controls.Add(this.label46);
+            this.panel16.Location = new System.Drawing.Point(152, 99);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(130, 59);
+            this.panel16.TabIndex = 42;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(8, 39);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(37, 17);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.Text = "no";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(8, 24);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(86, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Yes (Default)";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(5, 8);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(105, 13);
+            this.label46.TabIndex = 0;
+            this.label46.Text = "Save to backup file?";
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.label37);
             this.panel8.Location = new System.Drawing.Point(6, 104);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(186, 79);
+            this.panel8.Size = new System.Drawing.Size(140, 51);
             this.panel8.TabIndex = 39;
             // 
             // label37
@@ -896,88 +1139,17 @@
             this.label37.AutoSize = true;
             this.label37.BackColor = System.Drawing.Color.Red;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(28, 23);
+            this.label37.Location = new System.Drawing.Point(3, 6);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(131, 36);
             this.label37.TabIndex = 1;
             this.label37.Text = "Disabled";
             // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.label32);
-            this.panel10.Controls.Add(this.label31);
-            this.panel10.Controls.Add(this.label30);
-            this.panel10.Controls.Add(this.yAxis);
-            this.panel10.Controls.Add(this.zAxis);
-            this.panel10.Controls.Add(this.xAxis);
-            this.panel10.Controls.Add(this.label29);
-            this.panel10.Location = new System.Drawing.Point(198, 6);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(120, 100);
-            this.panel10.TabIndex = 13;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(76, 71);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(42, 13);
-            this.label32.TabIndex = 6;
-            this.label32.Text = "z (twist)";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(76, 45);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(12, 13);
-            this.label31.TabIndex = 5;
-            this.label31.Text = "y";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(76, 19);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(12, 13);
-            this.label30.TabIndex = 4;
-            this.label30.Text = "x";
-            // 
-            // yAxis
-            // 
-            this.yAxis.Location = new System.Drawing.Point(4, 45);
-            this.yAxis.Name = "yAxis";
-            this.yAxis.Size = new System.Drawing.Size(66, 20);
-            this.yAxis.TabIndex = 3;
-            // 
-            // zAxis
-            // 
-            this.zAxis.Location = new System.Drawing.Point(4, 71);
-            this.zAxis.Name = "zAxis";
-            this.zAxis.Size = new System.Drawing.Size(66, 20);
-            this.zAxis.TabIndex = 2;
-            // 
-            // xAxis
-            // 
-            this.xAxis.Location = new System.Drawing.Point(4, 19);
-            this.xAxis.Name = "xAxis";
-            this.xAxis.Size = new System.Drawing.Size(66, 20);
-            this.xAxis.TabIndex = 1;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(3, 3);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(84, 13);
-            this.label29.TabIndex = 0;
-            this.label29.Text = "Driver Stick Axis";
-            // 
             // panel21
             // 
             this.panel21.Controls.Add(this.packetCounter);
             this.panel21.Controls.Add(this.label19);
-            this.panel21.Location = new System.Drawing.Point(109, 55);
+            this.panel21.Location = new System.Drawing.Point(109, 52);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(83, 43);
             this.panel21.TabIndex = 36;
@@ -1002,7 +1174,7 @@
             // 
             this.panel12.Controls.Add(this.matchTime);
             this.panel12.Controls.Add(this.label50);
-            this.panel12.Location = new System.Drawing.Point(109, 9);
+            this.panel12.Location = new System.Drawing.Point(109, 6);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(83, 40);
             this.panel12.TabIndex = 31;
@@ -1106,6 +1278,16 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Battery Status";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(244, 164);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 62);
+            this.button1.TabIndex = 38;
+            this.button1.Text = "Clear Errors";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // disconnectionMessages
             // 
             this.disconnectionMessages.AccessibleDescription = "stuff";
@@ -1113,21 +1295,9 @@
             this.disconnectionMessages.Location = new System.Drawing.Point(324, 6);
             this.disconnectionMessages.Name = "disconnectionMessages";
             this.disconnectionMessages.ReadOnly = true;
-            this.disconnectionMessages.Size = new System.Drawing.Size(205, 149);
+            this.disconnectionMessages.Size = new System.Drawing.Size(205, 224);
             this.disconnectionMessages.TabIndex = 8;
             this.disconnectionMessages.Text = "look for disconnection messages here ";
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.General);
-            this.tabControl1.Controls.Add(this.RobotInfo);
-            this.tabControl1.Controls.Add(this.NetConsole);
-            this.tabControl1.Controls.Add(this.Status);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(543, 259);
-            this.tabControl1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -1143,16 +1313,10 @@
             this.Text = "DataListener2014";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.Status.ResumeLayout(false);
-            this.panel26.ResumeLayout(false);
-            this.panel26.PerformLayout();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
-            this.panel23.ResumeLayout(false);
-            this.panel23.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.NetConsole.ResumeLayout(false);
             this.NetConsole.PerformLayout();
             this.RobotInfo.ResumeLayout(false);
@@ -1168,49 +1332,48 @@
             this.panel17.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.General.ResumeLayout(false);
+            this.panel26.ResumeLayout(false);
+            this.panel26.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Timer DataTimer;
+        private System.Windows.Forms.Timer ConsoleTimer;
         private System.Windows.Forms.Button Listen;
         private System.Windows.Forms.Button Pause;
         private System.Windows.Forms.Button Stop;
-        private System.Windows.Forms.Timer DataTimer;
-        private System.Windows.Forms.Timer ConsoleTimer;
         private System.Windows.Forms.TabPage Status;
-        private System.Windows.Forms.Panel panel26;
-        private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.Panel cameraStats;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.Label label87;
-        private System.Windows.Forms.Label label86;
-        private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox yAxis;
+        private System.Windows.Forms.TextBox zAxis;
+        private System.Windows.Forms.TextBox xAxis;
+        private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TabPage NetConsole;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button clearConsole;
@@ -1261,20 +1424,30 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox rightTalon;
         private System.Windows.Forms.TextBox leftTalon;
+        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage General;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.Panel cameraStats;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox isReallyEnabled;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Label label87;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox yAxis;
-        private System.Windows.Forms.TextBox zAxis;
-        private System.Windows.Forms.TextBox xAxis;
-        private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.TextBox packetCounter;
         private System.Windows.Forms.Label label19;
@@ -1291,7 +1464,23 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.RichTextBox disconnectionMessages;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel CompressButton;
+        private System.Windows.Forms.Panel CollectFasterButton;
+        private System.Windows.Forms.Panel CollectSlowerButton;
+        private System.Windows.Forms.Panel AngleDownButton;
+        private System.Windows.Forms.Panel AngleUpButton;
+        private System.Windows.Forms.Panel lauchBallButton;
+        private System.Windows.Forms.Panel shiftButton;
     }
 }
 
