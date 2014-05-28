@@ -579,8 +579,7 @@ namespace DataCollection2014
             int z = (int)zProcessed;
             int y = (int)yProcessed;
             int x = (int)xProcessed;
-            x = x * -1;
-            y = y * -1;
+            
             z = z + 50;
             x = x + 45;
             y = y + 45;

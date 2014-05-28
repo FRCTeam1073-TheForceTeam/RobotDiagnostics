@@ -36,6 +36,13 @@
             this.Stop = new System.Windows.Forms.Button();
             this.Status = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.CompressButton = new System.Windows.Forms.Panel();
             this.CollectFasterButton = new System.Windows.Forms.Panel();
             this.CollectSlowerButton = new System.Windows.Forms.Panel();
@@ -150,6 +157,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.Status.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -230,6 +238,14 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.label34);
+            this.panel6.Controls.Add(this.label28);
+            this.panel6.Controls.Add(this.label27);
+            this.panel6.Controls.Add(this.label26);
+            this.panel6.Controls.Add(this.label25);
+            this.panel6.Controls.Add(this.label24);
+            this.panel6.Controls.Add(this.label23);
+            this.panel6.Controls.Add(this.label22);
             this.panel6.Controls.Add(this.CompressButton);
             this.panel6.Controls.Add(this.CollectFasterButton);
             this.panel6.Controls.Add(this.CollectSlowerButton);
@@ -249,6 +265,69 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(288, 224);
             this.panel6.TabIndex = 17;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(115, 191);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(13, 13);
+            this.label28.TabIndex = 32;
+            this.label28.Text = "1";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(115, 165);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(13, 13);
+            this.label27.TabIndex = 31;
+            this.label27.Text = "2";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(115, 139);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(13, 13);
+            this.label26.TabIndex = 30;
+            this.label26.Text = "7";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(115, 113);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(13, 13);
+            this.label25.TabIndex = 29;
+            this.label25.Text = "8";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(115, 87);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(13, 13);
+            this.label24.TabIndex = 28;
+            this.label24.Text = "4";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(115, 61);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(13, 13);
+            this.label23.TabIndex = 27;
+            this.label23.Text = "6";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(115, 35);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(13, 13);
+            this.label22.TabIndex = 26;
+            this.label22.Text = "3";
             // 
             // CompressButton
             // 
@@ -1299,6 +1378,15 @@
             this.disconnectionMessages.TabIndex = 8;
             this.disconnectionMessages.Text = "look for disconnection messages here ";
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(118, 15);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(62, 13);
+            this.label34.TabIndex = 33;
+            this.label34.Text = "On Joystick";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1481,6 +1569,14 @@
         private System.Windows.Forms.Panel AngleUpButton;
         private System.Windows.Forms.Panel lauchBallButton;
         private System.Windows.Forms.Panel shiftButton;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label34;
     }
 }
 
