@@ -10,7 +10,7 @@ autoElevator::autoElevator() {
 }
 // Called just before this Command runs the first time
 void autoElevator::Initialize() {
-	
+	puts("Testing the elevator...\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void autoElevator::Execute() {
@@ -20,7 +20,8 @@ void autoElevator::Execute() {
 	puts("moving the elevator up...\n");
 	Robot::elevator->autoUp();
 	Wait(0.5);
-	Robot::elevator->InitDefaultCommand();
+	Robot::elevator->stopArm();
+	Wait(1);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool autoElevator::IsFinished() {

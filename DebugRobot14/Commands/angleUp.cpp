@@ -8,7 +8,7 @@ angleUp::angleUp() {
 }
 // Called just before this Command runs the first time
 void angleUp::Initialize() {
-	RobotMap::elevatorAngleAdjuster->Set(1.0f);
+	Robot::elevator->autoUp();
 }
 // Called repeatedly when this Command is scheduled to run
 void angleUp::Execute() {
@@ -19,9 +19,10 @@ bool angleUp::IsFinished() {
 }
 // Called once after isFinished returns true
 void angleUp::End() {
-	RobotMap::elevatorAngleAdjuster->Set(0.0f);
+	Robot::elevator->stopArm();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void angleUp::Interrupted() {
+	End();
 }

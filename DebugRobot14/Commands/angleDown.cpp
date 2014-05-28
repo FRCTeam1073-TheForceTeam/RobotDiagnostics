@@ -8,11 +8,10 @@ angleDown::angleDown() {
 }
 // Called just before this Command runs the first time
 void angleDown::Initialize() {
-	RobotMap::elevatorAngleAdjuster->Set(-1.0f);
+	Robot::elevator->autoDown();
 }
 // Called repeatedly when this Command is scheduled to run
 void angleDown::Execute() {
-	//Robot::elevator->SetAngleDown();
 }
 // Make this return true when this Command no longer needs to run execute()
 bool angleDown::IsFinished() {
@@ -20,9 +19,10 @@ bool angleDown::IsFinished() {
 }
 // Called once after isFinished returns true
 void angleDown::End() {
-	RobotMap::elevatorAngleAdjuster->Set(0.0f);
+	Robot::elevator->stopArm();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void angleDown::Interrupted() {
+	End();
 }

@@ -10,7 +10,7 @@ autoLauncher::autoLauncher() {
 }
 // Called just before this Command runs the first time
 void autoLauncher::Initialize() {
-	
+	puts("Testing the Laucher...\n");
 }
 // Called repeatedly when this Command is scheduled to run
 void autoLauncher::Execute() {
@@ -19,6 +19,7 @@ void autoLauncher::Execute() {
 	Wait(0.5);
 	puts("Turning off the compressor...\n");
 	Robot::launcher->Compress();
+	Wait(0.3);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool autoLauncher::IsFinished() {
@@ -26,7 +27,7 @@ bool autoLauncher::IsFinished() {
 }
 // Called once after isFinished returns true
 void autoLauncher::End() {
-	
+	puts("Self-Diagnostic Test Complete!\n");
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run

@@ -34,6 +34,8 @@ void Robot::RobotInit() {
   }
 	
 void Robot::AutonomousInit() {
+	puts("Starting Self-Diagnostic Test...\n");
+		Wait(1);
 	if (autonomousCommand != NULL)
 		autonomousCommand->Start();
 }

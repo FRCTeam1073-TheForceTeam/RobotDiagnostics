@@ -10,8 +10,7 @@ collectSlower::collectSlower() {
 }
 // Called just before this Command runs the first time
 void collectSlower::Initialize() {
-	RobotMap::collectorLeftRoller->Set(1.0f);
-	RobotMap::collectorRightRoller->Set(-1.0f);
+	Robot::collector->autoPurge();
 }
 // Called repeatedly when this Command is scheduled to run
 void collectSlower::Execute() {
@@ -22,10 +21,10 @@ bool collectSlower::IsFinished() {
 }
 // Called once after isFinished returns true
 void collectSlower::End() {
-	RobotMap::collectorLeftRoller->Set(0.0f);
-	RobotMap::collectorRightRoller->Set(0.0f);
+	Robot::collector->stopRollers();
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void collectSlower::Interrupted() {
+	End();
 }

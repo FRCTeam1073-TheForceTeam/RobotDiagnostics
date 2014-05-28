@@ -15,5 +15,6 @@ public:
 	void InitDefaultCommand();
 	void autoDown();
 	void autoUp();
+	void stopArm();
 };
 #endif

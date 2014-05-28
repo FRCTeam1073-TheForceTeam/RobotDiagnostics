@@ -16,5 +16,6 @@ public:
 	void InitDefaultCommand();
 	void autoCollect();
 	void autoPurge();
+	void stopRollers();
 };
 #endif
