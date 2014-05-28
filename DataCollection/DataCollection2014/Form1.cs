@@ -161,9 +161,9 @@ namespace DataCollection2014
         public void StartGraphics()
         {
             graphics = panel4.CreateGraphics();
-            border = new Rectangle(0, 0, 100, 100);
-            point = new Rectangle(45, 45, 10, 10);
-            rotation = new Rectangle(0, 102, 50, 20);
+            border = new Rectangle(0, 0, 200, 200);
+            point = new Rectangle(90, 90, 10, 10);
+            rotation = new Rectangle(0, 202, 100, 20);
         }
         public void StartListenerThreads()
         {
@@ -301,7 +301,7 @@ namespace DataCollection2014
                         }
                         else
                         { }
-                        if (ignoringInput == 1000)
+                        if (ignoringInput == 1000000)
                         {
                             ignoringInput = 2;
                         }
@@ -573,21 +573,21 @@ namespace DataCollection2014
             if (enoughPressure == 1) label2.Text = "Sufficent";
             if (enoughPressure == 0) label2.Text = "Insufficent";
             //draw the circle with the joystick in it and the z axis
-            float zProcessed = zAxisNum * 50;
-            float yProcessed = yAxisNum * 45;
-            float xProcessed = xAxisNum * 45;
+            float zProcessed = zAxisNum * 100;
+            float yProcessed = yAxisNum * 90;
+            float xProcessed = xAxisNum * 90;
             int z = (int)zProcessed;
             int y = (int)yProcessed;
             int x = (int)xProcessed;
             
-            z = z + 50;
-            x = x + 45;
-            y = y + 45;
+            z = z + 100;
+            x = x + 96;
+            y = y + 96;
             graphics.Clear(panel4.BackColor);
             rotation.Width = z;
             point.X = x;
             point.Y = y;
-            graphics.DrawEllipse(Pens.Black, border);
+            graphics.DrawRectangle(Pens.Black, border);
             graphics.FillEllipse(Brushes.Black, point);
             graphics.FillRectangle(Brushes.Black, rotation);
             //update the buttons
@@ -830,16 +830,9 @@ namespace DataCollection2014
             disconnectionMessages.Clear();
         }
 
-       
-
         private void label4_Click(object sender, EventArgs e)
         {
             MessageBox.Show("LOL not anymore!!!1");
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-            
         }
     }
 }

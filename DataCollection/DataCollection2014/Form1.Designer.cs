@@ -36,6 +36,7 @@
             this.Stop = new System.Windows.Forms.Button();
             this.Status = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -157,7 +158,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
-            this.label34 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.Status.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -226,9 +227,9 @@
             // 
             // Status
             // 
+            this.Status.Controls.Add(this.label36);
             this.Status.Controls.Add(this.panel6);
             this.Status.Controls.Add(this.panel4);
-            this.Status.Controls.Add(this.panel10);
             this.Status.Location = new System.Drawing.Point(4, 22);
             this.Status.Name = "Status";
             this.Status.Size = new System.Drawing.Size(535, 233);
@@ -240,6 +241,7 @@
             // 
             this.panel6.Controls.Add(this.label34);
             this.panel6.Controls.Add(this.label28);
+            this.panel6.Controls.Add(this.panel10);
             this.panel6.Controls.Add(this.label27);
             this.panel6.Controls.Add(this.label26);
             this.panel6.Controls.Add(this.label25);
@@ -265,6 +267,15 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(288, 224);
             this.panel6.TabIndex = 17;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(87, 13);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(48, 13);
+            this.label34.TabIndex = 33;
+            this.label34.Text = "Button #";
             // 
             // label28
             // 
@@ -453,11 +464,10 @@
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(129, 6);
+            this.panel4.Location = new System.Drawing.Point(3, 18);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(101, 121);
+            this.panel4.Size = new System.Drawing.Size(212, 212);
             this.panel4.TabIndex = 15;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // panel10
             // 
@@ -468,7 +478,7 @@
             this.panel10.Controls.Add(this.zAxis);
             this.panel10.Controls.Add(this.xAxis);
             this.panel10.Controls.Add(this.label29);
-            this.panel10.Location = new System.Drawing.Point(3, 3);
+            this.panel10.Location = new System.Drawing.Point(155, 13);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(120, 100);
             this.panel10.TabIndex = 14;
@@ -797,27 +807,27 @@
             this.shiftah.AutoSize = true;
             this.shiftah.Location = new System.Drawing.Point(68, 116);
             this.shiftah.Name = "shiftah";
-            this.shiftah.Size = new System.Drawing.Size(36, 13);
+            this.shiftah.Size = new System.Drawing.Size(16, 13);
             this.shiftah.TabIndex = 30;
-            this.shiftah.Text = "YOLO";
+            this.shiftah.Text = "---";
             // 
             // launcher2
             // 
             this.launcher2.AutoSize = true;
             this.launcher2.Location = new System.Drawing.Point(68, 77);
             this.launcher2.Name = "launcher2";
-            this.launcher2.Size = new System.Drawing.Size(43, 13);
+            this.launcher2.Size = new System.Drawing.Size(16, 13);
             this.launcher2.TabIndex = 29;
-            this.launcher2.Text = "$W@G";
+            this.launcher2.Text = "---";
             // 
             // launcher1
             // 
             this.launcher1.AutoSize = true;
             this.launcher1.Location = new System.Drawing.Point(68, 38);
             this.launcher1.Name = "launcher1";
-            this.launcher1.Size = new System.Drawing.Size(35, 13);
+            this.launcher1.Size = new System.Drawing.Size(16, 13);
             this.launcher1.TabIndex = 28;
-            this.launcher1.Text = "ROFL";
+            this.launcher1.Text = "---";
             // 
             // label76
             // 
@@ -1151,9 +1161,9 @@
             this.label87.ForeColor = System.Drawing.Color.DimGray;
             this.label87.Location = new System.Drawing.Point(1, 17);
             this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(109, 33);
+            this.label87.Size = new System.Drawing.Size(79, 33);
             this.label87.TabIndex = 1;
-            this.label87.Text = "LOLOL";
+            this.label87.Text = "-- Hz";
             // 
             // label86
             // 
@@ -1378,14 +1388,14 @@
             this.disconnectionMessages.TabIndex = 8;
             this.disconnectionMessages.Text = "look for disconnection messages here ";
             // 
-            // label34
+            // label36
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(118, 15);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(62, 13);
-            this.label34.TabIndex = 33;
-            this.label34.Text = "On Joystick";
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(4, 4);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(89, 13);
+            this.label36.TabIndex = 18;
+            this.label36.Text = "Joystick Location";
             // 
             // Form1
             // 
@@ -1401,6 +1411,7 @@
             this.Text = "DataListener2014";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.Status.ResumeLayout(false);
+            this.Status.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -1577,6 +1588,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label36;
     }
 }
 
