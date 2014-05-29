@@ -19,3 +19,6 @@ void Elevator::autoDown(){
 void Elevator::autoUp(){
 	angleAdjuster->Set(1);
 }
+void Elevator::stopArm(){
+	angleAdjuster->Set(0);
+}

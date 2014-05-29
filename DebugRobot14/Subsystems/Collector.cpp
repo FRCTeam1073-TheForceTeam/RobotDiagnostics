@@ -23,3 +23,7 @@ void Collector::autoPurge(){
 	leftRoller->Set(1);
 	rightRoller->Set(-1);
 }
+void Collector::stopRollers(){
+	leftRoller->Set(0);
+	rightRoller->Set(0);
+}
