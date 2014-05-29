@@ -24,9 +24,6 @@ void Launcher::InitDefaultCommand() {
 void Launcher::Launch(){
 	solenoidLeft->Set(true);
 	solenoidRight->Set(true);
-	Wait(0.5);
-	solenoidLeft->Set(false);
-	solenoidRight->Set(false);
 }
 void Launcher::Compress() {
 	if(willCompress%2==0){
@@ -39,4 +36,8 @@ void Launcher::Compress() {
 	if(willCompress==1000){
 		willCompress=2;
 	}
+}
+void Launcher::StopLauch(){
+	solenoidLeft->Set(false);
+	solenoidRight->Set(false);
 }

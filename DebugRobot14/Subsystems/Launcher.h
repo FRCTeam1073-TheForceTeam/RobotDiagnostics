@@ -19,5 +19,6 @@ public:
 	void InitDefaultCommand();
 	void Launch();
 	void Compress();
+	void StopLauch();
 };
 #endif
