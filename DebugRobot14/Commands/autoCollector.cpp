@@ -16,7 +16,7 @@ void autoCollector::Initialize() {
 void autoCollector::Execute() {
 	puts("Collecting...\n");
 	Robot::collector->autoCollect();
-	Wait(0.5);
+	Wait(1);
 	puts("Purging...\n");
 	Robot::collector->autoPurge();
 	Wait(0.5);

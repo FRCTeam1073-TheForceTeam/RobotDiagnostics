@@ -16,7 +16,7 @@ void autoLauncher::Initialize() {
 void autoLauncher::Execute() {
 	puts("Turning on the compressor...\n");
 	Robot::launcher->Compress();
-	Wait(0.5);
+	Wait(1);
 	puts("Turning off the compressor...\n");
 	Robot::launcher->Compress();
 	Wait(0.3);

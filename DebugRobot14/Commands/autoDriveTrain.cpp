@@ -16,12 +16,12 @@ void autoDriveTrain::Initialize() {
 void autoDriveTrain::Execute() {
 	puts("Driving Foward half a second...\n");
 	Robot::driveTrain->AutoFoward();
-	Wait(0.5);
+	Wait(1);
 	Robot::driveTrain->Stop();
 	Wait(0.3);
 	puts("Driving Reverse half a second...\n");
 	Robot::driveTrain->AutoReverse();
-	Wait(0.5);
+	Wait(1);
 	Robot::driveTrain->Stop();
 	puts ("Drive train test complete!\n");
 	Wait(1);

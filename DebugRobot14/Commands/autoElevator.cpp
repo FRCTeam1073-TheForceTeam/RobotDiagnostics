@@ -16,7 +16,7 @@ void autoElevator::Initialize() {
 void autoElevator::Execute() {
 	puts("moving the elevator down...\n");
 	Robot::elevator->autoDown();
-	Wait(0.5);
+	Wait(1);
 	puts("moving the elevator up...\n");
 	Robot::elevator->autoUp();
 	Wait(0.5);
