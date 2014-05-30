@@ -16,5 +16,7 @@ public:
 	void Shift();
 	void ShiftHigh();
 	void ShiftLow();
+	void isTheShifterReady();
+	bool isShifterReady;
 };
 #endif

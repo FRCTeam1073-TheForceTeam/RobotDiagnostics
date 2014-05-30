@@ -20,5 +20,7 @@ void Elevator::autoUp(){
 	angleAdjuster->Set(1);
 }
 void Elevator::stopArm(){
+	if((angleAdjuster->Get()==1)||(angleAdjuster->Get()==-1))
+	isAngleAdjusterReady=true;
 	angleAdjuster->Set(0);
 }

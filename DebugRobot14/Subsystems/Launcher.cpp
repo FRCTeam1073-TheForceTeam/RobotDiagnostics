@@ -38,6 +38,13 @@ void Launcher::Compress() {
 	}
 }
 void Launcher::StopLauch(){
+	if(solenoidLeft->Get()&&solenoidRight->Get())
+		isLaucherReady=true;
 	solenoidLeft->Set(false);
 	solenoidRight->Set(false);
+}
+void Launcher::canCompress(){
+	if(compressor->Enabled())isCompressorReady=true;
+	else
+		isCompressorReady=false;
 }

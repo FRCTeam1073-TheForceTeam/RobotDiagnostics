@@ -17,5 +17,6 @@ public:
 	void autoCollect();
 	void autoPurge();
 	void stopRollers();
+	bool isCollectorReady;
 };
 #endif

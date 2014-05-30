@@ -24,6 +24,9 @@ void Collector::autoPurge(){
 	rightRoller->Set(-1);
 }
 void Collector::stopRollers(){
+	if((leftRoller->Get()==1||leftRoller->Get()==-1)&&
+			(rightRoller->Get()==1||rightRoller->Get()==-1))
+		isCollectorReady=true;
 	leftRoller->Set(0);
 	rightRoller->Set(0);
 }

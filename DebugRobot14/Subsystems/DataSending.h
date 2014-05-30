@@ -16,6 +16,8 @@ public:
 	void SendTheData();
 	string GetGearSetting();
 	int timesPerSecond;
+	bool isCurrentSensorReady;
+	void istheCurrentGood();
 private:
 	int count;
 	void Send(bool b);

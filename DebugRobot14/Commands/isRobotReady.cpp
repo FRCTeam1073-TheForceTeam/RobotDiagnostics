@@ -1,7 +1,9 @@
 /* FIRST Team 1073's RobotBuilder (0.0.2) for WPILibExtensions ---
 Do not mix this code with any other version of RobotBuilder! */
 
-
+#include "../Subsystems/Shifter.h"
+#include "../Subsystems/RobotRangeFinder.h"
+#include "../Subsystems/DataSending.h"
 #include "isRobotReady.h"
 
 isRobotReady::isRobotReady() {
@@ -13,7 +15,30 @@ isRobotReady::isRobotReady() {
 
 // Called just before this Command runs the first time
 void isRobotReady::Initialize() {
-	
+	Robot::shifter->isTheShifterReady();
+	Robot::dataSending->istheCurrentGood();
+	Robot::robotRangeFinder->isTheRangeReady();
+	Robot::launcher->canCompress();
+	if(Robot::shifter->isShifterReady) puts("The Shifter is Ready\n");
+		else puts("The Shifter is not ready\n");
+	if(Robot::robotRangeFinder->isRangeFinderReady) puts("The Ultrasonic is Ready\n");
+		else puts("The Ultrasonic is not Ready\n");
+	if(Robot::collector->isCollectorReady) puts("The Collector is Ready\n");
+		else puts("The Collector is not Ready\n");
+	if(Robot::driveTrain->isDriveTrainReady) puts("The Drive Train is Ready\n");
+		else puts("The Drive Train is not Ready\n");
+	if(Robot::driveTrain->isGyroReady) puts("The Gyro is Ready\n");
+		else puts("The Gyro is not Ready\n");
+	if(Robot::elevator->isAngleAdjusterReady) puts("Jeremy's Elevator is Ready\n");
+		else puts("Jeremy's Elevator is not Ready\n");
+	if(Robot::launcher->isCompressorReady) puts("The Compressor is Ready\n");
+		else puts("The Compressor is not Ready\n");
+	if(Robot::launcher->isLaucherReady) puts("The Laucher is Ready\n");
+		else puts("The laucher is not Ready\n");
+	if(Robot::dataSending->isCurrentSensorReady) puts("The Current Sensor is Ready\n");
+		else puts("The Current Sensor is not Ready\n");
+	if(IsEverythingReady()) puts("The Robot is Ready! Good Luck at the Competition!\n");
+		else puts("The Robot is NOT ready, look at the previous messages to find out what\n");
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -23,7 +48,7 @@ void isRobotReady::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool isRobotReady::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
@@ -35,4 +60,18 @@ void isRobotReady::End() {
 // subsystems is scheduled to run
 void isRobotReady::Interrupted() {
 
+}
+bool isRobotReady::IsEverythingReady(){
+	if(Robot::collector->isCollectorReady&&
+	   Robot::dataSending->isCurrentSensorReady&&
+	   Robot::driveTrain->isDriveTrainReady&&
+	   Robot::driveTrain->isGyroReady&&
+	   Robot::elevator->isAngleAdjusterReady&&
+	   Robot::launcher->isCompressorReady&&
+	   Robot::launcher->isLaucherReady&&
+	   Robot::robotRangeFinder->isRangeFinderReady&&
+	   Robot::shifter->isShifterReady)
+		return true;
+	else
+		return false;
 }

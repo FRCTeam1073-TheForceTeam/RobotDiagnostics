@@ -7,6 +7,7 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "autoShiftToHigh.h"
 #include "autoShiftToLow.h"
 #include "autonomousCommandGroup.h"
+#include "isRobotReady.h"
 autonomousCommandGroup::autonomousCommandGroup() {
 	AddSequential(new autoShiftToLow());
 	AddSequential(new autoDriveTrain());
@@ -16,6 +17,7 @@ autonomousCommandGroup::autonomousCommandGroup() {
 	AddSequential(new autoElevator());
 	AddSequential(new autoCollector());
 	AddSequential(new autoLauncher());
+	AddSequential(new isRobotReady());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

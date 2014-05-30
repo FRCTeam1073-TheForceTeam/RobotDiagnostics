@@ -20,5 +20,8 @@ public:
 	void Launch();
 	void Compress();
 	void StopLauch();
+	bool isCompressorReady;
+	bool isLaucherReady;
+	void canCompress();
 };
 #endif

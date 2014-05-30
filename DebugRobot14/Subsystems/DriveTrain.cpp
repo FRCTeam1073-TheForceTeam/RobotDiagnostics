@@ -52,6 +52,11 @@ void DriveTrain::AutoFoward(){
 	rightFront->Set(0.5);
 	leftBack->Set(-0.5);
 	rightBack->Set(0.5);
+	if((leftFront->Get()==-0.5)&&(rightFront->Get()==0.5)
+			&&(leftBack->Get()==-0.5)&&(rightBack->Get()==0.5))
+		isDriveTrainReady=true;
+	if(0<gyro->GetAngle()&&gyro->GetAngle()<360)
+		isGyroReady=true;
 }
 void DriveTrain::AutoReverse(){
 	leftFront->Set(0.5);
