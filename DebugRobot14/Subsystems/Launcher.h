@@ -23,5 +23,7 @@ public:
 	bool isCompressorReady;
 	bool isLaucherReady;
 	void canCompress();
+	void autoStopLauch();
+	bool isTransducerReady();
 };
 #endif

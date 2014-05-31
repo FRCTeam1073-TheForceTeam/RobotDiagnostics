@@ -17,5 +17,6 @@ public:
 	void autoUp();
 	void stopArm();
 	bool isAngleAdjusterReady;
+	void autoStopArm();
 };
 #endif

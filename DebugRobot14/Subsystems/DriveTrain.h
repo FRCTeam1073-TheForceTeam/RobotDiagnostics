@@ -21,7 +21,7 @@ public:
 	void AutoFoward();
 	void AutoReverse();
 	void Stop();
-	bool isGyroReady;
+	bool isGyroReady();
 	bool isDriveTrainReady;
 };
 #endif

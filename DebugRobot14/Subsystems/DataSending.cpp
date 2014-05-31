@@ -133,8 +133,7 @@ string DataSending::GetGearSetting(){
 	}
 	return 0;
 }
-void DataSending::istheCurrentGood(){
+bool DataSending::istheCurrentSensorReady(){
 	float theCurrent = ((batteryCurrent->GetVoltage()-2.5)*AMPS_CONSTANT);
-	if((0<theCurrent)&&(theCurrent<200))
-		isCurrentSensorReady=true;
+	return((0<theCurrent)&&(theCurrent<200));
 }

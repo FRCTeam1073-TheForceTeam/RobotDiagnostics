@@ -20,7 +20,7 @@ void autoElevator::Execute() {
 	puts("moving the elevator up...\n");
 	Robot::elevator->autoUp();
 	Wait(0.5);
-	Robot::elevator->stopArm();
+	Robot::elevator->autoStopArm();
 	Wait(1);
 }
 // Make this return true when this Command no longer needs to run execute()

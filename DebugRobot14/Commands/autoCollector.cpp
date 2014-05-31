@@ -20,7 +20,7 @@ void autoCollector::Execute() {
 	puts("Purging...\n");
 	Robot::collector->autoPurge();
 	Wait(0.5);
-	Robot::collector->stopRollers();
+	Robot::collector->autoStopRollers();
 	Wait(1);
 }
 // Make this return true when this Command no longer needs to run execute()
