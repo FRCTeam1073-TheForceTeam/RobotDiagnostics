@@ -17,70 +17,84 @@ namespace DataCollection2014
 {
     public partial class Form1 : Form
     {
-        private DateTime timeStamp = new DateTime();
-        private int matchNumber = 1;
-        private StringBuilder DataSB = new StringBuilder();
-        private String dataString;
-        private StringBuilder ConsoleSB = new StringBuilder();
-        private String consoleString;
+        private bool noConsoleConnection = false;
+        private bool isEnabled = false;
+        private bool consoleConnection = false;
+        private bool NoConnection = false;
+        private bool saveToDisk = true;
+        private bool secretClose = false;
+        private bool firstTime = true;
+        private bool consoleFirstTime = true;
+        private bool isDiagnosticCode = false;
+        private bool isShifting = false;
+        private bool isAnglingUp = false;
+        private bool isAnglingDown = false;
+        private bool isCollectingFast = false;
+        private bool isCollectingSlow = false;
+        private bool isCompressing = false;
+        private bool isLauching = false;
+        private bool isCatchModing = false;
+        private bool isCollecting2Shooting = false;
+        private bool isCollectingDown2 = false;
+        private bool isCollectingDown = false;
+        private bool isCollectingUp2 = false;
+        private bool isCollectingUp = false;
+        private bool isToggleCollecting = false;
+        private bool isCollectingWhileHeld = false;
+        private bool isPurging = false;
+        private bool isLauchingBall = false;
+        private bool isFowardDirectioning = false;
+        private bool isTogglingDriveMode = false;
+        private bool isShiftingUp = false;
+        private bool isShiftingDown = false;
         private byte[] dataByte;
         private byte[] consoleByte;
+        private DateTime timeStamp = new DateTime();
+        private float xAxisNum = 0;
+        private float yAxisNum = 0;
+        private float zAxisNum = 0;
+        private float totalHertz;
+        private int matchNumber = 1;
+        private int recv;
+        private int crecv;
+        private int ignoringInput = 2;
+        private int parseNumber = 0;
+        private int saveNumber = 0;
+        private int fileSaver = 0;
+        private int consoleSaveNumber = 0;
+        private int connectionTimeout = 0;
+        private int deleteDataSaveNumber = 0;
+        private int deleteConsoleSaveNumber = 0;
+        private int enoughPressure = 0;
+        private int timesPer50Hz;
+        private int actualHz;
+        private Ping cameraPinger = new Ping();
+        private PingReply reply;
+        private Queue dataQueue = new Queue();
+        private Queue consoleQueue = new Queue();
+        private Rectangle border;
+        private Rectangle point;
+        private Rectangle rotation;
+        private String appPath;
+        private String FormatedTopRow;
+        private String consoleString;
+        private String formatedTopRowDiag;
+        private String dataString;
+        private String[] parser = new String[30];
+        private StringBuilder DataSB = new StringBuilder();
+        private StringBuilder ConsoleSB = new StringBuilder();
+        private System.Drawing.Graphics graphics;
+        private Thread dataThread;
+        private Thread consoleThread;
+        private Thread pinggerThread;
+        
         private static IPEndPoint dataIPEndPoint = new IPEndPoint(IPAddress.Any, 1165);
         private static Socket dataSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         private EndPoint dataEndpoint = (EndPoint)(dataIPEndPoint);
         private static IPEndPoint consoleIPEndPoint = new IPEndPoint(IPAddress.Any, 6666);
         private static Socket consoleSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         private EndPoint consoleEndpoint = (EndPoint)(consoleIPEndPoint);
-        private int recv;
-        private int crecv;
-        private Queue dataQueue = new Queue();
-        private Queue consoleQueue = new Queue();
-        private Thread dataThread;
-        private Thread consoleThread;
-        private Thread pinggerThread;
-        private volatile bool NoConnection = false;
-        private String[] parser= new String[30];
-        //private StringBuilder failSafe = new StringBuilder();
-        private volatile bool saveToDisk = true;
-        private string appPath;
-        private volatile bool secretClose = false;
-        private int ignoringInput = 2;
-        private int parseNumber = 0;
-        //private StringBuilder netFailSafe = new StringBuilder();
-        private String FormatedTopRow;
-        private volatile bool firstTime = true;
-        private int saveNumber = 0;
-        private int fileSaver = 0;
-        private volatile bool consoleFirstTime = true;
-        private int consoleSaveNumber = 0;
-        private volatile bool noConsoleConnection = false;
-        private volatile bool isEnabled = false;
-        private volatile bool consoleConnection = false;
-        private Ping cameraPinger = new Ping();
-        private float totalHertz;
-        private PingReply reply;
-        private int connectionTimeout = 0;
-        private int deleteDataSaveNumber = 0;
-        private int deleteConsoleSaveNumber = 0;
-        private int enoughPressure = 0;
-        private bool isDiagnosticCode = false;
-        private volatile bool isShifting = false;
-        private volatile bool isAnglingUp = false;
-        private volatile bool isAnglingDown = false;
-        private volatile bool isCollectingFast = false;
-        private volatile bool isCollectingSlow = false;
-        private volatile bool isCompressing = false;
-        private volatile bool isLauching = false;
-        private float xAxisNum = 0;
-        private float yAxisNum = 0;
-        private float zAxisNum = 0;
-        private Rectangle border;
-        private Rectangle point;
-        private Rectangle rotation;
-        private int timesPer50Hz;
-        private int actualHz;
-        private String formatedTopRowDiag;
-        System.Drawing.Graphics graphics;
+        
         public Form1()
         {
             this.MaximizeBox = false;
@@ -154,10 +168,9 @@ namespace DataCollection2014
             "Refresh Rate," +
             "Match Time," +
             "isEnabled\n");
-            //DataSB.Append(FormatedTopRow);
-            //this.WindowState = FormWindowState.Minimized;
             this.StartGraphics();
         }
+
         public void StartGraphics()
         {
             graphics = panel4.CreateGraphics();
@@ -165,6 +178,7 @@ namespace DataCollection2014
             point = new Rectangle(90, 90, 10, 10);
             rotation = new Rectangle(0, 202, 100, 20);
         }
+
         public void StartListenerThreads()
         {
             dataThread = new Thread(new ThreadStart(listen4Data));
@@ -209,6 +223,7 @@ namespace DataCollection2014
                 System.Threading.Thread.Sleep(500);
             }
         }
+
         public void listen4Data()
         {
 
@@ -231,6 +246,7 @@ namespace DataCollection2014
                 consoleQueue.Enqueue(consoleString);
             }
         }
+
         public void displayConsoledata()
         {
             if (consoleQueue.Count == 0&&noConsoleConnection==false)
@@ -311,6 +327,7 @@ namespace DataCollection2014
             consoleQueue.Clear();
            
         }
+
         public void displayData()
         {
             timeStamp= DateTime.Now;
@@ -345,14 +362,11 @@ namespace DataCollection2014
                             batteryVolts.Text = parser[parseNumber++];
                             batteryAmps.Text = parser[parseNumber++];
                             //driver joystick information
-                            xAxis.Text = parser[parseNumber++];
-                            yAxis.Text = parser[parseNumber++];
-                            zAxis.Text = parser[parseNumber++];
-                            try { xAxisNum = float.Parse(xAxis.Text); }
+                            try { xAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { xAxisNum = 0; }
-                            try { yAxisNum = float.Parse(yAxis.Text); }
+                            try { yAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { yAxisNum = 0; }
-                            try { zAxisNum = float.Parse(zAxis.Text); }
+                            try { zAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { zAxisNum = 0; }
                             if (parser[parseNumber++].Equals("1")) isShifting = true; else isShifting = false;
                             if (parser[parseNumber++].Equals("1")) isAnglingDown = true; else isAnglingDown = false;
@@ -393,14 +407,11 @@ namespace DataCollection2014
                             batteryVolts.Text = parser[parseNumber++];
                             batteryAmps.Text = parser[parseNumber++];
 
-                            xAxis.Text = parser[parseNumber++];
-                            yAxis.Text = parser[parseNumber++];
-                            zAxis.Text = parser[parseNumber++];
-                            try { xAxisNum = float.Parse(xAxis.Text); }
+                            try { xAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { xAxisNum = 0; }
-                            try { yAxisNum = float.Parse(yAxis.Text); }
+                            try { yAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { yAxisNum = 0; }
-                            try { zAxisNum = float.Parse(zAxis.Text); }
+                            try { zAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { zAxisNum = 0; }
                             parseNumber++;
                             parseNumber++;
@@ -525,11 +536,12 @@ namespace DataCollection2014
                 {
                     timeStamp = DateTime.Now;
                     String error = String.Format("{0:HH-mm-ss}", timeStamp);
-                    disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
+                    if(!NoConnection) disconnectionMessages.AppendText("Data Connection lost at " + error + "\n");
                     NoConnection = true;
                 }
                 this.UpdateUI();
         }
+        
         private void UpdateUI()
         {
             if (isEnabled && !NoConnection)
@@ -591,40 +603,138 @@ namespace DataCollection2014
             graphics.FillEllipse(Brushes.Black, point);
             graphics.FillRectangle(Brushes.Black, rotation);
             //update the buttons
-            if(isShifting)
-                this.shiftButton.BackColor=Color.Green;
-            else
-                this.shiftButton.BackColor=Color.Red;
+            if (isDiagnosticCode)
+            {
+                if (isShifting)
+                    this.shiftButton.BackColor = Color.Green;
+                else
+                    this.shiftButton.BackColor = Color.Red;
 
-            if (isAnglingDown)
-                this.AngleDownButton.BackColor = Color.Green;
-            else
-                this.AngleDownButton.BackColor = Color.Red;
+                if (isAnglingDown)
+                    this.AngleDownButton.BackColor = Color.Green;
+                else
+                    this.AngleDownButton.BackColor = Color.Red;
 
-            if (isAnglingUp)
-                this.AngleUpButton.BackColor = Color.Green;
-            else
-                this.AngleUpButton.BackColor = Color.Red;
+                if (isAnglingUp)
+                    this.AngleUpButton.BackColor = Color.Green;
+                else
+                    this.AngleUpButton.BackColor = Color.Red;
 
-            if (isCollectingFast)
-                this.CollectFasterButton.BackColor = Color.Green;
-            else
-                this.CollectFasterButton.BackColor = Color.Red;
+                if (isCollectingFast)
+                    this.CollectFasterButton.BackColor = Color.Green;
+                else
+                    this.CollectFasterButton.BackColor = Color.Red;
 
-            if (isCollectingSlow)
-                this.CollectSlowerButton.BackColor = Color.Green;
-            else
-                this.CollectSlowerButton.BackColor = Color.Red;
+                if (isCollectingSlow)
+                    this.CollectSlowerButton.BackColor = Color.Green;
+                else
+                    this.CollectSlowerButton.BackColor = Color.Red;
 
-            if (isCompressing)
-                this.CompressButton.BackColor = Color.Green;
-            else
-                this.CompressButton.BackColor = Color.Red;
+                if (isCompressing)
+                    this.CompressButton.BackColor = Color.Green;
+                else
+                    this.CompressButton.BackColor = Color.Red;
 
-            if (isLauching)
-                this.lauchBallButton.BackColor = Color.Green;
+                if (isLauching)
+                    this.lauchBallButton.BackColor = Color.Green;
+                else
+                    this.lauchBallButton.BackColor = Color.Red;
+            }
             else
-                this.lauchBallButton.BackColor = Color.Red;
+            {
+                this.label18.Visible = false;
+                this.label17.Visible = false;
+                this.label21.Visible = false;
+                this.CollectSlowerButton.Visible = false;
+                this.lauchBallButton.Visible = false;
+                this.CompressButton.Visible = false;
+                this.label26.Visible = false;
+                this.label27.Visible = false;
+                this.label28.Visible = false;
+                this.label10.Text = "Foward Direction";
+                this.label11.Text = "Toggle Field";
+                this.label16.Text = "Shift Down";
+                this.label13.Text = "Shift Up";
+                this.label22.Text = "2";
+                this.label23.Text = "3";
+                this.label24.Text = "10";
+                this.label25.Text = "9";
+                if (isFowardDirectioning)
+                    this.shiftButton.BackColor = Color.Green;
+                else
+                    this.shiftButton.BackColor = Color.Red;
+
+                if (isTogglingDriveMode)
+                    this.AngleUpButton.BackColor = Color.Green;
+                else
+                    this.AngleUpButton.BackColor = Color.Red;
+
+                if (isShiftingUp)
+                    this.AngleDownButton.BackColor = Color.Green;
+                else
+                    this.AngleDownButton.BackColor = Color.Red;
+
+                if (isShiftingDown)
+                    this.CollectFasterButton.BackColor = Color.Green;
+                else
+                    this.CollectFasterButton.BackColor = Color.Red;
+            }
+            if (isDiagnosticCode) diagOrComp.Text = "diag"; else diagOrComp.Text = "comp";
+
+            if (diagOrComp.Text.Equals("comp"))
+                this.panel28.Visible = true;
+            else
+                this.panel28.Visible = false;
+
+            if (isCatchModing)
+                this.catchModeButton.BackColor = Color.Green;
+            else
+                this.catchModeButton.BackColor = Color.Red;
+
+            if (isCollecting2Shooting)
+                this.CollectorToShootButton.BackColor = Color.Green;
+            else
+                this.CollectorToShootButton.BackColor = Color.Red;
+
+            if (isCollectingDown2)
+                this.CollectorDown2Button.BackColor = Color.Green;
+            else
+                this.CollectorDown2Button.BackColor = Color.Red;
+
+            if (isCollectingDown)
+                this.OPCollectorDownButton.BackColor = Color.Green;
+            else
+                this.OPCollectorDownButton.BackColor = Color.Red;
+
+            if (isCollectingUp2)
+                this.CollectorUp2Button.BackColor = Color.Green;
+            else
+                this.CollectorUp2Button.BackColor = Color.Red;
+
+            if (isCollectingUp)
+                this.OPCollectorUpButton.BackColor = Color.Green;
+            else
+                this.OPCollectorUpButton.BackColor = Color.Red;
+
+            if (isToggleCollecting)
+                this.toggleCollectorButton.BackColor = Color.Green;
+            else
+                this.toggleCollectorButton.BackColor = Color.Red;
+
+            if (isCollectingWhileHeld)
+                this.whileHeldCollectorButton.BackColor = Color.Green;
+            else
+                this.whileHeldCollectorButton.BackColor = Color.Red;
+
+            if (isPurging)
+                this.OPPurgeButton.BackColor = Color.Green;
+            else
+                this.OPPurgeButton.BackColor = Color.Red;
+
+            if (isLauchingBall)
+                this.OPLauchBallButton.BackColor = Color.Green;
+            else
+                this.OPLauchBallButton.BackColor = Color.Red;
         }
 
         private void Listen_Click(object sender, EventArgs e)
@@ -662,12 +772,9 @@ namespace DataCollection2014
             dataQueue.Clear();
             consoleQueue.Clear();
             ConsoleTimer.Stop();
-            netConsoleDisplay.Text = "Listening Stopped\n";
+            netConsoleDisplay.Clear();
             batteryVolts.Text = null;
             batteryAmps.Text = null;
-            xAxis.Text = null;
-            yAxis.Text = null;
-            zAxis.Text = null;
             
             leftFrontSpeed.Text = null;
             rightFrontSpeed.Text = null;
@@ -687,9 +794,10 @@ namespace DataCollection2014
             matchTime.Text = null;
             transducerPSI.Text = null;
             isReallyEnabled.Text = null;
+            NoConnection = false;
+            noConsoleConnection = false;
         }
 
-       
         private void clearConsole_Click(object sender, EventArgs e)
         {
             netConsoleDisplay.Clear();
