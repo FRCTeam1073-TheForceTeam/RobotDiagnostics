@@ -39,6 +39,7 @@ void DataSending::SendTheData(){
 	Send(RobotMap::collectorRightRoller->Get());
 	Send(count++);//number of packets
 	Send(timesPerSecond);//every nth number data is sent from a 50 hz source
+	//a.k.a above number / 50 = Hz
 	Send(drive->GetMatchTime());
 	Send(drive->IsEnabled());
 	dash.AddString(strBuffer);

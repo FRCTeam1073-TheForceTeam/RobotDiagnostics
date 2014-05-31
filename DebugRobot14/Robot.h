@@ -41,5 +41,6 @@ public:
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
 	virtual void DisabledPeriodic();
+	virtual void TestInit();
 };
 #endif

@@ -69,4 +69,10 @@ void Robot::DisabledPeriodic() {
 		Robot::dataSending->SendTheData();
 	count++;
 }
+void Robot::TestInit(){
+	puts("Starting Self-Diagnostic Test...\n");
+		Wait(1);
+	if (autonomousCommand != NULL)
+		autonomousCommand->Start();
+}
 START_ROBOT_CLASS(Robot);
