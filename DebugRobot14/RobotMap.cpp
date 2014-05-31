@@ -26,7 +26,6 @@ void RobotMap::init() {
 	driveTrainGyro = new SmartGyro(1, 1);
 	lw->AddSensor("Drive Train", "Gyro", driveTrainGyro);
 	driveTrainGyro->SetSensitivity(0.007);
-	
 	launcherSolenoidLeft = new Solenoid(1, 1);
 	lw->AddActuator("Launcher", "SolenoidLeft", launcherSolenoidLeft);
 	
@@ -35,6 +34,7 @@ void RobotMap::init() {
 	
 	launcherCompressor = new Compressor(1, 1, 1, 1);
 	
+	
 	collectorLeftRoller = new Talon(1, 2);
 	lw->AddActuator("Collector", "Left Roller", (Talon*) collectorLeftRoller);
 	
@@ -42,6 +42,7 @@ void RobotMap::init() {
 	lw->AddActuator("Collector", "Right Roller", (Talon*) collectorRightRoller);
 	
 	shifterDoubleSolenoid = new DoubleSolenoid(1, 2, 3);      
+	
 	
 	robotRangeFinderUltrasonicSensor = new StallableAnalogEncoder(1, 4);
 	lw->AddSensor("RobotRangeFinder", "UltrasonicSensor", robotRangeFinderUltrasonicSensor);

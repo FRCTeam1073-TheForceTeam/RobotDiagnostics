@@ -111,15 +111,15 @@ void DataSending::GetDriveJoystickInfo(){
 	Send(Robot::oi->getDriveStick()->GetX());
 	Send(Robot::oi->getDriveStick()->GetY());
 	Send(Robot::oi->getDriveStick()->GetZ());
-	Send(Robot::oi->shiftButton->Get());
+	Send(Robot::oi->getshiftButton()->Get());
 }
 void DataSending::GetOperatorJoystickInfo(){
-	Send(Robot::oi->angleDownButton->Get());
-	Send(Robot::oi->angleUpButton->Get());
-	Send(Robot::oi->collectFasterButton->Get());
-	Send(Robot::oi->collectSlowerButton->Get());
-	Send(Robot::oi->compressButton->Get());
-	Send(Robot::oi->lauchBall->Get());
+	Send(Robot::oi->getangleDownButton()->Get());
+	Send(Robot::oi->getangleUpButton()->Get());
+	Send(Robot::oi->getcollectFasterButton()->Get());
+	Send(Robot::oi->getCollectSlowerButton()->Get());
+	Send(Robot::oi->getcompressButton()->Get());
+	Send(Robot::oi->getlauchBall()->Get());
 }
 string DataSending::GetGearSetting(){
 	if(RobotMap::shifterDoubleSolenoid->Get()==DoubleSolenoid::kForward){
