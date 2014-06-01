@@ -42,7 +42,7 @@ void Robot::AutonomousInit() {
 	
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
-	if(count%5==0)
+	if(count%2==0)
 		Robot::dataSending->SendTheData();
 	count++;
 }
@@ -54,18 +54,18 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
-	if(count%5==0)
+	if(count%2==0)
 		Robot::dataSending->SendTheData();
 	count++;
 }
 void Robot::TestPeriodic() {
 	lw->Run();
-	if(count%5==0)
+	if(count%2==0)
 		Robot::dataSending->SendTheData();
 	count++;
 }
 void Robot::DisabledPeriodic() {
-	if(count%5==0)
+	if(count%2==0)
 		Robot::dataSending->SendTheData();
 	count++;
 }
