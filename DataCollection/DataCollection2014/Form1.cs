@@ -350,8 +350,6 @@ namespace DataCollection2014
                         timeStamp = DateTime.Now;
                         String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
                         String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
-                        //DataSB.Append(path2 + ",");
-                        //DataSB.Append(parsed);
                         
                         parser = parsed.Split(delim);
 
@@ -404,23 +402,38 @@ namespace DataCollection2014
                         }
                         else
                         {
+                            //Battery Information
                             batteryVolts.Text = parser[parseNumber++];
                             batteryAmps.Text = parser[parseNumber++];
-
+                            //Joystick Axis Information
                             try { xAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { xAxisNum = 0; }
                             try { yAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { yAxisNum = 0; }
                             try { zAxisNum = float.Parse(parser[parseNumber++]); }
                             catch (FormatException) { zAxisNum = 0; }
-                            parseNumber++;
-                            parseNumber++;
+                            //Joystick Button Information
+                            if (parser[parseNumber++].Equals("1")) isFowardDirectioning = true; else isFowardDirectioning = false;
+                            if (parser[parseNumber++].Equals("1")) isTogglingDriveMode = true; else isTogglingDriveMode = false;
+                            if (parser[parseNumber++].Equals("1")) isShiftingUp = true; else isShiftingUp = false;
+                            if (parser[parseNumber++].Equals("1")) isShiftingDown = true; else isShiftingDown = false;
+                            if (parser[parseNumber++].Equals("1")) isCatchModing = true; else isCatchModing = false;
+                            if (parser[parseNumber++].Equals("1")) isCollecting2Shooting = true; else isCollecting2Shooting = false;
+                            if (parser[parseNumber++].Equals("1")) isCollectingDown2 = true; else isCollectingDown2 = false;
+                            if (parser[parseNumber++].Equals("1")) isCollectingDown = true; else isCollectingDown = false;
+                            if (parser[parseNumber++].Equals("1")) isCollectingUp2 = true; else isCollectingUp2 = false;
+                            if (parser[parseNumber++].Equals("1")) isCollectingUp = true; else isCollectingUp = false;
+                            if (parser[parseNumber++].Equals("1")) isToggleCollecting = true; else isToggleCollecting = false;
+                            if (parser[parseNumber++].Equals("1")) isCollectingWhileHeld = true; else isCollectingWhileHeld = false;
+                            if (parser[parseNumber++].Equals("1")) isPurging = true; else isPurging = false;
+                            if (parser[parseNumber++].Equals("1")) isLauchingBall = true; else isLauchingBall = false;
+                            //Victor Information
                             leftFrontSpeed.Text = parser[parseNumber++];
                             rightFrontSpeed.Text = parser[parseNumber++];
                             leftBackSpeed.Text = parser[parseNumber++];
                             rightBackSpeed.Text = parser[parseNumber++];
                             collectorInputSpeed.Text = parser[parseNumber++];
-
+                            //all other information
                             launcherSolenoid1.Text = parser[parseNumber++];
                             launcherSolenoid2.Text = parser[parseNumber++];
                             shifterStatus.Text = parser[parseNumber++];
@@ -433,10 +446,9 @@ namespace DataCollection2014
                             leftTalon.Text = parser[parseNumber++];
                             rightTalon.Text = parser[parseNumber++];
                             packetCounter.Text = parser[parseNumber++];
-                            float number = float.Parse(parser[parseNumber++]);
-                            float moreNumber = number * 1000;
-                            int converted = (int)moreNumber;
-                            DataTimer.Interval = converted;
+                            timesPer50Hz = (int.Parse(parser[parseNumber++]));
+                            actualHz = 50 / timesPer50Hz;
+                            DataTimer.Interval = 1000 / actualHz;
                             matchTime.Text = parser[parseNumber++];
                             isReallyEnabled.Text = parser[parseNumber];
                             if (isReallyEnabled.Text.Equals("1")) isEnabled = true;
