@@ -402,6 +402,49 @@ namespace DataCollection2014
                         }
                         else
                         {
+                        /* have the old code as a backup just in case
+                        char delim = ',';
+                        String parsed = s2.Substring(35, s2.Length - 35);
+                        timeStamp = DateTime.Now;
+                        String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
+                        String exactSeconds = String.Format("{0:HH-mm-ss.f}", timeStamp);
+                        //DataSB.Append(path2 + ",");
+                        //DataSB.Append(parsed);
+                        
+                        parser = parsed.Split(delim);
+                        batteryVolts.Text = parser[parseNumber++];
+                        batteryAmps.Text = parser[parseNumber++];
+
+                        xAxis.Text = parser[parseNumber++];
+                        yAxis.Text = parser[parseNumber++];
+                        zAxis.Text = parser[parseNumber++];
+                        parseNumber++;
+                        parseNumber++;
+                        leftFrontSpeed.Text = parser[parseNumber++];
+                        rightFrontSpeed.Text = parser[parseNumber++];
+                        leftBackSpeed.Text = parser[parseNumber++];
+                        rightBackSpeed.Text = parser[parseNumber++];
+                        collectorInputSpeed.Text = parser[parseNumber++];
+                                                
+                        launcherSolenoid1.Text = parser[parseNumber++];
+                        launcherSolenoid2.Text = parser[parseNumber++];
+                        shifterStatus.Text = parser[parseNumber++];
+                        pressureValue.Text = parser[parseNumber++];
+                        try { enoughPressure = int.Parse(pressureValue.Text); }
+                        catch(FormatException){}
+                        ultrasonic.Text = parser[parseNumber++];
+                        gyroAngle.Text = parser[parseNumber++];
+                        transducerPSI.Text = parser[parseNumber++];
+                        leftTalon.Text = parser[parseNumber++];
+                        rightTalon.Text = parser[parseNumber++];
+                        packetCounter.Text = parser[parseNumber++];
+                        float number = float.Parse(parser[parseNumber++]);
+                        float moreNumber = number * 1000;
+                        int converted = (int)moreNumber;
+                        DataTimer.Interval = converted;
+                        matchTime.Text = parser[parseNumber++];
+                        isReallyEnabled.Text = parser[parseNumber];
+                        */
                             //Battery Information
                             batteryVolts.Text = parser[parseNumber++];
                             batteryAmps.Text = parser[parseNumber++];
