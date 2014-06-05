@@ -15,16 +15,19 @@ void Elevator::InitDefaultCommand() {
 	angleAdjuster->Set(0.0);
 }
 void Elevator::autoDown(){
-	angleAdjuster->Set(-0.5);
+	angleAdjuster->Set(-0.6);
 }
 void Elevator::autoUp(){
-	angleAdjuster->Set(0.25);
+	angleAdjuster->Set(0.6);
 }
 void Elevator::stopArm(){
 	angleAdjuster->Set(0);
 }
 void Elevator::autoStopArm(){
-	if((angleAdjuster->Get()==1.0f)||(angleAdjuster->Get()==-1.0f))
-		isAngleAdjusterReady=true;
+	float angleSpeed = angleAdjuster->Get();
+	if((-.5f>angleSpeed)&&(angleSpeed>-.7f))
+			isAngleAdjusterReady=true;
+	if((.5f<angleSpeed)&&(angleSpeed<.7f)&&!isAngleAdjusterReady)
+			isAngleAdjusterReady=true;
 	angleAdjuster->Set(0);
 }

@@ -39,7 +39,6 @@ public:
 	virtual void AutonomousPeriodic();
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
-	virtual void TestInit();
 	virtual void TestPeriodic();
 	virtual void DisabledPeriodic();
 };
