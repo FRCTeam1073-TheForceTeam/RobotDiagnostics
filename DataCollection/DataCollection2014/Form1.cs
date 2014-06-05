@@ -660,6 +660,7 @@ namespace DataCollection2014
             //update the buttons
             if (isDiagnosticCode)
             {
+                this.setupForDiag();
                 if (isShifting)
                     this.shiftButton.BackColor = Color.Green;
                 else
@@ -697,23 +698,7 @@ namespace DataCollection2014
             }
             else
             {
-                this.label18.Visible = false;
-                this.label17.Visible = false;
-                this.label21.Visible = false;
-                this.CollectSlowerButton.Visible = false;
-                this.lauchBallButton.Visible = false;
-                this.CompressButton.Visible = false;
-                this.label26.Visible = false;
-                this.label27.Visible = false;
-                this.label28.Visible = false;
-                this.label10.Text = "Foward Direction";
-                this.label11.Text = "Toggle Field";
-                this.label16.Text = "Shift Down";
-                this.label13.Text = "Shift Up";
-                this.label22.Text = "2";
-                this.label23.Text = "3";
-                this.label24.Text = "10";
-                this.label25.Text = "9";
+                this.setupForComp();
                 if (isFowardDirectioning)
                     this.shiftButton.BackColor = Color.Green;
                 else
@@ -996,6 +981,50 @@ namespace DataCollection2014
         private void label4_Click(object sender, EventArgs e)
         {
             MessageBox.Show("LOL not anymore!!!1");
+        }
+
+        private void setupForDiag()
+        {
+            this.panel28.Visible = false;
+            this.label18.Visible = true;
+            this.label17.Visible = true;
+            this.label21.Visible = true;
+            this.CollectSlowerButton.Visible = true;
+            this.lauchBallButton.Visible = true;
+            this.CompressButton.Visible = true;
+            this.label26.Visible = true;
+            this.label27.Visible = true;
+            this.label28.Visible = true;
+            this.label10.Text = "Shift";
+            this.label11.Text = "Angle Up";
+            this.label16.Text = "Collect Faster";
+            this.label13.Text = "Angle Down";
+            this.label22.Text = "3";
+            this.label23.Text = "6";
+            this.label24.Text = "4";
+            this.label25.Text = "8";
+        }
+
+        private void setupForComp()
+        {
+            this.panel28.Visible = true;
+            this.label18.Visible = false;
+            this.label17.Visible = false;
+            this.label21.Visible = false;
+            this.CollectSlowerButton.Visible = false;
+            this.lauchBallButton.Visible = false;
+            this.CompressButton.Visible = false;
+            this.label26.Visible = false;
+            this.label27.Visible = false;
+            this.label28.Visible = false;
+            this.label10.Text = "Foward Direction";
+            this.label11.Text = "Toggle Field";
+            this.label16.Text = "Shift Down";
+            this.label13.Text = "Shift Up";
+            this.label22.Text = "2";
+            this.label23.Text = "3";
+            this.label24.Text = "10";
+            this.label25.Text = "9";
         }
     }
 }
