@@ -15,10 +15,10 @@ void Elevator::InitDefaultCommand() {
 	angleAdjuster->Set(0.0);
 }
 void Elevator::autoDown(){
-	angleAdjuster->Set(-1);
+	angleAdjuster->Set(-0.5);
 }
 void Elevator::autoUp(){
-	angleAdjuster->Set(1);
+	angleAdjuster->Set(0.25);
 }
 void Elevator::stopArm(){
 	angleAdjuster->Set(0);

@@ -28,8 +28,8 @@ void DataSending::SendTheData(){
 	GetDriveJoystickInfo();//joystick info
 	GetOperatorJoystickInfo();//moar joystick info
 	GetVicInfo();//victor info
-	Send((bool)RobotMap::launcherSolenoidLeft->Get());//solenoid info
-	Send((bool)RobotMap::launcherSolenoidRight->Get());
+	Send(RobotMap::launcherSolenoidLeft->Get());//solenoid info
+	Send(RobotMap::launcherSolenoidRight->Get());
 	Send(RobotMap::shifterDoubleSolenoid->Get());
 	Send((bool)RobotMap::launcherCompressor->GetPressureSwitchValue());//sensor info
 	Send(RobotMap::robotRangeFinderUltrasonicSensor->GetVoltage()/VoltsPerCM);

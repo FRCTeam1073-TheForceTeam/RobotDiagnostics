@@ -36,7 +36,7 @@ OI::OI() {
 	shiftButton = new JoystickButton(driveStick, 3);
 	shiftButton->WhenPressed(new shift());
 	lauchBall = new JoystickButton(driveStick, 1);
-	lauchBall->WhenPressed(new launch());
+	lauchBall->WhileHeld(new launch());
 	compressButton = new JoystickButton(driveStick, 2);
 	compressButton->WhenPressed(new compress());
      

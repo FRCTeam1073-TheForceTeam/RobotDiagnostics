@@ -15,8 +15,7 @@ void launch::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void launch::Execute() {
-	bool left = (bool) RobotMap::launcherSolenoidLeft->Get();
-	if(left)printf("Left is Lauching\n");
+	
 }
 // Make this return true when this Command no longer needs to run execute()
 bool launch::IsFinished() {
