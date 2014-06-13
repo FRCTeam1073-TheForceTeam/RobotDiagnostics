@@ -2,8 +2,8 @@
 Do not mix this code with any other version of RobotBuilder! */
 
 
-#ifndef AUTONOMOUS_COMMAND_H
-#define AUTONOMOUS_COMMAND_H
+#ifndef AUTODRIVETRAIN_H
+#define AUTODRIVETRAIN_H
 
 
 #include "Commands/Subsystem.h"
@@ -11,9 +11,9 @@ Do not mix this code with any other version of RobotBuilder! */
 #include "WPILib.h"
 #include "../WPILibExtensions/WPILibExtensions.h"
 
-class AutonomousCommand: public Command {
+class autoDriveTrain: public Command {
 public:
-	AutonomousCommand();
+	autoDriveTrain();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
