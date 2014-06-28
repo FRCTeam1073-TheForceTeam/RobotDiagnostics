@@ -35,8 +35,44 @@
             this.Pause = new System.Windows.Forms.Button();
             this.Stop = new System.Windows.Forms.Button();
             this.DriverInfo = new System.Windows.Forms.TabPage();
+            this.panel28 = new System.Windows.Forms.Panel();
+            this.label69 = new System.Windows.Forms.Label();
+            this.OPPurgeButton = new System.Windows.Forms.Panel();
+            this.label70 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.whileHeldCollectorButton = new System.Windows.Forms.Panel();
+            this.label67 = new System.Windows.Forms.Label();
+            this.toggleCollectorButton = new System.Windows.Forms.Panel();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.catchModeButton = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.OPLauchBallButton = new System.Windows.Forms.Panel();
+            this.CollectorToShootButton = new System.Windows.Forms.Panel();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.OPCollectorUpButton = new System.Windows.Forms.Panel();
+            this.CollectorDown2Button = new System.Windows.Forms.Panel();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.CollectorUp2Button = new System.Windows.Forms.Panel();
+            this.OPCollectorDownButton = new System.Windows.Forms.Panel();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.diagOrComp = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label59 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -67,6 +103,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.netConsoleDisplay = new System.Windows.Forms.RichTextBox();
             this.RobotInfo = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.gyroAngle = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.panel18 = new System.Windows.Forms.Panel();
             this.rightFrontSpeed = new System.Windows.Forms.TextBox();
             this.leftBackSpeed = new System.Windows.Forms.TextBox();
@@ -82,8 +121,6 @@
             this.collectorInputSpeed = new System.Windows.Forms.TextBox();
             this.label73 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.gyroAngle = new System.Windows.Forms.TextBox();
             this.ultrasonic = new System.Windows.Forms.TextBox();
             this.label49 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -150,47 +187,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.disconnectionMessages = new System.Windows.Forms.RichTextBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label29 = new System.Windows.Forms.Label();
-            this.diagOrComp = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.catchModeButton = new System.Windows.Forms.Panel();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.CollectorToShootButton = new System.Windows.Forms.Panel();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.CollectorDown2Button = new System.Windows.Forms.Panel();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.OPCollectorDownButton = new System.Windows.Forms.Panel();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.CollectorUp2Button = new System.Windows.Forms.Panel();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.OPCollectorUpButton = new System.Windows.Forms.Panel();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.OPLauchBallButton = new System.Windows.Forms.Panel();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.panel28 = new System.Windows.Forms.Panel();
-            this.label64 = new System.Windows.Forms.Label();
-            this.toggleCollectorButton = new System.Windows.Forms.Panel();
-            this.label65 = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
-            this.whileHeldCollectorButton = new System.Windows.Forms.Panel();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.OPPurgeButton = new System.Windows.Forms.Panel();
-            this.label70 = new System.Windows.Forms.Label();
             this.DriverInfo.SuspendLayout();
+            this.panel28.SuspendLayout();
             this.panel6.SuspendLayout();
             this.NetConsole.SuspendLayout();
             this.RobotInfo.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -209,8 +211,6 @@
             this.panel21.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel28.SuspendLayout();
             this.SuspendLayout();
             // 
             // DataTimer
@@ -269,6 +269,332 @@
             this.DriverInfo.Text = "Driver Info";
             this.DriverInfo.UseVisualStyleBackColor = true;
             // 
+            // panel28
+            // 
+            this.panel28.Controls.Add(this.label69);
+            this.panel28.Controls.Add(this.OPPurgeButton);
+            this.panel28.Controls.Add(this.label70);
+            this.panel28.Controls.Add(this.label66);
+            this.panel28.Controls.Add(this.label64);
+            this.panel28.Controls.Add(this.whileHeldCollectorButton);
+            this.panel28.Controls.Add(this.label67);
+            this.panel28.Controls.Add(this.toggleCollectorButton);
+            this.panel28.Controls.Add(this.label65);
+            this.panel28.Controls.Add(this.label63);
+            this.panel28.Controls.Add(this.catchModeButton);
+            this.panel28.Controls.Add(this.label30);
+            this.panel28.Controls.Add(this.label56);
+            this.panel28.Controls.Add(this.label32);
+            this.panel28.Controls.Add(this.label54);
+            this.panel28.Controls.Add(this.label41);
+            this.panel28.Controls.Add(this.OPLauchBallButton);
+            this.panel28.Controls.Add(this.CollectorToShootButton);
+            this.panel28.Controls.Add(this.label57);
+            this.panel28.Controls.Add(this.label31);
+            this.panel28.Controls.Add(this.label47);
+            this.panel28.Controls.Add(this.label43);
+            this.panel28.Controls.Add(this.OPCollectorUpButton);
+            this.panel28.Controls.Add(this.CollectorDown2Button);
+            this.panel28.Controls.Add(this.label55);
+            this.panel28.Controls.Add(this.label40);
+            this.panel28.Controls.Add(this.label44);
+            this.panel28.Controls.Add(this.label45);
+            this.panel28.Controls.Add(this.CollectorUp2Button);
+            this.panel28.Controls.Add(this.OPCollectorDownButton);
+            this.panel28.Controls.Add(this.label53);
+            this.panel28.Controls.Add(this.label42);
+            this.panel28.Location = new System.Drawing.Point(395, 2);
+            this.panel28.Name = "panel28";
+            this.panel28.Size = new System.Drawing.Size(137, 228);
+            this.panel28.TabIndex = 43;
+            this.panel28.Visible = false;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(119, 184);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(19, 13);
+            this.label69.TabIndex = 48;
+            this.label69.Text = "12";
+            // 
+            // OPPurgeButton
+            // 
+            this.OPPurgeButton.Location = new System.Drawing.Point(87, 184);
+            this.OPPurgeButton.Name = "OPPurgeButton";
+            this.OPPurgeButton.Size = new System.Drawing.Size(26, 13);
+            this.OPPurgeButton.TabIndex = 47;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(9, 184);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(35, 13);
+            this.label70.TabIndex = 46;
+            this.label70.Text = "Purge";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(119, 166);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(13, 13);
+            this.label66.TabIndex = 43;
+            this.label66.Text = "9";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(119, 147);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(19, 13);
+            this.label64.TabIndex = 45;
+            this.label64.Text = "11";
+            // 
+            // whileHeldCollectorButton
+            // 
+            this.whileHeldCollectorButton.Location = new System.Drawing.Point(87, 166);
+            this.whileHeldCollectorButton.Name = "whileHeldCollectorButton";
+            this.whileHeldCollectorButton.Size = new System.Drawing.Size(26, 13);
+            this.whileHeldCollectorButton.TabIndex = 42;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(9, 166);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(76, 13);
+            this.label67.TabIndex = 41;
+            this.label67.Text = "WhileHeld Coll";
+            // 
+            // toggleCollectorButton
+            // 
+            this.toggleCollectorButton.Location = new System.Drawing.Point(87, 147);
+            this.toggleCollectorButton.Name = "toggleCollectorButton";
+            this.toggleCollectorButton.Size = new System.Drawing.Size(26, 13);
+            this.toggleCollectorButton.TabIndex = 44;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(9, 147);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(60, 13);
+            this.label65.TabIndex = 43;
+            this.label65.Text = "Toggle Coll";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(28, 2);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(76, 13);
+            this.label63.TabIndex = 42;
+            this.label63.Text = "OPerator Stick";
+            // 
+            // catchModeButton
+            // 
+            this.catchModeButton.Location = new System.Drawing.Point(87, 33);
+            this.catchModeButton.Name = "catchModeButton";
+            this.catchModeButton.Size = new System.Drawing.Size(26, 13);
+            this.catchModeButton.TabIndex = 36;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(84, 17);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(48, 13);
+            this.label30.TabIndex = 34;
+            this.label30.Text = "Button #";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(119, 203);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(13, 13);
+            this.label56.TabIndex = 40;
+            this.label56.Text = "1";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(9, 33);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(65, 13);
+            this.label32.TabIndex = 35;
+            this.label32.Text = "Catch Mode";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(119, 128);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(13, 13);
+            this.label54.TabIndex = 40;
+            this.label54.Text = "6";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(9, 52);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(58, 13);
+            this.label41.TabIndex = 38;
+            this.label41.Text = "Coll2Shoot";
+            // 
+            // OPLauchBallButton
+            // 
+            this.OPLauchBallButton.Location = new System.Drawing.Point(87, 203);
+            this.OPLauchBallButton.Name = "OPLauchBallButton";
+            this.OPLauchBallButton.Size = new System.Drawing.Size(26, 13);
+            this.OPLauchBallButton.TabIndex = 39;
+            // 
+            // CollectorToShootButton
+            // 
+            this.CollectorToShootButton.Location = new System.Drawing.Point(87, 52);
+            this.CollectorToShootButton.Name = "CollectorToShootButton";
+            this.CollectorToShootButton.Size = new System.Drawing.Size(26, 13);
+            this.CollectorToShootButton.TabIndex = 39;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(9, 203);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(57, 13);
+            this.label57.TabIndex = 38;
+            this.label57.Text = "Lauch Ball";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(119, 33);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(13, 13);
+            this.label31.TabIndex = 37;
+            this.label31.Text = "8";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(119, 109);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(13, 13);
+            this.label47.TabIndex = 40;
+            this.label47.Text = "5";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(9, 71);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(64, 13);
+            this.label43.TabIndex = 38;
+            this.label43.Text = "Coll Down 2";
+            // 
+            // OPCollectorUpButton
+            // 
+            this.OPCollectorUpButton.Location = new System.Drawing.Point(87, 128);
+            this.OPCollectorUpButton.Name = "OPCollectorUpButton";
+            this.OPCollectorUpButton.Size = new System.Drawing.Size(26, 13);
+            this.OPCollectorUpButton.TabIndex = 39;
+            // 
+            // CollectorDown2Button
+            // 
+            this.CollectorDown2Button.Location = new System.Drawing.Point(87, 71);
+            this.CollectorDown2Button.Name = "CollectorDown2Button";
+            this.CollectorDown2Button.Size = new System.Drawing.Size(26, 13);
+            this.CollectorDown2Button.TabIndex = 39;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(9, 128);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(41, 13);
+            this.label55.TabIndex = 38;
+            this.label55.Text = "Coll Up";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(119, 52);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(13, 13);
+            this.label40.TabIndex = 40;
+            this.label40.Text = "2";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(119, 90);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(13, 13);
+            this.label44.TabIndex = 40;
+            this.label44.Text = "4";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(9, 90);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(55, 13);
+            this.label45.TabIndex = 38;
+            this.label45.Text = "Coll Down";
+            // 
+            // CollectorUp2Button
+            // 
+            this.CollectorUp2Button.Location = new System.Drawing.Point(87, 109);
+            this.CollectorUp2Button.Name = "CollectorUp2Button";
+            this.CollectorUp2Button.Size = new System.Drawing.Size(26, 13);
+            this.CollectorUp2Button.TabIndex = 39;
+            // 
+            // OPCollectorDownButton
+            // 
+            this.OPCollectorDownButton.Location = new System.Drawing.Point(87, 90);
+            this.OPCollectorDownButton.Name = "OPCollectorDownButton";
+            this.OPCollectorDownButton.Size = new System.Drawing.Size(26, 13);
+            this.OPCollectorDownButton.TabIndex = 39;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(9, 109);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(50, 13);
+            this.label53.TabIndex = 38;
+            this.label53.Text = "Coll Up 2";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(119, 71);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(13, 13);
+            this.label42.TabIndex = 40;
+            this.label42.Text = "3";
+            // 
+            // diagOrComp
+            // 
+            this.diagOrComp.AutoSize = true;
+            this.diagOrComp.Location = new System.Drawing.Point(188, 2);
+            this.diagOrComp.Name = "diagOrComp";
+            this.diagOrComp.Size = new System.Drawing.Size(27, 13);
+            this.diagOrComp.TabIndex = 35;
+            this.diagOrComp.Text = "diag";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(77, 2);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(104, 13);
+            this.label29.TabIndex = 34;
+            this.label29.Text = "Diagnostic or comp?";
+            // 
             // label36
             // 
             this.label36.AutoSize = true;
@@ -308,6 +634,15 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(168, 230);
             this.panel6.TabIndex = 17;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(36, 28);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(59, 13);
+            this.label59.TabIndex = 41;
+            this.label59.Text = "Drive Stick";
             // 
             // label34
             // 
@@ -579,6 +914,31 @@
             this.RobotInfo.Text = "Robot Info";
             this.RobotInfo.UseVisualStyleBackColor = true;
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.gyroAngle);
+            this.panel7.Controls.Add(this.label20);
+            this.panel7.Location = new System.Drawing.Point(435, 79);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(91, 48);
+            this.panel7.TabIndex = 40;
+            // 
+            // gyroAngle
+            // 
+            this.gyroAngle.Location = new System.Drawing.Point(17, 19);
+            this.gyroAngle.Name = "gyroAngle";
+            this.gyroAngle.Size = new System.Drawing.Size(56, 20);
+            this.gyroAngle.TabIndex = 47;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(3, 3);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(83, 13);
+            this.label20.TabIndex = 48;
+            this.label20.Text = "Gyro Angle(deg)";
+            // 
             // panel18
             // 
             this.panel18.Controls.Add(this.rightFrontSpeed);
@@ -711,22 +1071,6 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(81, 38);
             this.panel11.TabIndex = 36;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(3, 3);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(83, 13);
-            this.label20.TabIndex = 48;
-            this.label20.Text = "Gyro Angle(deg)";
-            // 
-            // gyroAngle
-            // 
-            this.gyroAngle.Location = new System.Drawing.Point(17, 19);
-            this.gyroAngle.Name = "gyroAngle";
-            this.gyroAngle.Size = new System.Drawing.Size(56, 20);
-            this.gyroAngle.TabIndex = 47;
             // 
             // ultrasonic
             // 
@@ -1170,9 +1514,9 @@
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(5, 8);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(105, 13);
+            this.label46.Size = new System.Drawing.Size(90, 13);
             this.label46.TabIndex = 0;
-            this.label46.Text = "Save to backup file?";
+            this.label46.Text = "Save data to file?";
             // 
             // panel8
             // 
@@ -1347,350 +1691,6 @@
             this.disconnectionMessages.TabIndex = 8;
             this.disconnectionMessages.Text = "look for disconnection messages here ";
             // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.gyroAngle);
-            this.panel7.Controls.Add(this.label20);
-            this.panel7.Location = new System.Drawing.Point(435, 79);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(91, 48);
-            this.panel7.TabIndex = 40;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(77, 2);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(104, 13);
-            this.label29.TabIndex = 34;
-            this.label29.Text = "Diagnostic or comp?";
-            // 
-            // diagOrComp
-            // 
-            this.diagOrComp.AutoSize = true;
-            this.diagOrComp.Location = new System.Drawing.Point(188, 2);
-            this.diagOrComp.Name = "diagOrComp";
-            this.diagOrComp.Size = new System.Drawing.Size(27, 13);
-            this.diagOrComp.TabIndex = 35;
-            this.diagOrComp.Text = "diag";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(84, 17);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(48, 13);
-            this.label30.TabIndex = 34;
-            this.label30.Text = "Button #";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(119, 33);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(13, 13);
-            this.label31.TabIndex = 37;
-            this.label31.Text = "8";
-            // 
-            // catchModeButton
-            // 
-            this.catchModeButton.Location = new System.Drawing.Point(87, 33);
-            this.catchModeButton.Name = "catchModeButton";
-            this.catchModeButton.Size = new System.Drawing.Size(26, 13);
-            this.catchModeButton.TabIndex = 36;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(9, 33);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(65, 13);
-            this.label32.TabIndex = 35;
-            this.label32.Text = "Catch Mode";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(119, 52);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(13, 13);
-            this.label40.TabIndex = 40;
-            this.label40.Text = "2";
-            // 
-            // CollectorToShootButton
-            // 
-            this.CollectorToShootButton.Location = new System.Drawing.Point(87, 52);
-            this.CollectorToShootButton.Name = "CollectorToShootButton";
-            this.CollectorToShootButton.Size = new System.Drawing.Size(26, 13);
-            this.CollectorToShootButton.TabIndex = 39;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(9, 52);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(58, 13);
-            this.label41.TabIndex = 38;
-            this.label41.Text = "Coll2Shoot";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(119, 71);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(13, 13);
-            this.label42.TabIndex = 40;
-            this.label42.Text = "3";
-            // 
-            // CollectorDown2Button
-            // 
-            this.CollectorDown2Button.Location = new System.Drawing.Point(87, 71);
-            this.CollectorDown2Button.Name = "CollectorDown2Button";
-            this.CollectorDown2Button.Size = new System.Drawing.Size(26, 13);
-            this.CollectorDown2Button.TabIndex = 39;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(9, 71);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(64, 13);
-            this.label43.TabIndex = 38;
-            this.label43.Text = "Coll Down 2";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(119, 90);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(13, 13);
-            this.label44.TabIndex = 40;
-            this.label44.Text = "4";
-            // 
-            // OPCollectorDownButton
-            // 
-            this.OPCollectorDownButton.Location = new System.Drawing.Point(87, 90);
-            this.OPCollectorDownButton.Name = "OPCollectorDownButton";
-            this.OPCollectorDownButton.Size = new System.Drawing.Size(26, 13);
-            this.OPCollectorDownButton.TabIndex = 39;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(9, 90);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(55, 13);
-            this.label45.TabIndex = 38;
-            this.label45.Text = "Coll Down";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(119, 109);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(13, 13);
-            this.label47.TabIndex = 40;
-            this.label47.Text = "5";
-            // 
-            // CollectorUp2Button
-            // 
-            this.CollectorUp2Button.Location = new System.Drawing.Point(87, 109);
-            this.CollectorUp2Button.Name = "CollectorUp2Button";
-            this.CollectorUp2Button.Size = new System.Drawing.Size(26, 13);
-            this.CollectorUp2Button.TabIndex = 39;
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(9, 109);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(50, 13);
-            this.label53.TabIndex = 38;
-            this.label53.Text = "Coll Up 2";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(119, 128);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(13, 13);
-            this.label54.TabIndex = 40;
-            this.label54.Text = "6";
-            // 
-            // OPCollectorUpButton
-            // 
-            this.OPCollectorUpButton.Location = new System.Drawing.Point(87, 128);
-            this.OPCollectorUpButton.Name = "OPCollectorUpButton";
-            this.OPCollectorUpButton.Size = new System.Drawing.Size(26, 13);
-            this.OPCollectorUpButton.TabIndex = 39;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(9, 128);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(41, 13);
-            this.label55.TabIndex = 38;
-            this.label55.Text = "Coll Up";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(119, 203);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(13, 13);
-            this.label56.TabIndex = 40;
-            this.label56.Text = "1";
-            // 
-            // OPLauchBallButton
-            // 
-            this.OPLauchBallButton.Location = new System.Drawing.Point(87, 203);
-            this.OPLauchBallButton.Name = "OPLauchBallButton";
-            this.OPLauchBallButton.Size = new System.Drawing.Size(26, 13);
-            this.OPLauchBallButton.TabIndex = 39;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(9, 203);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(57, 13);
-            this.label57.TabIndex = 38;
-            this.label57.Text = "Lauch Ball";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(36, 28);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(59, 13);
-            this.label59.TabIndex = 41;
-            this.label59.Text = "Drive Stick";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(28, 2);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(76, 13);
-            this.label63.TabIndex = 42;
-            this.label63.Text = "OPerator Stick";
-            // 
-            // panel28
-            // 
-            this.panel28.Controls.Add(this.label69);
-            this.panel28.Controls.Add(this.OPPurgeButton);
-            this.panel28.Controls.Add(this.label70);
-            this.panel28.Controls.Add(this.label66);
-            this.panel28.Controls.Add(this.label64);
-            this.panel28.Controls.Add(this.whileHeldCollectorButton);
-            this.panel28.Controls.Add(this.label67);
-            this.panel28.Controls.Add(this.toggleCollectorButton);
-            this.panel28.Controls.Add(this.label65);
-            this.panel28.Controls.Add(this.label63);
-            this.panel28.Controls.Add(this.catchModeButton);
-            this.panel28.Controls.Add(this.label30);
-            this.panel28.Controls.Add(this.label56);
-            this.panel28.Controls.Add(this.label32);
-            this.panel28.Controls.Add(this.label54);
-            this.panel28.Controls.Add(this.label41);
-            this.panel28.Controls.Add(this.OPLauchBallButton);
-            this.panel28.Controls.Add(this.CollectorToShootButton);
-            this.panel28.Controls.Add(this.label57);
-            this.panel28.Controls.Add(this.label31);
-            this.panel28.Controls.Add(this.label47);
-            this.panel28.Controls.Add(this.label43);
-            this.panel28.Controls.Add(this.OPCollectorUpButton);
-            this.panel28.Controls.Add(this.CollectorDown2Button);
-            this.panel28.Controls.Add(this.label55);
-            this.panel28.Controls.Add(this.label40);
-            this.panel28.Controls.Add(this.label44);
-            this.panel28.Controls.Add(this.label45);
-            this.panel28.Controls.Add(this.CollectorUp2Button);
-            this.panel28.Controls.Add(this.OPCollectorDownButton);
-            this.panel28.Controls.Add(this.label53);
-            this.panel28.Controls.Add(this.label42);
-            this.panel28.Location = new System.Drawing.Point(395, 2);
-            this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(137, 228);
-            this.panel28.TabIndex = 43;
-            this.panel28.Visible = false;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(119, 147);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(19, 13);
-            this.label64.TabIndex = 45;
-            this.label64.Text = "11";
-            // 
-            // toggleCollectorButton
-            // 
-            this.toggleCollectorButton.Location = new System.Drawing.Point(87, 147);
-            this.toggleCollectorButton.Name = "toggleCollectorButton";
-            this.toggleCollectorButton.Size = new System.Drawing.Size(26, 13);
-            this.toggleCollectorButton.TabIndex = 44;
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(9, 147);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(60, 13);
-            this.label65.TabIndex = 43;
-            this.label65.Text = "Toggle Coll";
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Location = new System.Drawing.Point(119, 166);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(13, 13);
-            this.label66.TabIndex = 43;
-            this.label66.Text = "9";
-            // 
-            // whileHeldCollectorButton
-            // 
-            this.whileHeldCollectorButton.Location = new System.Drawing.Point(87, 166);
-            this.whileHeldCollectorButton.Name = "whileHeldCollectorButton";
-            this.whileHeldCollectorButton.Size = new System.Drawing.Size(26, 13);
-            this.whileHeldCollectorButton.TabIndex = 42;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(9, 166);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(76, 13);
-            this.label67.TabIndex = 41;
-            this.label67.Text = "WhileHeld Coll";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(119, 184);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(19, 13);
-            this.label69.TabIndex = 48;
-            this.label69.Text = "12";
-            // 
-            // OPPurgeButton
-            // 
-            this.OPPurgeButton.Location = new System.Drawing.Point(87, 184);
-            this.OPPurgeButton.Name = "OPPurgeButton";
-            this.OPPurgeButton.Size = new System.Drawing.Size(26, 13);
-            this.OPPurgeButton.TabIndex = 47;
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(9, 184);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(35, 13);
-            this.label70.TabIndex = 46;
-            this.label70.Text = "Purge";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1706,11 +1706,15 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.DriverInfo.ResumeLayout(false);
             this.DriverInfo.PerformLayout();
+            this.panel28.ResumeLayout(false);
+            this.panel28.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.NetConsole.ResumeLayout(false);
             this.NetConsole.PerformLayout();
             this.RobotInfo.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.panel20.ResumeLayout(false);
@@ -1745,10 +1749,6 @@
             this.panel12.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel28.ResumeLayout(false);
-            this.panel28.PerformLayout();
             this.ResumeLayout(false);
 
         }
