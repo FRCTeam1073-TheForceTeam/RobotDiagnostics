@@ -113,11 +113,26 @@ namespace DataCollection2014
             String path2 = String.Format("{0:yyyy-MMM-d_HH-mm-ss}", timeStamp);
             FormatedTopRow = (path2+","+
             "Time Stamp,"+
+            "Comp or diag," +
             "Battery Volts,"+
             "Battery Amps,"+
             "Drive Stick X,"+
             "Drive Stick Y,"+
             "Drive Stick Z,"+
+            "Foward Direction,"+
+            "Toggle Direction," +
+            "To High Gear," +
+            "To Low Gear," +
+            "Catch Mode," +
+            "Coll2Shoot," +
+            "CollDwn2," +
+            "CollDwn," +
+            "CollUp2," +
+            "CollUp," +
+            "CollTogg," +
+            "CollHold," +
+            "Purge," +
+            "Lauch Ball," +
             "Front Left Speed,"+
             "Front Right Speed,"+
             "Back Left Speed,"+
@@ -199,7 +214,7 @@ namespace DataCollection2014
                 try
                 {
                     try
-                    {reply = cameraPinger.Send(IPAddress.Parse("10.10.73.11"), 10);}
+                    {reply = cameraPinger.Send(IPAddress.Parse("10.10.73.9"), 10);}
                     catch (InvalidOperationException) { }
                     try
                     {
