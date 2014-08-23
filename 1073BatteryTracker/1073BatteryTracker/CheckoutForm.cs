@@ -7,10 +7,6 @@ using System.Windows.Forms;
 
 namespace _1073BatteryTracker
 {
-
-    //TODO make checker for dublicate batteries
-    //TODO add file saving and loading abilities
-
     public partial class CheckoutForm : Form
     {
         private double voltageLevelNum;
@@ -39,15 +35,10 @@ namespace _1073BatteryTracker
         private void button1_Click(object sender, EventArgs e)
         {
             MainForm form1 = (MainForm) Application.OpenForms["MainForm"];
-            Battery batt = this.getNextUnusedBattery(form1);
+            Battery batt = new Battery();
             if (!this.everythingIsFilledOut())
             {
-                MessageBox.Show("Please fill out all fields before clicking checkout");
-                return;
-            }
-            if (batt == null)
-            {
-                MessageBox.Show("Maximum number of batteries have been checked out");
+                MessageBox.Show("All settings be completed before proceding checkout");
                 return;
             }
             if (this.isDuplicate(form1))
@@ -55,16 +46,17 @@ namespace _1073BatteryTracker
                 MessageBox.Show("Duplicate battery detected, please recheck your settings");
                 return;
             }
-            batt.setBatteryYear(this.yearComboBox.Text);
-            batt.setBatteryNumber(this.batteryNumberBox.Text);
+            batt.setYear(this.yearComboBox.Text);
+            batt.setNumber(this.batteryNumberBox.Text);
             DateTime dt = DateTime.Now;
             batt.setCheckoutTime(String.Format("{0:MM/dd/yy hh:mm tt}", dt));
             batt.setEstCheckinTime(checkoutTime.Text);
             batt.setSubgroup(subgroupBox.Text);
             batt.setRobot(robotBox.Text);
             batt.isNowInUse(true);
-            batt.setBatteryVoltage((float)this.voltageLevelNum);
-            form1.updateList();
+            batt.setVoltage((float)this.voltageLevelNum);
+            form1.battList.Add(batt);
+            form1.add(batt);
             this.Hide();
         }
 
@@ -78,19 +70,6 @@ namespace _1073BatteryTracker
            this.batteryNumberBox.Text = null;
            this.yearComboBox.Text = null;
            this.subgroupBox.Text = null;
-        }
-
-        private Battery getNextUnusedBattery(MainForm form1)
-        {
-            int i = 0;
-            
-            while (true) {
-                Battery batt = (Battery)form1.battList[i];
-                if (!batt.isInUse()) break;
-                i++;
-                if (i==10) return null;
-            }
-            return (Battery) form1.battList[i];
         }
 
         private void CheckoutForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -113,7 +92,7 @@ namespace _1073BatteryTracker
                 Battery Batt = (Battery)form1.battList[i];
                 String newBattNumber = this.batteryNumberBox.Text;
                 String newYearNumber = this.yearComboBox.Text;
-                if (newBattNumber.Equals(Batt.getBatteryNumber()) && newYearNumber.Equals(Batt.getBatteryYear())) return true;
+                if (newBattNumber.Equals(Batt.getNumber()) && newYearNumber.Equals(Batt.getYear())) return true;
                 else
                     return false;
             }

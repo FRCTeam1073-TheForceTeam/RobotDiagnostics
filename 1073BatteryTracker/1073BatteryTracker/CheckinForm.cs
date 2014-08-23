@@ -25,6 +25,11 @@ namespace _1073BatteryTracker
         {
             MainForm form1 = (MainForm)Application.OpenForms["MainForm"];
             Battery selectedBatt = (Battery) this.CheckinComboBox.SelectedItem;
+            if (selectedBatt == null)
+            {
+                MessageBox.Show("Please have battery be selected");
+                return;
+            }
             selectedBatt.isNowInUse(false);
             String selected = selectedBatt.ToString();
             for (int i = 0; i < form1.battList.Count; i++)
@@ -34,9 +39,9 @@ namespace _1073BatteryTracker
                 if (printed.Equals(selected))
                 {
                     form1.battList.RemoveAt(i);
+                    form1.remove(i);
                 }
             }
-            form1.updateList();
             this.Hide();
         }
 

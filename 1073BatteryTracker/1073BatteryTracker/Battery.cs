@@ -9,6 +9,16 @@ namespace _1073BatteryTracker
     {
         //String checkoutFormat = String.Format("{0:MM/dd/yy hh:mm tt}", checkoutTime);
         public Battery() { }
+        public Battery(String battYear, String battNum, float battVol, String outTime, String estIn, String actIn, String Subgroup, String bot)
+        {
+        batteryYear = battYear;
+        
+        
+        
+        
+        
+        
+        }
         private string batteryYear;
         private string batteryNumber;
         private float batteryVoltage;
@@ -19,12 +29,12 @@ namespace _1073BatteryTracker
         private String subgroup;
         private String robot;
 
-        public string getBatteryYear() { return batteryYear; }
-        public string getBatteryNumber() { return batteryNumber; }
-        public float getBatteryVoltage() { return batteryVoltage; }
-        public void setBatteryYear(string year) { batteryYear = year; }
-        public void setBatteryNumber(string number) { batteryNumber = number; }
-        public void setBatteryVoltage(float voltage) { batteryVoltage = voltage; }
+        public string getYear() { return batteryYear; }
+        public string getNumber() { return batteryNumber; }
+        public float getVoltage() { return batteryVoltage; }
+        public void setYear(string year) { batteryYear = year; }
+        public void setNumber(string number) { batteryNumber = number; }
+        public void setVoltage(float voltage) { batteryVoltage = voltage; }
         public bool isInUse() { return inUse; }
         public void isNowInUse(bool b) { inUse = b; }
         public override string ToString(){return "" + batteryYear + "_" + batteryNumber;}

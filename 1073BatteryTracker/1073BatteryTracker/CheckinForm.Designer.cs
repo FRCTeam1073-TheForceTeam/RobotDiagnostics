@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 207);
+            this.ClientSize = new System.Drawing.Size(264, 185);
             this.Controls.Add(this.voltageLabel);
             this.Controls.Add(this.placeHelper);
             this.Controls.Add(this.cancelButton);
@@ -129,6 +129,7 @@
             this.Controls.Add(this.CheckinButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CheckinComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CheckinForm";
             this.Text = "CheckinForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckinForm_FormClosing);
