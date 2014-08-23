@@ -10,10 +10,6 @@ using System.Windows;
 
 namespace _1073BatteryTracker
 {
-    //***current tasks that need work:
-    //bug in clearing the table
-    //loading does not re-populate the list
-    //some bug in finding a dublicate, maybe new logic needed?
     public partial class MainForm : Form
     {
         private String appPath;
@@ -87,6 +83,7 @@ namespace _1073BatteryTracker
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
+            this.clearList();
             String line;
             System.IO.StreamReader file = new StreamReader(openFileDialog1.FileName);
             while (true)
@@ -96,20 +93,21 @@ namespace _1073BatteryTracker
                 this.parseLine(line);
             }
             file.Close();
-            //TODO update the List
         }
 
         private void parseLine(String s)
         {
             char delim = ',';
             String[] parser = s.Split(delim);
-            int batteryNumbah = int.Parse(parser[0].Substring(5));
-            Battery batt;
+            int batteryNumbah;
             try
             {
-                batt = (Battery) this.battList[batteryNumbah];
+                batteryNumbah = int.Parse(parser[0].Substring(5));
             }
-            catch (ArgumentOutOfRangeException) { return; }
+            catch (FormatException) { MessageBox.Show("Loading Failed");
+            return;
+            }
+            Battery batt = new Battery();
             batt.isNowInUse(Boolean.Parse(parser[1].Substring(8)));
             if (!batt.isInUse()) return;
             batt.setYear(parser[2].Substring(5));
@@ -119,7 +117,8 @@ namespace _1073BatteryTracker
             batt.setCheckoutTime(parser[6].Substring(15));
             batt.setEstCheckinTime(parser[7].Substring(11));
             batt.setRobot(parser[8].Substring(6));
-            
+            this.battList.Insert(batteryNumbah, batt);
+            this.add(batt);
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -159,11 +158,12 @@ namespace _1073BatteryTracker
 
         private void clearList()
         {
-            // TODO needs to also clear on the table...
-            for (int i = 0; i < battList.Count; i++)
+            int index = this.battList.Count - 1;
+            while (index != -1)
             {
-                battList[i] = null;
-                this.remove(i);
+                this.battList.RemoveAt(index);
+                this.remove(index);
+                index--;
             }
         }
 
