@@ -42,7 +42,6 @@
             this.subgroupBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.voltageUnit = new System.Windows.Forms.Label();
             this.chargeHelper = new System.Windows.Forms.Label();
             this.voltageLevel = new System.Windows.Forms.Label();
             this.checkoutTime = new System.Windows.Forms.DateTimePicker();
@@ -209,15 +208,6 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "15";
             // 
-            // voltageUnit
-            // 
-            this.voltageUnit.AutoSize = true;
-            this.voltageUnit.Location = new System.Drawing.Point(86, 115);
-            this.voltageUnit.Name = "voltageUnit";
-            this.voltageUnit.Size = new System.Drawing.Size(14, 13);
-            this.voltageUnit.TabIndex = 17;
-            this.voltageUnit.Text = "V";
-            // 
             // chargeHelper
             // 
             this.chargeHelper.AutoSize = true;
@@ -277,7 +267,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.voltageLevel);
             this.Controls.Add(this.chargeHelper);
-            this.Controls.Add(this.voltageUnit);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.subgroupBox);
@@ -320,7 +309,6 @@
         private System.Windows.Forms.ComboBox subgroupBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label voltageUnit;
         private System.Windows.Forms.Label chargeHelper;
         private System.Windows.Forms.Label voltageLevel;
         private System.Windows.Forms.DateTimePicker checkoutTime;

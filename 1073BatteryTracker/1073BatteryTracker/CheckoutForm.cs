@@ -63,7 +63,7 @@ namespace _1073BatteryTracker
         private void CheckoutForm_VisibleChanged(object sender, EventArgs e)
         {
            voltageLevelNum=((this.batteryLevelHelper.Value)/4.0);
-           this.voltageLevel.Text = "" + voltageLevelNum;
+           this.voltageLevel.Text = "" + voltageLevelNum + " V";
            if (this.voltageLevelNum <= 10) this.chargeHelper.Visible = true;
            else this.chargeHelper.Visible = false;
            this.robotBox.Text = null;
