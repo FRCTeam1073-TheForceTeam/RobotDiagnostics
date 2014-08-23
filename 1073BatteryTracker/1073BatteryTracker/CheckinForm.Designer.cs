@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.CheckinComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CheckinButton = new System.Windows.Forms.Button();
+            this.descriptor1 = new System.Windows.Forms.Label();
+            this.checkinButton = new System.Windows.Forms.Button();
             this.voltageBar = new System.Windows.Forms.TrackBar();
-            this.label2 = new System.Windows.Forms.Label();
+            this.newVoltageLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.placeHelper = new System.Windows.Forms.Label();
             this.voltageLabel = new System.Windows.Forms.Label();
@@ -49,24 +49,24 @@
             this.CheckinComboBox.TabIndex = 0;
             this.CheckinComboBox.VisibleChanged += new System.EventHandler(this.CheckinComboBox_VisibleChanged);
             // 
-            // label1
+            // descriptor1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(243, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Select the Battery you plan to checkin from the list";
+            this.descriptor1.AutoSize = true;
+            this.descriptor1.Location = new System.Drawing.Point(13, 13);
+            this.descriptor1.Name = "descriptor1";
+            this.descriptor1.Size = new System.Drawing.Size(243, 13);
+            this.descriptor1.TabIndex = 1;
+            this.descriptor1.Text = "Select the Battery you plan to checkin from the list";
             // 
-            // CheckinButton
+            // checkinButton
             // 
-            this.CheckinButton.Location = new System.Drawing.Point(12, 159);
-            this.CheckinButton.Name = "CheckinButton";
-            this.CheckinButton.Size = new System.Drawing.Size(120, 23);
-            this.CheckinButton.TabIndex = 2;
-            this.CheckinButton.Text = "Check In";
-            this.CheckinButton.UseVisualStyleBackColor = true;
-            this.CheckinButton.Click += new System.EventHandler(this.button1_Click);
+            this.checkinButton.Location = new System.Drawing.Point(12, 159);
+            this.checkinButton.Name = "checkinButton";
+            this.checkinButton.Size = new System.Drawing.Size(120, 23);
+            this.checkinButton.TabIndex = 2;
+            this.checkinButton.Text = "Check In";
+            this.checkinButton.UseVisualStyleBackColor = true;
+            this.checkinButton.Click += new System.EventHandler(this.checkinButton_Click);
             // 
             // voltageBar
             // 
@@ -79,14 +79,14 @@
             this.voltageBar.Value = 48;
             this.voltageBar.Scroll += new System.EventHandler(this.voltageBar_Scroll);
             // 
-            // label2
+            // newVoltageLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = " New Voltage";
+            this.newVoltageLabel.AutoSize = true;
+            this.newVoltageLabel.Location = new System.Drawing.Point(13, 62);
+            this.newVoltageLabel.Name = "newVoltageLabel";
+            this.newVoltageLabel.Size = new System.Drawing.Size(71, 13);
+            this.newVoltageLabel.TabIndex = 4;
+            this.newVoltageLabel.Text = " New Voltage";
             // 
             // cancelButton
             // 
@@ -96,7 +96,7 @@
             this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // placeHelper
             // 
@@ -124,10 +124,10 @@
             this.Controls.Add(this.voltageLabel);
             this.Controls.Add(this.placeHelper);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.newVoltageLabel);
             this.Controls.Add(this.voltageBar);
-            this.Controls.Add(this.CheckinButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.checkinButton);
+            this.Controls.Add(this.descriptor1);
             this.Controls.Add(this.CheckinComboBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CheckinForm";
@@ -142,10 +142,10 @@
         #endregion
 
         private System.Windows.Forms.ComboBox CheckinComboBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button CheckinButton;
+        private System.Windows.Forms.Label descriptor1;
+        private System.Windows.Forms.Button checkinButton;
         private System.Windows.Forms.TrackBar voltageBar;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label newVoltageLabel;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label placeHelper;
         private System.Windows.Forms.Label voltageLabel;

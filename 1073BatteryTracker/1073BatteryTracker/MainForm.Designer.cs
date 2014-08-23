@@ -39,7 +39,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.saveAndClear = new System.Windows.Forms.Button();
-            this.exitForm = new System.Windows.Forms.Button();
+            this.save = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -55,7 +55,7 @@
             this.checkOut.TabIndex = 1;
             this.checkOut.Text = "Checkout Battery";
             this.checkOut.UseVisualStyleBackColor = true;
-            this.checkOut.Click += new System.EventHandler(this.button1_Click);
+            this.checkOut.Click += new System.EventHandler(this.checkOut_Click);
             // 
             // checkIn
             // 
@@ -65,7 +65,7 @@
             this.checkIn.TabIndex = 3;
             this.checkIn.Text = "Checkin Battery";
             this.checkIn.UseVisualStyleBackColor = true;
-            this.checkIn.Click += new System.EventHandler(this.button3_Click);
+            this.checkIn.Click += new System.EventHandler(this.checkIn_Click);
             // 
             // load
             // 
@@ -75,7 +75,7 @@
             this.load.TabIndex = 6;
             this.load.Text = "Load From File";
             this.load.UseVisualStyleBackColor = true;
-            this.load.Click += new System.EventHandler(this.button1_Click_1);
+            this.load.Click += new System.EventHandler(this.load_Click_1);
             // 
             // label2
             // 
@@ -142,17 +142,17 @@
             this.saveAndClear.TabIndex = 30;
             this.saveAndClear.Text = "Save and Clear List";
             this.saveAndClear.UseVisualStyleBackColor = true;
-            this.saveAndClear.Click += new System.EventHandler(this.button3_Click_1);
+            this.saveAndClear.Click += new System.EventHandler(this.saveAndClear_Click_1);
             // 
-            // exitForm
+            // save
             // 
-            this.exitForm.Location = new System.Drawing.Point(519, 3);
-            this.exitForm.Name = "exitForm";
-            this.exitForm.Size = new System.Drawing.Size(74, 23);
-            this.exitForm.TabIndex = 2;
-            this.exitForm.Text = "Save to File";
-            this.exitForm.UseVisualStyleBackColor = true;
-            this.exitForm.Click += new System.EventHandler(this.exitForm_Click);
+            this.save.Location = new System.Drawing.Point(519, 3);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(74, 23);
+            this.save.TabIndex = 2;
+            this.save.Text = "Save to File";
+            this.save.UseVisualStyleBackColor = true;
+            this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // label1
             // 
@@ -181,7 +181,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel2.Controls.Add(this.exitForm, 5, 0);
+            this.tableLayoutPanel2.Controls.Add(this.save, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.load, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.saveAndClear, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.checkIn, 2, 0);
@@ -240,7 +240,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button saveAndClear;
-        private System.Windows.Forms.Button exitForm;
+        private System.Windows.Forms.Button save;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;

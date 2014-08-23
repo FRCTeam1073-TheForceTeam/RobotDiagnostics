@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.checkoutBatteryLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.yearLabel = new System.Windows.Forms.Label();
+            this.numberLabel = new System.Windows.Forms.Label();
             this.batteryLevelHelper = new System.Windows.Forms.TrackBar();
             this.voltageLabel = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.estCheckinLabel = new System.Windows.Forms.Label();
             this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.batteryNumberBox = new System.Windows.Forms.ComboBox();
             this.checkoutButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.subgroupLabel = new System.Windows.Forms.Label();
             this.subgroupBox = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.sixVolts = new System.Windows.Forms.Label();
+            this.fifteenVolts = new System.Windows.Forms.Label();
             this.chargeHelper = new System.Windows.Forms.Label();
             this.voltageLevel = new System.Windows.Forms.Label();
             this.checkoutTime = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.robotLabel = new System.Windows.Forms.Label();
             this.robotBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.batteryLevelHelper)).BeginInit();
             this.SuspendLayout();
@@ -59,23 +59,23 @@
             this.checkoutBatteryLabel.TabIndex = 0;
             this.checkoutBatteryLabel.Text = "Checkout a Battery";
             // 
-            // label2
+            // yearLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Year";
+            this.yearLabel.AutoSize = true;
+            this.yearLabel.Location = new System.Drawing.Point(12, 35);
+            this.yearLabel.Name = "yearLabel";
+            this.yearLabel.Size = new System.Drawing.Size(29, 13);
+            this.yearLabel.TabIndex = 1;
+            this.yearLabel.Text = "Year";
             // 
-            // label3
+            // numberLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Number";
+            this.numberLabel.AutoSize = true;
+            this.numberLabel.Location = new System.Drawing.Point(12, 75);
+            this.numberLabel.Name = "numberLabel";
+            this.numberLabel.Size = new System.Drawing.Size(44, 13);
+            this.numberLabel.TabIndex = 2;
+            this.numberLabel.Text = "Number";
             // 
             // batteryLevelHelper
             // 
@@ -86,7 +86,7 @@
             this.batteryLevelHelper.Size = new System.Drawing.Size(142, 42);
             this.batteryLevelHelper.TabIndex = 3;
             this.batteryLevelHelper.Value = 48;
-            this.batteryLevelHelper.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.batteryLevelHelper.Scroll += new System.EventHandler(this.batteryLevelHelper_Scroll);
             // 
             // voltageLabel
             // 
@@ -97,14 +97,14 @@
             this.voltageLabel.TabIndex = 4;
             this.voltageLabel.Text = "Voltage";
             // 
-            // label7
+            // estCheckinLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 311);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Estimated Time to Check In";
+            this.estCheckinLabel.AutoSize = true;
+            this.estCheckinLabel.Location = new System.Drawing.Point(9, 311);
+            this.estCheckinLabel.Name = "estCheckinLabel";
+            this.estCheckinLabel.Size = new System.Drawing.Size(137, 13);
+            this.estCheckinLabel.TabIndex = 7;
+            this.estCheckinLabel.Text = "Estimated Time to Check In";
             // 
             // yearComboBox
             // 
@@ -153,7 +153,7 @@
             this.checkoutButton.TabIndex = 11;
             this.checkoutButton.Text = "Checkout";
             this.checkoutButton.UseVisualStyleBackColor = true;
-            this.checkoutButton.Click += new System.EventHandler(this.button1_Click);
+            this.checkoutButton.Click += new System.EventHandler(this.checkoutButton_Click);
             // 
             // cancelButton
             // 
@@ -163,16 +163,16 @@
             this.cancelButton.TabIndex = 12;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // label5
+            // subgroupLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 208);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Subgroup";
+            this.subgroupLabel.AutoSize = true;
+            this.subgroupLabel.Location = new System.Drawing.Point(12, 208);
+            this.subgroupLabel.Name = "subgroupLabel";
+            this.subgroupLabel.Size = new System.Drawing.Size(53, 13);
+            this.subgroupLabel.TabIndex = 13;
+            this.subgroupLabel.Text = "Subgroup";
             // 
             // subgroupBox
             // 
@@ -190,23 +190,23 @@
             this.subgroupBox.Size = new System.Drawing.Size(121, 21);
             this.subgroupBox.TabIndex = 14;
             // 
-            // label6
+            // sixVolts
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 143);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "6";
+            this.sixVolts.AutoSize = true;
+            this.sixVolts.Location = new System.Drawing.Point(9, 143);
+            this.sixVolts.Name = "sixVolts";
+            this.sixVolts.Size = new System.Drawing.Size(13, 13);
+            this.sixVolts.TabIndex = 15;
+            this.sixVolts.Text = "6";
             // 
-            // label8
+            // fifteenVolts
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(176, 143);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 13);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "15";
+            this.fifteenVolts.AutoSize = true;
+            this.fifteenVolts.Location = new System.Drawing.Point(176, 143);
+            this.fifteenVolts.Name = "fifteenVolts";
+            this.fifteenVolts.Size = new System.Drawing.Size(19, 13);
+            this.fifteenVolts.TabIndex = 16;
+            this.fifteenVolts.Text = "15";
             // 
             // chargeHelper
             // 
@@ -235,14 +235,14 @@
             this.checkoutTime.Size = new System.Drawing.Size(200, 20);
             this.checkoutTime.TabIndex = 10;
             // 
-            // label1
+            // robotLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 259);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Robot";
+            this.robotLabel.AutoSize = true;
+            this.robotLabel.Location = new System.Drawing.Point(12, 259);
+            this.robotLabel.Name = "robotLabel";
+            this.robotLabel.Size = new System.Drawing.Size(36, 13);
+            this.robotLabel.TabIndex = 20;
+            this.robotLabel.Text = "Robot";
             // 
             // robotBox
             // 
@@ -264,23 +264,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(218, 388);
             this.Controls.Add(this.robotBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.robotLabel);
             this.Controls.Add(this.voltageLevel);
             this.Controls.Add(this.chargeHelper);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.fifteenVolts);
+            this.Controls.Add(this.sixVolts);
             this.Controls.Add(this.subgroupBox);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.subgroupLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.checkoutButton);
             this.Controls.Add(this.checkoutTime);
             this.Controls.Add(this.batteryNumberBox);
             this.Controls.Add(this.yearComboBox);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.estCheckinLabel);
             this.Controls.Add(this.voltageLabel);
             this.Controls.Add(this.batteryLevelHelper);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.numberLabel);
+            this.Controls.Add(this.yearLabel);
             this.Controls.Add(this.checkoutBatteryLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CheckoutForm";
@@ -296,23 +296,23 @@
         #endregion
 
         private System.Windows.Forms.Label checkoutBatteryLabel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label yearLabel;
+        private System.Windows.Forms.Label numberLabel;
         private System.Windows.Forms.TrackBar batteryLevelHelper;
         private System.Windows.Forms.Label voltageLabel;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label estCheckinLabel;
         private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.ComboBox batteryNumberBox;
         private System.Windows.Forms.Button checkoutButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label subgroupLabel;
         private System.Windows.Forms.ComboBox subgroupBox;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label sixVolts;
+        private System.Windows.Forms.Label fifteenVolts;
         private System.Windows.Forms.Label chargeHelper;
         private System.Windows.Forms.Label voltageLevel;
         private System.Windows.Forms.DateTimePicker checkoutTime;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label robotLabel;
         private System.Windows.Forms.ComboBox robotBox;
     }
 }

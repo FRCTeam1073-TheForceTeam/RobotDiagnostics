@@ -8,9 +8,9 @@ using System.Windows.Forms;
 namespace _1073BatteryTracker
 {
     public partial class CheckoutForm : Form
-    {
+    {   //private instance variables
         private double voltageLevelNum;
-
+        //constructer. also sets the format for the checkoutTime dateTime object
         public CheckoutForm()
         {
             InitializeComponent();
@@ -18,21 +18,22 @@ namespace _1073BatteryTracker
             checkoutTime.CustomFormat = "MM/dd/yy  hh:mm tt";
             checkoutTime.ShowUpDown = true;
         }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        //apply the new voltage number when moving the scrollbar
+        private void batteryLevelHelper_Scroll(object sender, EventArgs e)
         {
             voltageLevelNum=((this.batteryLevelHelper.Value)/4.0);
             this.voltageLevel.Text = "" + voltageLevelNum + " V";
             if (this.voltageLevelNum <= 10) this.chargeHelper.Visible = true;
             else this.chargeHelper.Visible = false;
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        //"closes" the form
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        //makes a battery based on the settings and then adds it to the List, and
+        //tells the table to update
+        private void checkoutButton_Click(object sender, EventArgs e)
         {
             MainForm form1 = (MainForm) Application.OpenForms["MainForm"];
             Battery batt = new Battery();
@@ -56,45 +57,40 @@ namespace _1073BatteryTracker
             batt.isNowInUse(true);
             batt.setVoltage((float)this.voltageLevelNum);
             form1.battList.Add(batt);
-            form1.add(batt);
+            form1.updateList();
             this.Hide();
         }
-
+        //clears everything in the text boxes for the next use
         private void CheckoutForm_VisibleChanged(object sender, EventArgs e)
         {
-           voltageLevelNum=((this.batteryLevelHelper.Value)/4.0);
-           this.voltageLevel.Text = "" + voltageLevelNum + " V";
-           if (this.voltageLevelNum <= 10) this.chargeHelper.Visible = true;
-           else this.chargeHelper.Visible = false;
+            this.batteryLevelHelper_Scroll(null, null);
            this.robotBox.Text = null;
            this.batteryNumberBox.Text = null;
            this.yearComboBox.Text = null;
            this.subgroupBox.Text = null;
         }
-
+        //cancels the close and hides the form
         private void CheckoutForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             this.Hide();
         }
-
+        //makes sure that the user had filled out every form option
         private bool everythingIsFilledOut()
         {
             if (yearComboBox.Text == "" || batteryNumberBox.Text == "" || robotBox.Text == "" || subgroupBox.Text == "")
                 return false;
             return true;
         }
-
+        //checks for duplicate batteries from the List
         private bool isDuplicate(MainForm form1)
         {
-            for (int i = 0; i < form1.battList.Count; )
+            for (int i = 0; i < form1.battList.Count; i++)
             {
-                Battery Batt = (Battery)form1.battList[i];
+                Battery Batt = form1.battList[i];
                 String newBattNumber = this.batteryNumberBox.Text;
                 String newYearNumber = this.yearComboBox.Text;
                 if (newBattNumber.Equals(Batt.getNumber()) && newYearNumber.Equals(Batt.getYear())) return true;
-                else
-                    return false;
             }
             return false;
         }

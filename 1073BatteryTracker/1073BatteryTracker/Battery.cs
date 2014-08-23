@@ -7,18 +7,20 @@ namespace _1073BatteryTracker
 {
     public class Battery
     {
-        //String checkoutFormat = String.Format("{0:MM/dd/yy hh:mm tt}", checkoutTime);
+        //2 constructers, a blank one and one where all the values can be set
         public Battery() { }
         public Battery(String battYear, String battNum, float battVol, String outTime, String estIn, String actIn, String Subgroup, String bot)
         {
         batteryYear = battYear;
-        
-        
-        
-        
-        
-        
+        batteryNumber = battNum;
+        batteryVoltage = battVol;
+        checkoutTime = outTime;
+        estCheckinTime = estIn;
+        actCheckinTime = actIn;
+        subgroup = Subgroup;
+        robot = bot;
         }
+        //all the private instance variables
         private string batteryYear;
         private string batteryNumber;
         private float batteryVoltage;
@@ -28,7 +30,7 @@ namespace _1073BatteryTracker
         private String actCheckinTime;
         private String subgroup;
         private String robot;
-
+        //all the gets and sets
         public string getYear() { return batteryYear; }
         public string getNumber() { return batteryNumber; }
         public float getVoltage() { return batteryVoltage; }
@@ -56,6 +58,5 @@ namespace _1073BatteryTracker
             else
                 return "false";
         }
-
     }
 }

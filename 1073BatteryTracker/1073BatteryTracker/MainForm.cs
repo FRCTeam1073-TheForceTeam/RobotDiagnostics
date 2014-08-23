@@ -11,34 +11,37 @@ using System.Windows;
 namespace _1073BatteryTracker
 {
     public partial class MainForm : Form
-    {
+    {   //all the private and public instance variables that are needed
         private String appPath;
         private CheckoutForm batteryOut = new CheckoutForm();
         private CheckinForm batteryIn = new CheckinForm();
-        public ArrayList battList = new ArrayList();
+        public List<Battery> battList = new List<Battery>();
         private TableLayoutPanel tableLayoutPanel1;
         private int nameDiff = 0;
+        //constructer that also adds the table and sets the default paths
+        //on the file loader and saver to be the application path
         public MainForm()
         {
             InitializeComponent();
             this.makeTheTable();
             this.setDefaultPaths();
         }
-            
-        private void button1_Click(object sender, EventArgs e)
+        //opens the checkout battery window
+        private void checkOut_Click(object sender, EventArgs e)
         {
             batteryOut.Show();
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        //opens the checkin battery window
+        private void checkIn_Click(object sender, EventArgs e)
         {
             batteryIn.Show();
         }
-
+        //adds a battery to the table by increasing the row count, adding
+        //a row, and populating it
         public void add(Battery batt)
         {
+            tableLayoutPanel1.RowCount++;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            tableLayoutPanel1.RowCount += 1;
             tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getYear() });
             tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getNumber() });
             tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = ""+batt.getVoltage() });
@@ -47,9 +50,12 @@ namespace _1073BatteryTracker
             tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getEstCheckinTime() });
             tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getRobot() });
         }
-
+        //removes a battery from the table by removing the controlls,
+        //removing the row, and decrementing the row count, in that order
         public void remove(int index)
         {
+            try
+            {
             tableLayoutPanel1.Controls.RemoveAt(index);
             tableLayoutPanel1.Controls.RemoveAt(index);
             tableLayoutPanel1.Controls.RemoveAt(index);
@@ -57,21 +63,54 @@ namespace _1073BatteryTracker
             tableLayoutPanel1.Controls.RemoveAt(index);
             tableLayoutPanel1.Controls.RemoveAt(index);
             tableLayoutPanel1.Controls.RemoveAt(index);
+            }
+            catch (ArgumentOutOfRangeException) { }
             tableLayoutPanel1.RowStyles.RemoveAt(index);
             tableLayoutPanel1.RowCount--;
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        //clears the entire table and List of batteries
+        private void clearList()
+        {
+            int index = this.battList.Count - 1;
+            while (index != -1)
+            {
+                this.battList.RemoveAt(index);
+                this.remove(index);
+                index--;
+            }
+        }
+        //clears the entire table
+        private void clearList4Update()
+        {
+            int index = this.tableLayoutPanel1.RowCount - 1;
+            while (index != -1)
+            {
+                this.remove(index);
+                index--;
+            }
+        }
+        //called after the battlist is changed. this makes the
+        //changes reflected in the table
+        public void updateList()
+        {
+            this.clearList4Update();
+            for (int i = 0; i < battList.Count; i++)
+            {
+                Battery batt = this.battList[i];
+                this.add(batt);
+            }
+        }
+        //opens the open file dialog
+        private void load_Click_1(object sender, EventArgs e)
         {
             this.openFileDialog1.ShowDialog();
-            
         }
-
-        private void exitForm_Click(object sender, EventArgs e)
+        //opens the save file dialog
+        private void save_Click(object sender, EventArgs e)
         {
             this.doTheSaving();
         }
-
+        //sets the default paths of the file save and open to the exe path
         private void setDefaultPaths()
         {
             appPath = Path.GetDirectoryName(Application.ExecutablePath);
@@ -80,7 +119,7 @@ namespace _1073BatteryTracker
             this.saveFileDialog1.Filter = "Text File|*.txt";
             this.saveFileDialog1.Title = "Save to le text file XD";
         }
-
+        //reads each line in the file to be parsed. parsed in the below method
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
             this.clearList();
@@ -94,7 +133,9 @@ namespace _1073BatteryTracker
             }
             file.Close();
         }
-
+        //takes each line from the above method, and splits it into a string array
+        //each array index has part of a battery parameter in it, they are used
+        //to make the battery
         private void parseLine(String s)
         {
             char delim = ',';
@@ -120,13 +161,13 @@ namespace _1073BatteryTracker
             this.battList.Insert(batteryNumbah, batt);
             this.add(batt);
         }
-
-        private void button3_Click_1(object sender, EventArgs e)
+        //button that saves AND clears the form
+        private void saveAndClear_Click_1(object sender, EventArgs e)
         {
             this.doTheSaving();
             this.clearList();
         }
-
+        //saves the file by writing each battery parameter to a line of a text file
         private void doTheSaving()
         {
             StringBuilder sb = new StringBuilder();
@@ -136,7 +177,7 @@ namespace _1073BatteryTracker
             {
                 for (int i = 0; i < battList.Count; i++)
                 {
-                    batt = (Battery) battList[i];
+                    batt = battList[i];
                     String temp;
                     if (i < 10)
                     {
@@ -151,22 +192,11 @@ namespace _1073BatteryTracker
                 }
                 catch (IOException)
                 {
-                    MessageBox.Show("Unable to save file, please try again");
+                    MessageBox.Show("File unable so save, please retry again");
                 }
             }
         }
-
-        private void clearList()
-        {
-            int index = this.battList.Count - 1;
-            while (index != -1)
-            {
-                this.battList.RemoveAt(index);
-                this.remove(index);
-                index--;
-            }
-        }
-
+        //makes the table in the main form
         private void makeTheTable()
         {
             tableLayoutPanel1 = new TableLayoutPanel
@@ -188,9 +218,10 @@ namespace _1073BatteryTracker
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             this.Controls.Add(tableLayoutPanel1);
         }
-
+        //button that clears the list
         private void clearTheList_Click(object sender, EventArgs e)
         {
             this.clearList();
