@@ -31,7 +31,6 @@ namespace _1073BatteryTracker
                 MessageBox.Show("Please have battery be selected");
                 return;
             }
-            selectedBatt.isNowInUse(false);
             String selected = selectedBatt.ToString();
             for (int i = 0; i < form1.battList.Count; i++)
             {
@@ -61,7 +60,7 @@ namespace _1073BatteryTracker
             for (int i = 0; i < form1.battList.Count; i++)
             {
                 Battery batt = form1.battList[i];
-                if (batt.isInUse()) this.CheckinComboBox.Items.Add(batt);
+                this.CheckinComboBox.Items.Add(batt);
             }
         }
         //stops the form from closing, just hides it instead

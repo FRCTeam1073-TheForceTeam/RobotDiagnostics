@@ -149,8 +149,6 @@ namespace _1073BatteryTracker
             return;
             }
             Battery batt = new Battery();
-            batt.isNowInUse(Boolean.Parse(parser[1].Substring(8)));
-            if (!batt.isInUse()) return;
             batt.setYear(parser[2].Substring(5));
             batt.setNumber(parser[3].Substring(7));
             batt.setVoltage(float.Parse(parser[4].Substring(8)));
@@ -184,7 +182,7 @@ namespace _1073BatteryTracker
                         temp = "0" + i;
                     }
                     else { temp = "" + i; }
-                    sb.Append("Batt=" + temp + ",isInUse=" + batt.isInUseText() + ",Year=" + batt.getYear() + ",Number=" + batt.getNumber() + ",Voltage=" + batt.getVoltage() + ",Subgroup=" + batt.getSubgroup() + ",timeCheckedOut=" + batt.getFormatedCheckoutTime() + ",EstCheckin=" + batt.getEstCheckinTime() + ",Robot=" + batt.getRobot() + "\n");
+                    sb.Append("Batt=" + temp + ",isInUse=" + ",Year=" + batt.getYear() + ",Number=" + batt.getNumber() + ",Voltage=" + batt.getVoltage() + ",Subgroup=" + batt.getSubgroup() + ",timeCheckedOut=" + batt.getFormatedCheckoutTime() + ",EstCheckin=" + batt.getEstCheckinTime() + ",Robot=" + batt.getRobot() + "\n");
                 }
                 try
                 {

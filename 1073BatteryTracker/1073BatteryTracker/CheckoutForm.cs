@@ -54,7 +54,6 @@ namespace _1073BatteryTracker
             batt.setEstCheckinTime(checkoutTime.Text);
             batt.setSubgroup(subgroupBox.Text);
             batt.setRobot(robotBox.Text);
-            batt.isNowInUse(true);
             batt.setVoltage((float)this.voltageLevelNum);
             form1.battList.Add(batt);
             form1.updateList();
