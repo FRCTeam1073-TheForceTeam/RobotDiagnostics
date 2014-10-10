@@ -18,6 +18,7 @@ namespace _1073BatteryTracker
         public List<Battery> battList = new List<Battery>();
         private TableLayoutPanel tableLayoutPanel1;
         private int nameDiff = 0;
+        private ClearUpdateForm theForm = new ClearUpdateForm();
         //constructer that also adds the table and sets the default paths
         //on the file loader and saver to be the application path
         public MainForm()
@@ -25,6 +26,9 @@ namespace _1073BatteryTracker
             InitializeComponent();
             this.makeTheTable();
             this.setDefaultPaths();
+            //run it once so the location is updated
+            this.showTheMessage(1);
+            theForm.Hide();
         }
         //opens the checkout battery window
         private void checkOut_Click(object sender, EventArgs e)
@@ -71,6 +75,8 @@ namespace _1073BatteryTracker
         //clears the entire table and List of batteries
         private void clearList()
         {
+            //messagebox letting them know about it clearing
+            this.showTheMessage(2);
             int index = this.battList.Count - 1;
             while (index != -1)
             {
@@ -78,16 +84,20 @@ namespace _1073BatteryTracker
                 this.remove(index);
                 index--;
             }
+            theForm.Hide();
         }
         //clears the entire table
         private void clearList4Update()
         {
+            //messagebox about the list updating
+            this.showTheMessage(1);
             int index = this.tableLayoutPanel1.RowCount - 1;
             while (index != -1)
             {
                 this.remove(index);
                 index--;
             }
+            theForm.Hide();
         }
         //called after the battlist is changed. this makes the
         //changes reflected in the table
@@ -221,8 +231,16 @@ namespace _1073BatteryTracker
         }
         //button that clears the list
         private void clearTheList_Click(object sender, EventArgs e)
-        {
+        {            
             this.clearList();
+        }
+
+        private void showTheMessage(int condition)
+        {
+            theForm.setLocation(this.Location.X + 200, this.Location.Y + 200);
+            theForm.setText(condition);
+            theForm.Show();
+            Application.DoEvents();
         }
     }
 }
