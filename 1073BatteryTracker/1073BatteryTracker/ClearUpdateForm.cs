@@ -33,7 +33,9 @@ namespace _1073BatteryTracker
             else this.label1.Text = "Please wait, clearing the list...";
             
         }
+        //A simple method to hide the form
         public void goAway() { this.Hide(); }
+        //sets the location of the top-left corner of the form
         public void setLocation(int x, int y)
         {
             Point p = new Point(x,y);

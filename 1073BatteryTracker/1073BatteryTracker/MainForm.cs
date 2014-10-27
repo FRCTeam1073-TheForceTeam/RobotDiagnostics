@@ -85,6 +85,7 @@ namespace _1073BatteryTracker
                 index--;
             }
             theForm.Hide();
+            this.Show();
         }
         //clears the entire table
         private void clearList4Update()
@@ -98,6 +99,7 @@ namespace _1073BatteryTracker
                 index--;
             }
             theForm.Hide();
+            this.Show();
         }
         //called after the battlist is changed. this makes the
         //changes reflected in the table
@@ -239,6 +241,7 @@ namespace _1073BatteryTracker
         {
             theForm.setLocation(this.Location.X + 200, this.Location.Y + 200);
             theForm.setText(condition);
+            this.Hide();
             theForm.Show();
             Application.DoEvents();
         }
