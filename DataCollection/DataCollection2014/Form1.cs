@@ -248,6 +248,7 @@ namespace DataCollection2014
                 recv = dataSocket.ReceiveFrom(dataByte, ref dataEndpoint);
                 dataString = Encoding.ASCII.GetString(dataByte, 0, recv);
                 dataQueue.Enqueue(dataString);
+                System.Threading.Thread.Sleep(2);
             }
         }
 
@@ -259,6 +260,7 @@ namespace DataCollection2014
                 crecv = consoleSocket.ReceiveFrom(consoleByte, ref consoleEndpoint);
                 consoleString = Encoding.ASCII.GetString(consoleByte, 0, crecv);
                 consoleQueue.Enqueue(consoleString);
+                System.Threading.Thread.Sleep(2);
             }
         }
 

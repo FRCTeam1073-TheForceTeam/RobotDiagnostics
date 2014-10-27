@@ -221,7 +221,7 @@
             // ConsoleTimer
             // 
             this.ConsoleTimer.Enabled = true;
-            this.ConsoleTimer.Interval = 1;
+            this.ConsoleTimer.Interval = 20;
             this.ConsoleTimer.Tick += new System.EventHandler(this.ConsoleTimer_Tick);
             // 
             // Listen
