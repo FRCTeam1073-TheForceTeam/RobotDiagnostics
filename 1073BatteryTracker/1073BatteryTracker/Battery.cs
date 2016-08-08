@@ -20,13 +20,13 @@ namespace _1073BatteryTracker
         robot = bot;
         }
         //all the private instance variables
-        private string batteryYear;
-        private string batteryNumber;
-        private float batteryVoltage;
-        private String checkoutTime;
-        private String estCheckinTime;
-        private String subgroup;
-        private String robot;
+        public string batteryYear{get; set;}
+        public string batteryNumber{get; set;}
+        public float batteryVoltage{get; set;}
+        public String checkoutTime{get; set;}
+        public String estCheckinTime{get; set;}
+        public String subgroup{get; set;}
+        public String robot{get; set;}
         //all the gets and sets
         public string getYear() { return batteryYear; }
         public string getNumber() { return batteryNumber; }

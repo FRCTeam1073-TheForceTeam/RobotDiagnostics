@@ -10,6 +10,10 @@ namespace _1073BatteryTracker
     public partial class CheckoutForm : Form
     {   //private instance variables
         private double voltageLevelNum;
+        public List<Robot> robotList = new List<Robot>();
+        public List<Subgroup> subgroupList = new List<Subgroup>();
+        public List<Battery> batteryOutList = new List<Battery>();
+        public List<Battery> batteryInList = new List<Battery>();
         //constructer. also sets the format for the checkoutTime dateTime object
         public CheckoutForm()
         {
@@ -55,7 +59,7 @@ namespace _1073BatteryTracker
             batt.setSubgroup(subgroupBox.Text);
             batt.setRobot(robotBox.Text);
             batt.setVoltage((float)this.voltageLevelNum);
-            form1.battList.Add(batt);
+            form1.batteryOutList.Add(batt);
             form1.updateList();
             this.Hide();
         }
@@ -84,14 +88,19 @@ namespace _1073BatteryTracker
         //checks for duplicate batteries from the List
         private bool isDuplicate(MainForm form1)
         {
-            for (int i = 0; i < form1.battList.Count; i++)
+            for (int i = 0; i < form1.batteryOutList.Count; i++)
             {
-                Battery Batt = form1.battList[i];
+                Battery Batt = form1.batteryOutList[i];
                 String newBattNumber = this.batteryNumberBox.Text;
                 String newYearNumber = this.yearComboBox.Text;
                 if (newBattNumber.Equals(Batt.getNumber()) && newYearNumber.Equals(Batt.getYear())) return true;
             }
             return false;
+        }
+
+        private void CheckoutForm_Load(object sender, EventArgs e)
+        {
+            //parse lists into combo boxes
         }
     }
 }

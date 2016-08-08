@@ -9,19 +9,38 @@ using System.Windows.Forms;
 
 namespace _1073BatteryTracker
 {
-    public partial class ClearUpdateForm : Form
+    public partial class PleaseWait : Form
     {
-        public ClearUpdateForm()
+        private bool showProgress;
+        private string message;
+        public PleaseWait()
         {
             InitializeComponent();
         }
 
-        private void clearUpdateForm_Load(object sender, EventArgs e)
+        public PleaseWait(string waitText, bool showProgressBar = false)
+        {
+            InitializeComponent();
+            message = waitText;
+            showProgress = showProgressBar;
+        }
+
+        public void setProgress(int progress)
+        {
+            loadingProgressBar.Value = progress;
+        }
+
+        public void setText(string message)
+        {
+            loadingMessage.Text = message;
+        }
+
+        private void PleaseWait_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void clearUpdateForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void PleaseWait_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             this.Hide();
@@ -29,8 +48,8 @@ namespace _1073BatteryTracker
         public void setText(int i)
         {
             //1=updating, 2=clearing
-            if (i == 1) this.label1.Text = "Please wait, updating the list...";
-            else this.label1.Text = "Please wait, clearing the list...";
+            if (i == 1) this.loadingMessage.Text = "Please wait, updating the list...";
+            else this.loadingMessage.Text = "Please wait, clearing the list...";
             
         }
         //A simple method to hide the form

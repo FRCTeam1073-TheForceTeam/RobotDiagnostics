@@ -47,6 +47,9 @@
             this.checkoutTime = new System.Windows.Forms.DateTimePicker();
             this.robotLabel = new System.Windows.Forms.Label();
             this.robotBox = new System.Windows.Forms.ComboBox();
+            this.batteryComboBox = new System.Windows.Forms.ComboBox();
+            this.subgroupComboBox = new System.Windows.Forms.ComboBox();
+            this.robotComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.batteryLevelHelper)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +86,7 @@
             this.batteryLevelHelper.Maximum = 60;
             this.batteryLevelHelper.Minimum = 24;
             this.batteryLevelHelper.Name = "batteryLevelHelper";
-            this.batteryLevelHelper.Size = new System.Drawing.Size(142, 42);
+            this.batteryLevelHelper.Size = new System.Drawing.Size(142, 45);
             this.batteryLevelHelper.TabIndex = 3;
             this.batteryLevelHelper.Value = 48;
             this.batteryLevelHelper.Scroll += new System.EventHandler(this.batteryLevelHelper_Scroll);
@@ -187,7 +190,7 @@
             "Electrical"});
             this.subgroupBox.Location = new System.Drawing.Point(12, 224);
             this.subgroupBox.Name = "subgroupBox";
-            this.subgroupBox.Size = new System.Drawing.Size(121, 21);
+            this.subgroupBox.Size = new System.Drawing.Size(84, 21);
             this.subgroupBox.TabIndex = 14;
             // 
             // sixVolts
@@ -214,9 +217,9 @@
             this.chargeHelper.ForeColor = System.Drawing.Color.Red;
             this.chargeHelper.Location = new System.Drawing.Point(12, 188);
             this.chargeHelper.Name = "chargeHelper";
-            this.chargeHelper.Size = new System.Drawing.Size(185, 13);
+            this.chargeHelper.Size = new System.Drawing.Size(190, 13);
             this.chargeHelper.TabIndex = 18;
-            this.chargeHelper.Text = "Battery is too weak. Place on Charger";
+            this.chargeHelper.Text = "Battery is too weak. Place in \'bad\' area";
             this.chargeHelper.Visible = false;
             // 
             // voltageLevel
@@ -255,14 +258,86 @@
             "Other"});
             this.robotBox.Location = new System.Drawing.Point(12, 276);
             this.robotBox.Name = "robotBox";
-            this.robotBox.Size = new System.Drawing.Size(121, 21);
+            this.robotBox.Size = new System.Drawing.Size(84, 21);
             this.robotBox.TabIndex = 21;
+            // 
+            // batteryComboBox
+            // 
+            this.batteryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.batteryComboBox.FormattingEnabled = true;
+            this.batteryComboBox.Items.AddRange(new object[] {
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016"});
+            this.batteryComboBox.Location = new System.Drawing.Point(90, 24);
+            this.batteryComboBox.Name = "batteryComboBox";
+            this.batteryComboBox.Size = new System.Drawing.Size(105, 21);
+            this.batteryComboBox.TabIndex = 22;
+            // 
+            // subgroupComboBox
+            // 
+            this.subgroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subgroupComboBox.FormattingEnabled = true;
+            this.subgroupComboBox.Items.AddRange(new object[] {
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016"});
+            this.subgroupComboBox.Location = new System.Drawing.Point(102, 224);
+            this.subgroupComboBox.Name = "subgroupComboBox";
+            this.subgroupComboBox.Size = new System.Drawing.Size(84, 21);
+            this.subgroupComboBox.TabIndex = 23;
+            // 
+            // robotComboBox
+            // 
+            this.robotComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.robotComboBox.FormattingEnabled = true;
+            this.robotComboBox.Items.AddRange(new object[] {
+            "2004",
+            "2005",
+            "2006",
+            "2007",
+            "2008",
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016"});
+            this.robotComboBox.Location = new System.Drawing.Point(102, 276);
+            this.robotComboBox.Name = "robotComboBox";
+            this.robotComboBox.Size = new System.Drawing.Size(84, 21);
+            this.robotComboBox.TabIndex = 24;
             // 
             // CheckoutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(218, 388);
+            this.Controls.Add(this.robotComboBox);
+            this.Controls.Add(this.subgroupComboBox);
+            this.Controls.Add(this.batteryComboBox);
             this.Controls.Add(this.robotBox);
             this.Controls.Add(this.robotLabel);
             this.Controls.Add(this.voltageLevel);
@@ -286,6 +361,7 @@
             this.Name = "CheckoutForm";
             this.Text = "CheckoutForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckoutForm_FormClosing);
+            this.Load += new System.EventHandler(this.CheckoutForm_Load);
             this.VisibleChanged += new System.EventHandler(this.CheckoutForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.batteryLevelHelper)).EndInit();
             this.ResumeLayout(false);
@@ -314,5 +390,8 @@
         private System.Windows.Forms.DateTimePicker checkoutTime;
         private System.Windows.Forms.Label robotLabel;
         private System.Windows.Forms.ComboBox robotBox;
+        private System.Windows.Forms.ComboBox batteryComboBox;
+        private System.Windows.Forms.ComboBox subgroupComboBox;
+        private System.Windows.Forms.ComboBox robotComboBox;
     }
 }

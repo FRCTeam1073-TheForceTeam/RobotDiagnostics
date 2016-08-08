@@ -1,6 +1,6 @@
 ﻿namespace _1073BatteryTracker
 {
-    partial class ClearUpdateForm
+    partial class PleaseWait
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.loadingMessage = new System.Windows.Forms.Label();
+            this.loadingProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
-            // label1
+            // loadingMessage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Please wait, updating list...";
+            this.loadingMessage.AutoSize = true;
+            this.loadingMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadingMessage.Location = new System.Drawing.Point(12, 5);
+            this.loadingMessage.Name = "loadingMessage";
+            this.loadingMessage.Size = new System.Drawing.Size(97, 20);
+            this.loadingMessage.TabIndex = 0;
+            this.loadingMessage.Text = "Sample Text";
             // 
-            // ClearUpdateForm
+            // loadingProgressBar
+            // 
+            this.loadingProgressBar.Location = new System.Drawing.Point(12, 28);
+            this.loadingProgressBar.Name = "loadingProgressBar";
+            this.loadingProgressBar.Size = new System.Drawing.Size(230, 23);
+            this.loadingProgressBar.TabIndex = 1;
+            // 
+            // PleaseWait
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(254, 31);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(254, 57);
+            this.Controls.Add(this.loadingProgressBar);
+            this.Controls.Add(this.loadingMessage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ClearUpdateForm";
-            this.Text = "clearUpdateForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.clearUpdateForm_FormClosing);
-            this.Load += new System.EventHandler(this.clearUpdateForm_Load);
+            this.Name = "PleaseWait";
+            this.Text = "Loading...";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PleaseWait_FormClosing);
+            this.Load += new System.EventHandler(this.PleaseWait_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -61,6 +70,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label loadingMessage;
+        private System.Windows.Forms.ProgressBar loadingProgressBar;
     }
 }

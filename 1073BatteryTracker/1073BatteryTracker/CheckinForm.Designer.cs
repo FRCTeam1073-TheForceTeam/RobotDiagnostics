@@ -43,7 +43,7 @@
             // 
             this.CheckinComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CheckinComboBox.FormattingEnabled = true;
-            this.CheckinComboBox.Location = new System.Drawing.Point(12, 38);
+            this.CheckinComboBox.Location = new System.Drawing.Point(12, 25);
             this.CheckinComboBox.Name = "CheckinComboBox";
             this.CheckinComboBox.Size = new System.Drawing.Size(244, 21);
             this.CheckinComboBox.TabIndex = 0;
@@ -52,17 +52,17 @@
             // descriptor1
             // 
             this.descriptor1.AutoSize = true;
-            this.descriptor1.Location = new System.Drawing.Point(13, 13);
+            this.descriptor1.Location = new System.Drawing.Point(9, 9);
             this.descriptor1.Name = "descriptor1";
-            this.descriptor1.Size = new System.Drawing.Size(243, 13);
+            this.descriptor1.Size = new System.Drawing.Size(245, 13);
             this.descriptor1.TabIndex = 1;
-            this.descriptor1.Text = "Select the Battery you plan to checkin from the list";
+            this.descriptor1.Text = "Select the battery you plan to check in from the list";
             // 
             // checkinButton
             // 
-            this.checkinButton.Location = new System.Drawing.Point(12, 159);
+            this.checkinButton.Location = new System.Drawing.Point(135, 155);
             this.checkinButton.Name = "checkinButton";
-            this.checkinButton.Size = new System.Drawing.Size(120, 23);
+            this.checkinButton.Size = new System.Drawing.Size(117, 23);
             this.checkinButton.TabIndex = 2;
             this.checkinButton.Text = "Check In";
             this.checkinButton.UseVisualStyleBackColor = true;
@@ -70,11 +70,11 @@
             // 
             // voltageBar
             // 
-            this.voltageBar.Location = new System.Drawing.Point(16, 82);
+            this.voltageBar.Location = new System.Drawing.Point(12, 82);
             this.voltageBar.Maximum = 60;
             this.voltageBar.Minimum = 24;
             this.voltageBar.Name = "voltageBar";
-            this.voltageBar.Size = new System.Drawing.Size(240, 42);
+            this.voltageBar.Size = new System.Drawing.Size(240, 45);
             this.voltageBar.TabIndex = 3;
             this.voltageBar.Value = 48;
             this.voltageBar.Scroll += new System.EventHandler(this.voltageBar_Scroll);
@@ -90,7 +90,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(138, 159);
+            this.cancelButton.Location = new System.Drawing.Point(12, 155);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(117, 23);
             this.cancelButton.TabIndex = 5;
@@ -101,7 +101,7 @@
             // placeHelper
             // 
             this.placeHelper.AutoSize = true;
-            this.placeHelper.Location = new System.Drawing.Point(16, 131);
+            this.placeHelper.Location = new System.Drawing.Point(51, 130);
             this.placeHelper.Name = "placeHelper";
             this.placeHelper.Size = new System.Drawing.Size(162, 13);
             this.placeHelper.TabIndex = 6;
@@ -110,7 +110,7 @@
             // voltageLabel
             // 
             this.voltageLabel.AutoSize = true;
-            this.voltageLabel.Location = new System.Drawing.Point(90, 66);
+            this.voltageLabel.Location = new System.Drawing.Point(90, 62);
             this.voltageLabel.Name = "voltageLabel";
             this.voltageLabel.Size = new System.Drawing.Size(35, 13);
             this.voltageLabel.TabIndex = 7;

@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkOut = new System.Windows.Forms.Button();
-            this.checkIn = new System.Windows.Forms.Button();
-            this.load = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,44 +35,16 @@
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.saveAndClear = new System.Windows.Forms.Button();
-            this.save = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.clearTheList = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.checkOut = new System.Windows.Forms.Button();
+            this.checkIn = new System.Windows.Forms.Button();
+            this.load = new System.Windows.Forms.Button();
+            this.save = new System.Windows.Forms.Button();
+            this.modifyCatagoriesButton = new System.Windows.Forms.Button();
+            this.editEntryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // checkOut
-            // 
-            this.checkOut.Location = new System.Drawing.Point(88, 3);
-            this.checkOut.Name = "checkOut";
-            this.checkOut.Size = new System.Drawing.Size(99, 23);
-            this.checkOut.TabIndex = 1;
-            this.checkOut.Text = "Checkout Battery";
-            this.checkOut.UseVisualStyleBackColor = true;
-            this.checkOut.Click += new System.EventHandler(this.checkOut_Click);
-            // 
-            // checkIn
-            // 
-            this.checkIn.Location = new System.Drawing.Point(198, 3);
-            this.checkIn.Name = "checkIn";
-            this.checkIn.Size = new System.Drawing.Size(92, 23);
-            this.checkIn.TabIndex = 3;
-            this.checkIn.Text = "Checkin Battery";
-            this.checkIn.UseVisualStyleBackColor = true;
-            this.checkIn.Click += new System.EventHandler(this.checkIn_Click);
-            // 
-            // load
-            // 
-            this.load.Location = new System.Drawing.Point(420, 3);
-            this.load.Name = "load";
-            this.load.Size = new System.Drawing.Size(88, 23);
-            this.load.TabIndex = 6;
-            this.load.Text = "Load From File";
-            this.load.UseVisualStyleBackColor = true;
-            this.load.Click += new System.EventHandler(this.load_Click_1);
             // 
             // label2
             // 
@@ -134,26 +103,6 @@
             this.saveFileDialog1.DefaultExt = "txt";
             this.saveFileDialog1.RestoreDirectory = true;
             // 
-            // saveAndClear
-            // 
-            this.saveAndClear.Location = new System.Drawing.Point(297, 3);
-            this.saveAndClear.Name = "saveAndClear";
-            this.saveAndClear.Size = new System.Drawing.Size(113, 23);
-            this.saveAndClear.TabIndex = 30;
-            this.saveAndClear.Text = "Save and Clear List";
-            this.saveAndClear.UseVisualStyleBackColor = true;
-            this.saveAndClear.Click += new System.EventHandler(this.saveAndClear_Click_1);
-            // 
-            // save
-            // 
-            this.save.Location = new System.Drawing.Point(519, 3);
-            this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(74, 23);
-            this.save.TabIndex = 2;
-            this.save.Text = "Save to File";
-            this.save.UseVisualStyleBackColor = true;
-            this.save.Click += new System.EventHandler(this.save_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -172,46 +121,89 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Est Checkin time";
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 6;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 99F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
-            this.tableLayoutPanel2.Controls.Add(this.save, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.load, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.saveAndClear, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.checkIn, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.checkOut, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.clearTheList, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(5, 380);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(626, 31);
-            this.tableLayoutPanel2.TabIndex = 31;
-            // 
             // clearTheList
             // 
-            this.clearTheList.Location = new System.Drawing.Point(3, 3);
+            this.clearTheList.Location = new System.Drawing.Point(12, 386);
             this.clearTheList.Name = "clearTheList";
-            this.clearTheList.Size = new System.Drawing.Size(75, 23);
+            this.clearTheList.Size = new System.Drawing.Size(59, 23);
             this.clearTheList.TabIndex = 31;
             this.clearTheList.Text = "Clear List";
             this.clearTheList.UseVisualStyleBackColor = true;
             this.clearTheList.Click += new System.EventHandler(this.clearTheList_Click);
+            // 
+            // checkOut
+            // 
+            this.checkOut.Location = new System.Drawing.Point(144, 386);
+            this.checkOut.Name = "checkOut";
+            this.checkOut.Size = new System.Drawing.Size(99, 23);
+            this.checkOut.TabIndex = 1;
+            this.checkOut.Text = "Checkout Battery";
+            this.checkOut.UseVisualStyleBackColor = true;
+            this.checkOut.Click += new System.EventHandler(this.checkOut_Click);
+            // 
+            // checkIn
+            // 
+            this.checkIn.Location = new System.Drawing.Point(357, 386);
+            this.checkIn.Name = "checkIn";
+            this.checkIn.Size = new System.Drawing.Size(92, 23);
+            this.checkIn.TabIndex = 3;
+            this.checkIn.Text = "Checkin Battery";
+            this.checkIn.UseVisualStyleBackColor = true;
+            this.checkIn.Click += new System.EventHandler(this.checkIn_Click);
+            // 
+            // load
+            // 
+            this.load.Location = new System.Drawing.Point(455, 386);
+            this.load.Name = "load";
+            this.load.Size = new System.Drawing.Size(88, 23);
+            this.load.TabIndex = 6;
+            this.load.Text = "Load From File";
+            this.load.UseVisualStyleBackColor = true;
+            this.load.Click += new System.EventHandler(this.load_Click_1);
+            // 
+            // save
+            // 
+            this.save.Location = new System.Drawing.Point(549, 386);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(74, 23);
+            this.save.TabIndex = 2;
+            this.save.Text = "Save to File";
+            this.save.UseVisualStyleBackColor = true;
+            this.save.Click += new System.EventHandler(this.save_Click);
+            // 
+            // modifyCatagoriesButton
+            // 
+            this.modifyCatagoriesButton.Location = new System.Drawing.Point(249, 386);
+            this.modifyCatagoriesButton.Name = "modifyCatagoriesButton";
+            this.modifyCatagoriesButton.Size = new System.Drawing.Size(102, 23);
+            this.modifyCatagoriesButton.TabIndex = 32;
+            this.modifyCatagoriesButton.Text = "Modify Catagories";
+            this.modifyCatagoriesButton.UseVisualStyleBackColor = true;
+            this.modifyCatagoriesButton.Click += new System.EventHandler(this.modifyCatagoriesButton_Click);
+            // 
+            // editEntryButton
+            // 
+            this.editEntryButton.Location = new System.Drawing.Point(77, 386);
+            this.editEntryButton.Name = "editEntryButton";
+            this.editEntryButton.Size = new System.Drawing.Size(61, 23);
+            this.editEntryButton.TabIndex = 33;
+            this.editEntryButton.Text = "Edit entry";
+            this.editEntryButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 421);
+            this.Controls.Add(this.editEntryButton);
+            this.Controls.Add(this.modifyCatagoriesButton);
+            this.Controls.Add(this.clearTheList);
+            this.Controls.Add(this.checkOut);
+            this.Controls.Add(this.checkIn);
+            this.Controls.Add(this.load);
+            this.Controls.Add(this.save);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
@@ -221,7 +213,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "1073BatteryTracker";
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,9 +221,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button checkOut;
-        private System.Windows.Forms.Button checkIn;
-        private System.Windows.Forms.Button load;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -239,12 +228,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button saveAndClear;
-        private System.Windows.Forms.Button save;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button clearTheList;
+        private System.Windows.Forms.Button checkOut;
+        private System.Windows.Forms.Button checkIn;
+        private System.Windows.Forms.Button load;
+        private System.Windows.Forms.Button save;
+        private System.Windows.Forms.Button modifyCatagoriesButton;
+        private System.Windows.Forms.Button editEntryButton;
     }
 }
 

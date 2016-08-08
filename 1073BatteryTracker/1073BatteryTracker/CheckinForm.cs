@@ -32,13 +32,13 @@ namespace _1073BatteryTracker
                 return;
             }
             String selected = selectedBatt.ToString();
-            for (int i = 0; i < form1.battList.Count; i++)
+            for (int i = 0; i < form1.batteryOutList.Count; i++)
             {
-                Battery batt = form1.battList[i];
+                Battery batt = form1.batteryOutList[i];
                 String printed = batt.ToString();
                 if (printed.Equals(selected))
                 {
-                    form1.battList.RemoveAt(i);
+                    form1.batteryOutList.RemoveAt(i);
                     
                 }
             }
@@ -57,9 +57,9 @@ namespace _1073BatteryTracker
             this.CheckinComboBox.Items.Clear();
             this.CheckinComboBox.Text = null;
             MainForm form1 = (MainForm)Application.OpenForms["MainForm"];
-            for (int i = 0; i < form1.battList.Count; i++)
+            for (int i = 0; i < form1.batteryOutList.Count; i++)
             {
-                Battery batt = form1.battList[i];
+                Battery batt = form1.batteryOutList[i];
                 this.CheckinComboBox.Items.Add(batt);
             }
         }
