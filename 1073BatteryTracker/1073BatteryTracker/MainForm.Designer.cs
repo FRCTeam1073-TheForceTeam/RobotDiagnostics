@@ -189,6 +189,7 @@
             this.editEntryButton.TabIndex = 33;
             this.editEntryButton.Text = "Edit entry";
             this.editEntryButton.UseVisualStyleBackColor = true;
+            this.editEntryButton.Click += new System.EventHandler(this.editEntryButton_Click);
             // 
             // MainForm
             // 

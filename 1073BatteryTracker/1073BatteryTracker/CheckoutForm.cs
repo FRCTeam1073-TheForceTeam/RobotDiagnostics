@@ -10,10 +10,10 @@ namespace _1073BatteryTracker
     public partial class CheckoutForm : Form
     {   //private instance variables
         private double voltageLevelNum;
-        public List<Robot> robotList = new List<Robot>();
-        public List<Subgroup> subgroupList = new List<Subgroup>();
-        public List<Battery> batteryOutList = new List<Battery>();
-        public List<Battery> batteryInList = new List<Battery>();
+        public List<Robot> robotList;
+        public List<Subgroup> subgroupList;
+        public List<Battery> batteryOutList;
+        public List<Battery> batteryInList;
         //constructer. also sets the format for the checkoutTime dateTime object
         public CheckoutForm()
         {
@@ -39,11 +39,12 @@ namespace _1073BatteryTracker
         //tells the table to update
         private void checkoutButton_Click(object sender, EventArgs e)
         {
+            //omg this is so wrong
             MainForm form1 = (MainForm) Application.OpenForms["MainForm"];
             Battery batt = new Battery();
             if (!this.everythingIsFilledOut())
             {
-                MessageBox.Show("All settings be completed before proceding checkout");
+                MessageBox.Show("All settings be completed before ability to checkout");
                 return;
             }
             if (this.isDuplicate(form1))
@@ -62,6 +63,8 @@ namespace _1073BatteryTracker
             form1.batteryOutList.Add(batt);
             form1.updateList();
             this.Hide();
+            //ok do it right here
+
         }
         //clears everything in the text boxes for the next use
         private void CheckoutForm_VisibleChanged(object sender, EventArgs e)
@@ -100,7 +103,32 @@ namespace _1073BatteryTracker
 
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
+            //empty combo boxes
+            while (batteryComboBox.Items.Count != 0)
+            {
+                batteryComboBox.Items.RemoveAt(0);
+            }
+            while (robotComboBox.Items.Count != 0)
+            {
+                robotComboBox.Items.RemoveAt(0);
+            }
+            while (subgroupComboBox.Items.Count != 0)
+            {
+                subgroupComboBox.Items.RemoveAt(0);
+            }
             //parse lists into combo boxes
+            foreach (Battery b in batteryInList)
+            {
+                batteryComboBox.Items.Add(b);
+            }
+            foreach (Robot r in robotList)
+            {
+                robotComboBox.Items.Add(r);
+            }
+            foreach (Subgroup s in subgroupList)
+            {
+                subgroupComboBox.Items.Add(s);
+            }
         }
     }
 }

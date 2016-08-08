@@ -17,6 +17,7 @@ namespace _1073BatteryTracker
 {
     public partial class MainForm : Form
     {   //all the private and public instance variables that are needed
+        private string version = "2.0";
         private String appPath = Path.GetDirectoryName(Application.ExecutablePath);
         private String battOutListXml;
         private String battInListXml;
@@ -33,7 +34,14 @@ namespace _1073BatteryTracker
         private List<Subgroup> subgroupList = new List<Subgroup>();
         public List<Battery> batteryOutList = new List<Battery>();
         private List<Battery> batteryInList = new List<Battery>();
-        private EditWindow ew = new EditWindow();
+        private EditWindow editWindow = new EditWindow();
+        /*
+         * TODO:
+         * write checkout and checkin logic
+         * write checkin form
+         * write edit form
+         * get updator working
+        */
         //constructer that also adds the table and sets the default paths
         //on the file loader and saver to be the application path
         public MainForm()
@@ -273,7 +281,21 @@ namespace _1073BatteryTracker
 
         private void modifyCatagoriesButton_Click(object sender, EventArgs e)
         {
-            ew.ShowDialog();
+            editWindow = new EditWindow();
+            //setup refrence links
+            editWindow.batteryInList = batteryInList;
+            editWindow.batteryOutList = batteryOutList;
+            editWindow.robotList = robotList;
+            editWindow.subgroupList = subgroupList;
+            //setup editWindow for modifying 3 regular catagories
+            while (editWindow.selectCatagoryComboBox.Items.Count != 0)
+            {
+                editWindow.selectCatagoryComboBox.Items.RemoveAt(0);
+            }
+            editWindow.selectCatagoryComboBox.Items.Add("BatteryInList");//index 0
+            editWindow.selectCatagoryComboBox.Items.Add("RobotList");//index 1
+            editWindow.selectCatagoryComboBox.Items.Add("SubgroupList");//index 2
+            editWindow.ShowDialog();
         }
 
         private void readBattOutList()
@@ -518,6 +540,24 @@ namespace _1073BatteryTracker
             XmlWriter.WriteEndElement();
             XmlWriter.WriteEndElement();
             XmlWriter.Close();
+        }
+
+        private void editEntryButton_Click(object sender, EventArgs e)
+        {
+            //setup editWindow for checkOutList pre-selected
+            /*editWindow = new EditWindow();
+            //setup refrence links
+            editWindow.batteryInList = batteryInList;
+            editWindow.batteryOutList = batteryOutList;
+            editWindow.robotList = robotList;
+            editWindow.subgroupList = subgroupList;
+            //setup editWindow for modifying 3 regular catagories
+            while (editWindow.selectCatagoryComboBox.Items.Count != 0)
+            {
+                editWindow.selectCatagoryComboBox.Items.RemoveAt(0);
+            }
+            editWindow.selectCatagoryComboBox.Items.Add("BatteryOutList");//index 0
+            editWindow.ShowDialog();*/
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _1073BatteryTracker
 {
-    class Robot
+    public class Robot
     {
         public string robotName { get; set; }
         public Robot()

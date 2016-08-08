@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _1073BatteryTracker
 {
-    class Subgroup
+    public class Subgroup
     {
         public string groupName { get; set; }
         public Subgroup()
