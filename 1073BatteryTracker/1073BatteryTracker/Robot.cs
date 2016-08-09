@@ -12,6 +12,10 @@ namespace _1073BatteryTracker
         {
 
         }
+        public Robot(string theName)
+        {
+            robotName = theName;
+        }
         public override string ToString()
         {
             return robotName;

@@ -9,6 +9,7 @@ namespace _1073BatteryTracker
 {
     public partial class CheckoutForm : Form
     {   //private instance variables
+        public bool madeChanges = false;
         private double voltageLevelNum;
         public List<Robot> robotList;
         public List<Subgroup> subgroupList;
@@ -33,14 +34,14 @@ namespace _1073BatteryTracker
         //"closes" the form
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
         //makes a battery based on the settings and then adds it to the List, and
         //tells the table to update
         private void checkoutButton_Click(object sender, EventArgs e)
         {
             //omg this is so wrong
-            MainForm form1 = (MainForm) Application.OpenForms["MainForm"];
+            /*MainForm form1 = (MainForm) Application.OpenForms["MainForm"];
             Battery batt = new Battery();
             if (!this.everythingIsFilledOut())
             {
@@ -62,9 +63,14 @@ namespace _1073BatteryTracker
             batt.setVoltage((float)this.voltageLevelNum);
             form1.batteryOutList.Add(batt);
             form1.updateList();
-            this.Hide();
+            this.Hide();*/
             //ok do it right here
-
+            //create method to make sure everything is set
+            madeChanges = true;
+            Battery batt = this.createUnlinkedBattery(batteryInList[batteryComboBox.SelectedIndex]);
+            batteryOutList.Add(batt);
+            batteryInList.RemoveAt(batteryComboBox.SelectedIndex);
+            this.Close();
         }
         //clears everything in the text boxes for the next use
         private void CheckoutForm_VisibleChanged(object sender, EventArgs e)
@@ -74,12 +80,6 @@ namespace _1073BatteryTracker
            this.batteryNumberBox.Text = null;
            this.yearComboBox.Text = null;
            this.subgroupBox.Text = null;
-        }
-        //cancels the close and hides the form
-        private void CheckoutForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            this.Hide();
         }
         //makes sure that the user had filled out every form option
         private bool everythingIsFilledOut()
@@ -129,6 +129,20 @@ namespace _1073BatteryTracker
             {
                 subgroupComboBox.Items.Add(s);
             }
+        }
+
+        private Battery createUnlinkedBattery(Battery b)
+        {
+            Battery temp = new Battery();
+            temp.batteryNumber = b.batteryNumber;
+            temp.batteryVoltage = ((float)this.voltageLevelNum);
+            temp.batteryYear = b.batteryYear;
+            DateTime dt = DateTime.Now;
+            temp.checkoutTime = String.Format("{0:MM/dd/yy hh:mm tt}", dt);
+            temp.estCheckinTime = checkoutTime.Text;
+            temp.robot = robotList[robotComboBox.SelectedIndex].ToString();
+            temp.subgroup = subgroupList[subgroupComboBox.SelectedIndex].ToString();
+            return temp;
         }
     }
 }

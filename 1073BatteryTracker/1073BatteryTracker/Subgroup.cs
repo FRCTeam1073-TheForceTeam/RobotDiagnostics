@@ -12,6 +12,10 @@ namespace _1073BatteryTracker
         {
 
         }
+        public Subgroup(string theGroupName)
+        {
+            groupName = theGroupName;
+        }
         public override string ToString()
         {
             return groupName;

@@ -40,6 +40,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.applyAndCloseButton = new System.Windows.Forms.Button();
             this.modifyButton = new System.Windows.Forms.Button();
+            this.field3 = new System.Windows.Forms.Label();
+            this.fieldEntry3 = new System.Windows.Forms.TextBox();
+            this.field4 = new System.Windows.Forms.Label();
+            this.fieldEntry4 = new System.Windows.Forms.TextBox();
+            this.field5 = new System.Windows.Forms.Label();
+            this.fieldEntry5 = new System.Windows.Forms.TextBox();
+            this.field6 = new System.Windows.Forms.Label();
+            this.field7 = new System.Windows.Forms.Label();
+            this.subgroupComboBox = new System.Windows.Forms.ComboBox();
+            this.robotComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -82,7 +92,7 @@
             // addButton
             // 
             this.addButton.Enabled = false;
-            this.addButton.Location = new System.Drawing.Point(12, 144);
+            this.addButton.Location = new System.Drawing.Point(12, 275);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(205, 23);
             this.addButton.TabIndex = 5;
@@ -102,7 +112,7 @@
             // removeButton
             // 
             this.removeButton.Enabled = false;
-            this.removeButton.Location = new System.Drawing.Point(12, 202);
+            this.removeButton.Location = new System.Drawing.Point(12, 333);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(205, 23);
             this.removeButton.TabIndex = 7;
@@ -139,11 +149,11 @@
             // applyAndCloseButton
             // 
             this.applyAndCloseButton.Enabled = false;
-            this.applyAndCloseButton.Location = new System.Drawing.Point(12, 231);
+            this.applyAndCloseButton.Location = new System.Drawing.Point(12, 362);
             this.applyAndCloseButton.Name = "applyAndCloseButton";
             this.applyAndCloseButton.Size = new System.Drawing.Size(205, 23);
             this.applyAndCloseButton.TabIndex = 8;
-            this.applyAndCloseButton.Text = "apply changes and close";
+            this.applyAndCloseButton.Text = "null";
             this.applyAndCloseButton.UseVisualStyleBackColor = true;
             this.applyAndCloseButton.Visible = false;
             this.applyAndCloseButton.Click += new System.EventHandler(this.applyAndCloseButton_Click);
@@ -151,7 +161,7 @@
             // modifyButton
             // 
             this.modifyButton.Enabled = false;
-            this.modifyButton.Location = new System.Drawing.Point(12, 173);
+            this.modifyButton.Location = new System.Drawing.Point(12, 304);
             this.modifyButton.Name = "modifyButton";
             this.modifyButton.Size = new System.Drawing.Size(205, 23);
             this.modifyButton.TabIndex = 6;
@@ -159,11 +169,108 @@
             this.modifyButton.UseVisualStyleBackColor = true;
             this.modifyButton.Click += new System.EventHandler(this.modifyButton_Click);
             // 
+            // field3
+            // 
+            this.field3.AutoSize = true;
+            this.field3.Location = new System.Drawing.Point(9, 147);
+            this.field3.Name = "field3";
+            this.field3.Size = new System.Drawing.Size(42, 13);
+            this.field3.TabIndex = 11;
+            this.field3.Text = "voltage";
+            // 
+            // fieldEntry3
+            // 
+            this.fieldEntry3.Location = new System.Drawing.Point(68, 144);
+            this.fieldEntry3.Name = "fieldEntry3";
+            this.fieldEntry3.ReadOnly = true;
+            this.fieldEntry3.Size = new System.Drawing.Size(149, 20);
+            this.fieldEntry3.TabIndex = 10;
+            // 
+            // field4
+            // 
+            this.field4.AutoSize = true;
+            this.field4.Location = new System.Drawing.Point(9, 173);
+            this.field4.Name = "field4";
+            this.field4.Size = new System.Drawing.Size(54, 13);
+            this.field4.TabIndex = 13;
+            this.field4.Text = "checkOut";
+            // 
+            // fieldEntry4
+            // 
+            this.fieldEntry4.Location = new System.Drawing.Point(68, 170);
+            this.fieldEntry4.Name = "fieldEntry4";
+            this.fieldEntry4.ReadOnly = true;
+            this.fieldEntry4.Size = new System.Drawing.Size(149, 20);
+            this.fieldEntry4.TabIndex = 12;
+            // 
+            // field5
+            // 
+            this.field5.AutoSize = true;
+            this.field5.Location = new System.Drawing.Point(9, 199);
+            this.field5.Name = "field5";
+            this.field5.Size = new System.Drawing.Size(46, 13);
+            this.field5.TabIndex = 15;
+            this.field5.Text = "checkIn";
+            // 
+            // fieldEntry5
+            // 
+            this.fieldEntry5.Location = new System.Drawing.Point(68, 196);
+            this.fieldEntry5.Name = "fieldEntry5";
+            this.fieldEntry5.ReadOnly = true;
+            this.fieldEntry5.Size = new System.Drawing.Size(149, 20);
+            this.fieldEntry5.TabIndex = 14;
+            // 
+            // field6
+            // 
+            this.field6.AutoSize = true;
+            this.field6.Location = new System.Drawing.Point(9, 225);
+            this.field6.Name = "field6";
+            this.field6.Size = new System.Drawing.Size(51, 13);
+            this.field6.TabIndex = 17;
+            this.field6.Text = "subgroup";
+            // 
+            // field7
+            // 
+            this.field7.AutoSize = true;
+            this.field7.Location = new System.Drawing.Point(9, 251);
+            this.field7.Name = "field7";
+            this.field7.Size = new System.Drawing.Size(31, 13);
+            this.field7.TabIndex = 19;
+            this.field7.Text = "robot";
+            // 
+            // subgroupComboBox
+            // 
+            this.subgroupComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subgroupComboBox.FormattingEnabled = true;
+            this.subgroupComboBox.Location = new System.Drawing.Point(68, 222);
+            this.subgroupComboBox.Name = "subgroupComboBox";
+            this.subgroupComboBox.Size = new System.Drawing.Size(149, 21);
+            this.subgroupComboBox.TabIndex = 20;
+            // 
+            // robotComboBox
+            // 
+            this.robotComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.robotComboBox.FormattingEnabled = true;
+            this.robotComboBox.Location = new System.Drawing.Point(68, 248);
+            this.robotComboBox.Name = "robotComboBox";
+            this.robotComboBox.Size = new System.Drawing.Size(149, 21);
+            this.robotComboBox.TabIndex = 21;
+            // 
             // EditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(229, 260);
+            this.ClientSize = new System.Drawing.Size(229, 394);
+            this.Controls.Add(this.robotComboBox);
+            this.Controls.Add(this.subgroupComboBox);
+            this.Controls.Add(this.field7);
+            this.Controls.Add(this.field6);
+            this.Controls.Add(this.field5);
+            this.Controls.Add(this.fieldEntry5);
+            this.Controls.Add(this.field4);
+            this.Controls.Add(this.fieldEntry4);
+            this.Controls.Add(this.field3);
+            this.Controls.Add(this.fieldEntry3);
             this.Controls.Add(this.modifyButton);
             this.Controls.Add(this.applyAndCloseButton);
             this.Controls.Add(this.label3);
@@ -199,5 +306,15 @@
         public System.Windows.Forms.TextBox fieldEntry2;
         public System.Windows.Forms.Button applyAndCloseButton;
         public System.Windows.Forms.Button modifyButton;
+        public System.Windows.Forms.Label field3;
+        public System.Windows.Forms.TextBox fieldEntry3;
+        public System.Windows.Forms.Label field4;
+        public System.Windows.Forms.TextBox fieldEntry4;
+        public System.Windows.Forms.Label field5;
+        public System.Windows.Forms.TextBox fieldEntry5;
+        public System.Windows.Forms.Label field6;
+        public System.Windows.Forms.Label field7;
+        public System.Windows.Forms.ComboBox subgroupComboBox;
+        public System.Windows.Forms.ComboBox robotComboBox;
     }
 }

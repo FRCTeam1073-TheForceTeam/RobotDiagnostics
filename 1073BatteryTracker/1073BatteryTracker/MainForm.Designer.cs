@@ -123,17 +123,17 @@
             // 
             // clearTheList
             // 
-            this.clearTheList.Location = new System.Drawing.Point(12, 386);
+            this.clearTheList.Location = new System.Drawing.Point(12, 371);
             this.clearTheList.Name = "clearTheList";
-            this.clearTheList.Size = new System.Drawing.Size(59, 23);
+            this.clearTheList.Size = new System.Drawing.Size(98, 23);
             this.clearTheList.TabIndex = 31;
-            this.clearTheList.Text = "Clear List";
+            this.clearTheList.Text = "Reset Database";
             this.clearTheList.UseVisualStyleBackColor = true;
             this.clearTheList.Click += new System.EventHandler(this.clearTheList_Click);
             // 
             // checkOut
             // 
-            this.checkOut.Location = new System.Drawing.Point(144, 386);
+            this.checkOut.Location = new System.Drawing.Point(12, 342);
             this.checkOut.Name = "checkOut";
             this.checkOut.Size = new System.Drawing.Size(99, 23);
             this.checkOut.TabIndex = 1;
@@ -143,9 +143,9 @@
             // 
             // checkIn
             // 
-            this.checkIn.Location = new System.Drawing.Point(357, 386);
+            this.checkIn.Location = new System.Drawing.Point(117, 342);
             this.checkIn.Name = "checkIn";
-            this.checkIn.Size = new System.Drawing.Size(92, 23);
+            this.checkIn.Size = new System.Drawing.Size(91, 23);
             this.checkIn.TabIndex = 3;
             this.checkIn.Text = "Checkin Battery";
             this.checkIn.UseVisualStyleBackColor = true;
@@ -153,27 +153,28 @@
             // 
             // load
             // 
-            this.load.Location = new System.Drawing.Point(455, 386);
+            this.load.Location = new System.Drawing.Point(224, 371);
             this.load.Name = "load";
-            this.load.Size = new System.Drawing.Size(88, 23);
+            this.load.Size = new System.Drawing.Size(96, 23);
             this.load.TabIndex = 6;
-            this.load.Text = "Load From File";
+            this.load.Text = "Reload database";
             this.load.UseVisualStyleBackColor = true;
             this.load.Click += new System.EventHandler(this.load_Click_1);
             // 
             // save
             // 
-            this.save.Location = new System.Drawing.Point(549, 386);
+            this.save.Location = new System.Drawing.Point(326, 371);
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(74, 23);
+            this.save.Size = new System.Drawing.Size(90, 23);
             this.save.TabIndex = 2;
-            this.save.Text = "Save to File";
+            this.save.Text = "Save Database";
             this.save.UseVisualStyleBackColor = true;
+            this.save.Visible = false;
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // modifyCatagoriesButton
             // 
-            this.modifyCatagoriesButton.Location = new System.Drawing.Point(249, 386);
+            this.modifyCatagoriesButton.Location = new System.Drawing.Point(116, 371);
             this.modifyCatagoriesButton.Name = "modifyCatagoriesButton";
             this.modifyCatagoriesButton.Size = new System.Drawing.Size(102, 23);
             this.modifyCatagoriesButton.TabIndex = 32;
@@ -183,11 +184,11 @@
             // 
             // editEntryButton
             // 
-            this.editEntryButton.Location = new System.Drawing.Point(77, 386);
+            this.editEntryButton.Location = new System.Drawing.Point(214, 342);
             this.editEntryButton.Name = "editEntryButton";
-            this.editEntryButton.Size = new System.Drawing.Size(61, 23);
+            this.editEntryButton.Size = new System.Drawing.Size(106, 23);
             this.editEntryButton.TabIndex = 33;
-            this.editEntryButton.Text = "Edit entry";
+            this.editEntryButton.Text = "Edit above entry";
             this.editEntryButton.UseVisualStyleBackColor = true;
             this.editEntryButton.Click += new System.EventHandler(this.editEntryButton_Click);
             // 
@@ -195,7 +196,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 421);
+            this.ClientSize = new System.Drawing.Size(659, 406);
             this.Controls.Add(this.editEntryButton);
             this.Controls.Add(this.modifyCatagoriesButton);
             this.Controls.Add(this.clearTheList);

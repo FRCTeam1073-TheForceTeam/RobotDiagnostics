@@ -28,12 +28,25 @@ namespace _1073BatteryTracker
             selectItemComboBox.Enabled = false;
             field1.Visible = false;
             field2.Visible = false;
+            field3.Visible = false;
+            field4.Visible = false;
+            field5.Visible = false;
+            field6.Visible = false;
+            field7.Visible = false;
             fieldEntry1.Visible = false;
             fieldEntry1.Enabled = false;
             fieldEntry1.ReadOnly = true;
             fieldEntry2.Visible = false;
             fieldEntry2.Enabled = false;
             fieldEntry2.ReadOnly = true;
+            fieldEntry3.Visible = false;
+            fieldEntry3.Enabled = false;
+            fieldEntry4.Visible = false;
+            fieldEntry4.Enabled = false;
+            fieldEntry5.Visible = false;
+            fieldEntry5.Enabled = false;
+            subgroupComboBox.Visible = false;
+            robotComboBox.Visible = false;
             addButton.Enabled = false;
             modifyButton.Enabled = false;
             removeButton.Enabled = false;
@@ -42,6 +55,15 @@ namespace _1073BatteryTracker
             selectItemComboBox.SelectedIndex = -1;
             fieldEntry1.Text = "";
             fieldEntry2.Text = "";
+            fieldEntry3.Text = "";
+            fieldEntry4.Text = "";
+            fieldEntry5.Text = "";
+            while (subgroupComboBox.Items.Count != 0) subgroupComboBox.Items.RemoveAt(0);
+            while (robotComboBox.Items.Count != 0) robotComboBox.Items.RemoveAt(0);
+            foreach (Robot r in robotList) robotComboBox.Items.Add(r);
+            foreach (Subgroup s in subgroupList) subgroupComboBox.Items.Add(s);
+            subgroupComboBox.SelectedIndex = -1;
+            robotComboBox.SelectedIndex = -1;
         }
 
         private void EditWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -63,10 +85,7 @@ namespace _1073BatteryTracker
             }
             else
             {
-                field1.Text = "value";
-                field2.Text = "value";
-                fieldEntry1.Text = "";
-                fieldEntry2.Text = "";
+                EditWindow_Load(null, null);
                 //enable select item
                 selectItemComboBox.Enabled = true;
                 //fill select combo box
@@ -110,11 +129,33 @@ namespace _1073BatteryTracker
                     field2.Visible = false;
                     fieldEntry2.Visible = false;
                 }
+                //"BatteryOutList"
+                else if (selectCatagoryComboBox.Text.Equals("BatteryOutList"))
+                {
+                    foreach (Battery b in batteryOutList)
+                    {
+                        selectItemComboBox.Items.Add(b);
+                    }
+                    field1.Visible = true;
+                    field2.Visible = true;
+                    field3.Visible = true;
+                    field4.Visible = true;
+                    field5.Visible = true;
+                    field6.Visible = true;
+                    field7.Visible = true;
+                    fieldEntry1.Visible = true;
+                    fieldEntry2.Visible = true;
+                    fieldEntry3.Visible = true;
+                    fieldEntry4.Visible = true;
+                    fieldEntry5.Visible = true;
+                    subgroupComboBox.Visible = true;
+                    robotComboBox.Visible = true;
+                }
                 else
                 {
 
                 }
-                selectItemComboBox.Items.Add("create...");
+                if (!selectCatagoryComboBox.Text.Equals("BatteryOutList")) selectItemComboBox.Items.Add("create...");
             }
         }
 
@@ -160,6 +201,13 @@ namespace _1073BatteryTracker
                         field1.Text = "subgroup";
                         fieldEntry1.Text = "";
                     }
+                    else if (selectCatagoryComboBox.Text.Equals("BatteryOutList"))
+                    {
+                        field1.Text = "year";
+                        field2.Text = "number";
+                        fieldEntry1.Text = "";
+                        fieldEntry2.Text = "";
+                    }
                     else
                     {
 
@@ -179,7 +227,7 @@ namespace _1073BatteryTracker
                     }
                     addButton.Enabled = false;
                     modifyButton.Enabled = true;
-                    removeButton.Enabled = false;
+                    removeButton.Enabled = true;
 
                     if (selectCatagoryComboBox.Text.Equals("BatteryInList"))
                     {
@@ -197,6 +245,28 @@ namespace _1073BatteryTracker
                     {
                         field1.Text = "subgroup";
                         fieldEntry1.Text = subgroupList[selectItemComboBox.SelectedIndex].groupName;
+                    }
+                    else if (selectCatagoryComboBox.Text.Equals("BatteryOutList"))
+                    {
+                        field1.Text = "year";
+                        field2.Text = "number";
+                        fieldEntry1.Enabled = true;
+                        fieldEntry2.Enabled = true;
+                        fieldEntry3.Enabled = true;
+                        fieldEntry4.Enabled = true;
+                        fieldEntry5.Enabled = true;
+                        robotComboBox.Enabled = true;
+                        subgroupComboBox.Enabled = true;
+                        fieldEntry3.ReadOnly = false;
+                        fieldEntry4.ReadOnly = false;
+                        fieldEntry5.ReadOnly = false;
+                        fieldEntry1.Text = batteryOutList[selectItemComboBox.SelectedIndex].batteryYear;
+                        fieldEntry2.Text = batteryOutList[selectItemComboBox.SelectedIndex].batteryNumber;
+                        fieldEntry3.Text = "" + batteryOutList[selectItemComboBox.SelectedIndex].batteryVoltage;
+                        fieldEntry4.Text = batteryOutList[selectItemComboBox.SelectedIndex].checkoutTime;
+                        fieldEntry5.Text = batteryOutList[selectItemComboBox.SelectedIndex].estCheckinTime;
+                        robotComboBox.SelectedIndex = getRobotListIndex(batteryOutList[selectItemComboBox.SelectedIndex].robot);
+                        subgroupComboBox.SelectedIndex = getsubgroupListIndex(batteryOutList[selectItemComboBox.SelectedIndex].subgroup);
                     }
                     else
                     {
@@ -252,6 +322,16 @@ namespace _1073BatteryTracker
             {
                 subgroupList[selectItemComboBox.SelectedIndex].groupName = fieldEntry1.Text;
             }
+            else if (selectCatagoryComboBox.Text.Equals("BatteryOutList"))
+            {
+                batteryOutList[selectItemComboBox.SelectedIndex].batteryYear = fieldEntry1.Text;
+                batteryOutList[selectItemComboBox.SelectedIndex].batteryNumber = fieldEntry2.Text;
+                batteryOutList[selectItemComboBox.SelectedIndex].batteryVoltage = float.Parse(fieldEntry3.Text);
+                batteryOutList[selectItemComboBox.SelectedIndex].checkoutTime = fieldEntry4.Text;
+                batteryOutList[selectItemComboBox.SelectedIndex].estCheckinTime = fieldEntry5.Text;
+                batteryOutList[selectItemComboBox.SelectedIndex].robot = robotComboBox.Text;
+                batteryOutList[selectItemComboBox.SelectedIndex].subgroup = subgroupComboBox.Text;
+            }
             else
             {
 
@@ -275,12 +355,40 @@ namespace _1073BatteryTracker
             {
                 subgroupList.RemoveAt(selectItemComboBox.SelectedIndex);
             }
+            else if (selectCatagoryComboBox.Text.Equals("BatteryOutList"))
+            {
+                batteryOutList.RemoveAt(selectItemComboBox.SelectedIndex);
+            }
             else
             {
 
             }
             selectCatagoryComboBox.SelectedIndex = -1;
             EditWindow_Load(null, null);
+        }
+
+        private int getRobotListIndex(string searchTitle)
+        {
+            for (int i = 0; i < robotList.Count; i++)
+            {
+                if (robotList[i].robotName.Equals(searchTitle))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int getsubgroupListIndex(string searchTitle)
+        {
+            for (int i = 0; i < subgroupList.Count; i++)
+            {
+                if (subgroupList[i].groupName.Equals(searchTitle))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

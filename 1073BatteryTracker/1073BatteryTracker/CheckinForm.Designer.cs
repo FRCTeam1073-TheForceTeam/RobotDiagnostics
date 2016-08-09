@@ -132,7 +132,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CheckinForm";
             this.Text = "CheckinForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckinForm_FormClosing);
+            this.Load += new System.EventHandler(this.CheckinForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.voltageBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

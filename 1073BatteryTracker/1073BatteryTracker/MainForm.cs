@@ -52,12 +52,32 @@ namespace _1073BatteryTracker
         //opens the checkout battery window
         private void checkOut_Click(object sender, EventArgs e)
         {
+            batteryOut = new CheckoutForm();
+            batteryOut.batteryInList = batteryInList;
+            batteryOut.batteryOutList = batteryOutList;
+            batteryOut.robotList = robotList;
+            batteryOut.subgroupList = subgroupList;
             batteryOut.ShowDialog();
+            if (batteryOut.madeChanges)
+            {
+                this.updateUI();
+                this.saveToDisk();
+            }
         }
         //opens the checkin battery window
         private void checkIn_Click(object sender, EventArgs e)
         {
+            batteryIn = new CheckinForm();
+            batteryIn.batteryInList = batteryInList;
+            batteryIn.batteryOutList = batteryOutList;
+            batteryIn.robotList = robotList;
+            batteryIn.subgroupList = subgroupList;
             batteryIn.ShowDialog();
+            if (batteryIn.madeChanges)
+            {
+                this.updateUI();
+                this.saveToDisk();
+            }
         }
         //adds a battery to the table by increasing the row count, adding
         //a row, and populating it
@@ -134,12 +154,20 @@ namespace _1073BatteryTracker
         //opens the open file dialog
         private void load_Click_1(object sender, EventArgs e)
         {
-            this.openFileDialog1.ShowDialog();
+            //this.openFileDialog1.ShowDialog();
+            this.showTheMessage(1);
+            this.readCatagoryList();
+            this.readRobotList();
+            this.readBattInList();
+            this.readBattOutList();
+            this.updateUI();
+            loadingForm.Hide();
         }
         //opens the save file dialog
         private void save_Click(object sender, EventArgs e)
         {
-            this.doTheSaving();
+            //this.doTheSaving();
+            this.saveToDisk();
         }
         //sets the default paths of the file save and open to the exe path
         private void setDefaultPaths()
@@ -195,6 +223,15 @@ namespace _1073BatteryTracker
             this.batteryOutList.Insert(batteryNumbah, batt);
             this.add(batt);
         }
+        //make this
+        private void updateUI()
+        {
+            this.clearList4Update();
+            foreach (Battery b in batteryOutList)
+            {
+                this.add(b);
+            }
+        }
         //button that saves AND clears the form
         private void saveAndClear_Click_1(object sender, EventArgs e)
         {
@@ -247,7 +284,7 @@ namespace _1073BatteryTracker
             };
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
@@ -255,10 +292,39 @@ namespace _1073BatteryTracker
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             this.Controls.Add(tableLayoutPanel1);
         }
-        //button that clears the list
+        //button that resets the entire database
         private void clearTheList_Click(object sender, EventArgs e)
         {
-            this.clearList();
+            //messagebox to confirm
+            DialogResult result = MessageBox.Show("This will clear ALL database entries, including robot and subgroup lists!!!\ncontinue?", "are you sure?", MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                //clears UI
+                this.clearList4Update();
+
+                //clears databases from memory
+                batteryInList = new List<Battery>();
+                batteryOutList = new List<Battery>();
+                robotList = new List<Robot>();
+                subgroupList = new List<Subgroup>();
+
+                //delets xml files
+                if (File.Exists(battInListXml)) File.Delete(battInListXml);
+                if (File.Exists(battOutListXml)) File.Delete(battOutListXml);
+                if (File.Exists(robotListXml)) File.Delete(robotListXml);
+                if (File.Exists(subgroupListXml)) File.Delete(subgroupListXml);
+                //reloads xml files
+                this.readBattInList();
+                this.readBattOutList();
+                this.readCatagoryList();
+                this.readRobotList();
+                //updates UI
+                this.updateUI();
+            }
+            else
+            {
+
+            }
         }
 
         private void showTheMessage(int condition)
@@ -272,10 +338,15 @@ namespace _1073BatteryTracker
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.makeTheTable();
             this.setDefaultPaths();
             //run it once so the location is updated
             this.showTheMessage(1);
+            this.readCatagoryList();
+            this.readRobotList();
+            this.readBattInList();
+            this.readBattOutList();
+            this.makeTheTable();
+            this.updateUI();
             loadingForm.Hide();
         }
 
@@ -296,23 +367,22 @@ namespace _1073BatteryTracker
             editWindow.selectCatagoryComboBox.Items.Add("RobotList");//index 1
             editWindow.selectCatagoryComboBox.Items.Add("SubgroupList");//index 2
             editWindow.ShowDialog();
+            this.updateUI();
+            this.saveToDisk();
         }
 
         private void readBattOutList()
         {
+            if (!File.Exists(battOutListXml)) this.writeBattOutList();
             batteryOutList = new List<Battery>();
             XmlReader = new XmlTextReader(battOutListXml);
             Battery b = new Battery();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
+            XmlReader.MoveToContent();
             while (XmlReader.Read())
             {
-                if (XmlReader.Name.Equals("Battery"))
+                if (XmlReader.Name.Equals("battery"))
                 {
+                    b = new Battery();
                     while (XmlReader.Read())
                     {
                         if (XmlReader.IsStartElement())
@@ -343,7 +413,18 @@ namespace _1073BatteryTracker
                                     break;
                             }
                         }
-                        batteryOutList.Add(b);
+                        else
+                        {
+                            if (XmlReader.Name.Equals("battery"))
+                            {
+                                batteryOutList.Add(b);
+                                b = new Battery();
+                            }
+                            else
+                            {
+
+                            }
+                        }
                     }
                 }
             }
@@ -353,19 +434,16 @@ namespace _1073BatteryTracker
 
         private void readBattInList()
         {
+            if (!File.Exists(battInListXml)) this.writeBattInList();
             batteryInList = new List<Battery>();
             XmlReader = new XmlTextReader(battInListXml);
             Battery b = new Battery();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
+            XmlReader.MoveToContent();
             while (XmlReader.Read())
             {
-                if (XmlReader.Name.Equals("Battery"))
+                if (XmlReader.Name.Equals("battery"))
                 {
+                    b = new Battery();
                     while (XmlReader.Read())
                     {
                         if (XmlReader.IsStartElement())
@@ -381,9 +459,21 @@ namespace _1073BatteryTracker
                                     break;
                             }
                         }
-                        batteryInList.Add(b);
+                        else
+                        {
+                            if (XmlReader.Name.Equals("battery"))
+                            {
+                                batteryInList.Add(b);
+                                b = new Battery();
+                            }
+                            else
+                            {
+
+                            }
+                        }
                     }
                 }
+                else { }
             }
             XmlReader.Close();
             //reset ui prolly
@@ -391,18 +481,13 @@ namespace _1073BatteryTracker
 
         private void readRobotList()
         {
+            if (!File.Exists(robotListXml)) this.writeRobotList();
             robotList = new List<Robot>();
             XmlReader = new XmlTextReader(robotListXml);
-            Robot r = new Robot();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
-            XmlReader.Read();
+            XmlReader.MoveToContent();
             while (XmlReader.Read())
             {
-                if (XmlReader.Name.Equals("Robot"))
+                if (XmlReader.Name.Equals("robot"))
                 {
                     while (XmlReader.Read())
                     {
@@ -412,11 +497,10 @@ namespace _1073BatteryTracker
                             {
                                 //parse everything into it
                                 case "robotName":
-                                    r.robotName = XmlReader.ReadString();
+                                    robotList.Add(new Robot(XmlReader.ReadString()));
                                     break;
                             }
                         }
-                        robotList.Add(r);
                     }
                 }
             }
@@ -426,9 +510,9 @@ namespace _1073BatteryTracker
 
         private void readCatagoryList()
         {
+            if (!File.Exists(subgroupListXml)) this.writeCatagoryList();
             subgroupList = new List<Subgroup>();
             XmlReader = new XmlTextReader(subgroupListXml);
-            Subgroup s = new Subgroup();
             XmlReader.Read();
             XmlReader.Read();
             XmlReader.Read();
@@ -447,11 +531,11 @@ namespace _1073BatteryTracker
                             {
                                 //parse everything into it
                                 case "groupName":
-                                    s.groupName = XmlReader.ReadString();
+                                    subgroupList.Add(new Subgroup(XmlReader.ReadString()));
                                     break;
                             }
                         }
-                        subgroupList.Add(s);
+                        
                     }
                 }
             }
@@ -545,7 +629,7 @@ namespace _1073BatteryTracker
         private void editEntryButton_Click(object sender, EventArgs e)
         {
             //setup editWindow for checkOutList pre-selected
-            /*editWindow = new EditWindow();
+            editWindow = new EditWindow();
             //setup refrence links
             editWindow.batteryInList = batteryInList;
             editWindow.batteryOutList = batteryOutList;
@@ -557,7 +641,17 @@ namespace _1073BatteryTracker
                 editWindow.selectCatagoryComboBox.Items.RemoveAt(0);
             }
             editWindow.selectCatagoryComboBox.Items.Add("BatteryOutList");//index 0
-            editWindow.ShowDialog();*/
+            editWindow.ShowDialog();
+            this.updateUI();
+            this.saveToDisk();
+        }
+
+        private void saveToDisk()
+        {
+            this.writeBattInList();
+            this.writeBattOutList();
+            this.writeCatagoryList();
+            this.writeRobotList();
         }
     }
 }

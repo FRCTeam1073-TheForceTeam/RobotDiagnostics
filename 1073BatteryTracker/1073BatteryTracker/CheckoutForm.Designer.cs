@@ -360,7 +360,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CheckoutForm";
             this.Text = "CheckoutForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckoutForm_FormClosing);
             this.Load += new System.EventHandler(this.CheckoutForm_Load);
             this.VisibleChanged += new System.EventHandler(this.CheckoutForm_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.batteryLevelHelper)).EndInit();
