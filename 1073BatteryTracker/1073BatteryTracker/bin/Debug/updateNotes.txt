@@ -1,0 +1,5 @@
+2.1:
+Remade database for xml, and made it not bad.
+Updated interfaces for checking in and out batteries
+added updater to check on startup.
+moved robot and subgroups to database itemsLOL
