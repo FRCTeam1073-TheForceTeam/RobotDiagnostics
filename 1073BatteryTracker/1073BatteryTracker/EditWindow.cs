@@ -12,7 +12,6 @@ namespace _1073BatteryTracker
     public partial class EditWindow : Form
     {
         public bool applyChanges = false;
-        private bool hasMadeChanges = false;
         public List<Robot> robotList;
         public List<Subgroup> subgroupList;
         public List<Battery> batteryOutList;
@@ -50,7 +49,6 @@ namespace _1073BatteryTracker
             addButton.Enabled = false;
             modifyButton.Enabled = false;
             removeButton.Enabled = false;
-            applyAndCloseButton.Enabled = false;
             //and null their text
             selectItemComboBox.SelectedIndex = -1;
             fieldEntry1.Text = "";
@@ -278,7 +276,6 @@ namespace _1073BatteryTracker
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            hasMadeChanges = true;
             if (selectCatagoryComboBox.Text.Equals("BatteryInList"))
             {
                 Battery b = new Battery();
@@ -308,7 +305,6 @@ namespace _1073BatteryTracker
 
         private void modifyButton_Click(object sender, EventArgs e)
         {
-            hasMadeChanges = true;
             if (selectCatagoryComboBox.Text.Equals("BatteryInList"))
             {
                 batteryInList[selectItemComboBox.SelectedIndex].batteryYear = fieldEntry1.Text;
@@ -342,7 +338,6 @@ namespace _1073BatteryTracker
 
         private void removeButton_Click(object sender, EventArgs e)
         {
-            hasMadeChanges = true;
             if (selectCatagoryComboBox.Text.Equals("BatteryInList"))
             {
                 batteryInList.RemoveAt(selectItemComboBox.SelectedIndex);

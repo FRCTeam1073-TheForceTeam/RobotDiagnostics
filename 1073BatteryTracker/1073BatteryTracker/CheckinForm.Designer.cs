@@ -47,7 +47,6 @@
             this.CheckinComboBox.Name = "CheckinComboBox";
             this.CheckinComboBox.Size = new System.Drawing.Size(244, 21);
             this.CheckinComboBox.TabIndex = 0;
-            this.CheckinComboBox.VisibleChanged += new System.EventHandler(this.CheckinComboBox_VisibleChanged);
             // 
             // descriptor1
             // 
@@ -112,9 +111,9 @@
             this.voltageLabel.AutoSize = true;
             this.voltageLabel.Location = new System.Drawing.Point(90, 62);
             this.voltageLabel.Name = "voltageLabel";
-            this.voltageLabel.Size = new System.Drawing.Size(35, 13);
+            this.voltageLabel.Size = new System.Drawing.Size(29, 13);
             this.voltageLabel.TabIndex = 7;
-            this.voltageLabel.Text = "label4";
+            this.voltageLabel.Text = "12 V";
             // 
             // CheckinForm
             // 

@@ -17,7 +17,7 @@ namespace _1073BatteryTracker
 {
     public partial class MainForm : Form
     {   //all the private and public instance variables that are needed
-        private string version = "2.0";
+        private string version = "2.1";
         private String appPath = Path.GetDirectoryName(Application.ExecutablePath);
         private String battOutListXml;
         private String battInListXml;
@@ -35,19 +35,69 @@ namespace _1073BatteryTracker
         public List<Battery> batteryOutList = new List<Battery>();
         private List<Battery> batteryInList = new List<Battery>();
         private EditWindow editWindow = new EditWindow();
+        private WebClient client = new WebClient();
+        private VersionUpdateWindow updateWindow = new VersionUpdateWindow();
+        private bool forceClose = false;
         /*
          * TODO:
-         * write checkout and checkin logic
-         * write checkin form
-         * write edit form
-         * get updator working
+         * comment code
         */
         //constructer that also adds the table and sets the default paths
         //on the file loader and saver to be the application path
         public MainForm()
         {
             InitializeComponent();
-
+        }
+        //checks for updates using dropBox
+        private void checkForUpdates()
+        {
+            //download version.txt
+            try
+            {
+                if (File.Exists(appPath + "\\version.txt")) File.Delete(appPath + "\\version.txt");
+                client.DownloadFile("https://dl.dropboxusercontent.com/u/44191620/1073BatteryTracker/version.txt", appPath + "\\version.txt");
+                string newVersion = File.ReadAllText(appPath + "\\version.txt");
+                if (newVersion.Equals(version))
+                {
+                    //up to date
+                }
+                else
+                {
+                    //download updateNotes.txt
+                    if (File.Exists(appPath + "\\updateNotes.txt")) File.Delete(appPath + "\\updateNotes.txt");
+                    client.DownloadFile("https://dl.dropboxusercontent.com/u/44191620/1073BatteryTracker/updateNotes.txt", appPath + "\\updateNotes.txt");
+                    //prompt user
+                    updateWindow.newVersionInfoRTB.Text = File.ReadAllText(appPath + "\\updateNotes.txt");
+                    updateWindow.NewVersionAvailableTextBox.Text = "An update is available: " + newVersion;
+                    updateWindow.ShowDialog();
+                    if (updateWindow.update)
+                    {
+                        //download new version
+                        client.DownloadFile("https://dl.dropboxusercontent.com/u/44191620/1073BatteryTracker/1073BatteryTracker.exe", appPath + "\\1073BatteryTracker V_" + newVersion + ".exe");
+                        //open new one
+                        System.Diagnostics.Process.Start(appPath + "\\1073BatteryTracker V_" + newVersion + ".exe");
+                        //close this one
+                        forceClose = true;
+                        updateWindow.Close();
+                        loadingForm.Close();
+                        this.Close();
+                        return;
+                    }
+                    else
+                    {
+                        forceClose = true;
+                        updateWindow.Close();
+                        loadingForm.Close();
+                        this.Close();
+                        return;
+                    }
+                }
+            }
+            catch (WebException)
+            {
+                MessageBox.Show("unable to check for updates. Eithor you are offline or the update service is down.");
+                return;
+            }
         }
         //opens the checkout battery window
         private void checkOut_Click(object sender, EventArgs e)
@@ -79,22 +129,20 @@ namespace _1073BatteryTracker
                 this.saveToDisk();
             }
         }
-        //adds a battery to the table by increasing the row count, adding
-        //a row, and populating it
+        //adds a battery to the table by increasing the row count, adding a row, and populating it
         public void add(Battery batt)
         {
             tableLayoutPanel1.RowCount++;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getYear() });
-            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getNumber() });
-            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = "" + batt.getVoltage() });
-            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getSubgroup() });
-            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getFormatedCheckoutTime() });
-            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getEstCheckinTime() });
-            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.getRobot() });
+            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.batteryYear });
+            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.batteryNumber });
+            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = "" + batt.batteryVoltage });
+            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.subgroup });
+            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.checkoutTime });
+            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.estCheckinTime });
+            tableLayoutPanel1.Controls.Add(new Label { Name = "name" + nameDiff++, Text = batt.robot });
         }
-        //removes a battery from the table by removing the controlls,
-        //removing the row, and decrementing the row count, in that order
+        //removes a battery from the table by removing the controlls, removing the row, and decrementing the row count, in that order
         public void remove(int index)
         {
             try
@@ -111,21 +159,6 @@ namespace _1073BatteryTracker
             tableLayoutPanel1.RowStyles.RemoveAt(index);
             tableLayoutPanel1.RowCount--;
         }
-        //clears the entire table and List of batteries
-        private void clearList()
-        {
-            //messagebox letting them know about it clearing
-            this.showTheMessage(2);
-            int index = this.batteryOutList.Count - 1;
-            while (index != -1)
-            {
-                this.batteryOutList.RemoveAt(index);
-                this.remove(index);
-                index--;
-            }
-            loadingForm.Hide();
-            this.Show();
-        }
         //clears the entire table
         private void clearList4Update()
         {
@@ -140,21 +173,9 @@ namespace _1073BatteryTracker
             loadingForm.Hide();
             this.Show();
         }
-        //called after the battlist is changed. this makes the
-        //changes reflected in the table
-        public void updateList()
-        {
-            this.clearList4Update();
-            for (int i = 0; i < batteryOutList.Count; i++)
-            {
-                Battery batt = this.batteryOutList[i];
-                this.add(batt);
-            }
-        }
         //opens the open file dialog
         private void load_Click_1(object sender, EventArgs e)
         {
-            //this.openFileDialog1.ShowDialog();
             this.showTheMessage(1);
             this.readCatagoryList();
             this.readRobotList();
@@ -172,56 +193,10 @@ namespace _1073BatteryTracker
         //sets the default paths of the file save and open to the exe path
         private void setDefaultPaths()
         {
-            this.openFileDialog1.InitialDirectory = appPath;
-            this.saveFileDialog1.InitialDirectory = appPath;
-            this.saveFileDialog1.Filter = "Text File|*.txt";
-            this.saveFileDialog1.Title = "Save to le file XD";
             battInListXml = appPath + "\\battInList.xml";
             battOutListXml = appPath + "\\battOutList.xml";
             robotListXml = appPath + "\\robotList.xml";
             subgroupListXml = appPath + "\\subgroupList.xml";
-        }
-        //reads each line in the file to be parsed. parsed in the below method
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-            this.clearList();
-            String line;
-            System.IO.StreamReader file = new StreamReader(openFileDialog1.FileName);
-            while (true)
-            {
-                line = file.ReadLine();
-                if (line == null) break;
-                this.parseLine(line);
-            }
-            file.Close();
-        }
-        //takes each line from the above method, and splits it into a string array
-        //each array index has part of a battery parameter in it, they are used
-        //to make the battery
-        private void parseLine(String s)
-        {
-            char delim = ',';
-            String[] parser = s.Split(delim);
-            int batteryNumbah;
-            try
-            {
-                batteryNumbah = int.Parse(parser[0].Substring(5));
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Loading Failed");
-                return;
-            }
-            Battery batt = new Battery();
-            batt.setYear(parser[2].Substring(5));
-            batt.setNumber(parser[3].Substring(7));
-            batt.setVoltage(float.Parse(parser[4].Substring(8)));
-            batt.setSubgroup(parser[5].Substring(9));
-            batt.setCheckoutTime(parser[6].Substring(15));
-            batt.setEstCheckinTime(parser[7].Substring(11));
-            batt.setRobot(parser[8].Substring(6));
-            this.batteryOutList.Insert(batteryNumbah, batt);
-            this.add(batt);
         }
         //make this
         private void updateUI()
@@ -230,41 +205,6 @@ namespace _1073BatteryTracker
             foreach (Battery b in batteryOutList)
             {
                 this.add(b);
-            }
-        }
-        //button that saves AND clears the form
-        private void saveAndClear_Click_1(object sender, EventArgs e)
-        {
-            this.doTheSaving();
-            this.clearList();
-        }
-        //saves the file by writing each battery parameter to a line of a text file
-        private void doTheSaving()
-        {
-            StringBuilder sb = new StringBuilder();
-            Battery batt;
-            this.saveFileDialog1.ShowDialog();
-            if (this.saveFileDialog1.FileName != "")
-            {
-                for (int i = 0; i < batteryOutList.Count; i++)
-                {
-                    batt = batteryOutList[i];
-                    String temp;
-                    if (i < 10)
-                    {
-                        temp = "0" + i;
-                    }
-                    else { temp = "" + i; }
-                    sb.Append("Batt=" + temp + ",isInUse=" + ",Year=" + batt.getYear() + ",Number=" + batt.getNumber() + ",Voltage=" + batt.getVoltage() + ",Subgroup=" + batt.getSubgroup() + ",timeCheckedOut=" + batt.getFormatedCheckoutTime() + ",EstCheckin=" + batt.getEstCheckinTime() + ",Robot=" + batt.getRobot() + "\n");
-                }
-                try
-                {
-                    File.WriteAllText(saveFileDialog1.FileName, sb.ToString());
-                }
-                catch (IOException)
-                {
-                    MessageBox.Show("File unable so save, please retry again");
-                }
             }
         }
         //makes the table in the main form
@@ -341,13 +281,22 @@ namespace _1073BatteryTracker
             this.setDefaultPaths();
             //run it once so the location is updated
             this.showTheMessage(1);
-            this.readCatagoryList();
-            this.readRobotList();
-            this.readBattInList();
-            this.readBattOutList();
-            this.makeTheTable();
-            this.updateUI();
-            loadingForm.Hide();
+            this.checkForUpdates();
+            if (forceClose)
+            {
+                loadingForm.Close();
+                this.Close();
+            }
+            else
+            {
+                this.readCatagoryList();
+                this.readRobotList();
+                this.readBattInList();
+                this.readBattOutList();
+                this.makeTheTable();
+                this.updateUI();
+                loadingForm.Hide();
+            }
         }
 
         private void modifyCatagoriesButton_Click(object sender, EventArgs e)
@@ -652,6 +601,18 @@ namespace _1073BatteryTracker
             this.writeBattOutList();
             this.writeCatagoryList();
             this.writeRobotList();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (forceClose)
+            {
+                
+            }
+            else
+            {
+                this.saveToDisk();
+            }
         }
     }
 }

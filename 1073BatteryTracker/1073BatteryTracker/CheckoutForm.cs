@@ -8,20 +8,16 @@ using System.Windows.Forms;
 namespace _1073BatteryTracker
 {
     public partial class CheckoutForm : Form
-    {   //private instance variables
+    {   //instance variables
         public bool madeChanges = false;
         private double voltageLevelNum;
         public List<Robot> robotList;
         public List<Subgroup> subgroupList;
         public List<Battery> batteryOutList;
         public List<Battery> batteryInList;
-        //constructer. also sets the format for the checkoutTime dateTime object
         public CheckoutForm()
         {
             InitializeComponent();
-            checkoutTime.Format = DateTimePickerFormat.Custom;
-            checkoutTime.CustomFormat = "MM/dd/yy  hh:mm tt";
-            checkoutTime.ShowUpDown = true;
         }
         //apply the new voltage number when moving the scrollbar
         private void batteryLevelHelper_Scroll(object sender, EventArgs e)
@@ -36,101 +32,46 @@ namespace _1073BatteryTracker
         {
             this.Close();
         }
-        //makes a battery based on the settings and then adds it to the List, and
-        //tells the table to update
+        //
         private void checkoutButton_Click(object sender, EventArgs e)
         {
-            //omg this is so wrong
-            /*MainForm form1 = (MainForm) Application.OpenForms["MainForm"];
-            Battery batt = new Battery();
-            if (!this.everythingIsFilledOut())
-            {
-                MessageBox.Show("All settings be completed before ability to checkout");
-                return;
-            }
-            if (this.isDuplicate(form1))
-            {
-                MessageBox.Show("Duplicate battery detected, please recheck your settings");
-                return;
-            }
-            batt.setYear(this.yearComboBox.Text);
-            batt.setNumber(this.batteryNumberBox.Text);
-            DateTime dt = DateTime.Now;
-            batt.setCheckoutTime(String.Format("{0:MM/dd/yy hh:mm tt}", dt));
-            batt.setEstCheckinTime(checkoutTime.Text);
-            batt.setSubgroup(subgroupBox.Text);
-            batt.setRobot(robotBox.Text);
-            batt.setVoltage((float)this.voltageLevelNum);
-            form1.batteryOutList.Add(batt);
-            form1.updateList();
-            this.Hide();*/
-            //ok do it right here
             //create method to make sure everything is set
-            madeChanges = true;
-            Battery batt = this.createUnlinkedBattery(batteryInList[batteryComboBox.SelectedIndex]);
-            batteryOutList.Add(batt);
-            batteryInList.RemoveAt(batteryComboBox.SelectedIndex);
-            this.Close();
-        }
-        //clears everything in the text boxes for the next use
-        private void CheckoutForm_VisibleChanged(object sender, EventArgs e)
-        {
-            this.batteryLevelHelper_Scroll(null, null);
-           this.robotBox.Text = null;
-           this.batteryNumberBox.Text = null;
-           this.yearComboBox.Text = null;
-           this.subgroupBox.Text = null;
+            if (this.everythingIsFilledOut())
+            {
+                madeChanges = true;
+                Battery batt = this.createUnlinkedBattery(batteryInList[batteryComboBox.SelectedIndex]);
+                batteryOutList.Add(batt);
+                batteryInList.RemoveAt(batteryComboBox.SelectedIndex);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Not everything is filled out");
+            }
         }
         //makes sure that the user had filled out every form option
         private bool everythingIsFilledOut()
         {
-            if (yearComboBox.Text == "" || batteryNumberBox.Text == "" || robotBox.Text == "" || subgroupBox.Text == "")
-                return false;
-            return true;
+            if (robotComboBox.SelectedIndex != -1 && subgroupComboBox.SelectedIndex !=-1 && batteryComboBox.SelectedIndex != -1) return true;
+            else return false;
         }
-        //checks for duplicate batteries from the List
-        private bool isDuplicate(MainForm form1)
-        {
-            for (int i = 0; i < form1.batteryOutList.Count; i++)
-            {
-                Battery Batt = form1.batteryOutList[i];
-                String newBattNumber = this.batteryNumberBox.Text;
-                String newYearNumber = this.yearComboBox.Text;
-                if (newBattNumber.Equals(Batt.getNumber()) && newYearNumber.Equals(Batt.getYear())) return true;
-            }
-            return false;
-        }
-
+        //also sets the format for the checkoutTime dateTime object
         private void CheckoutForm_Load(object sender, EventArgs e)
         {
+            checkoutTime.Format = DateTimePickerFormat.Custom;
+            checkoutTime.CustomFormat = "MM/dd/yy  hh:mm tt";
+            checkoutTime.ShowUpDown = true;
             //empty combo boxes
-            while (batteryComboBox.Items.Count != 0)
-            {
-                batteryComboBox.Items.RemoveAt(0);
-            }
-            while (robotComboBox.Items.Count != 0)
-            {
-                robotComboBox.Items.RemoveAt(0);
-            }
-            while (subgroupComboBox.Items.Count != 0)
-            {
-                subgroupComboBox.Items.RemoveAt(0);
-            }
+            while (batteryComboBox.Items.Count != 0) batteryComboBox.Items.RemoveAt(0);
+            while (robotComboBox.Items.Count != 0) robotComboBox.Items.RemoveAt(0);
+            while (subgroupComboBox.Items.Count != 0) subgroupComboBox.Items.RemoveAt(0);
             //parse lists into combo boxes
-            foreach (Battery b in batteryInList)
-            {
-                batteryComboBox.Items.Add(b);
-            }
-            foreach (Robot r in robotList)
-            {
-                robotComboBox.Items.Add(r);
-            }
-            foreach (Subgroup s in subgroupList)
-            {
-                subgroupComboBox.Items.Add(s);
-            }
+            foreach (Battery b in batteryInList) batteryComboBox.Items.Add(b);
+            foreach (Robot r in robotList) robotComboBox.Items.Add(r);
+            foreach (Subgroup s in subgroupList) subgroupComboBox.Items.Add(s);
+            batteryLevelHelper_Scroll(null, null);
         }
-
+        //
         private Battery createUnlinkedBattery(Battery b)
         {
             Battery temp = new Battery();

@@ -33,8 +33,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.clearTheList = new System.Windows.Forms.Button();
@@ -90,18 +88,6 @@
             this.label7.Size = new System.Drawing.Size(93, 13);
             this.label7.TabIndex = 13;
             this.label7.Text = "Time checked out";
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.DefaultExt = "txt";
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.RestoreDirectory = true;
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.DefaultExt = "txt";
-            this.saveFileDialog1.RestoreDirectory = true;
             // 
             // label1
             // 
@@ -215,6 +201,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "1073BatteryTracker";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -228,8 +215,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button clearTheList;

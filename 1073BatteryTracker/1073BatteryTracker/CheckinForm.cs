@@ -9,7 +9,6 @@ namespace _1073BatteryTracker
     public partial class CheckinForm : Form
     {   //private instance variables
         private double voltageLevelNum;
-        private bool isFirstTime = true;
         public bool madeChanges = false;
         public List<Robot> robotList;
         public List<Subgroup> subgroupList;
@@ -29,50 +28,18 @@ namespace _1073BatteryTracker
         //and removing it from the List, and telling the table to update
         private void checkinButton_Click(object sender, EventArgs e)
         {
-            //omg so wrong again
-            /*MainForm form1 = (MainForm)Application.OpenForms["MainForm"];
-            Battery selectedBatt = (Battery) this.CheckinComboBox.SelectedItem;
-            if (selectedBatt == null)
-            {
-                MessageBox.Show("Please have battery be selected");
-                return;
-            }
-            String selected = selectedBatt.ToString();
-            for (int i = 0; i < form1.batteryOutList.Count; i++)
-            {
-                Battery batt = form1.batteryOutList[i];
-                String printed = batt.ToString();
-                if (printed.Equals(selected))
-                {
-                    form1.batteryOutList.RemoveAt(i);
-                    
-                }
-            }
-            form1.updateList();
-            this.Hide();*/
             //do it right again here
-            madeChanges = true;
-            Battery batt = this.createUnlinkedBattery(batteryOutList[CheckinComboBox.SelectedIndex]);
-            batteryInList.Add(batt);
-            batteryOutList.RemoveAt(CheckinComboBox.SelectedIndex);
-            this.Close();
-        }
-        //adds the batteries to the drop down menu of batteries to select to check in
-        private void CheckinComboBox_VisibleChanged(object sender, EventArgs e)
-        {
-            if (isFirstTime)
+            if (CheckinComboBox.SelectedIndex == -1)
             {
-                isFirstTime = false;
-                return;
+                MessageBox.Show("Battery must be selected");
             }
-            this.voltageBar_Scroll(null, null);
-            this.CheckinComboBox.Items.Clear();
-            this.CheckinComboBox.Text = null;
-            MainForm form1 = (MainForm)Application.OpenForms["MainForm"];
-            for (int i = 0; i < form1.batteryOutList.Count; i++)
+            else
             {
-                Battery batt = form1.batteryOutList[i];
-                this.CheckinComboBox.Items.Add(batt);
+                madeChanges = true;
+                Battery batt = this.createUnlinkedBattery(batteryOutList[CheckinComboBox.SelectedIndex]);
+                batteryInList.Add(batt);
+                batteryOutList.RemoveAt(CheckinComboBox.SelectedIndex);
+                this.Close();
             }
         }
         //shows the voltage that the user has selected in the scroll bar

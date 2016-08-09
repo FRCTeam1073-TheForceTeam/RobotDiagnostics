@@ -38,7 +38,6 @@
             this.field2 = new System.Windows.Forms.Label();
             this.fieldEntry2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.applyAndCloseButton = new System.Windows.Forms.Button();
             this.modifyButton = new System.Windows.Forms.Button();
             this.field3 = new System.Windows.Forms.Label();
             this.fieldEntry3 = new System.Windows.Forms.TextBox();
@@ -58,7 +57,7 @@
             this.label1.Location = new System.Drawing.Point(50, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 12;
             this.label1.Text = "select catagory to modify";
             // 
             // selectCatagoryComboBox
@@ -68,7 +67,7 @@
             this.selectCatagoryComboBox.Location = new System.Drawing.Point(12, 25);
             this.selectCatagoryComboBox.Name = "selectCatagoryComboBox";
             this.selectCatagoryComboBox.Size = new System.Drawing.Size(205, 21);
-            this.selectCatagoryComboBox.TabIndex = 1;
+            this.selectCatagoryComboBox.TabIndex = 0;
             this.selectCatagoryComboBox.SelectedIndexChanged += new System.EventHandler(this.selectCatagoryComboBox_SelectedIndexChanged);
             // 
             // fieldEntry1
@@ -77,7 +76,7 @@
             this.fieldEntry1.Name = "fieldEntry1";
             this.fieldEntry1.ReadOnly = true;
             this.fieldEntry1.Size = new System.Drawing.Size(149, 20);
-            this.fieldEntry1.TabIndex = 3;
+            this.fieldEntry1.TabIndex = 2;
             // 
             // selectItemComboBox
             // 
@@ -86,7 +85,7 @@
             this.selectItemComboBox.Location = new System.Drawing.Point(12, 65);
             this.selectItemComboBox.Name = "selectItemComboBox";
             this.selectItemComboBox.Size = new System.Drawing.Size(205, 21);
-            this.selectItemComboBox.TabIndex = 2;
+            this.selectItemComboBox.TabIndex = 1;
             this.selectItemComboBox.SelectedIndexChanged += new System.EventHandler(this.selectItemComboBox_SelectedIndexChanged);
             // 
             // addButton
@@ -95,7 +94,7 @@
             this.addButton.Location = new System.Drawing.Point(12, 275);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(205, 23);
-            this.addButton.TabIndex = 5;
+            this.addButton.TabIndex = 9;
             this.addButton.Text = "add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -106,7 +105,7 @@
             this.field1.Location = new System.Drawing.Point(9, 95);
             this.field1.Name = "field1";
             this.field1.Size = new System.Drawing.Size(33, 13);
-            this.field1.TabIndex = 5;
+            this.field1.TabIndex = 14;
             this.field1.Text = "value";
             // 
             // removeButton
@@ -115,7 +114,7 @@
             this.removeButton.Location = new System.Drawing.Point(12, 333);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(205, 23);
-            this.removeButton.TabIndex = 7;
+            this.removeButton.TabIndex = 11;
             this.removeButton.Text = "remove";
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
@@ -126,7 +125,7 @@
             this.field2.Location = new System.Drawing.Point(9, 121);
             this.field2.Name = "field2";
             this.field2.Size = new System.Drawing.Size(33, 13);
-            this.field2.TabIndex = 8;
+            this.field2.TabIndex = 15;
             this.field2.Text = "value";
             // 
             // fieldEntry2
@@ -135,7 +134,7 @@
             this.fieldEntry2.Name = "fieldEntry2";
             this.fieldEntry2.ReadOnly = true;
             this.fieldEntry2.Size = new System.Drawing.Size(149, 20);
-            this.fieldEntry2.TabIndex = 4;
+            this.fieldEntry2.TabIndex = 3;
             // 
             // label3
             // 
@@ -143,20 +142,8 @@
             this.label3.Location = new System.Drawing.Point(35, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(167, 13);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 13;
             this.label3.Text = "select item from selected catagory";
-            // 
-            // applyAndCloseButton
-            // 
-            this.applyAndCloseButton.Enabled = false;
-            this.applyAndCloseButton.Location = new System.Drawing.Point(12, 362);
-            this.applyAndCloseButton.Name = "applyAndCloseButton";
-            this.applyAndCloseButton.Size = new System.Drawing.Size(205, 23);
-            this.applyAndCloseButton.TabIndex = 8;
-            this.applyAndCloseButton.Text = "null";
-            this.applyAndCloseButton.UseVisualStyleBackColor = true;
-            this.applyAndCloseButton.Visible = false;
-            this.applyAndCloseButton.Click += new System.EventHandler(this.applyAndCloseButton_Click);
             // 
             // modifyButton
             // 
@@ -164,7 +151,7 @@
             this.modifyButton.Location = new System.Drawing.Point(12, 304);
             this.modifyButton.Name = "modifyButton";
             this.modifyButton.Size = new System.Drawing.Size(205, 23);
-            this.modifyButton.TabIndex = 6;
+            this.modifyButton.TabIndex = 10;
             this.modifyButton.Text = "modify";
             this.modifyButton.UseVisualStyleBackColor = true;
             this.modifyButton.Click += new System.EventHandler(this.modifyButton_Click);
@@ -175,7 +162,7 @@
             this.field3.Location = new System.Drawing.Point(9, 147);
             this.field3.Name = "field3";
             this.field3.Size = new System.Drawing.Size(42, 13);
-            this.field3.TabIndex = 11;
+            this.field3.TabIndex = 16;
             this.field3.Text = "voltage";
             // 
             // fieldEntry3
@@ -184,7 +171,7 @@
             this.fieldEntry3.Name = "fieldEntry3";
             this.fieldEntry3.ReadOnly = true;
             this.fieldEntry3.Size = new System.Drawing.Size(149, 20);
-            this.fieldEntry3.TabIndex = 10;
+            this.fieldEntry3.TabIndex = 4;
             // 
             // field4
             // 
@@ -192,7 +179,7 @@
             this.field4.Location = new System.Drawing.Point(9, 173);
             this.field4.Name = "field4";
             this.field4.Size = new System.Drawing.Size(54, 13);
-            this.field4.TabIndex = 13;
+            this.field4.TabIndex = 17;
             this.field4.Text = "checkOut";
             // 
             // fieldEntry4
@@ -201,7 +188,7 @@
             this.fieldEntry4.Name = "fieldEntry4";
             this.fieldEntry4.ReadOnly = true;
             this.fieldEntry4.Size = new System.Drawing.Size(149, 20);
-            this.fieldEntry4.TabIndex = 12;
+            this.fieldEntry4.TabIndex = 5;
             // 
             // field5
             // 
@@ -209,7 +196,7 @@
             this.field5.Location = new System.Drawing.Point(9, 199);
             this.field5.Name = "field5";
             this.field5.Size = new System.Drawing.Size(46, 13);
-            this.field5.TabIndex = 15;
+            this.field5.TabIndex = 18;
             this.field5.Text = "checkIn";
             // 
             // fieldEntry5
@@ -218,7 +205,7 @@
             this.fieldEntry5.Name = "fieldEntry5";
             this.fieldEntry5.ReadOnly = true;
             this.fieldEntry5.Size = new System.Drawing.Size(149, 20);
-            this.fieldEntry5.TabIndex = 14;
+            this.fieldEntry5.TabIndex = 6;
             // 
             // field6
             // 
@@ -226,7 +213,7 @@
             this.field6.Location = new System.Drawing.Point(9, 225);
             this.field6.Name = "field6";
             this.field6.Size = new System.Drawing.Size(51, 13);
-            this.field6.TabIndex = 17;
+            this.field6.TabIndex = 19;
             this.field6.Text = "subgroup";
             // 
             // field7
@@ -235,7 +222,7 @@
             this.field7.Location = new System.Drawing.Point(9, 251);
             this.field7.Name = "field7";
             this.field7.Size = new System.Drawing.Size(31, 13);
-            this.field7.TabIndex = 19;
+            this.field7.TabIndex = 20;
             this.field7.Text = "robot";
             // 
             // subgroupComboBox
@@ -245,7 +232,7 @@
             this.subgroupComboBox.Location = new System.Drawing.Point(68, 222);
             this.subgroupComboBox.Name = "subgroupComboBox";
             this.subgroupComboBox.Size = new System.Drawing.Size(149, 21);
-            this.subgroupComboBox.TabIndex = 20;
+            this.subgroupComboBox.TabIndex = 7;
             // 
             // robotComboBox
             // 
@@ -254,13 +241,13 @@
             this.robotComboBox.Location = new System.Drawing.Point(68, 248);
             this.robotComboBox.Name = "robotComboBox";
             this.robotComboBox.Size = new System.Drawing.Size(149, 21);
-            this.robotComboBox.TabIndex = 21;
+            this.robotComboBox.TabIndex = 8;
             // 
             // EditWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(229, 394);
+            this.ClientSize = new System.Drawing.Size(229, 366);
             this.Controls.Add(this.robotComboBox);
             this.Controls.Add(this.subgroupComboBox);
             this.Controls.Add(this.field7);
@@ -272,7 +259,6 @@
             this.Controls.Add(this.field3);
             this.Controls.Add(this.fieldEntry3);
             this.Controls.Add(this.modifyButton);
-            this.Controls.Add(this.applyAndCloseButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.field2);
             this.Controls.Add(this.fieldEntry2);
@@ -283,6 +269,7 @@
             this.Controls.Add(this.fieldEntry1);
             this.Controls.Add(this.selectCatagoryComboBox);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EditWindow";
             this.Text = "EditWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditWindow_FormClosing);
@@ -304,7 +291,6 @@
         public System.Windows.Forms.Button removeButton;
         public System.Windows.Forms.Label field2;
         public System.Windows.Forms.TextBox fieldEntry2;
-        public System.Windows.Forms.Button applyAndCloseButton;
         public System.Windows.Forms.Button modifyButton;
         public System.Windows.Forms.Label field3;
         public System.Windows.Forms.TextBox fieldEntry3;

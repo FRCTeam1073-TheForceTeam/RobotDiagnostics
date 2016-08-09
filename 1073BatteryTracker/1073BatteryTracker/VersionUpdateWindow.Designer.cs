@@ -40,9 +40,9 @@
             this.NewVersionAvailableTextBox.AutoSize = true;
             this.NewVersionAvailableTextBox.Location = new System.Drawing.Point(12, 9);
             this.NewVersionAvailableTextBox.Name = "NewVersionAvailableTextBox";
-            this.NewVersionAvailableTextBox.Size = new System.Drawing.Size(129, 13);
+            this.NewVersionAvailableTextBox.Size = new System.Drawing.Size(135, 13);
             this.NewVersionAvailableTextBox.TabIndex = 0;
-            this.NewVersionAvailableTextBox.Text = "A new version is available";
+            this.NewVersionAvailableTextBox.Text = "A new version is available: ";
             // 
             // newVersionInfoRTB
             // 
@@ -51,7 +51,7 @@
             this.newVersionInfoRTB.ReadOnly = true;
             this.newVersionInfoRTB.Size = new System.Drawing.Size(263, 153);
             this.newVersionInfoRTB.TabIndex = 1;
-            this.newVersionInfoRTB.Text = "Version Notes:\n";
+            this.newVersionInfoRTB.Text = "";
             // 
             // updateNowText
             // 
@@ -70,6 +70,7 @@
             this.CancelButton.TabIndex = 3;
             this.CancelButton.Text = "No.";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // UpdateButton
             // 
@@ -79,6 +80,7 @@
             this.UpdateButton.TabIndex = 4;
             this.UpdateButton.Text = "Yeah.";
             this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // VersionUpdateWindow
             // 
@@ -90,6 +92,7 @@
             this.Controls.Add(this.updateNowText);
             this.Controls.Add(this.newVersionInfoRTB);
             this.Controls.Add(this.NewVersionAvailableTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "VersionUpdateWindow";
             this.Text = "VersionUpdateWindow";
             this.ResumeLayout(false);
@@ -99,10 +102,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label NewVersionAvailableTextBox;
-        private System.Windows.Forms.RichTextBox newVersionInfoRTB;
         private System.Windows.Forms.Label updateNowText;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button UpdateButton;
+        public System.Windows.Forms.Label NewVersionAvailableTextBox;
+        public System.Windows.Forms.RichTextBox newVersionInfoRTB;
     }
 }
