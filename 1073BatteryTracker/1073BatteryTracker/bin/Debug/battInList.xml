@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<battInList.xml>
+  <batteriesIn>
+    <battery>
+      <year>2016</year>
+      <number>2</number>
+    </battery>
+    <battery>
+      <year>2016</year>
+      <number>1</number>
+    </battery>
+  </batteriesIn>
+</battInList.xml>

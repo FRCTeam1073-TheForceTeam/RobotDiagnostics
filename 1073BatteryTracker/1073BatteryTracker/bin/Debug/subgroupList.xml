@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<subgroupList.xml>
+  <subgroups>
+    <subgroup>
+      <groupName>Electrical</groupName>
+    </subgroup>
+    <subgroup>
+      <groupName>Mechanical</groupName>
+    </subgroup>
+    <subgroup>
+      <groupName>Software</groupName>
+    </subgroup>
+    <subgroup>
+      <groupName>Strategy</groupName>
+    </subgroup>
+  </subgroups>
+</subgroupList.xml>
