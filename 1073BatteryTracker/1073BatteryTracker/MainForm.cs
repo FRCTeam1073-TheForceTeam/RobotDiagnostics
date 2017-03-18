@@ -17,7 +17,7 @@ namespace _1073BatteryTracker
 {
     public partial class MainForm : Form
     {   //all the private and public instance variables that are needed
-        private string version = "2.1";
+        private string version = "2.2";
         private String appPath = Path.GetDirectoryName(Application.ExecutablePath);
         private String battOutListXml;
         private String battInListXml;
@@ -54,8 +54,9 @@ namespace _1073BatteryTracker
             //download version.txt
             try
             {
+                //"http://willster419.atwebpages.com/Applications/"
                 if (File.Exists(appPath + "\\version.txt")) File.Delete(appPath + "\\version.txt");
-                client.DownloadFile("https://dl.dropboxusercontent.com/u/44191620/1073BatteryTracker/version.txt", appPath + "\\version.txt");
+                client.DownloadFile("http://willster419.atwebpages.com/Applications/1073BatteryTracker/version.txt", appPath + "\\version.txt");
                 string newVersion = File.ReadAllText(appPath + "\\version.txt");
                 if (newVersion.Equals(version))
                 {
@@ -65,7 +66,7 @@ namespace _1073BatteryTracker
                 {
                     //download updateNotes.txt
                     if (File.Exists(appPath + "\\updateNotes.txt")) File.Delete(appPath + "\\updateNotes.txt");
-                    client.DownloadFile("https://dl.dropboxusercontent.com/u/44191620/1073BatteryTracker/updateNotes.txt", appPath + "\\updateNotes.txt");
+                    client.DownloadFile("http://willster419.atwebpages.com/Applications/1073BatteryTracker/updateNotes.txt", appPath + "\\updateNotes.txt");
                     //prompt user
                     updateWindow.newVersionInfoRTB.Text = File.ReadAllText(appPath + "\\updateNotes.txt");
                     updateWindow.NewVersionAvailableTextBox.Text = "An update is available: " + newVersion;
@@ -73,7 +74,7 @@ namespace _1073BatteryTracker
                     if (updateWindow.update)
                     {
                         //download new version
-                        client.DownloadFile("https://dl.dropboxusercontent.com/u/44191620/1073BatteryTracker/1073BatteryTracker.exe", appPath + "\\1073BatteryTracker V_" + newVersion + ".exe");
+                        client.DownloadFile("http://willster419.atwebpages.com/Applications/1073BatteryTracker/1073BatteryTracker.exe", appPath + "\\1073BatteryTracker V_" + newVersion + ".exe");
                         //open new one
                         System.Diagnostics.Process.Start(appPath + "\\1073BatteryTracker V_" + newVersion + ".exe");
                         //close this one

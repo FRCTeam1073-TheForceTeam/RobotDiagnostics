@@ -1,4 +1,0 @@
-Batt=00,isInUse=,Year=2007,Number=5,Voltage=13.25,Subgroup=Mechanical,timeCheckedOut=09/24/14 03:05 PM,EstCheckin=09/24/14  03:05 PM,Robot=Mobile Base
-Batt=01,isInUse=,Year=2009,Number=4,Voltage=12,Subgroup=Mechanical,timeCheckedOut=09/24/14 03:06 PM,EstCheckin=09/24/14  03:05 PM,Robot=Mobile Base
-Batt=02,isInUse=,Year=2009,Number=5,Voltage=9.5,Subgroup=Software,timeCheckedOut=09/24/14 03:06 PM,EstCheckin=09/24/14  03:05 PM,Robot=Mobile Base
-Batt=03,isInUse=,Year=2014,Number=6,Voltage=14,Subgroup=BACS,timeCheckedOut=09/24/14 03:06 PM,EstCheckin=09/24/14  03:05 PM,Robot=Libra
